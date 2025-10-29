@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  app:
+    image: "${IMAGE_REPO}:${IMAGE_TAG}"
+    container_name: "${CONTAINER_NAME:-AP_AUTOSAR}"
+    shm_size: "1g"
+    stdin_open: true     # equivalent to -i
+    tty: true            # equivalent to -t
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+    # --- Mount camera (optional) ---
+    # Uncomment the two lines below if you need webcam access inside the container
+    devices:
+      - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
+    group_add:
+      - "${VIDEO_GID:-44}"  # video group
+
+    # --- Volumes (optional) ---
+    volumes:
+      - ../workspace:/root/workspace
+
