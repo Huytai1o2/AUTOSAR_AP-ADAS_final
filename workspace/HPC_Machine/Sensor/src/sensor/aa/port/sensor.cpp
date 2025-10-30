@@ -13,6 +13,8 @@
 /// GENERATED DATE                    : 2025-10-20 13:08:51
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sensor/aa/port/sensor.h"
+#include <fstream>
+#include <string>
  
 namespace sensor
 {
@@ -76,6 +78,11 @@ void Sensor::Start()
     {
         m_running = true;
         m_logger.LogVerbose() << "Sensor::Start::OfferService";
+
+        m_serial.open("/dev/ttyACM0");
+        if (!m_serial.is_open()) {
+            m_logger.LogError() << "Failed to open /dev/ttyACM0";
+        }
     }
     else
     {
@@ -107,6 +114,26 @@ void Sensor::SendEventSensorDataCyclic()
 {
     while (m_running)
     {
+        if (std::getline(m_serial, m_lineBuffer))
+        {
+            try
+            {
+                float sensorValue = std::stof(m_lineBuffer);
+                WriteDataSensorData(sensorValue);
+                m_logger.LogVerbose() << "Read sensor Humidity value: " << sensorValue;
+            }
+            catch (const std::invalid_argument& e)
+            {
+                m_logger.LogError() << "Invalid data received: " << m_lineBuffer.c_str();
+            }
+        }
+        else
+        {
+            if (m_serial.fail() || m_serial.eof()) {
+                m_serial.clear();
+            }
+        }
+
         {
             std::lock_guard<std::mutex> lock(m_mutex);
             
@@ -120,8 +147,7 @@ void Sensor::SendEventSensorDataCyclic()
                 m_logger.LogError() << "Sensor::SendEventSensorDataCyclic::Send::" << send.Error().Message();
             }
         }
-        
-        WriteDataSensorData(m_SensorDataData + 1.0f);
+
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }

@@ -23,6 +23,8 @@
  
 #include <mutex>
 #include <thread>
+#include <fstream>
+#include <string>
  
 namespace sensor
 {
@@ -87,6 +89,12 @@ public:
 private:
     /// @brief Logger for this port
     ara::log::Logger& m_logger;
+
+    /// @brief Serial
+    std::ifstream m_serial;
+
+    /// @brief line buffer
+    std::string m_lineBuffer;
     
     /// @brief Flag of port status
     bool m_running;

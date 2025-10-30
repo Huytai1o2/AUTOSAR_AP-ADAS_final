@@ -45,7 +45,7 @@ bool Actuator::Initialize()
     m_Sensor->RegistEventHandlerSensorData(
         [this](const sensor::service::proxy::events::SensorData::SampleType& data)
         {
-            m_logger.LogVerbose() << "[Actuator] SensorData via callback = " << data;
+            m_logger.LogVerbose() << "[Actuator] SensorData Humidity via callback = " << data;
         });
     
     return init;

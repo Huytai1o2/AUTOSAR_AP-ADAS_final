@@ -333,7 +333,10 @@ Sensor/src/CMakeFiles/Sensor.dir/sensor/aa/sensor.cpp.o: \
  /opt/para-sdk/include/para/serialization/base/vector.h \
  /opt/para-sdk/include/para/serialization/stream_reader.h \
  /opt/para-sdk/include/para/serialization/stream_writer.h \
- /opt/para-sdk/include/ara/log/logger.h \
+ /opt/para-sdk/include/ara/log/logger.h /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc \
  /opt/para-sdk/include/para/swc/port_pool.h /usr/include/c++/11/queue \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
  /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_queue.h

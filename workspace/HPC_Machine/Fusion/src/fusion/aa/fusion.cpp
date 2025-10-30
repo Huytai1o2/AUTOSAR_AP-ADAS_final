@@ -45,7 +45,7 @@ bool Fusion::Initialize()
     m_Sensor->RegistEventHandlerSensorData(
         [this](const sensor::service::proxy::events::SensorData::SampleType& data)
         {
-            m_logger.LogVerbose() << "[Fusion] SensorData via polling = " << data;
+            m_logger.LogVerbose() << "[Fusion] SensorData Humidity via polling = " << data;
         });
     
     return init;

@@ -51,7 +51,7 @@ public:
 private:
     /// @brief Running status of software component
     bool m_running;
-    
+
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
     

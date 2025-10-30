@@ -14,3 +14,6 @@ then run these command:
 
 and it will be install to home path
 `cd ~`
+
+## How to run the docker-compose.yaml
+`docker compose up -d`

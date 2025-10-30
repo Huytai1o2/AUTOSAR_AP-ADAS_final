@@ -4,7 +4,7 @@
     "manifest-type" : "service-instance-to-machine-manifest",
     "service-protocol" : "someip",
     "connector" : "eth0",
-    "unicast-address" : "172.17.0.2",
+    "unicast-address" : "172.18.0.2",
     "tcp-port" : "35101",
     "udp-port" : "35101",
     "skeletons" : [
