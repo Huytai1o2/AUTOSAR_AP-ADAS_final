@@ -84,7 +84,7 @@ add_library(tensorflow-lite::tensorflow-lite STATIC IMPORTED)
 set_target_properties(tensorflow-lite::tensorflow-lite PROPERTIES
   INTERFACE_COMPILE_OPTIONS "-DEIGEN_NEON_GEBP_NR=4;-DTFLITE_KERNEL_USE_XNNPACK;-DTFLITE_BUILD_WITH_XNNPACK_DELEGATE;-DXNNPACK_DELEGATE_ENABLE_QS8;-DXNNPACK_DELEGATE_ENABLE_QU8;-DXNNPACK_DELEGATE_USE_LATEST_OPS;-DXNNPACK_DELEGATE_ENABLE_SUBGRAPH_RESHAPING;-DTFL_STATIC_LIBRARY_BUILD"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "eigen;absl_flags;absl_hash;absl_status;absl_strings;absl_synchronization;absl_variant;tensorflow-lite::farmhash;tensorflow-lite::fft2d_fftsg2d;flatbuffers::flatbuffers;gemmlowp::gemmlowp;tensorflow-lite::ml_dtypes;ruy;dl;pthreadpool;xnnpack-delegate;XNNPACK"
+  INTERFACE_LINK_LIBRARIES "Eigen3::Eigen;absl::flags;absl::hash;absl::status;absl::strings;absl::synchronization;absl::variant;tensorflow-lite::farmhash;tensorflow-lite::fft2d_fftsg2d;flatbuffers::flatbuffers;gemmlowp::gemmlowp;tensorflow-lite::ml_dtypes;ruy::ruy;dl;pthreadpool;xnnpack-delegate;XNNPACK"
 )
 
 if(CMAKE_VERSION VERSION_LESS 3.0.0)
@@ -123,7 +123,7 @@ unset(_IMPORT_CHECK_TARGETS)
 # Make sure the targets which have been exported in some other
 # export set exist.
 unset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
-foreach(_target "flatbuffers::flatbuffers" "gemmlowp::gemmlowp" )
+foreach(_target "Eigen3::Eigen" "absl::flags" "absl::hash" "absl::status" "absl::strings" "absl::synchronization" "absl::variant" "flatbuffers::flatbuffers" "gemmlowp::gemmlowp" "ruy::ruy" )
   if(NOT TARGET "${_target}" )
     set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets "${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets} ${_target}")
   endif()
