@@ -50,7 +50,7 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target cpuinfo::cpuinfo
-add_library(cpuinfo::cpuinfo STATIC IMPORTED)
+add_library(cpuinfo::cpuinfo SHARED IMPORTED)
 
 set_target_properties(cpuinfo::cpuinfo PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "CPUINFO_SUPPORTED_PLATFORM=1"

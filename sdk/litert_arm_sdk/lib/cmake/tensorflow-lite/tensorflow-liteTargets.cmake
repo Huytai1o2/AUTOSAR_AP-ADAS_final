@@ -51,21 +51,21 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target tensorflow-lite::farmhash
-add_library(tensorflow-lite::farmhash STATIC IMPORTED)
+add_library(tensorflow-lite::farmhash SHARED IMPORTED)
 
 set_target_properties(tensorflow-lite::farmhash PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
 )
 
 # Create imported target tensorflow-lite::fft2d_fftsg
-add_library(tensorflow-lite::fft2d_fftsg STATIC IMPORTED)
+add_library(tensorflow-lite::fft2d_fftsg SHARED IMPORTED)
 
 set_target_properties(tensorflow-lite::fft2d_fftsg PROPERTIES
   INTERFACE_LINK_LIBRARIES "m"
 )
 
 # Create imported target tensorflow-lite::fft2d_fftsg2d
-add_library(tensorflow-lite::fft2d_fftsg2d STATIC IMPORTED)
+add_library(tensorflow-lite::fft2d_fftsg2d SHARED IMPORTED)
 
 set_target_properties(tensorflow-lite::fft2d_fftsg2d PROPERTIES
   INTERFACE_LINK_LIBRARIES "tensorflow-lite::fft2d_fftsg"
@@ -79,10 +79,10 @@ set_target_properties(tensorflow-lite::ml_dtypes PROPERTIES
 )
 
 # Create imported target tensorflow-lite::tensorflow-lite
-add_library(tensorflow-lite::tensorflow-lite STATIC IMPORTED)
+add_library(tensorflow-lite::tensorflow-lite SHARED IMPORTED)
 
 set_target_properties(tensorflow-lite::tensorflow-lite PROPERTIES
-  INTERFACE_COMPILE_OPTIONS "-DEIGEN_NEON_GEBP_NR=4;-DTFLITE_KERNEL_USE_XNNPACK;-DTFLITE_BUILD_WITH_XNNPACK_DELEGATE;-DXNNPACK_DELEGATE_ENABLE_QS8;-DXNNPACK_DELEGATE_ENABLE_QU8;-DXNNPACK_DELEGATE_USE_LATEST_OPS;-DXNNPACK_DELEGATE_ENABLE_SUBGRAPH_RESHAPING;-DTFL_STATIC_LIBRARY_BUILD"
+  INTERFACE_COMPILE_OPTIONS "-DEIGEN_NEON_GEBP_NR=4;-DTFLITE_KERNEL_USE_XNNPACK;-DTFLITE_BUILD_WITH_XNNPACK_DELEGATE;-DXNNPACK_DELEGATE_ENABLE_QS8;-DXNNPACK_DELEGATE_ENABLE_QU8;-DXNNPACK_DELEGATE_USE_LATEST_OPS;-DXNNPACK_DELEGATE_ENABLE_SUBGRAPH_RESHAPING"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
   INTERFACE_LINK_LIBRARIES "Eigen3::Eigen;absl::flags;absl::hash;absl::status;absl::strings;absl::synchronization;absl::variant;tensorflow-lite::farmhash;tensorflow-lite::fft2d_fftsg2d;flatbuffers::flatbuffers;gemmlowp::gemmlowp;tensorflow-lite::ml_dtypes;ruy::ruy;dl;pthreadpool;xnnpack-delegate;XNNPACK"
 )

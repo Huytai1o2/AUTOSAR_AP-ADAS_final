@@ -59,7 +59,7 @@ set_target_properties(gemmlowp::gemmlowp PROPERTIES
 )
 
 # Create imported target gemmlowp::eight_bit_int_gemm
-add_library(gemmlowp::eight_bit_int_gemm STATIC IMPORTED)
+add_library(gemmlowp::eight_bit_int_gemm SHARED IMPORTED)
 
 set_target_properties(gemmlowp::eight_bit_int_gemm PROPERTIES
   INTERFACE_LINK_LIBRARIES "Threads::Threads"

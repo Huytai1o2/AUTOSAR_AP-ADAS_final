@@ -51,7 +51,7 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target KleidiAI::kleidiai
-add_library(KleidiAI::kleidiai STATIC IMPORTED)
+add_library(KleidiAI::kleidiai SHARED IMPORTED)
 
 set_target_properties(KleidiAI::kleidiai PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
