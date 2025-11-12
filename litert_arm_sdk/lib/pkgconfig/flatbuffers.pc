@@ -1,9 +1,0 @@
-libdir=/home/huytai102/tflite_build/install/lib
-includedir=/home/huytai102/tflite_build/install/include
-
-Name: FlatBuffers
-Description: Memory Efficient Serialization Library
-Version: 24.3.25
-
-Libs: -L${libdir} -lflatbuffers
-Cflags: -I${includedir}
