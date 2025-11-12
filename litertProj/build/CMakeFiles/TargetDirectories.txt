@@ -1,0 +1,3 @@
+/home/huytai102/Developer/litertProj/build/CMakeFiles/MyProject.dir
+/home/huytai102/Developer/litertProj/build/CMakeFiles/edit_cache.dir
+/home/huytai102/Developer/litertProj/build/CMakeFiles/rebuild_cache.dir
