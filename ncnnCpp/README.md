@@ -10,6 +10,7 @@
 ## Prerequisite (Dependencies)
 1. Ultralytics (export YOLO.pt to YOLO.ncnn)
 2. NCNN sdk
+3. Using Yolo11n original
 
 ## Running the project
 `mkdir build && cd build && cmake .. && make -j$(nproc) && ./yolov11_ncnn -data=../yellowLights.jpg -numTest=100`
