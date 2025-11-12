@@ -8,6 +8,8 @@
 Test LiteRT with model .tflite to evaluate between yolo.ncnn and yolo-mobilenetv4.tflite
 How to compile: *comming soon*
 
+export LD_LIBRARY_PATH="$HOME/Developer/litertProj/litert_arm_sdk/lib:$LD_LIBRARY_PATH"
+
 ## Update 08/11/2025
 We decide change the LiteRT to NCNN becasue of supporting embedded comming soon =)) of LiteRTv2
 [Prototype of run NCNN framework with YOLO](./ncnnCpp/README.md)
