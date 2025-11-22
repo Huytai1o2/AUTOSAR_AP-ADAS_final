@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  para-sdk:
+    image: "${IMAGE_REPO:-edupopcornsar/pc-linux}:${IMAGE_TAG:-R2011-v250829}"
+    container_name: para-sdk-20251120
+    shm_size: "${SHM_SIZE:-2g}"
+    mem_limit: 2g
+    stdin_open: true
+    tty: true
+    networks:
+      para_net:
+        ipv4_address: 172.31.36.143
+    ports:
+      - "8022:22"
+    volumes:
+      - /home/l1ttled1no/parasdk_workspace:/home/workspace
+
+networks:
+  para_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.31.0.0/16"
+          gateway: "172.31.0.1"
