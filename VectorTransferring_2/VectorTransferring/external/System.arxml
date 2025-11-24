@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="10462ebb-995b-4996-82c4-9aa88ff7f506">
+      <SHORT-NAME>SwComponent</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="3c50dff3-e49b-447b-aed6-37a95d191091">
+          <SHORT-NAME>Composition</SHORT-NAME>
+          <ELEMENTS>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="f2a0a023-e49e-429c-ac7f-f7777f3666d5">
+              <SHORT-NAME>HPC</SHORT-NAME>
+              <COMPONENTS>
+                <SW-COMPONENT-PROTOTYPE UUID="ef43cf88-3e5a-4f28-a156-7fdeb02e42d8">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">322.0</SD>
+                        <SD GID="Y">381.0</SD>
+                        <SD GID="WIDTH">218.2</SD>
+                        <SD GID="HEIGHT">145.0</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">362.0</SD>
+                        <SD GID="Y">276.0</SD>
+                        <SD GID="WIDTH">337.2</SD>
+                        <SD GID="HEIGHT">220.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="17a667d9-97e7-4ee7-b4d8-98b4d3980b7d">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">545.0</SD>
+                        <SD GID="Y">58.38608651023332</SD>
+                        <SD GID="WIDTH">356.25280000000004</SD>
+                        <SD GID="HEIGHT">221.2</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ClientSensor</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="547c311f-0683-4000-8a9d-5bea6c1fcdd2">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">85.0</SD>
+                        <SD GID="Y">379.0</SD>
+                        <SD GID="WIDTH">222.2</SD>
+                        <SD GID="HEIGHT">147.0</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">265.0</SD>
+                        <SD GID="Y">317.0</SD>
+                        <SD GID="WIDTH">337.2</SD>
+                        <SD GID="HEIGHT">220.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/EM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="b2bd5967-9aac-4d63-91a0-26545e7031fc">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">93.0</SD>
+                        <SD GID="Y">61.0</SD>
+                        <SD GID="WIDTH">337.63200000000006</SD>
+                        <SD GID="HEIGHT">221.2</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ProviderSensor</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+              </COMPONENTS>
+            </COMPOSITION-SW-COMPONENT-TYPE>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="3a615eb3-29cd-44e6-8725-78ec3400ae04">
+              <SHORT-NAME>System</SHORT-NAME>
+              <COMPONENTS>
+                <SW-COMPONENT-PROTOTYPE UUID="870fdaf6-7318-4622-ae76-d8a75029c4b8">
+                  <SHORT-NAME>HPC</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">49.0</SD>
+                        <SD GID="Y">1.0</SD>
+                        <SD GID="WIDTH">890.6320000000001</SD>
+                        <SD GID="HEIGHT">553.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponent/Composition/HPC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+              </COMPONENTS>
+            </COMPOSITION-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="b8bcb053-536a-4410-b95c-0dbdced6bc13">
+      <SHORT-NAME>System</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM UUID="cc62afe3-53af-4e47-8d8c-d5e7ef499d7d">
+          <SHORT-NAME>System</SHORT-NAME>
+          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
+          <FIBEX-ELEMENTS>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/System/VehicleTopology/Cluster/EthernetCluster</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+          </FIBEX-ELEMENTS>
+          <MAPPINGS>
+            <SYSTEM-MAPPING UUID="2bd08702-e1bb-43e6-8307-cd4a6a26b276">
+              <SHORT-NAME>SystemMapping</SHORT-NAME>
+              <SW-MAPPINGS>
+                <SWC-TO-ECU-MAPPING UUID="1e731004-3b64-4780-a3bd-38a3bd03f8de">
+                  <SHORT-NAME>SwMapping0</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IO-SWC-TO-MACHINE-MAPPING">
+                        <SDXF>
+                          <REFERRABLE-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC</REFERRABLE-REF>
+                        </SDXF>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/System/System/System</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponent/Composition/System/HPC</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponent/Composition/System/HPC</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+          <ROOT-SOFTWARE-COMPOSITIONS>
+            <ROOT-SW-COMPOSITION-PROTOTYPE UUID="656e2a88-8c80-4681-a6c5-bdfc27d657be">
+              <SHORT-NAME>System</SHORT-NAME>
+              <SOFTWARE-COMPOSITION-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponent/Composition/System</SOFTWARE-COMPOSITION-TREF>
+            </ROOT-SW-COMPOSITION-PROTOTYPE>
+          </ROOT-SOFTWARE-COMPOSITIONS>
+          <SYSTEM-VERSION>1.0.0;R2011-PARA</SYSTEM-VERSION>
+        </SYSTEM>
+      </ELEMENTS>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="dbd66132-bb33-4e37-9cd2-dccd69b5d967">
+          <SHORT-NAME>CryptoGraphy</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="348c4d32-5302-4092-b39e-c49dd5543e1b">
+              <SHORT-NAME>Certificate</SHORT-NAME>
+              <ELEMENTS>
+                <CRYPTO-SERVICE-CERTIFICATE UUID="f024156a-3547-41d7-8ed8-d37778d13693">
+                  <SHORT-NAME>ParaCertificate</SHORT-NAME>
+                </CRYPTO-SERVICE-CERTIFICATE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="be52093d-3747-46e4-b7e3-175a275e359d">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="d45bf089-94d5-4f97-a5d7-cb632f222959">
+              <SHORT-NAME>Deployment</SHORT-NAME>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="c2145b0f-845a-455b-ace8-b26427caae8f">
+              <SHORT-NAME>Endpoint</SHORT-NAME>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="3109d203-aa9e-4761-bdd6-7da0b214e7de">
+              <SHORT-NAME>Instance</SHORT-NAME>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="d15f3a89-fd66-400a-b3d9-066718ca167d">
+              <SHORT-NAME>TimingConfig</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG UUID="0f8a3bd1-bf5b-4528-b93b-6c3d0e401a82">
+                  <SHORT-NAME>AAClientConfig</SHORT-NAME>
+                  <INITIAL-FIND-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>3</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-FIND-BEHAVIOR>
+                  <SERVICE-FIND-TIME-TO-LIVE>16777215</SERVICE-FIND-TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG UUID="d91ced79-52c9-464d-a331-aa0fbf6feeb6">
+                  <SHORT-NAME>AASdServerConfig</SHORT-NAME>
+                  <INITIAL-OFFER-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>2</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-OFFER-BEHAVIOR>
+                  <OFFER-CYCLIC-DELAY>0.5</OFFER-CYCLIC-DELAY>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <SERVICE-OFFER-TIME-TO-LIVE>16777215</SERVICE-OFFER-TIME-TO-LIVE>
+                </SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG UUID="f680a14e-85e0-4990-bfc2-740231f83750">
+                  <SHORT-NAME>AASdSubscribeConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <TIME-TO-LIVE>16777215</TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG UUID="02873601-8ad9-45d5-8d3b-de4c640afded">
+                  <SHORT-NAME>SmClientConfig</SHORT-NAME>
+                  <INITIAL-FIND-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>4</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-FIND-BEHAVIOR>
+                  <SERVICE-FIND-TIME-TO-LIVE>16777215</SERVICE-FIND-TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-SERVER-EVENT-GROUP-TIMING-CONFIG UUID="9b4dfe3b-3218-487e-a850-f001649e28da">
+                  <SHORT-NAME>SmSdPublishConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                </SOMEIP-SD-SERVER-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG UUID="8880ccef-6518-49cb-bb94-ba31f0961af2">
+                  <SHORT-NAME>SmSdSubscribeConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <TIME-TO-LIVE>16777215</TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG UUID="e1321d35-1862-4860-b309-b4fde9e1e596">
+                  <SHORT-NAME>SmServerConfig</SHORT-NAME>
+                  <INITIAL-OFFER-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>3</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-OFFER-BEHAVIOR>
+                  <OFFER-CYCLIC-DELAY>0.5</OFFER-CYCLIC-DELAY>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <SERVICE-OFFER-TIME-TO-LIVE>16777215</SERVICE-OFFER-TIME-TO-LIVE>
+                </SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG UUID="16deb022-adeb-4112-b8cb-212f0f12c92d">
+                  <SHORT-NAME>UcmClientConfig</SHORT-NAME>
+                  <INITIAL-FIND-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>4</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-FIND-BEHAVIOR>
+                  <SERVICE-FIND-TIME-TO-LIVE>16777215</SERVICE-FIND-TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-SERVER-EVENT-GROUP-TIMING-CONFIG UUID="924bd5a1-6097-4bb6-8324-a0666f978c3f">
+                  <SHORT-NAME>UcmSdPublishConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                </SOMEIP-SD-SERVER-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG UUID="e756d0a8-23aa-46d0-b156-a4774b154015">
+                  <SHORT-NAME>UcmSdSubscribeConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <TIME-TO-LIVE>16777215</TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG UUID="841ef7c2-5e3e-4c45-83ce-e16182025667">
+                  <SHORT-NAME>UcmServerConfig</SHORT-NAME>
+                  <INITIAL-OFFER-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.1</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>3</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-OFFER-BEHAVIOR>
+                  <OFFER-CYCLIC-DELAY>0.5</OFFER-CYCLIC-DELAY>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <SERVICE-OFFER-TIME-TO-LIVE>16777215</SERVICE-OFFER-TIME-TO-LIVE>
+                </SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="46047c30-f658-4ee0-b95f-5b0789905f21">
+          <SHORT-NAME>VehicleTopology</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="29c0c7ad-e720-458c-9033-e7364c4101ff">
+              <SHORT-NAME>Cluster</SHORT-NAME>
+              <ELEMENTS>
+                <ETHERNET-CLUSTER UUID="2e970e53-802e-4465-8209-c8363f0ecc24">
+                  <SHORT-NAME>EthernetCluster</SHORT-NAME>
+                  <ETHERNET-CLUSTER-VARIANTS>
+                    <ETHERNET-CLUSTER-CONDITIONAL>
+                      <PHYSICAL-CHANNELS>
+                        <ETHERNET-PHYSICAL-CHANNEL UUID="bae91316-4e3a-473a-902e-ca4863c1b927">
+                          <SHORT-NAME>PhysicalChannel</SHORT-NAME>
+                          <CATEGORY>WIRED</CATEGORY>
+                          <COMM-CONNECTORS>
+                            <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                              <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/HPC/eth0</COMMUNICATION-CONNECTOR-REF>
+                            </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          </COMM-CONNECTORS>
+                          <NETWORK-ENDPOINTS>
+                            <NETWORK-ENDPOINT UUID="8b50fbfe-fd8f-4913-b622-5e850578b0ce">
+                              <SHORT-NAME>HPCEndpoint</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>172.31.36.143</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                            <NETWORK-ENDPOINT UUID="b1bcbfd4-3191-46c2-8e03-0d8cabe7a693">
+                              <SHORT-NAME>SdMulticast</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                          </NETWORK-ENDPOINTS>
+                        </ETHERNET-PHYSICAL-CHANNEL>
+                      </PHYSICAL-CHANNELS>
+                    </ETHERNET-CLUSTER-CONDITIONAL>
+                  </ETHERNET-CLUSTER-VARIANTS>
+                </ETHERNET-CLUSTER>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="c4da40d3-aebd-47fe-bd91-28753e62179a">
+              <SHORT-NAME>Ecu</SHORT-NAME>
+              <ELEMENTS>
+                <MACHINE-DESIGN UUID="83394385-18c4-4614-b5b0-54ec7536aea4">
+                  <SHORT-NAME>HPC</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">400.0</SD>
+                        <SD GID="HEIGHT">300.0</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">400.0</SD>
+                        <SD GID="HEIGHT">300.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <COMMUNICATION-CONNECTORS>
+                    <USER-DEFINED-COMMUNICATION-CONNECTOR UUID="b4754f89-b819-4da4-afad-0040c74d6709">
+                      <SHORT-NAME>IPC</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="AUTOSAR-IO-VFB-SUB">
+                            <SD GID="X">306.0</SD>
+                            <SD GID="Y">330.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                          <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                            <SD GID="X">182.0</SD>
+                            <SD GID="Y">330.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                    </USER-DEFINED-COMMUNICATION-CONNECTOR>
+                    <ETHERNET-COMMUNICATION-CONNECTOR UUID="bcb621bd-5284-496b-97ea-392c5a4d43d7">
+                      <SHORT-NAME>eth0</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="AUTOSAR-IO-VFB-SUB">
+                            <SD GID="X">207.0</SD>
+                            <SD GID="Y">330.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                          <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                            <SD GID="X">470.0</SD>
+                            <SD GID="Y">70.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/HPCEndpoint</UNICAST-NETWORK-ENDPOINT-REF>
+                    </ETHERNET-COMMUNICATION-CONNECTOR>
+                  </COMMUNICATION-CONNECTORS>
+                  <SERVICE-DISCOVER-CONFIGS>
+                    <SOMEIP-SERVICE-DISCOVERY>
+                      <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/SdMulticast</MULTICAST-SD-IP-ADDRESS-REF>
+                      <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
+                    </SOMEIP-SERVICE-DISCOVERY>
+                  </SERVICE-DISCOVER-CONFIGS>
+                </MACHINE-DESIGN>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
