@@ -14,7 +14,7 @@ services:
     ports:
       - "8022:22"
     volumes:
-      - /home/l1ttled1no/parasdk_workspace:/home/workspace
+      - ~/parasdk_workspace:/home/workspace
 
 networks:
   para_net:
