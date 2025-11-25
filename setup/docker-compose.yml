@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   app:
     image: "${IMAGE_REPO}:${IMAGE_TAG}"
@@ -9,6 +7,13 @@ services:
     tty: true            # equivalent to -t
     environment:
       - TZ=Asia/Ho_Chi_Minh
+
+    # --- Network Configuration (Gán IP tĩnh tại đây) ---
+    networks:
+      para_net:
+        ipv4_address: 172.31.36.143
+    ports:
+      - "8022:22"
 
     # --- Mount camera (optional) ---
     # Uncomment the two lines below if you need webcam access inside the container
@@ -35,4 +40,13 @@ services:
     # --- Volumes (optional) ---
     volumes:
       - ../workspace:/root/workspace
+
+networks:
+  para_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.31.0.0/16"
+          gateway: "172.31.0.1"
 
