@@ -4,6 +4,17 @@
 @l1ttled1no
 @Huytai1o2
 
+## Update 25/11/2025
+Update the source code of HPC_Machine_v3, including:
+1. **Environment:** import opencv via `apt-get install -y libopencv-dev`
+2. **Build System:** update CmakeLists in
+
+    2.1. [CmakeLists of whole project](./workspace/HPC_Machine_v3/CMakeLists.txt)
+
+    2.2. [CmakeLists of ProviderSensor Application](./workspace/HPC_Machine_v3/ProviderSensor/src/CMakeLists.txt)
+
+    2.3. [CmakeLists of ClientSensor Application](./workspace/HPC_Machine_v3/ClientSensor/src/CMakeLists.txt)
+
 ## Update 10/11/2025
 Test LiteRT with model .tflite to evaluate between yolo.ncnn and yolo-mobilenetv4.tflite
 How to compile: *comming soon*
