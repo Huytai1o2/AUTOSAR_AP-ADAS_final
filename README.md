@@ -17,7 +17,31 @@ Update the source code of HPC_Machine_v3, including:
 
 ## Update 10/11/2025
 Test LiteRT with model .tflite to evaluate between yolo.ncnn and yolo-mobilenetv4.tflite
-How to compile: *comming soon*
+Requirement:
+1. ARM toolchain: google search
+2. Must have flatbuffer in /usr/local/bin and flatbuffer version in host machine **should be as same as the version requirement** in tensorflow src (i forget how to fix version, but while compiling, it will print the log to help you fix =))
+
+Before compiling:
+Change the source code CMakeLists in `tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt`
+
+- target_include_directories(ml_dtypes INTERFACE
+- "${ML_DTYPES_SOURCE_DIR}"
+- "${ML_DTYPES_SOURCE_DIR}/ml_dtypes")
++ target_include_directories(ml_dtypes INTERFACE
++  "$<BUILD_INTERFACE:${ML_DTYPES_SOURCE_DIR}>" "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
++  "$<BUILD_INTERFACE:${ML_DTYPES_SOURCE_DIR}/ml_dtypes>" "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/ml_dtypes>")
+
+Change the version of Flatbuffer in source code
+
+How to compile:
+
+`ARM_TOOLCHAIN="$HOME/toolchains/arm-gnu-toolchain-14.3.rel1-x86_64-aarch64-none-linux-gnu/bin/" ARMCC_FLAGS="-funsafe-math-optimizations"`
+
+`git clone https://github.com/tensorflow/tensorflow.git tensorflow_src && cd tensorflow_src && mkdir tflite_build && cd tflite_build`
+
+`cmake   -DCMAKE_C_COMPILER="$ARM_TOOLCHAIN/aarch64-none-linux-gnu-gcc"   -DCMAKE_CXX_COMPILER="$ARM_TOOLCHAIN/aarch64-none-linux-gnu-g++"   -DCMAKE_SYSTEM_NAME=Linux   -DCMAKE_SYSTEM_PROCESSOR=aarch64   -DCMAKE_BUILD_TYPE=Release   -DTFLITE_HOST_TOOLS_DIR=/usr/local/bin   -DCMAKE_INSTALL_PREFIX=$HOME/tflite_build/install -DCMAKE_C_FLAGS="${ARMCC_FLAGS}"  -DCMAKE_CXX_FLAGS="-DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX=\"\" ${ARMCC_FLAGS}"   -DABSL_ENABLE_INSTALL=ON   -DTFLITE_ENABLE_INSTALL=ON   -DRUY_ENABLE_INSTALL=ON -DEIGEN_BUILD_CMAKE_PACKAGE=ON -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_SHARED_LIBS=ON ../tensorflow_src/tensorflow/lite/`
+
+`cmake --build . -j$(nproc) && 59cmake --install`
 
 export LD_LIBRARY_PATH="$HOME/Developer/litertProj/litert_arm_sdk/lib:$LD_LIBRARY_PATH"
 
