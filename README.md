@@ -41,7 +41,7 @@ How to compile:
 
 `cmake   -DCMAKE_C_COMPILER="$ARM_TOOLCHAIN/aarch64-none-linux-gnu-gcc"   -DCMAKE_CXX_COMPILER="$ARM_TOOLCHAIN/aarch64-none-linux-gnu-g++"   -DCMAKE_SYSTEM_NAME=Linux   -DCMAKE_SYSTEM_PROCESSOR=aarch64   -DCMAKE_BUILD_TYPE=Release   -DTFLITE_HOST_TOOLS_DIR=/usr/local/bin   -DCMAKE_INSTALL_PREFIX=$HOME/tflite_build/install -DCMAKE_C_FLAGS="${ARMCC_FLAGS}"  -DCMAKE_CXX_FLAGS="-DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX=\"\" ${ARMCC_FLAGS}"   -DABSL_ENABLE_INSTALL=ON   -DTFLITE_ENABLE_INSTALL=ON   -DRUY_ENABLE_INSTALL=ON -DEIGEN_BUILD_CMAKE_PACKAGE=ON -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_SHARED_LIBS=ON ../tensorflow_src/tensorflow/lite/`
 
-`cmake --build . -j$(nproc) && 59cmake --install`
+`cmake --build . -j$(nproc) && cmake --install`
 
 export LD_LIBRARY_PATH="$HOME/Developer/litertProj/litert_arm_sdk/lib:$LD_LIBRARY_PATH"
 
