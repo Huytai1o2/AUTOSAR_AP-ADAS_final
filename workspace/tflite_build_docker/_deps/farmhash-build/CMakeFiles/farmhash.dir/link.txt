@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libfarmhash.so -o libfarmhash.so CMakeFiles/farmhash.dir/__/__/farmhash/src/farmhash.cc.o 

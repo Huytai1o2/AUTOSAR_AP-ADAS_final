@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/xnnpack-subbuild/CMakeFiles/xnnpack-populate"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/xnnpack-subbuild/CMakeFiles/xnnpack-populate.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/xnnpack-subbuild/CMakeFiles/xnnpack-populate-complete.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-build.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-configure.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-download.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-install.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-mkdir.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-patch.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-test.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/src/xnnpack-populate-stamp/xnnpack-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"xnnpack-populate"
+		],
+		"name" : "xnnpack-populate"
+	}
+}

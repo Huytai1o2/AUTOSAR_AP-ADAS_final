@@ -1,0 +1,12 @@
+prefix=/root/workspace/tflite_build_docker/install
+exec_prefix=${prefix}
+libdir=/root/workspace/tflite_build_docker/install/lib
+includedir=/root/workspace/tflite_build_docker/install/include
+
+Name: absl_non_temporal_memcpy
+Description: Abseil non_temporal_memcpy library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_non_temporal_arm_intrinsics = 20250127, absl_config = 20250127, absl_core_headers = 20250127
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

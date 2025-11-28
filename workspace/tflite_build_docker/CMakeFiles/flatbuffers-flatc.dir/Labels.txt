@@ -1,0 +1,13 @@
+# Target labels
+ flatbuffers-flatc
+# Source files and their labels
+/root/workspace/tflite_build_docker/CMakeFiles/flatbuffers-flatc
+/root/workspace/tflite_build_docker/CMakeFiles/flatbuffers-flatc.rule
+/root/workspace/tflite_build_docker/CMakeFiles/flatbuffers-flatc-complete.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-build.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-configure.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-download.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-install.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-mkdir.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-patch.rule
+/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-stamp/flatbuffers-flatc-update.rule

@@ -1,0 +1,14 @@
+# Target labels
+ protobuf-populate
+# Source files and their labels
+/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/protobuf-populate
+/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/protobuf-populate.rule
+/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/protobuf-populate-complete.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-build.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-configure.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-download.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-install.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-mkdir.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-patch.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-test.rule
+/root/workspace/tflite_build_docker/src/protobuf-populate-stamp/protobuf-populate-update.rule
