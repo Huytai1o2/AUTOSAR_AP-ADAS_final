@@ -1,0 +1,12 @@
+prefix=/home/huytai102/tflite_build_pi12/install
+exec_prefix=${prefix}
+libdir=/home/huytai102/tflite_build_pi12/install/lib
+includedir=/home/huytai102/tflite_build_pi12/install/include
+
+Name: absl_base_internal
+Description: Abseil base_internal library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_config = 20250127, absl_type_traits = 20250127
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

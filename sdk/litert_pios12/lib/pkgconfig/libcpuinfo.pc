@@ -1,5 +1,5 @@
-prefix=/home/huytai102/tflite_build/install
-exec_prefix=/home/huytai102/tflite_build/install
+prefix=/home/huytai102/tflite_build_pi12/install
+exec_prefix=/home/huytai102/tflite_build_pi12/install
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 

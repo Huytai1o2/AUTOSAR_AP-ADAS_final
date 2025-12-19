@@ -1,5 +1,5 @@
-libdir=/home/huytai102/tflite_build/install/lib
-includedir=/home/huytai102/tflite_build/install/include
+libdir=/home/huytai102/tflite_build_pi12/install/lib
+includedir=/home/huytai102/tflite_build_pi12/install/include
 
 Name: FlatBuffers
 Description: Memory Efficient Serialization Library
