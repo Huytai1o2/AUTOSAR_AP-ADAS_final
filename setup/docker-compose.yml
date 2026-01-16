@@ -18,7 +18,7 @@ services:
     # --- Mount camera (optional) ---
     # Uncomment the two lines below if you need webcam access inside the container
     devices:
-      - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
+      # - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
 
       # --- Arduino (UNO/ESP32/...), insert arduino first ---
       # - /dev/ttyACM0:/dev/ttyACM0
