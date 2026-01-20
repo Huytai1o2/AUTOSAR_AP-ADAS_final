@@ -1,2 +1,0 @@
-/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-ar qc ../lib/libittnotify.a CMakeFiles/ittnotify.dir/src/ittnotify/ittnotify_static.c.o CMakeFiles/ittnotify.dir/src/ittnotify/jitprofiling.c.o
-/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-ranlib ../lib/libittnotify.a
