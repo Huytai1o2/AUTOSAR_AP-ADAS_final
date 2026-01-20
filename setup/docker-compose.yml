@@ -3,8 +3,8 @@ services:
     image: "${IMAGE_REPO}:${IMAGE_TAG}"
     container_name: "${CONTAINER_NAME:-AP_AUTOSAR}"
     shm_size: "1g"
-    stdin_open: true     # equivalent to -i
-    tty: true            # equivalent to -t
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
     environment:
       - TZ=Asia/Ho_Chi_Minh
 
@@ -18,14 +18,14 @@ services:
     # --- Mount camera (optional) ---
     # Uncomment the two lines below if you need webcam access inside the container
     devices:
-      # - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
+      - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
 
       # --- Arduino (UNO/ESP32/...), insert arduino first ---
       # - /dev/ttyACM0:/dev/ttyACM0
 
       # --- STM32 (USB-UART or USB-CDC), insert stm32 second ---
       # - /dev/ttyACM1:/dev/ttyACM1
-      
+
       # If STM32 uses CH340 UART adapter or FTDI, change to /dev/ttyUSBx
       # - /dev/ttyUSB0:/dev/ttyUSB0
 
@@ -33,9 +33,9 @@ services:
       - /dev/bus/usb:/dev/bus/usb
 
     group_add:
-      - "${VIDEO_GID:-44}"  # video group
-      - "${DIALOUT_GID:-20}"   # serial /dev/tty*
-      - "${PLUGDEV_GID:-46}"   # USB raw
+      - "${VIDEO_GID:-44}" # video group
+      - "${DIALOUT_GID:-20}" # serial /dev/tty*
+      - "${PLUGDEV_GID:-46}" # USB raw
 
     # --- Volumes (optional) ---
     volumes:
@@ -49,4 +49,3 @@ networks:
       config:
         - subnet: "172.31.0.0/16"
           gateway: "172.31.0.1"
-

@@ -401,7 +401,7 @@ void ProviderSensor::Run()
                 m_sensorData.clear();
                 
                 // 7. CONTROL FRAME RATE (~40 FPS)
-                std::this_thread::sleep_for(std::chrono::milliseconds(25));
+                std::this_thread::sleep_for(std::chrono::milliseconds(2000));
             }
             
             cap.release();
