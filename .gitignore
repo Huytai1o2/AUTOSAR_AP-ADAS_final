@@ -1,0 +1,7 @@
+# Bỏ qua các file nén nặng
+*.tar.gz
+*.zip
+
+# Bỏ qua thư mục build (nơi chứa file rác khi biên dịch)
+build/
+install/
