@@ -1,0 +1,12 @@
+prefix=/home/huytai102/tflite_build_pi12/install
+exec_prefix=${prefix}
+libdir=/home/huytai102/tflite_build_pi12/install/lib
+includedir=/home/huytai102/tflite_build_pi12/install/include
+
+Name: absl_overload
+Description: Abseil overload library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_meta = 20250127
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

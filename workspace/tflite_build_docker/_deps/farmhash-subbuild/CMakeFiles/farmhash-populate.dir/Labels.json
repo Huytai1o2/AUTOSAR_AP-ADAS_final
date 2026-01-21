@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/CMakeFiles/farmhash-populate"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/CMakeFiles/farmhash-populate.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/CMakeFiles/farmhash-populate-complete.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-build.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-configure.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-download.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-install.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-mkdir.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-patch.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-test.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/farmhash-subbuild/farmhash-populate-prefix/src/farmhash-populate-stamp/farmhash-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"farmhash-populate"
+		],
+		"name" : "farmhash-populate"
+	}
+}

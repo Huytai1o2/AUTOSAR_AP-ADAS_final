@@ -1,0 +1,14 @@
+# Target labels
+ fxdiv
+# Source files and their labels
+/root/workspace/tflite_build_docker/FXdiv-download/CMakeFiles/fxdiv
+/root/workspace/tflite_build_docker/FXdiv-download/CMakeFiles/fxdiv.rule
+/root/workspace/tflite_build_docker/FXdiv-download/CMakeFiles/fxdiv-complete.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-build.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-configure.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-download.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-install.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-mkdir.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-patch.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-test.rule
+/root/workspace/tflite_build_docker/FXdiv-download/fxdiv-prefix/src/fxdiv-stamp/fxdiv-update.rule

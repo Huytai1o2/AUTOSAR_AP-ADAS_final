@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/flatbuffers-populate"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/flatbuffers-populate.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/flatbuffers-populate-complete.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-build.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-configure.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-download.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-install.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-mkdir.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-patch.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-test.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/flatbuffers-populate-prefix/src/flatbuffers-populate-stamp/flatbuffers-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"flatbuffers-populate"
+		],
+		"name" : "flatbuffers-populate"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate-complete.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-build.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-configure.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-download.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-install.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-mkdir.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-patch.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-test.rule"
+		},
+		{
+			"file" : "/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ruy-populate"
+		],
+		"name" : "ruy-populate"
+	}
+}

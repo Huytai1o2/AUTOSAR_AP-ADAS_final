@@ -1,0 +1,14 @@
+# Target labels
+ pthreadpool
+# Source files and their labels
+/root/workspace/tflite_build_docker/pthreadpool-download/CMakeFiles/pthreadpool
+/root/workspace/tflite_build_docker/pthreadpool-download/CMakeFiles/pthreadpool.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/CMakeFiles/pthreadpool-complete.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-build.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-configure.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-download.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-install.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-mkdir.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-patch.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-test.rule
+/root/workspace/tflite_build_docker/pthreadpool-download/pthreadpool-prefix/src/pthreadpool-stamp/pthreadpool-update.rule

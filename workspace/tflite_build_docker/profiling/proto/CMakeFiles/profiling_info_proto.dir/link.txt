@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libprofiling_info_proto.so -o libprofiling_info_proto.so CMakeFiles/profiling_info_proto.dir/__/__/tensorflow/lite/profiling/proto/profiling_info.pb.cc.o  ../../_deps/protobuf-build/libprotobuf.a 

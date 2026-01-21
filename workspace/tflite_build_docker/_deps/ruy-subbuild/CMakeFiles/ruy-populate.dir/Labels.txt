@@ -1,0 +1,14 @@
+# Target labels
+ ruy-populate
+# Source files and their labels
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/CMakeFiles/ruy-populate-complete.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-build.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-configure.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-download.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-install.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-mkdir.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-patch.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-test.rule
+/root/workspace/tflite_build_docker/_deps/ruy-subbuild/ruy-populate-prefix/src/ruy-populate-stamp/ruy-populate-update.rule

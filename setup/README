@@ -1,0 +1,3 @@
+# How to run the docker-compose.yaml
+
+`docker compose up -d`

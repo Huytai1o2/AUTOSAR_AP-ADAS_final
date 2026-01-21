@@ -1,0 +1,12 @@
+prefix=/root/workspace/tflite_build_docker/install
+exec_prefix=${prefix}
+libdir=/root/workspace/tflite_build_docker/install/lib
+includedir=/root/workspace/tflite_build_docker/install/include
+
+Name: absl_demangle_internal
+Description: Abseil demangle_internal library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_config = 20250127, absl_demangle_rust = 20250127
+Libs: -L${libdir}  -labsl_demangle_internal 
+Cflags: -I${includedir} -DNOMINMAX
