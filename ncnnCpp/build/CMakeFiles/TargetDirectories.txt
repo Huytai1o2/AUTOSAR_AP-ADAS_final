@@ -1,3 +1,0 @@
-/home/huytai102/Developer/yoloProj/ncnnCpp/build/CMakeFiles/yolov11_ncnn.dir
-/home/huytai102/Developer/yoloProj/ncnnCpp/build/CMakeFiles/edit_cache.dir
-/home/huytai102/Developer/yoloProj/ncnnCpp/build/CMakeFiles/rebuild_cache.dir
