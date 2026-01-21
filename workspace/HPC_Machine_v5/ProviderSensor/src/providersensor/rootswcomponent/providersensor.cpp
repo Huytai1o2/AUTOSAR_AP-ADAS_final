@@ -27,10 +27,11 @@ namespace rootswcomponent
 {
 
 // Class names for traffic light detection
-const char* ProviderSensor::CLASS_NAMES[6] = {
-    "green-lights", "red-lights", "traffic-lights",
-    "turn-left", "turn-right", "yellow-lights"
+const char* ProviderSensor::CLASS_NAMES[] = {
+    "Green", "Red", "Yellow"
 };
+
+const int ProviderSensor::CLASS_NAMES_SIZE = sizeof(CLASS_NAMES) / sizeof(CLASS_NAMES[0]);
 
 // IoU calculation
 float ProviderSensor::IoU(const cv::Rect& a, const cv::Rect& b) {
@@ -87,74 +88,243 @@ ProviderSensor::~ProviderSensor()
 {
 }
 
+// bool ProviderSensor::InitializeTFLite()
+// {
+//     m_logger.LogInfo() << "Initializing TFLite model...";
+    
+//     // Load model from file
+//     m_model = tflite::FlatBufferModel::BuildFromFile(
+//         "bestYoloMobilenet_saved_model/best_float16.tflite");
+    
+//     if (!m_model) {
+//         m_logger.LogError() << "Failed to load TFLite model!";
+//         return false;
+//     }
+    
+//     // Build interpreter
+//     tflite::ops::builtin::BuiltinOpResolver resolver;
+//     if (tflite::InterpreterBuilder(*m_model, resolver)(&m_interpreter) != kTfLiteOk ||
+//         !m_interpreter) {
+//         m_logger.LogError() << "Failed to build TFLite interpreter!";
+//         return false;
+//     }
+    
+//     // Set number of threads for inference
+//     m_interpreter->SetNumThreads(4);
+    
+//     // Allocate tensors
+//     if (m_interpreter->AllocateTensors() != kTfLiteOk) {
+//         m_logger.LogError() << "Failed to allocate tensors!";
+//         return false;
+//     }
+    
+//     // Get input tensor info
+//     int in_idx = m_interpreter->inputs()[0];
+//     TfLiteTensor* in_t = m_interpreter->tensor(in_idx);
+    
+//     if (in_t->type != kTfLiteFloat32 || in_t->dims->size != 4) {
+//         m_logger.LogError() << "Expected NHWC float32 input tensor!";
+//         return false;
+//     }
+    
+//     m_inputHeight = in_t->dims->data[1];
+//     m_inputWidth = in_t->dims->data[2];
+//     m_inputChannels = in_t->dims->data[3];
+    
+//     m_logger.LogInfo() << "Input tensor shape: [1, " << m_inputHeight << ", " 
+//                        << m_inputWidth << ", " << m_inputChannels << "]";
+    
+//     // Get output tensor info
+//     const auto& outs = m_interpreter->outputs();
+//     if (outs.size() != 1) {
+//         m_logger.LogError() << "Expected 1 output tensor, got " << outs.size();
+//         return false;
+//     }
+    
+//     int out_idx = outs[0];
+//     const TfLiteTensor* ot = m_interpreter->tensor(out_idx);
+    
+//     if (ot->type != kTfLiteFloat16 || ot->dims->size != 3 ||
+//         ot->dims->data[0] != 1 || ot->dims->data[1] != 10) {
+//         m_logger.LogInfo() << ot->type << " " << ot->dims->size << " " << ot->dims->data[0] << " " << ot->dims->data[1] << " " << ot->dims->data[2];
+//         m_logger.LogError() << "Unexpected output shape; need [1, 10, N]";
+//         return false;
+//     }
+    
+//     m_numClasses = ot->dims->data[1] - 4;  // 10 - 4 = 6 classes
+//     m_numDetections = ot->dims->data[2];
+    
+//     m_logger.LogInfo() << "Output tensor shape: [1, " << ot->dims->data[1] 
+//                        << ", " << m_numDetections << "]";
+//     m_logger.LogInfo() << "TFLite model initialized successfully!";
+    
+//     return true;
+// }
+
+// std::vector<Det> ProviderSensor::ProcessFrame(const cv::Mat& frame)
+// {
+//     std::vector<Det> final_dets;
+    
+//     if (frame.empty() || !m_interpreter) {
+//         return final_dets;
+//     }
+    
+//     int H = frame.rows;
+//     int W = frame.cols;
+    
+//     // Preprocess: resize and convert to float32
+//     cv::Mat resized;
+//     cv::resize(frame, resized, cv::Size(m_inputWidth, m_inputHeight));
+    
+//     // BGR -> RGB
+//     cv::cvtColor(resized, resized, cv::COLOR_BGR2RGB);
+    
+//     // Convert to float32 and normalize to [0, 1]
+//     cv::Mat f32;
+//     resized.convertTo(f32, CV_32FC3, 1.0f / 255.0f);
+    
+//     // Copy to input tensor
+//     std::memcpy(m_interpreter->typed_input_tensor<float>(0),
+//                 f32.data, f32.total() * f32.elemSize());
+    
+//     // Run inference
+//     if (m_interpreter->Invoke() != kTfLiteOk) {
+//         m_logger.LogError() << "TFLite inference failed!";
+//         return final_dets;
+//     }
+    
+//     // Get output tensor
+//     int out_idx = m_interpreter->outputs()[0];
+//     const float* out = m_interpreter->typed_tensor<float>(out_idx);
+    
+//     const int C = 10;  // 4 box coords + 6 classes
+//     const int N = m_numDetections;
+//     const int nc = m_numClasses;
+    
+//     // Parse predictions: output is [1, C, N] format
+//     std::vector<std::array<float, 10>> pred(N);
+//     for (int c = 0; c < C; ++c) {
+//         const float* src = out + c * N;
+//         for (int i = 0; i < N; ++i) {
+//             float v = src[i];
+//             // Scale box coordinates to input dimensions
+//             if (c == 0 || c == 2) v *= (float)m_inputWidth;   // x, w
+//             if (c == 1 || c == 3) v *= (float)m_inputHeight;  // y, h
+//             pred[i][c] = v;
+//         }
+//     }
+    
+//     // Filter by confidence and create proposals
+//     std::vector<Det> proposals;
+//     proposals.reserve(N);
+    
+//     for (int i = 0; i < N; ++i) {
+//         const auto& p = pred[i];
+        
+//         // Find best class
+//         int best_cls = -1;
+//         float best_p = 0.0f;
+//         for (int c = 0; c < nc; ++c) {
+//             float pc = p[4 + c];  // Class probabilities at indices 4-9
+//             if (pc > best_p) {
+//                 best_p = pc;
+//                 best_cls = c;
+//             }
+//         }
+        
+//         if (best_p < CONF_THRESHOLD) continue;
+        
+//         // Convert cx, cy, w, h to x1, y1, x2, y2
+//         float cx = p[0];
+//         float cy = p[1];
+//         float bw = p[2];
+//         float bh = p[3];
+        
+//         float x1 = cx - bw * 0.5f;
+//         float y1 = cy - bh * 0.5f;
+//         float x2 = cx + bw * 0.5f;
+//         float y2 = cy + bh * 0.5f;
+        
+//         // Scale to original image size
+//         float gain_x = (float)W / (float)m_inputWidth;
+//         float gain_y = (float)H / (float)m_inputHeight;
+//         x1 *= gain_x; x2 *= gain_x;
+//         y1 *= gain_y; y2 *= gain_y;
+        
+//         // Clamp to image bounds
+//         x1 = std::min(std::max(x1, 0.0f), float(W - 1));
+//         y1 = std::min(std::max(y1, 0.0f), float(H - 1));
+//         x2 = std::min(std::max(x2, 0.0f), float(W - 1));
+//         y2 = std::min(std::max(y2, 0.0f), float(H - 1));
+        
+//         int rw = int(std::max(0.0f, x2 - x1));
+//         int rh = int(std::max(0.0f, y2 - y1));
+//         if (rw <= 0 || rh <= 0) continue;
+        
+//         proposals.push_back(Det{cv::Rect((int)x1, (int)y1, rw, rh), best_cls, best_p});
+//     }
+    
+//     // Apply NMS
+//     final_dets = nms(proposals, IOU_THRESHOLD);
+    
+//     return final_dets;
+// }
+
 bool ProviderSensor::InitializeTFLite()
 {
-    m_logger.LogInfo() << "Initializing TFLite model...";
+    m_logger.LogInfo() << "Initializing TFLite (3 Classes, NMS=True)...";
     
-    // Load model from file
-    m_model = tflite::FlatBufferModel::BuildFromFile(
-        "bestYoloMobilenet_saved_model/bestYoloMobilenet_float16.tflite");
+    m_model = tflite::FlatBufferModel::BuildFromFile("bestYoloMobilenet_saved_model/best_float16.tflite");
     
     if (!m_model) {
         m_logger.LogError() << "Failed to load TFLite model!";
         return false;
     }
     
-    // Build interpreter
     tflite::ops::builtin::BuiltinOpResolver resolver;
-    if (tflite::InterpreterBuilder(*m_model, resolver)(&m_interpreter) != kTfLiteOk ||
-        !m_interpreter) {
+    if (tflite::InterpreterBuilder(*m_model, resolver)(&m_interpreter) != kTfLiteOk || !m_interpreter) {
         m_logger.LogError() << "Failed to build TFLite interpreter!";
         return false;
     }
     
-    // Set number of threads for inference
     m_interpreter->SetNumThreads(4);
     
-    // Allocate tensors
     if (m_interpreter->AllocateTensors() != kTfLiteOk) {
         m_logger.LogError() << "Failed to allocate tensors!";
         return false;
     }
     
-    // Get input tensor info
+    // INPUT SETUP
     int in_idx = m_interpreter->inputs()[0];
     TfLiteTensor* in_t = m_interpreter->tensor(in_idx);
-    
-    if (in_t->type != kTfLiteFloat32 || in_t->dims->size != 4) {
-        m_logger.LogError() << "Expected NHWC float32 input tensor!";
-        return false;
-    }
     
     m_inputHeight = in_t->dims->data[1];
     m_inputWidth = in_t->dims->data[2];
     m_inputChannels = in_t->dims->data[3];
     
-    m_logger.LogInfo() << "Input tensor shape: [1, " << m_inputHeight << ", " 
-                       << m_inputWidth << ", " << m_inputChannels << "]";
+    m_logger.LogInfo() << "Input: [1, " << m_inputHeight << ", " << m_inputWidth << ", " << m_inputChannels << "]";
     
-    // Get output tensor info
+    // OUTPUT SETUP [1, 300, 6]
     const auto& outs = m_interpreter->outputs();
-    if (outs.size() != 1) {
-        m_logger.LogError() << "Expected 1 output tensor, got " << outs.size();
-        return false;
-    }
-    
     int out_idx = outs[0];
     const TfLiteTensor* ot = m_interpreter->tensor(out_idx);
-    
-    if (ot->type != kTfLiteFloat32 || ot->dims->size != 3 ||
-        ot->dims->data[0] != 1 || ot->dims->data[1] != 10) {
-        m_logger.LogError() << "Unexpected output shape; need [1, 10, N]";
-        return false;
+
+    // Validate Shape
+    int d0 = ot->dims->data[0]; // 1
+    int d1 = ot->dims->data[1]; // 300 (Num Detections)
+    int d2 = (ot->dims->size > 2) ? ot->dims->data[2] : 0; // 6 (Features)
+
+    m_logger.LogInfo() << "Output Shape: [" << d0 << ", " << d1 << ", " << d2 << "]";
+
+    // With Model NMS=True, the last channel is ALWAYS 6 [x,y,w,h,conf,cls]
+    if (d2 != 6) {
+        m_logger.LogError() << "Error: Expected 6 channels [x,y,w,h,conf,cls] because NMS is True.";
+        // If the model outputs 7 channels (xywh + 3 class prob), the loop logic needs to be modified
+        // But your previous log showed [1, 300, 6], so we stick to 6.
     }
-    
-    m_numClasses = ot->dims->data[1] - 4;  // 10 - 4 = 6 classes
-    m_numDetections = ot->dims->data[2];
-    
-    m_logger.LogInfo() << "Output tensor shape: [1, " << ot->dims->data[1] 
-                       << ", " << m_numDetections << "]";
-    m_logger.LogInfo() << "TFLite model initialized successfully!";
+
+    m_numDetections = d1; 
+    m_numClasses = CLASS_NAMES_SIZE; // Green, Red, Yellow
     
     return true;
 }
@@ -162,109 +332,94 @@ bool ProviderSensor::InitializeTFLite()
 std::vector<Det> ProviderSensor::ProcessFrame(const cv::Mat& frame)
 {
     std::vector<Det> final_dets;
+    if (frame.empty() || !m_interpreter) return final_dets;
+
+    // --- 1. PREPROCESS: LETTERBOX ---
+    // Goal: Resize while maintaining aspect ratio and add padding
+    int target_w = m_inputWidth;  // 320
+    int target_h = m_inputHeight; // 320
     
-    if (frame.empty() || !m_interpreter) {
-        return final_dets;
-    }
+    float scale = std::min((float)target_w / frame.cols, (float)target_h / frame.rows);
+    int new_w = (int)(frame.cols * scale);
+    int new_h = (int)(frame.rows * scale);
     
-    int H = frame.rows;
-    int W = frame.cols;
-    
-    // Preprocess: resize and convert to float32
     cv::Mat resized;
-    cv::resize(frame, resized, cv::Size(m_inputWidth, m_inputHeight));
+    cv::resize(frame, resized, cv::Size(new_w, new_h));
     
-    // BGR -> RGB
-    cv::cvtColor(resized, resized, cv::COLOR_BGR2RGB);
+    // Create gray background image (114 is the standard YOLO color)
+    cv::Mat canvas(target_h, target_w, CV_8UC3, cv::Scalar(114, 114, 114));
     
-    // Convert to float32 and normalize to [0, 1]
+    // Calculate offset to center the image (or place at top-left)
+    // Ultralytics defaults to center, but for simplicity we place at 0,0
+    // If exact centering like Python is desired:
+    int dw = (target_w - new_w) / 2;
+    int dh = (target_h - new_h) / 2;
+    
+    // Copy resized image to canvas
+    resized.copyTo(canvas(cv::Rect(dw, dh, new_w, new_h)));
+    
+    // Prepare input for model
     cv::Mat f32;
-    resized.convertTo(f32, CV_32FC3, 1.0f / 255.0f);
+    cv::cvtColor(canvas, canvas, cv::COLOR_BGR2RGB);
+    canvas.convertTo(f32, CV_32FC3, 1.0f / 255.0f);
     
-    // Copy to input tensor
-    std::memcpy(m_interpreter->typed_input_tensor<float>(0),
-                f32.data, f32.total() * f32.elemSize());
-    
-    // Run inference
+    std::memcpy(m_interpreter->typed_input_tensor<float>(0), f32.data, f32.total() * f32.elemSize());
+
+    // --- 2. INFERENCE ---
     if (m_interpreter->Invoke() != kTfLiteOk) {
-        m_logger.LogError() << "TFLite inference failed!";
+        m_logger.LogError() << "Inference failed!";
         return final_dets;
     }
-    
-    // Get output tensor
+
+    // --- 3. PARSE OUTPUT ---
     int out_idx = m_interpreter->outputs()[0];
     const float* out = m_interpreter->typed_tensor<float>(out_idx);
     
-    const int C = 10;  // 4 box coords + 6 classes
-    const int N = m_numDetections;
-    const int nc = m_numClasses;
-    
-    // Parse predictions: output is [1, C, N] format
-    std::vector<std::array<float, 10>> pred(N);
-    for (int c = 0; c < C; ++c) {
-        const float* src = out + c * N;
-        for (int i = 0; i < N; ++i) {
-            float v = src[i];
-            // Scale box coordinates to input dimensions
-            if (c == 0 || c == 2) v *= (float)m_inputWidth;   // x, w
-            if (c == 1 || c == 3) v *= (float)m_inputHeight;  // y, h
-            pred[i][c] = v;
-        }
-    }
-    
-    // Filter by confidence and create proposals
+    const int N = m_numDetections; 
+    const int C = 6; // [x1, y1, x2, y2, score, cls]
+
     std::vector<Det> proposals;
     proposals.reserve(N);
-    
+
     for (int i = 0; i < N; ++i) {
-        const auto& p = pred[i];
+        const float* p = out + (i * C);
         
-        // Find best class
-        int best_cls = -1;
-        float best_p = 0.0f;
-        for (int c = 0; c < nc; ++c) {
-            float pc = p[4 + c];  // Class probabilities at indices 4-9
-            if (pc > best_p) {
-                best_p = pc;
-                best_cls = c;
-            }
+        float score = p[4];
+        if (score < CONF_THRESHOLD) continue;
+        
+        int cls_id = (int)p[5];
+        if (cls_id < 0 || cls_id >= 3) continue;
+
+        // Get coordinates on 320x320 image (with padding)
+        float x1 = p[0] * target_w;
+        float y1 = p[1] * target_h;
+        float x2 = p[2] * target_w;
+        float y2 = p[3] * target_h;
+        
+        // --- 4. MAP COORDINATES BACK TO ORIGINAL IMAGE ---
+        // Subtract padding (dw, dh)
+        x1 -= dw; x2 -= dw;
+        y1 -= dh; y2 -= dh;
+        
+        // Divide by scale factor
+        x1 /= scale; x2 /= scale;
+        y1 /= scale; y2 /= scale;
+        
+        // Clamp to original frame bounds
+        x1 = std::max(0.0f, std::min(x1, (float)frame.cols - 1));
+        y1 = std::max(0.0f, std::min(y1, (float)frame.rows - 1));
+        x2 = std::max(0.0f, std::min(x2, (float)frame.cols - 1));
+        y2 = std::max(0.0f, std::min(y2, (float)frame.rows - 1));
+
+        int rw = int(x2 - x1);
+        int rh = int(y2 - y1);
+        
+        if (rw > 0 && rh > 0) {
+            proposals.push_back(Det{cv::Rect((int)x1, (int)y1, rw, rh), cls_id, score});
         }
-        
-        if (best_p < CONF_THRESHOLD) continue;
-        
-        // Convert cx, cy, w, h to x1, y1, x2, y2
-        float cx = p[0];
-        float cy = p[1];
-        float bw = p[2];
-        float bh = p[3];
-        
-        float x1 = cx - bw * 0.5f;
-        float y1 = cy - bh * 0.5f;
-        float x2 = cx + bw * 0.5f;
-        float y2 = cy + bh * 0.5f;
-        
-        // Scale to original image size
-        float gain_x = (float)W / (float)m_inputWidth;
-        float gain_y = (float)H / (float)m_inputHeight;
-        x1 *= gain_x; x2 *= gain_x;
-        y1 *= gain_y; y2 *= gain_y;
-        
-        // Clamp to image bounds
-        x1 = std::min(std::max(x1, 0.0f), float(W - 1));
-        y1 = std::min(std::max(y1, 0.0f), float(H - 1));
-        x2 = std::min(std::max(x2, 0.0f), float(W - 1));
-        y2 = std::min(std::max(y2, 0.0f), float(H - 1));
-        
-        int rw = int(std::max(0.0f, x2 - x1));
-        int rh = int(std::max(0.0f, y2 - y1));
-        if (rw <= 0 || rh <= 0) continue;
-        
-        proposals.push_back(Det{cv::Rect((int)x1, (int)y1, rw, rh), best_cls, best_p});
     }
     
-    // Apply NMS
     final_dets = nms(proposals, IOU_THRESHOLD);
-    
     return final_dets;
 }
  
@@ -341,11 +496,11 @@ void ProviderSensor::Run()
                 // Read image from file instead of camera
                 // Since we installed the image to the same bin directory as the executable,
                 // we can try to read it from the current directory.
-                frame = cv::imread("yellowLights.jpg");
+                frame = cv::imread("image.jpg");
                 bool ret = !frame.empty();
 
                 if (!ret) {
-                     m_logger.LogError() << "Failed to grab frame from file: yellowLights.jpg!";
+                     m_logger.LogError() << "Failed to grab frame from file: image.jpg!";
                      // m_sensorData.assign(2000, 0);
                      // If we cannot read the file, maybe wait a bit and try again or just sleep
                 }
@@ -364,7 +519,7 @@ void ProviderSensor::Run()
                         
                         char text[128];
                         std::snprintf(text, sizeof(text), "%s %.2f",
-                                      (d.cls >= 0 && d.cls < 6) ? CLASS_NAMES[d.cls] : "cls?",
+                                      (d.cls >= 0 && d.cls < CLASS_NAMES_SIZE) ? CLASS_NAMES[d.cls] : "cls?",
                                       d.score);
                         
                         int baseline = 0;

@@ -115,7 +115,8 @@ private:
     static constexpr float IOU_THRESHOLD = 0.45f;
     
     /// @brief Class names for traffic light detection
-    static const char* CLASS_NAMES[6];
+    static const char* CLASS_NAMES[];
+    static const int CLASS_NAMES_SIZE;
 };
  
 } /// namespace rootswcomponent

@@ -60,14 +60,14 @@ set_target_properties(${PARA_APP_NAME} PROPERTIES
 )
 
 # 1. Define the path to the source image file
-set(IMAGE_SOURCE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/providersensor/rootswcomponent/yellowLights.jpg")
+set(IMAGE_SOURCE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/providersensor/rootswcomponent/image.jpg")
 
 # 2. Copy the image file to the binary output directory after building ProviderSensor
 add_custom_command(TARGET ProviderSensor POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     "${IMAGE_SOURCE_FILE}"
     $<TARGET_FILE_DIR:ProviderSensor>
-    COMMENT "Copying yellowLights.jpg to binary directory..."
+    COMMENT "Copying image.jpg to binary directory..."
 )
 
 # 3. Install the image file to the opt directory

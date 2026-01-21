@@ -241,8 +241,8 @@ ProviderSensor/src/ProviderSensor: /opt/litert_arm_sdk_native_pi/lib/libabsl_spi
 ProviderSensor/src/ProviderSensor: ProviderSensor/src/CMakeFiles/ProviderSensor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/HPC_Machine_v5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ProviderSensor"
 	cd /root/workspace/HPC_Machine_v5/build/ProviderSensor/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ProviderSensor.dir/link.txt --verbose=$(VERBOSE)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Copying yellowLights.jpg to binary directory..."
-	cd /root/workspace/HPC_Machine_v5/build/ProviderSensor/src && /usr/bin/cmake -E copy_if_different /root/workspace/HPC_Machine_v5/ProviderSensor/src/providersensor/rootswcomponent/yellowLights.jpg /root/workspace/HPC_Machine_v5/build/ProviderSensor/src
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Copying image.jpg to binary directory..."
+	cd /root/workspace/HPC_Machine_v5/build/ProviderSensor/src && /usr/bin/cmake -E copy_if_different /root/workspace/HPC_Machine_v5/ProviderSensor/src/providersensor/rootswcomponent/image.jpg /root/workspace/HPC_Machine_v5/build/ProviderSensor/src
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Copying TFLite model to binary directory..."
 	cd /root/workspace/HPC_Machine_v5/build/ProviderSensor/src && /usr/bin/cmake -E copy_directory /root/workspace/HPC_Machine_v5/bestYoloMobilenet_saved_model /root/workspace/HPC_Machine_v5/build/ProviderSensor/src/bestYoloMobilenet_saved_model
 

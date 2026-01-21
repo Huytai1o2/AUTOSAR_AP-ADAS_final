@@ -21,13 +21,13 @@
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/etc/interface/ProviderSensor/RootSwComponent/Sensorv2.json
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/etc/interface/ProviderSensor/RootSwComponent/Sensor.json
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/ProviderSensor
-/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/yellowLights.jpg
+/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/image.jpg
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/metadata.yaml
+/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/best_float16.tflite
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/fingerprint.pb
-/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/bestYoloMobilenet_float16.tflite
+/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/best_float32.tflite
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/variables/variables.data-00000-of-00001
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/variables/variables.index
-/root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/bestYoloMobilenet_float32.tflite
 /root/workspace/HPC_Machine_v5/build/install/opt/ProviderSensor/bin/bestYoloMobilenet_saved_model/saved_model.pb
 /root/workspace/HPC_Machine_v5/build/install/etc/exec/ProviderSensor.json
 /root/workspace/HPC_Machine_v5/build/install/bin/ProviderSensor
