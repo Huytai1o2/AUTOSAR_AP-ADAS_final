@@ -1,0 +1,2852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="10462ebb-995b-4996-82c4-9aa88ff7f506">
+      <SHORT-NAME>SwComponent</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="9579a238-e64a-4649-8f1c-7eba12920a1e">
+          <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+          <ELEMENTS>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="9915919b-26bb-4851-b23f-ab98a3980fff">
+              <SHORT-NAME>CM</SHORT-NAME>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="ca4422f1-8724-467c-8603-144bcc51140f">
+              <SHORT-NAME>EM</SHORT-NAME>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="7debbdcd-11d4-4dee-9a08-f259a5b3e7d5">
+      <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="3b741c3c-4851-4162-badc-e37780fed21c">
+          <SHORT-NAME>DltConfig</SHORT-NAME>
+          <ELEMENTS>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="e86c6e8a-7470-40bb-b160-020856b5aac5">
+              <SHORT-NAME>DltLogChannelToProcessMapping_CM_TO_CM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_Machine/LOG/CM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="6bc93168-6428-4ce7-a2e3-339ebd4c5bb2">
+              <SHORT-NAME>DltLogChannelToProcessMapping_EM_TO_EM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_Machine/LOG/EM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="dd5fc277-a383-4047-a8aa-d746af0ef0b0">
+          <SHORT-NAME>Executable</SHORT-NAME>
+          <ELEMENTS>
+            <EXECUTABLE UUID="5c225407-b121-43e7-810b-e5af3a862ac9">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="e139967b-0a26-427d-900a-cab89cabbb58">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="7444b947-dd5c-47fd-88ab-04d56ef7c609">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="a130704f-df0c-4c26-afc7-5f6b4e58f059">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/EM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="331acfc9-ef99-4ec4-a958-b0c500cdb5b8">
+          <SHORT-NAME>Manifest</SHORT-NAME>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="1024d914-9ad1-4eb7-aec7-d4469462876e">
+          <SHORT-NAME>Process</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS UUID="a0a7ead7-29b8-49db-9301-5d5c8b4417c3">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/CM</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="634d317d-bc3a-4258-b019-808dae981cf2">
+                <SHORT-NAME>CM</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/HPC_Machine/POSIX/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfig/CM</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="5f64cf77-610a-4e29-a79c-1c3cca41b01a">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/EM</EXECUTABLE-REF>
+            </PROCESS>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d937de9e-caa4-4ab2-a03a-15948ad9635a">
+          <SHORT-NAME>StartupConfig</SHORT-NAME>
+          <ELEMENTS>
+            <STARTUP-CONFIG-SET UUID="4b35ac4d-d14b-4a9f-b251-8761e5d952bd">
+              <SHORT-NAME>StartupConfig</SHORT-NAME>
+              <STARTUP-CONFIGS>
+                <STARTUP-CONFIG UUID="32f89383-e2e0-48d7-b916-353bb733dbee">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="fd577c57-9a42-4d90-9373-458a87516719">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="6b594835-5a28-451c-99f8-7a474598bc10">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+              </STARTUP-CONFIGS>
+            </STARTUP-CONFIG-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="917573c4-247e-4e43-a768-feb811a94ca8">
+      <SHORT-NAME>DataType</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="6c0b6455-5893-4448-bca5-04b2af0cca87">
+          <SHORT-NAME>Implementation</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="796fa2d1-7e64-438f-a645-afac0e727bb7">
+              <SHORT-NAME>CPP</SHORT-NAME>
+              <ELEMENTS>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="4a8402a0-21da-44b8-86a4-275310e451b7">
+                  <SHORT-NAME>ActionType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmActionType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="6d091824-d7b9-4aea-bc02-7a673a91fd6c">
+                  <SHORT-NAME>ByteVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="adee5df8-1bc3-4099-b930-a625afecb1f2">
+                  <SHORT-NAME>CampaignErrorType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="1ae910b3-5138-4372-8d07-f34e3ead53ff">
+                      <SHORT-NAME>CampaignFailure</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/CampaignFailureType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="0fbf8fba-273a-4f7e-a92f-e3cae4266f27">
+                      <SHORT-NAME>UCMStepError</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/UCMStepErrorType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="1c532bd9-7590-40e8-8778-5a30df169a2c">
+                  <SHORT-NAME>CampaignFailureType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmCampaignFailureType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="3bad287d-0848-42c3-87d2-ac8ac7331f46">
+                  <SHORT-NAME>CampaignHistoryType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="c01cfe3c-5fc3-40fb-a666-33e3775a72b6">
+                      <SHORT-NAME>CampaignError</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/CampaignErrorType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="7fb3656d-8676-4d48-b7bf-5c995dab8e53">
+                      <SHORT-NAME>HistoryVector</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/HistoryVectorType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="3c66731f-99ba-4726-89c7-9bc7ec6f8fb6">
+                  <SHORT-NAME>CampaignStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmCampaignStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="5a69e0f9-e53f-4a44-8730-027d24325022">
+                  <SHORT-NAME>FGNameType</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sm</SHORT-NAME>
+                      <SYMBOL>sm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9a900201-8808-411e-8615-941c3475bc53">
+                  <SHORT-NAME>FunctionGroupList</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sm</SHORT-NAME>
+                      <SYMBOL>sm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/FGNameType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="6e067ca7-ee0c-4b97-adc8-3fe3687764ae">
+                  <SHORT-NAME>GetHistoryType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="25c6bc89-ee1d-4d27-85f0-ec590344af8c">
+                      <SHORT-NAME>Time</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="2e7b78c6-990d-4869-b702-eeb5dd178eed">
+                      <SHORT-NAME>Name</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="bfc4f12b-7749-4487-a4f2-57041e88d7c6">
+                      <SHORT-NAME>Version</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/StrongRevisionLabelString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="cd76dd43-6103-44e8-97e9-7c8b82210a3b">
+                      <SHORT-NAME>Action</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ActionType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="e397363e-63b5-4ad7-9dfe-c605ecbfdda0">
+                      <SHORT-NAME>Resolution</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ResultType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c37e042c-af22-4c70-a777-39d0066c0bbb">
+                  <SHORT-NAME>GetHistoryVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/GetHistoryType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="4ab0c0b8-631f-4407-a4be-cc95debdb29c">
+                  <SHORT-NAME>HistoryVectorType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="37881553-92b8-4a52-a00c-9c07541b241b">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/UCMIdentifierType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="902faaa2-6d61-4a4e-91ce-d860cf58ec8c">
+                      <SHORT-NAME>HistoryVector</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/GetHistoryVectorType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="8e3a56ad-1517-4d4a-a696-3e24ab0a300b">
+                  <SHORT-NAME>LicenseString</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="fcf7687e-7d25-42b2-806c-f2da1a136626">
+                  <SHORT-NAME>MachineState</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/SmMachineState</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sm</SHORT-NAME>
+                      <SYMBOL>sm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="749f3180-c089-49bd-a611-ede8c343e347">
+                  <SHORT-NAME>PackageManagerStatusType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmPackageManagerStatusType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="65d4dd38-472c-488d-8f71-1c085d43607a">
+                  <SHORT-NAME>ReleaseNotesString</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="8ac685f9-2384-4764-bb33-89f23b3a5a3f">
+                  <SHORT-NAME>ResultType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmResultType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b6a7b700-1501-4521-bb10-57b13b96aa81">
+                  <SHORT-NAME>SafetyPolicyType</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="febd89dd-515f-43fa-abea-f27ac0b43948">
+                  <SHORT-NAME>SoftwarePackageStepType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmSoftwarePackageStepType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="4f16b587-d5aa-465d-9af0-8b731c199a99">
+                  <SHORT-NAME>StrongRevisionLabelString</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="44811a2b-cad3-4b56-a281-0e9ce4abe85f">
+                  <SHORT-NAME>SwClusterInfoType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="066f3d82-51af-4d4f-b06d-ec8c24bb833d">
+                      <SHORT-NAME>Name</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="82d95f3f-3072-45a8-9786-8f6daa51487f">
+                      <SHORT-NAME>Version</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/StrongRevisionLabelString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="0f9159ba-5dbb-4a1e-b9ad-4ee777a9f0f4">
+                      <SHORT-NAME>State</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwClusterStateType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="72bb2ab0-f278-49e2-8115-662ba6db5444">
+                  <SHORT-NAME>SwClusterInfoVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwClusterInfoType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="4b89bb68-cf8e-4ac4-b47d-c85281a87679">
+                  <SHORT-NAME>SwClusterStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmSwClusterStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="687dafb8-3479-49e2-bbe8-8f26698629f1">
+                  <SHORT-NAME>SwDescType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="709266b9-654d-47d9-908c-b9d9d4aea2d8">
+                      <SHORT-NAME>Name</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="e1be0ea3-c45e-44aa-b085-1bdc66e4e67d">
+                      <SHORT-NAME>Version</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/StrongRevisionLabelString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="5aebe75a-79d0-44f7-87e2-adc068240c35">
+                      <SHORT-NAME>TypeApproval</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TypeApprovalString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="57b619fe-d927-4d73-9aed-179ace223e6e">
+                      <SHORT-NAME>License</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/LicenseString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="3311c7d2-4bbd-4e33-80ba-efbdd37f083d">
+                      <SHORT-NAME>ReleaseNotes</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ReleaseNotesString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="6cd9f97b-0e4e-44a9-b031-ea14fe3e3b48">
+                      <SHORT-NAME>Size</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="72914d61-d73e-40d7-a436-8c7ed90093e5">
+                  <SHORT-NAME>SwDescVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwDescType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="d5cf9b64-a2e9-49e9-8038-f4fa5ce8ae33">
+                  <SHORT-NAME>SwNameType</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="290e27b6-9d29-43fb-8b18-3cb764bcaf6a">
+                  <SHORT-NAME>SwNameVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="e7a6f210-a7fa-4c05-a4f0-488251d8547d">
+                  <SHORT-NAME>SwNameVersionType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="12145b59-e02e-49cc-9afb-5ee0ede9917d">
+                      <SHORT-NAME>Name</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="d0702b06-ba17-462a-90b7-0395204ce2d0">
+                      <SHORT-NAME>Version</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/StrongRevisionLabelString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="5a388aea-a8e4-42ee-8696-1582e66871dc">
+                  <SHORT-NAME>SwNameVersionVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameVersionType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b290d1bd-d41f-40c5-acf3-843baa46bd6f">
+                  <SHORT-NAME>SwPackageInfoType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="8a720f70-b1cf-4819-b58b-f1cb2c6b3907">
+                      <SHORT-NAME>Name</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="05607dfa-1ce0-4fcf-a1dd-835348a2b67e">
+                      <SHORT-NAME>Version</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/StrongRevisionLabelString</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="62f3e7cc-bea3-4da1-97a9-93f3673ffc23">
+                      <SHORT-NAME>TransferID</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="20480173-6a4e-48d2-aae0-db2c5d0dea03">
+                      <SHORT-NAME>ConsecutiveBytesReceived</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="70d4b39d-a9c7-469e-852d-342134fe2b38">
+                      <SHORT-NAME>ConsecutiveBlocksReceived</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="e15e48fd-9d71-4979-97ca-eb130280f561">
+                      <SHORT-NAME>State</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwPackageStateType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="2c820167-103b-442a-a249-68546133ac55">
+                  <SHORT-NAME>SwPackageInfoVectorType</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwPackageInfoType</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="6ce3c643-fe9f-47b8-9498-a1033c9cd5ff">
+                  <SHORT-NAME>SwPackageStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmSwPackageStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="36736dd9-2475-49fd-80b8-7d76312e4190">
+                  <SHORT-NAME>TransferIdType</SHORT-NAME>
+                  <CATEGORY>ARRAY</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <ARRAY-SIZE>16</ARRAY-SIZE>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c1fcd8c0-e3a9-4b74-b147-4638f2a3bb68">
+                  <SHORT-NAME>TransferStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/UcmTransferStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="d3eaf04c-1a09-4f7c-adce-51504f0afdd1">
+                  <SHORT-NAME>TypeApprovalString</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="ac55d8d1-4572-4aab-9fcf-22749bef1968">
+                  <SHORT-NAME>UCMIdentifierType</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="64b97ae2-dc0b-4554-a076-aafd6b8a416a">
+                  <SHORT-NAME>UCMStepErrorType</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ucm</SHORT-NAME>
+                      <SYMBOL>ucm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="a19f7cf9-1a6b-4deb-8819-2fae1df07473">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/UCMIdentifierType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="223163df-1d32-4d37-afa6-238a0282d66a">
+                      <SHORT-NAME>SoftwarePackageStep</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SoftwarePackageStepType</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="4efad829-787e-48af-b721-0c70273164aa">
+                      <SHORT-NAME>ReturnedError</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="a0aa334c-666f-40b2-a34f-936455bd7b6f">
+          <SHORT-NAME>Semantics</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="40b9956e-c46c-499e-83a5-6c24728191eb">
+              <SHORT-NAME>CompuMethod</SHORT-NAME>
+              <ELEMENTS>
+                <COMPU-METHOD UUID="6666f80d-165e-43c7-97d3-63f12e1cebcf">
+                  <SHORT-NAME>SmMachineState</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kOff</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kStartup</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kShutdown</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRestart</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVerify</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="fe82d492-cd93-4b54-89b8-22707f88ea65">
+                  <SHORT-NAME>UcmActionType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kUpdate</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kInstall</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRemove</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="50c1c57a-0401-4fb4-9b73-ddaae90c4f05">
+                  <SHORT-NAME>UcmCampaignFailureType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kUCMError</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kInvalidVehiclePackageManifest</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kSubordinateNotAvailableOnTheNetwork</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVehicleStateManagerCommunicationError</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x05</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x05</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVehicleDriverInterfaceCommunicationError</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x06</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x06</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kCampaignCancelled</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="d08181e9-c1a1-4b65-8f4c-c955a340c208">
+                  <SHORT-NAME>UcmCampaignStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kIdle</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kSyncing</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVehiclePackageTransferring</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kSoftwarePackageTransferring</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcessing</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x05</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x05</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kActivating</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x06</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x06</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVehicleChecking</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x07</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x07</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kCancelling</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="cc956d1d-ad7f-45ce-ad19-a5a74bb09189">
+                  <SHORT-NAME>UcmPackageManagerStatusType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kIdle</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kReady</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcessing</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kActivating</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kActivated</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x05</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x05</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRollingBack</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x06</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x06</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRolledBack</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x07</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x07</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kCleaningUp</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x08</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x08</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVerifying</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="ed67178b-6377-4f44-8ec9-ef0b56124e72">
+                  <SHORT-NAME>UcmResultType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kSuccessfull</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kFailed</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="f5463fa8-c106-4118-be16-a3dfc8f2ff1b">
+                  <SHORT-NAME>UcmSoftwarePackageStepType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kTransfer</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcess</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kPreActivate</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVerify</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="a007c8ab-9eb4-4fe2-9705-020be04ed231">
+                  <SHORT-NAME>UcmSwClusterStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kPresent</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kAdded</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kUpdated</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRemoved</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="e7601eee-cfb4-4897-b189-21a6f11f2bf8">
+                  <SHORT-NAME>UcmSwPackageStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kTransferring</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kTransferred</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcessing</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcessed</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kProcessingStream</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="1135f4cb-d362-435e-b529-7ed924c95e6b">
+                  <SHORT-NAME>UcmTransferStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kIdle</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kTransferring</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kUpdating</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kCancelling</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="c936363a-b75e-42eb-8976-c4298f15cbf8">
+      <SHORT-NAME>PortInterface</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="a128dff6-0a13-4b45-85a4-55bf67aa6cab">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-INTERFACE UUID="5da6f201-16cf-4a65-a60a-3f6e5f082f6e">
+              <SHORT-NAME>PackageManagement</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ucm</SHORT-NAME>
+                  <SYMBOL>ucm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>pkgmgr</SHORT-NAME>
+                  <SYMBOL>pkgmgr</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="22115aad-e036-43bd-81d4-900ed063cec2">
+                  <SHORT-NAME>CurrentStatus</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/PackageManagerStatusType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
+              <METHODS>
+                <CLIENT-SERVER-OPERATION UUID="df7e02fa-297e-4969-aa2b-2ff1eb26e1bd">
+                  <SHORT-NAME>Activate</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/MissingDependencies</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/PreActivationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/UpdateSessionRejected</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/VerificationFailed</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="550a59ee-576f-4553-a279-00be99f6b28f">
+                  <SHORT-NAME>Cancel</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="60f90b4f-5378-4161-9b33-aaa30a8ff446">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/CancelFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="f9192ecc-f8f5-4aed-9aa4-b9c4fb28a80d">
+                  <SHORT-NAME>DeleteTransfer</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="4e33c9e5-2e7a-4a46-8222-137145e5395c">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="e67aacb9-1e4c-4f2c-bd7b-e0e237dcc32c">
+                  <SHORT-NAME>Finish</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="d3567eab-4477-4f1f-a26e-ffd3230c3811">
+                  <SHORT-NAME>GetHistory</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="cf69df00-79ca-43c0-8c2f-066bd2242079">
+                      <SHORT-NAME>timestampGE</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="bb535275-5a88-48f9-ad7e-95643f2d2c3f">
+                      <SHORT-NAME>timestampLT</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="fe2a3c85-462b-4d10-b448-bc157e25d81a">
+                      <SHORT-NAME>history</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/GetHistoryVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="5d3b3f2a-295f-4595-a288-d518641e41ca">
+                  <SHORT-NAME>GetId</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="2bff5558-4c83-4363-ab2b-40dc5cdba198">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/UCMIdentifierType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="ba6383f4-31d1-403f-af33-ec118618e3a2">
+                  <SHORT-NAME>GetSwClusterChangeInfo</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="794aa102-a479-43de-8314-6e889d9d356c">
+                      <SHORT-NAME>SwInfo</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwClusterInfoVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="c2bd1b8a-4d06-4ee0-9111-ab44493b3229">
+                  <SHORT-NAME>GetSwClusterDescription</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="02865128-d885-4c11-8b8e-b80eec9d426b">
+                      <SHORT-NAME>SwCluster</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwDescVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="48fede2d-282d-4348-ba2b-7177d5f7a610">
+                  <SHORT-NAME>GetSwClusterInfo</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="f4144b52-8723-4955-9e61-47348ebde56c">
+                      <SHORT-NAME>SwInfo</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwClusterInfoVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="58fe01bb-4726-4518-a718-6002a59542b5">
+                  <SHORT-NAME>GetSwPackages</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="9c8f97b4-7252-425c-ab24-550fa7bb226b">
+                      <SHORT-NAME>Packages</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwPackageInfoVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="ea6a8025-d599-4490-98ff-ca98a1fda30b">
+                  <SHORT-NAME>GetSwProcessProgress</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="40a4caee-7f41-4e4a-9f4b-0fc1a308e47b">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="452ccb8c-b323-4475-aa47-e60d5257f9da">
+                      <SHORT-NAME>progress</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="e4b362eb-879e-4bdb-8626-a6e94a84467d">
+                  <SHORT-NAME>ProcessSwPackage</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="81216ab0-611b-4470-83b7-25e768ebd516">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/AuthenticationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatibleDelta</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatiblePackageVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientComputationPower</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidPackageManifest</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/ProcessSwPackageCancelled</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/ProcessedSoftwarePackageInconsistent</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/ServiceBusy</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="10f2a8c8-4872-4a0d-a407-918118710214">
+                  <SHORT-NAME>RevertProcessedSwPackages</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/NotAbleToRevertPackages</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="5117aece-f960-454f-8581-9d6f4f5f6c42">
+                  <SHORT-NAME>Rollback</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/NotAbleToRollback</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="d614d547-1c14-4c6e-b39f-930a0eac5edf">
+                  <SHORT-NAME>TransferData</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="8abbc348-ffba-46ac-8ca8-6077977282f9">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="02a42017-e4bf-4b65-9488-5e1e4214199f">
+                      <SHORT-NAME>data</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ByteVectorType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="9497032d-6863-4ed2-992e-80fb437d1de5">
+                      <SHORT-NAME>blockCounter</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/AuthenticationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/BlockInconsistent</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatiblePackageVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectBlock</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectBlockSize</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectSize</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientComputationPower</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/PackageInconsistent</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/TransferInterrupted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="0f7c7f04-532b-4d26-940c-a00e134408b0">
+                  <SHORT-NAME>TransferExit</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="bbfb4e17-3d49-49b6-90db-ef997899d034">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/AuthenticationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatiblePackageVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientData</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidPackageManifest</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/MissingDependencies</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OldVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/PackageInconsistent</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="71d26c52-79a1-4602-a98a-ad60699347d0">
+                  <SHORT-NAME>TransferStart</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="f533bb13-a148-4dae-a97b-f96a67a53ce8">
+                      <SHORT-NAME>size</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="82600c64-2c24-4380-ab4a-cbe510e94c2f">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="fbffafe3-65b6-4c92-b86f-d37b447f4c85">
+                      <SHORT-NAME>BlockSize</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientComputationPower</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </METHODS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="5498f155-973f-4a75-9fd9-18e70bdf6cc0">
+              <SHORT-NAME>TriggerInOut_MachineFG</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>sm</SHORT-NAME>
+                  <SYMBOL>sm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>machinefg</SHORT-NAME>
+                  <SYMBOL>machinefg</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="cd097e1e-1df4-4811-a67e-fe76264e4643">
+                  <SHORT-NAME>Notifier</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/MachineState</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="18cd3a93-a802-4e46-8f85-640846f01ce8">
+                  <SHORT-NAME>Trigger</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/MachineState</TYPE-TREF>
+                  <HAS-GETTER>false</HAS-GETTER>
+                  <HAS-NOTIFIER>false</HAS-NOTIFIER>
+                  <HAS-SETTER>true</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="962c730d-cd80-4aaf-b461-40931af8775f">
+              <SHORT-NAME>UpdateRequest</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>sm</SHORT-NAME>
+                  <SYMBOL>sm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>update</SHORT-NAME>
+                  <SYMBOL>update</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <METHODS>
+                <CLIENT-SERVER-OPERATION UUID="caa30b5f-4889-4317-b776-afa020515117">
+                  <SHORT-NAME>PrepareRollback</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="bbe71a25-8c00-401b-b950-f84351b959d4">
+                      <SHORT-NAME>FunctionGroupList</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/FunctionGroupList</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRejected</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRollbackFailed</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="24c63abd-e3b6-4e04-9190-fc5b2e354b2a">
+                  <SHORT-NAME>PrepareUpdate</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="365f9e73-6433-46fb-ac61-6080fc818a18">
+                      <SHORT-NAME>FunctionGroupList</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/FunctionGroupList</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kPrepareFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRejected</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="ca59b532-bf60-48d6-a5bb-81ba3f936831">
+                  <SHORT-NAME>ResetMachine</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRejected</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="fed70cd9-9e62-4cc5-a645-1114f1cb65c6">
+                  <SHORT-NAME>StartUpdateSession</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRejected</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="cc8a69ca-e51a-489b-82e5-32e3e01a2124">
+                  <SHORT-NAME>StopUpdateSession</SHORT-NAME>
+                  <FIRE-AND-FORGET>true</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="8f5b423f-3cfe-40fc-9ba8-2b7c686ea59d">
+                  <SHORT-NAME>VerifyUpdate</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="51591b5c-4905-4213-a98c-f1491d712754">
+                      <SHORT-NAME>FunctionGroupList</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/FunctionGroupList</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kRejected</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/kVerifyFailed</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </METHODS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="aeee1b2a-64e5-45e1-a5bc-9f58adb5cd74">
+              <SHORT-NAME>VehicleDriverApplication</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ucm</SHORT-NAME>
+                  <SYMBOL>ucm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>driver</SHORT-NAME>
+                  <SYMBOL>driver</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="61821766-7b41-425b-b17d-e1e1748d2358">
+                  <SHORT-NAME>ApprovalRequired</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="47a5d60c-8237-4c5e-b93c-2c97b2e1a0c4">
+                  <SHORT-NAME>CampaignState</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/CampaignStateType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="72bdd2a8-6d8a-4789-b394-b158d5c365ee">
+                  <SHORT-NAME>SafetyPolicy</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SafetyPolicyType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="5d55f9c1-08ce-4dd9-9b3c-11eeed870c42">
+                  <SHORT-NAME>SafetyState</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
+              <METHODS>
+                <CLIENT-SERVER-OPERATION UUID="73897cd9-b9b9-4468-81b6-d41846dda2a3">
+                  <SHORT-NAME>AllowCampaign</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="6877f946-f8fc-41f8-8d3c-41f214b6d145">
+                  <SHORT-NAME>CancelCampaign</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="616565c8-6304-45e7-9db7-2b63f685867f">
+                      <SHORT-NAME>DisableCampaign</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/CancelFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="02630b3e-9138-4ebb-b2f9-e914f8508b77">
+                  <SHORT-NAME>DriverApproval</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="3ac41ec8-ef48-477d-aa0f-480807090117">
+                      <SHORT-NAME>Approval</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="5a49afbf-0c3d-45e4-82bf-6e3017a7720f">
+                      <SHORT-NAME>SafetyPolicy</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SafetyPolicyType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="760efd24-6242-4b4e-97b8-861aca4303de">
+                  <SHORT-NAME>GetCampaignHistory</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="06bc59ea-d990-4c11-83fa-6511254b5aad">
+                      <SHORT-NAME>timestampGE</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="cd8fffa6-1e7d-4bd9-93d9-442ace07c59b">
+                      <SHORT-NAME>timestampLT</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="d3c14564-f3a3-4a2d-8e3b-6aa0dc138bfc">
+                      <SHORT-NAME>history</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/CampaignHistoryType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="1140aa1f-058b-4a2b-8649-4895bc6ff30a">
+                  <SHORT-NAME>GetSwClusterDescription</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="9881e103-89bb-4c64-bb22-eb82e9866c38">
+                      <SHORT-NAME>SoftwareClusterDescriptions</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwDescVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="ad015fc7-41cc-44df-b439-b7a2b13bf41e">
+                  <SHORT-NAME>GetSwPackageDescription</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="0d125a85-853f-44ad-a1e0-a3b2c2efccae">
+                      <SHORT-NAME>Packages</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwDescVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="b050c37c-7d57-4387-899b-cf30e0cbf4c7">
+                  <SHORT-NAME>GetSwProcessProgress</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="6943f13c-a948-45c7-919f-cebcaa3abbe9">
+                      <SHORT-NAME>progress</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="12462cc8-4387-4e5d-b78e-c122f2bd352a">
+                  <SHORT-NAME>GetSwTransferProgress</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="0314dac3-1a63-44d7-8b71-c220588e14cf">
+                      <SHORT-NAME>progress</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+              </METHODS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="a91b4097-75c7-41b1-bb67-a03ed4175f96">
+              <SHORT-NAME>VehiclePackageManagement</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ucm</SHORT-NAME>
+                  <SYMBOL>ucm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>vehpkgmgr</SHORT-NAME>
+                  <SYMBOL>vehpkgmgr</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="d2b9fabb-42b1-481c-952c-ba7959f8a1bc">
+                  <SHORT-NAME>RequestedPackage</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameVersionType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="ae753fc7-500c-4417-9803-a780c04d9d8b">
+                  <SHORT-NAME>SafetyState</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="90da6918-616e-46e2-bc9d-3c5d9feed397">
+                  <SHORT-NAME>TransferState</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferStateType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
+              <METHODS>
+                <CLIENT-SERVER-OPERATION UUID="ce248782-8ffe-43e7-ac3f-543b7a0a429a">
+                  <SHORT-NAME>AllowCampaign</SHORT-NAME>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="da1a0df8-166d-454e-be5d-528022d2d355">
+                  <SHORT-NAME>CancelCampaign</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="432c87e6-ad88-4b82-ad1f-01f69894f5dd">
+                      <SHORT-NAME>DisableCampaign</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/CancelFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="82cfdbc4-6497-412e-974a-90ce8f9ff57e">
+                  <SHORT-NAME>DeleteTransfer</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="4e4463cb-14fc-4f52-8aed-921b78664b90">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="a894d050-de8a-4b68-95de-1d0d683dc9a3">
+                  <SHORT-NAME>GetCampaignHistory</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="18e8ac0e-313d-4b8b-b06c-b358e7e22dcc">
+                      <SHORT-NAME>timestampGE</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="838bab82-6be2-453f-9830-f3000a5ea2f0">
+                      <SHORT-NAME>timestampLT</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="5eb67ceb-accd-4f21-9abe-a357148ccc22">
+                      <SHORT-NAME>CampaignHistory</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/CampaignHistoryType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="46861b73-0cef-4148-b531-5fe4b7917bf5">
+                  <SHORT-NAME>GetSwClusterInfo</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="a1651b4a-1707-4d2d-9c9f-3e2eb81ffe5a">
+                      <SHORT-NAME>SwInfo</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwClusterInfoVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="7c75fff5-ff0e-4a99-ae64-7c8f28ce8862">
+                  <SHORT-NAME>GetSwPackages</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="6620d73a-17a4-442f-8a11-71fdee9aefb4">
+                      <SHORT-NAME>Packages</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwPackageInfoVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="696e4437-99c2-4f53-89c8-44ac0feb3506">
+                  <SHORT-NAME>SwPackageInventory</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="5c4d27e2-49f0-41b9-abf9-6e611521f42f">
+                      <SHORT-NAME>AvailableSoftwarePackages</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameVersionVectorType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="7a7de551-9084-452b-bad4-f27f910c4a2c">
+                      <SHORT-NAME>RequiredSoftwarePackages</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameVersionVectorType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="b78be000-5781-489c-b2fa-eaa04b2efd0e">
+                  <SHORT-NAME>TransferData</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="b634d96f-76a5-4b37-958c-dec7ed534e2b">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="44c1cd05-0574-4aab-926d-ad964e17418d">
+                      <SHORT-NAME>data</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ByteVectorType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="789046e2-e81d-4832-bc51-f26262883bc0">
+                      <SHORT-NAME>blockCounter</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/AuthenticationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/BlockInconsistent</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatiblePackageVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectBlock</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectBlockSize</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncorrectSize</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientComputationPower</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/PackageInconsistent</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/TransferInterrupted</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="346717e1-aa08-4f0d-96c3-c96f8032de9b">
+                  <SHORT-NAME>TransferExit</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="9e68fc0e-42e1-4fac-a04b-c002ab5f1fb5">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/AuthenticationFailed</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/IncompatiblePackageVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientData</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidPackageManifest</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InvalidTransferId</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/MissingDependencies</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OldVersion</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/OperationNotPermitted</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/PackageInconsistent</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="e10e343b-45d2-47d4-ab9f-f524f278d20e">
+                  <SHORT-NAME>TransferStart</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="06bd777c-967e-45c9-aaa4-316518d3306d">
+                      <SHORT-NAME>SoftwarePackageName</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/SwNameType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="a9e2f838-6410-494a-a66b-d3146fc648e8">
+                      <SHORT-NAME>size</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="ddb49402-5fc5-41df-8894-7831118be1ae">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="44aa60d2-ce7d-4190-8b94-2c923433b06c">
+                      <SHORT-NAME>BlockSize</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientComputationPower</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/UnexpectedPackage</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION UUID="03ac58ee-c3dc-48ce-91c5-15b292d01924">
+                  <SHORT-NAME>TransferVehiclePackage</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="b5a870b8-d18e-417a-8e43-a3f67ea4b986">
+                      <SHORT-NAME>size</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint64_t</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="94945efa-0dcc-477c-8a46-eab8a188072d">
+                      <SHORT-NAME>id</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/TransferIdType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="78662b54-31de-401f-96e0-042cfbee5da5">
+                      <SHORT-NAME>BlockSize</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                  <POSSIBLE-AP-ERROR-REFS>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/InsufficientMemory</POSSIBLE-AP-ERROR-REF>
+                    <POSSIBLE-AP-ERROR-REF DEST="AP-APPLICATION-ERROR">/PortInterface/Service/ErrorDomain/NewCampaignDisabled</POSSIBLE-AP-ERROR-REF>
+                  </POSSIBLE-AP-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </METHODS>
+            </SERVICE-INTERFACE>
+          </ELEMENTS>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="866943c9-9079-4f28-9eed-5075101eba2d">
+              <SHORT-NAME>ErrorDomain</SHORT-NAME>
+              <ELEMENTS>
+                <AP-APPLICATION-ERROR UUID="56eb3924-ee1f-4984-9ad7-34bec7524454">
+                  <SHORT-NAME>AuthenticationFailed</SHORT-NAME>
+                  <ERROR-CODE>8</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="a86a85a7-1a6f-4259-8235-d631cf98d02f">
+                  <SHORT-NAME>BlockInconsistent</SHORT-NAME>
+                  <ERROR-CODE>25</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="92c6d7c5-e9b9-431f-bb14-448d9086c2a1">
+                  <SHORT-NAME>CancelFailed</SHORT-NAME>
+                  <ERROR-CODE>16</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="a5461104-84d7-4911-98f0-9a5ef9ea3c50">
+                  <SHORT-NAME>IncompatibleDelta</SHORT-NAME>
+                  <ERROR-CODE>29</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="2c3a1ec1-e784-474d-9a79-31ce6210a943">
+                  <SHORT-NAME>IncompatiblePackageVersion</SHORT-NAME>
+                  <ERROR-CODE>24</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="161a6e03-2e1d-4661-892f-0c28300d73b3">
+                  <SHORT-NAME>IncorrectBlock</SHORT-NAME>
+                  <ERROR-CODE>2</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="a719f9d1-5313-4071-b959-e6aa9da19aa2">
+                  <SHORT-NAME>IncorrectBlockSize</SHORT-NAME>
+                  <ERROR-CODE>30</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="9be3e19d-20e8-498b-9efc-668cd2a6517b">
+                  <SHORT-NAME>IncorrectSize</SHORT-NAME>
+                  <ERROR-CODE>3</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="81e5f52f-4b3d-4114-8f02-15e2d0bbcfda">
+                  <SHORT-NAME>InsufficientComputationPower</SHORT-NAME>
+                  <ERROR-CODE>28</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="074abc41-e7c4-4215-b1c9-2037da1a5b66">
+                  <SHORT-NAME>InsufficientData</SHORT-NAME>
+                  <ERROR-CODE>6</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="72d2466c-89c9-4d24-beb1-b31605a1d546">
+                  <SHORT-NAME>InsufficientMemory</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="b588a9c8-2ee9-4566-bc9d-870e44d9c442">
+                  <SHORT-NAME>InvalidPackageManifest</SHORT-NAME>
+                  <ERROR-CODE>13</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="7077daa2-7ce5-4ab2-b1e6-6e464e9fcbe3">
+                  <SHORT-NAME>InvalidTransferId</SHORT-NAME>
+                  <ERROR-CODE>4</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="70c04f95-dc84-4302-9538-3e141efca26f">
+                  <SHORT-NAME>MissingDependencies</SHORT-NAME>
+                  <ERROR-CODE>21</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="89b83f02-6035-43e2-a13a-d00c65e8dcc1">
+                  <SHORT-NAME>NewCampaignDisabled</SHORT-NAME>
+                  <ERROR-CODE>31</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="e1aec5d4-3ac4-4b6d-8fd4-1f7689b21cf7">
+                  <SHORT-NAME>NotAbleToRevertPackages</SHORT-NAME>
+                  <ERROR-CODE>15</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="11222769-20d4-45ff-8e08-3916e28c3705">
+                  <SHORT-NAME>NotAbleToRollback</SHORT-NAME>
+                  <ERROR-CODE>18</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="f10e1da4-bc97-416c-929a-b77e438c65d5">
+                  <SHORT-NAME>OldVersion</SHORT-NAME>
+                  <ERROR-CODE>9</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="a7621b7e-b096-4995-a2c1-4ec165ec3257">
+                  <SHORT-NAME>OperationNotPermitted</SHORT-NAME>
+                  <ERROR-CODE>5</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="37d1c41f-d708-4572-ae8c-248427ced168">
+                  <SHORT-NAME>PackageInconsistent</SHORT-NAME>
+                  <ERROR-CODE>7</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="2a65b651-0f20-488e-ae5b-09506612677f">
+                  <SHORT-NAME>PreActivationFailed</SHORT-NAME>
+                  <ERROR-CODE>19</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="11205659-d128-4772-bb5f-d2c39abf1cdd">
+                  <SHORT-NAME>ProcessSwPackageCancelled</SHORT-NAME>
+                  <ERROR-CODE>22</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="6b6215c7-2ae0-4682-b68e-07d829364bcf">
+                  <SHORT-NAME>ProcessedSoftwarePackageInconsistent</SHORT-NAME>
+                  <ERROR-CODE>23</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR-DOMAIN UUID="e8bd1592-884e-4797-b2c9-1a39422654ce">
+                  <SHORT-NAME>SMErrorDomain</SHORT-NAME>
+                  <VALUE>13835058055282163729</VALUE>
+                </AP-APPLICATION-ERROR-DOMAIN>
+                <AP-APPLICATION-ERROR UUID="5a35d0b3-d820-4169-9fa4-683e52b7f78c">
+                  <SHORT-NAME>ServiceBusy</SHORT-NAME>
+                  <ERROR-CODE>12</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="56e9b0ef-6b23-41dd-8ad0-05d190238a84">
+                  <SHORT-NAME>TransferInterrupted</SHORT-NAME>
+                  <ERROR-CODE>26</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR-DOMAIN UUID="3e5a2a0d-bd38-428c-ac4e-0006f00f3e1e">
+                  <SHORT-NAME>UCMErrorDomain</SHORT-NAME>
+                  <VALUE>13835058055282164000</VALUE>
+                </AP-APPLICATION-ERROR-DOMAIN>
+                <AP-APPLICATION-ERROR UUID="4afb6d18-ab4a-4322-a21d-14bb2641ac35">
+                  <SHORT-NAME>UnexpectedPackage</SHORT-NAME>
+                  <ERROR-CODE>32</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="74a6eef6-8798-4ff4-a7ec-afb136be10a0">
+                  <SHORT-NAME>UpdateSessionRejected</SHORT-NAME>
+                  <ERROR-CODE>33</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="6bc568d2-2a2f-424b-9796-a985d5d0cb84">
+                  <SHORT-NAME>VerificationFailed</SHORT-NAME>
+                  <ERROR-CODE>27</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/UCMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="fa5d21c4-dc96-4122-81c4-3a722a565022">
+                  <SHORT-NAME>kPrepareFailed</SHORT-NAME>
+                  <ERROR-CODE>7</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/SMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="a451c2c2-db7e-40cd-8a28-e51715f1c2d7">
+                  <SHORT-NAME>kRejected</SHORT-NAME>
+                  <ERROR-CODE>5</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/SMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="493a70b0-52e2-4d53-923c-d985f637706d">
+                  <SHORT-NAME>kRollbackFailed</SHORT-NAME>
+                  <ERROR-CODE>8</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/SMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+                <AP-APPLICATION-ERROR UUID="5a940ea2-c40d-459f-b6dc-846d4671f1b0">
+                  <SHORT-NAME>kVerifyFailed</SHORT-NAME>
+                  <ERROR-CODE>6</ERROR-CODE>
+                  <ERROR-DOMAIN-REF DEST="AP-APPLICATION-ERROR-DOMAIN">/PortInterface/Service/ErrorDomain/SMErrorDomain</ERROR-DOMAIN-REF>
+                </AP-APPLICATION-ERROR>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="a0670f62-ce90-4f84-9547-01611830310e">
+      <SHORT-NAME>Platform</SHORT-NAME>
+      <ELEMENTS>
+        <MACHINE UUID="a2f9686f-e3d2-426e-bd78-b5631f0daadb">
+          <SHORT-NAME>HPC_Machine</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PARA-MACHINE">
+                <SD GID="WAIT-FOR-SHUTDOWN"/>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC</MACHINE-DESIGN-REF>
+          <MODULE-INSTANTIATIONS>
+            <GENERIC-MODULE-INSTANTIATION UUID="e7e6e725-482d-475f-8a9a-9b76a5097680">
+              <SHORT-NAME>CmInstantiation</SHORT-NAME>
+              <CATEGORY>COMMUNICATION_MANAGEMENT</CATEGORY>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-COMMUNICATION-MANAGEMENT">
+                    <SD GID="REQUEST-TIMEOUT">10.0</SD>
+                    <SD GID="ALIVE-CHECK-INTERVAL">0.0</SD>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+            </GENERIC-MODULE-INSTANTIATION>
+            <LOG-AND-TRACE-INSTANTIATION UUID="95eac8d7-4a16-4ef7-b200-ee89f6f37082">
+              <SHORT-NAME>LOG</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-DLT-CONF">
+                    <SDG GID="GENERAL-CONFIGURATION">
+                      <SD GID="VERBOSE">ON</SD>
+                      <SD GID="DAEMONIZE">ON</SD>
+                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
+                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
+                      <SD GID="SEND-MESSAGE-TIME">0</SD>
+                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
+                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
+                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
+                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
+                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
+                      <SD GID="TIME-OUT-ON-SEND">4</SD>
+                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
+                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
+                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
+                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
+                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
+                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
+                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
+                      <SD GID="INJECTION-MODE">ON</SD>
+                    </SDG>
+                    <SDG GID="GATEWAY-CONFIGURATION">
+                      <SD GID="GATEWAY-MODE">OFF</SD>
+                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
+                    </SDG>
+                    <SDG GID="PERMISSION-CONFIGURATION">
+                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
+                    </SDG>
+                    <SDG GID="CONTROL-APPLICATION">
+                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-TRACE-MEMORY">
+                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
+                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
+                    </SDG>
+                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
+                      <SD GID="PRINT-ASCII">DISABLE</SD>
+                      <SD GID="PRINT-HEX">DISABLE</SD>
+                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
+                      <SD GID="RS232-BAUDRATE">115200</SD>
+                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
+                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
+                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
+                    </SDG>
+                    <SDG GID="TIMEZONE-INFO">
+                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-LOGSTORAGE">
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
+                    </SDG>
+                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
+                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
+                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
+                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
+                    </SDG>
+                    <SDG GID="BINDADDRESS-LIMITATION">
+                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
+                    </SDG>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <DLT-ECU-ID>ECU</DLT-ECU-ID>
+              <DLT-LOG-CHANNELS>
+                <DLT-LOG-CHANNEL UUID="35b39464-f914-45ab-9086-d71f0b3f00ca">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <APPLICATION-ID>CM</APPLICATION-ID>
+                  <CONTEXT-ID>CM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="30ec885f-cfc8-47b3-a214-9bf3dc5c24db">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <APPLICATION-ID>CLSENSR</APPLICATION-ID>
+                  <CONTEXT-ID>CLSENSR</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="90a8a916-e6cd-4a2a-bad2-1741b0c0f62d">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <APPLICATION-ID>EM</APPLICATION-ID>
+                  <CONTEXT-ID>EM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="7bd99eda-dea5-407f-8038-95a0548b3b48">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <APPLICATION-ID>PVSENSR</APPLICATION-ID>
+                  <CONTEXT-ID>PVSENSR</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+              </DLT-LOG-CHANNELS>
+            </LOG-AND-TRACE-INSTANTIATION>
+            <OS-MODULE-INSTANTIATION UUID="92408555-a473-406a-9889-4eefe6bc103a">
+              <SHORT-NAME>POSIX</SHORT-NAME>
+              <RESOURCE-GROUPS>
+                <RESOURCE-GROUP UUID="85d602e3-7448-4500-a557-3eab29e2e05f">
+                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
+                </RESOURCE-GROUP>
+              </RESOURCE-GROUPS>
+            </OS-MODULE-INSTANTIATION>
+          </MODULE-INSTANTIATIONS>
+          <PROCESSORS>
+            <PROCESSOR UUID="867b9452-4cd4-4153-b047-74dcf6d16932">
+              <SHORT-NAME>CPU</SHORT-NAME>
+              <CORES>
+                <PROCESSOR-CORE UUID="81ad8e88-113a-40f8-9004-c75ef33642b0">
+                  <SHORT-NAME>CORE</SHORT-NAME>
+                  <CORE-ID>0</CORE-ID>
+                </PROCESSOR-CORE>
+              </CORES>
+            </PROCESSOR>
+          </PROCESSORS>
+          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
+        </MACHINE>
+      </ELEMENTS>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="575920f3-3f10-4570-a8fc-4e7c7571c19b">
+          <SHORT-NAME>FunctionGroup</SHORT-NAME>
+          <ELEMENTS>
+            <FUNCTION-GROUP-SET UUID="999b28f6-88e3-4e45-95cf-e7db16db3486">
+              <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+              <ADMIN-DATA/>
+              <FUNCTION-GROUPS>
+                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="b728491e-b76f-44ff-a8cb-da5427de434a">
+                  <SHORT-NAME>MachineFG</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/MachineState</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+              </FUNCTION-GROUPS>
+            </FUNCTION-GROUP-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="55ca43ac-6054-4b6d-bb23-140780a04153">
+          <SHORT-NAME>FunctionalClusterInteraction</SHORT-NAME>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="b193a24d-d6c8-46b3-85f6-9cd635cef0e5">
+          <SHORT-NAME>PlatformHealth</SHORT-NAME>
+          <ELEMENTS>
+            <PLATFORM-HEALTH-MANAGEMENT-CONTRIBUTION UUID="aee9b665-1dff-46fd-bfe5-859f6f02635e">
+              <SHORT-NAME>Phm</SHORT-NAME>
+            </PLATFORM-HEALTH-MANAGEMENT-CONTRIBUTION>
+            <PHM-CONTRIBUTION-TO-MACHINE-MAPPING UUID="f01ab9db-c484-4b45-bb0b-75b78e664367">
+              <SHORT-NAME>PhmContributionToMachineMapping</SHORT-NAME>
+              <MACHINE-REF DEST="MACHINE">/Platform/HPC_Machine</MACHINE-REF>
+              <PHM-CONTRIBUTION-REFS>
+                <PHM-CONTRIBUTION-REF DEST="PLATFORM-HEALTH-MANAGEMENT-CONTRIBUTION">/Platform/PlatformHealth/Phm</PHM-CONTRIBUTION-REF>
+              </PHM-CONTRIBUTION-REFS>
+            </PHM-CONTRIBUTION-TO-MACHINE-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d2b8e76b-07c1-41e8-836d-fe66793c2725">
+          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS-TO-MACHINE-MAPPING-SET UUID="8415a54b-e013-4480-9cb5-148d257b18a0">
+              <SHORT-NAME>ProcessToMachineMappingSet</SHORT-NAME>
+              <ADMIN-DATA/>
+              <PROCESS-TO-MACHINE-MAPPINGS>
+                <PROCESS-TO-MACHINE-MAPPING UUID="47cf44ff-ecaf-44af-a29a-d82b06273dde">
+                  <SHORT-NAME>CM_To_HPC_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="7c60ecb7-55cf-4cb2-ad02-b4a51393f2c9">
+                  <SHORT-NAME>ClientSensor_To_HPC_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ClientSensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="a2efff8e-3e60-4e0d-9f0b-1e54b4a7b1c9">
+                  <SHORT-NAME>ProcessToMachineMapping_EM_TO_Ecu1Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="638ccb29-b673-4bbc-ab13-203c61fafd7d">
+                  <SHORT-NAME>ProviderSensor_To_HPC_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ProviderSensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+              </PROCESS-TO-MACHINE-MAPPINGS>
+            </PROCESS-TO-MACHINE-MAPPING-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="0e0520ff-1262-47a8-9916-8bc38a7758cb">
+      <SHORT-NAME>Distribution</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="28f90238-895d-4d37-ae1b-c3dae82393a0">
+          <SHORT-NAME>SwCluster</SHORT-NAME>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ac9a5c4e-ba10-46a9-a40b-d9e586487fa6">
+          <SHORT-NAME>SwPackage</SHORT-NAME>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="19b98ba3-539c-48f8-9660-990f9b8e8858">
+          <SHORT-NAME>VehiclePackage</SHORT-NAME>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="4d8b55e3-aca1-4154-a291-ca2545272965">
+      <SHORT-NAME>StateMachine</SHORT-NAME>
+      <ELEMENTS>
+        <MODE-DECLARATION-GROUP UUID="1629d750-b029-48cd-9c9e-d0b9094b601c">
+          <SHORT-NAME>MachineState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="9435bfad-8e10-4720-842f-d404eb774a65">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="f3a78575-d221-49a4-84af-22234b1df98b">
+              <SHORT-NAME>Restart</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="88b4321a-85da-4fba-a7aa-2ed31652ab77">
+              <SHORT-NAME>Shutdown</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="ffbc3374-27a3-4abf-9f72-ac0d6d9a3afc">
+              <SHORT-NAME>Startup</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="bb874bd4-e7fe-4f47-95c1-eb691c6d8e25">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="bd8ca363-abcd-4bf4-b6a2-be3624721fb5">
+          <SHORT-NAME>ProcessState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Idle</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="1e8bb299-2a36-47fc-8fb8-25e9e234ff46">
+              <SHORT-NAME>Idle</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="41fca520-05b2-4bfe-8a08-544fe8376192">
+              <SHORT-NAME>Running</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b40b7898-7681-4ec1-816b-2eb044733462">
+              <SHORT-NAME>Starting</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="d2e32c24-6267-49f0-8891-31d73bb9794e">
+              <SHORT-NAME>Terminated</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
