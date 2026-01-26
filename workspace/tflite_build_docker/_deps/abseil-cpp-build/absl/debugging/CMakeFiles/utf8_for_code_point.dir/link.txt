@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libabsl_utf8_for_code_point.so.2501.0.0 -o libabsl_utf8_for_code_point.so.2501.0.0 CMakeFiles/utf8_for_code_point.dir/internal/utf8_for_code_point.cc.o  -Wl,-rpath,::::::: 

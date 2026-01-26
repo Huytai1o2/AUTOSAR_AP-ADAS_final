@@ -1,7 +1,0 @@
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/flatc.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/edit_cache.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/rebuild_cache.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/list_install_components.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/install.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/install/local.dir
-/root/workspace/tflite_build_docker/flatbuffers-flatc/src/flatbuffers-flatc-build/CMakeFiles/install/strip.dir

@@ -1,3 +1,0 @@
-/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/flatbuffers-populate.dir
-/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/edit_cache.dir
-/root/workspace/tflite_build_docker/_deps/flatbuffers-subbuild/CMakeFiles/rebuild_cache.dir

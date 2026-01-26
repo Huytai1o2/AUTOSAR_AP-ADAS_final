@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libabsl_decode_rust_punycode.so.2501.0.0 -o libabsl_decode_rust_punycode.so.2501.0.0 CMakeFiles/decode_rust_punycode.dir/internal/decode_rust_punycode.cc.o  -Wl,-rpath,"\$ORIGIN:" libabsl_utf8_for_code_point.so.2501.0.0 

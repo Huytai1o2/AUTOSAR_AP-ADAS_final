@@ -1,5 +1,0 @@
-=== Run started at Tue Jan 20 06:11:58 Asia 2026 ===
-[BUILD] Using build directory: build_v4
-[ENV] LD_LIBRARY_PATH: /root/workspace/HPC_Machine_v5/build_v4/install/lib:/opt/para-sdk/lib:/opt/para-sdk/external/lib
-[RUN] Starting para-exec.sh...
-aarch64-binfmt-P: Could not open '/lib/ld-linux-aarch64.so.1': No such file or directory

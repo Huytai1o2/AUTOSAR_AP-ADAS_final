@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libexample_proto.so -o libexample_proto.so CMakeFiles/example_proto.dir/tensorflow/core/example/example.pb.cc.o  -Wl,-rpath,/root/workspace/tflite_build_docker/example_proto_generated libfeature_proto.so ../_deps/protobuf-build/libprotobuf.a 

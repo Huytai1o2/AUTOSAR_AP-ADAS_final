@@ -1,3 +1,0 @@
-/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/protobuf-populate.dir
-/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/edit_cache.dir
-/root/workspace/tflite_build_docker/_deps/protobuf-subbuild/CMakeFiles/rebuild_cache.dir

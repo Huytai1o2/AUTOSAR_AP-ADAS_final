@@ -1,9 +1,0 @@
-libdir=/root/workspace/tflite_build_docker/install/lib
-includedir=/root/workspace/tflite_build_docker/install/include
-
-Name: FlatBuffers
-Description: Memory Efficient Serialization Library
-Version: 24.3.25
-
-Libs: -L${libdir} -lflatbuffers
-Cflags: -I${includedir}

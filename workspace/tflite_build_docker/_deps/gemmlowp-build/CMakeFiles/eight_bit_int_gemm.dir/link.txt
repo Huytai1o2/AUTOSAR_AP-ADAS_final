@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -DTF_MAJOR_VERSION=2 -DTF_MINOR_VERSION=20 -DTF_PATCH_VERSION=0 -DTF_VERSION_SUFFIX="" -O3 -DNDEBUG -shared -Wl,-soname,libeight_bit_int_gemm.so -o libeight_bit_int_gemm.so CMakeFiles/eight_bit_int_gemm.dir/__/__/gemmlowp/eight_bit_int_gemm/eight_bit_int_gemm.cc.o 
