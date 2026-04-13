@@ -1,0 +1,1 @@
+savedcmd_/home/l1ttled1no/Documents/doanktmt/drv/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/l1ttled1no/Documents/doanktmt/drv/Module.symvers -T /home/l1ttled1no/Documents/doanktmt/drv/modules.order -i Module.symvers -e 

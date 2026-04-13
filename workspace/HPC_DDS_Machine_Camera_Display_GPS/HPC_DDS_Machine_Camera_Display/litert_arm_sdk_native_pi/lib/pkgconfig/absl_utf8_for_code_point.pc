@@ -1,0 +1,12 @@
+prefix=/home/minhphan123/tflite_build/install
+exec_prefix=${prefix}
+libdir=/home/minhphan123/tflite_build/install/lib
+includedir=/home/minhphan123/tflite_build/install/include
+
+Name: absl_utf8_for_code_point
+Description: Abseil utf8_for_code_point library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_config = 20250127
+Libs: -L${libdir}  -labsl_utf8_for_code_point 
+Cflags: -I${includedir} -DNOMINMAX

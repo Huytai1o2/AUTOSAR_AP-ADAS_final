@@ -1,0 +1,12 @@
+Parsing hochiminh.geojson...
+Loaded 3056 traffic signal nodes.
+
+Building KD-tree...
+KD-tree built in 0.58 ms.
+
+Nearest traffic light to (10.7955, 106.6782):
+  ID:        2290177711
+  Location:  (10.7946032, 106.6778423)
+  Distance:  101.1 m
+  Query time: 0.0151 ms
+

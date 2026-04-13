@@ -1,0 +1,2 @@
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-ar qc ../lib/libquirc.a CMakeFiles/quirc.dir/src/decode.c.o CMakeFiles/quirc.dir/src/quirc.c.o CMakeFiles/quirc.dir/src/version_db.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-ranlib ../lib/libquirc.a
