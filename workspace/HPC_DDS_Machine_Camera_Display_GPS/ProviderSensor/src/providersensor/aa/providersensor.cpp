@@ -442,7 +442,7 @@ void ProviderSensor::Run()
             gpsFd = openGPSUART();
             if (gpsFd < 0) {
                 m_logger.LogWarn() << "[GPS] Cannot open " << GPS_UART_DEV
-                                   << " – retrying in " << static_cast<int32_t>(GPS_RETRY_DELAY) << " s...";
+                                   << " - retrying in " << static_cast<int32_t>(GPS_RETRY_DELAY) << " s...";
                 std::this_thread::sleep_for(std::chrono::seconds(GPS_RETRY_DELAY));
             }
         }
@@ -455,7 +455,7 @@ void ProviderSensor::Run()
             if (!readNextGPSFix(gpsFd, gpsCoord)) {
                 close(gpsFd);
                 gpsFd = -1;
-                m_logger.LogWarn() << "[GPS] Connection lost – reconnecting...";
+                m_logger.LogWarn() << "[GPS] Connection lost - reconnecting...";
                 while (m_running && gpsFd < 0) {
                     std::this_thread::sleep_for(std::chrono::seconds(GPS_RETRY_DELAY));
                     gpsFd = openGPSUART();
