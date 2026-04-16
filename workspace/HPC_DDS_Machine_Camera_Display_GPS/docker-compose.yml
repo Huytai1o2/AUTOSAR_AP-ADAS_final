@@ -2,7 +2,7 @@ services:
   app:
     image: "edupopcornsar/pc-linux:R2011-v251031-raspi"
     container_name: "${CONTAINER_NAME:-AP_AUTOSAR}"
-    shm_size: "1g"
+    shm_size: "4g"
     stdin_open: true # equivalent to -i
     tty: true # equivalent to -t
     environment:
@@ -11,7 +11,7 @@ services:
     # --- Network Configuration (Gán IP tĩnh tại đây) ---
     networks:
       para_net:
-        ipv4_address: "172.31.36.143"
+        ipv4_address: "10.10.0.14"
     ports:
       - "8022:22"
 
@@ -30,7 +30,7 @@ services:
       # - /dev/ttyUSB0:/dev/ttyUSB0
 
       # --- Optional: ST-Link debug (USB raw) ---
-      - /dev/bus/usb:/dev/bus/usb
+      # - /dev/bus/usb:/dev/bus/usb
 
     group_add:
       - "${VIDEO_GID:-44}" # video group
@@ -47,5 +47,5 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: "172.31.0.0/16"
-          gateway: "172.31.0.1"
+        - subnet: "10.10.0.0/24"
+          gateway: "10.10.0.1"

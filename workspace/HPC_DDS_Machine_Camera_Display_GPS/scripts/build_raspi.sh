@@ -18,9 +18,35 @@
 # echo "Building and Installing..."
 # cmake --build build --target install -j$(nproc)
 
+sed -i 's/~Reference<DELEGATE>()/~Reference()/g' /opt/para-sdk_raspi-raspios64_bookworm/external/include/ddscxx/dds/core/detail/ReferenceImpl.hpp
+
+sed -i 's/~Topic<T>()/~Topic()/g' /opt/para-sdk_raspi-raspios64_bookworm/external/include/ddscxx/dds/topic/detail/TTopicImpl.hpp
+
+sed -i 's/~DataReader<T>()/~DataReader()/g' /opt/para-sdk_raspi-raspios64_bookworm/external/include/ddscxx/dds/sub/detail/TDataReaderImpl.hpp
+
+sed -i 's/~DataWriter<T>()/~DataWriter()/g' /opt/para-sdk_raspi-raspios64_bookworm/external/include/ddscxx/dds/pub/detail/DataWriterImpl.hpp
 
 #!/bin/bash
 set -e
+
+# ============================================================================
+# Options (override from CLI, e.g. ./build_raspi.sh --home-vlan=yes)
+# ============================================================================
+# HOME_VLAN="${HOME_VLAN:-no}"
+# REMOTE_USER="l1ttled1no"
+# REMOTE_HOST="dn-pi-001.local"
+# REMOTE_DIR="~/Documents/"
+
+# for arg in "$@"; do
+#     case "$arg" in
+#         --home-vlan=*|-home-vlan=*)
+#             HOME_VLAN="${arg#*=}"
+#             ;;
+#         *)
+#             echo "Unknown option: $arg"
+#             ;;
+#     esac
+# done
 
 # Environment setup for para-sdk_raspi-raspios64_bookworm
 source /opt/para-sdk_raspi-raspios64_bookworm/para-env-setup.sh
@@ -43,3 +69,12 @@ cmake -B build \
 # Build and install
 echo "Building and Installing..."
 cmake --build build --target install -j$(nproc)
+
+# Copy show_cam.py to build folder
+
+cp show_cam.py build/
+
+# Config roudi: ./build/install/etc/ipc/roudi_config.toml
+# Replace the file in install folder
+
+cp ./roudi_config.toml build/install/etc/ipc/roudi_config.toml

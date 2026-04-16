@@ -525,7 +525,7 @@ void ProviderSensor::Run()
                 // bool ret = !frame.empty();
 
                 if (!ret) {
-                     m_logger.LogError() << "Failed to grab frame from file: image.jpg!";
+                    //  m_logger.LogError() << "Failed to grab frame from file: image.jpg!";
                      // m_sensorData.assign(2000, 0);
                      // If we cannot read the file, maybe wait a bit and try again or just sleep
                 }
@@ -536,7 +536,7 @@ void ProviderSensor::Run()
                     auto t_inf_end = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double, std::milli> t_inf_ms = t_inf_end - t_inf_start;
                     
-                    m_logger.LogInfo() << "Inference time: " << t_inf_ms.count() << " ms, Detections: " << detections.size();
+                    // m_logger.LogInfo() << "Inference time: " << t_inf_ms.count() << " ms, Detections: " << detections.size();
                     
                     // 4. DRAW DETECTIONS ON FRAME
                     for (const auto& d : detections) {
@@ -562,10 +562,10 @@ void ProviderSensor::Run()
                                     cv::Scalar(0, 0, 0), 2);
                         
                         // Log each detection
-                        m_logger.LogInfo() << "Detected: " << CLASS_NAMES[d.cls] 
-                                           << " conf=" << d.score
-                                           << " box=[" << d.rect.x << "," << d.rect.y 
-                                           << "," << d.rect.width << "," << d.rect.height << "]";
+                        // m_logger.LogInfo() << "Detected: " << CLASS_NAMES[d.cls] 
+                        //                    << " conf=" << d.score
+                        //                    << " box=[" << d.rect.x << "," << d.rect.y 
+                        //                    << "," << d.rect.width << "," << d.rect.height << "]";
                     }
                     
                     // 5. ENCODE ANNOTATED IMAGE
@@ -580,8 +580,8 @@ void ProviderSensor::Run()
                     auto t_total_end = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double, std::milli> t_total_ms = t_total_end - t_total_start;
                     
-                    m_logger.LogInfo() << "Frame processed. Size: " << buf.size() 
-                                       << " bytes, Total time: " << t_total_ms.count() << " ms";
+                    // m_logger.LogInfo() << "Frame processed. Size: " << buf.size() 
+                    //                    << " bytes, Total time: " << t_total_ms.count() << " ms";
                 }
 
 
