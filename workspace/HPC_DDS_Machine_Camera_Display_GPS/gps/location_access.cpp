@@ -63,7 +63,7 @@ public:
 
 // ── NMEA helpers (integrated from read_gps.c) ────────────────────────────────
 #define GPS_UART_DEV  "/dev/ttyAMA0"
-#define GPS_BAUD      B115200
+#define GPS_BAUD      B9600
 #define GPS_BUF_SIZE  256
 
 // Convert NMEA ddmm.mmmm to decimal degrees.

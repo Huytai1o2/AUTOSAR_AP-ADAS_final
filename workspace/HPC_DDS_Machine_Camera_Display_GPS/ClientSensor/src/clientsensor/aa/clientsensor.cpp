@@ -20,6 +20,66 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <iostream>
+#include <cstring>
+#include <cstdint>
+#include <vector>
+
+namespace
+{
+constexpr std::uint32_t kGpsJpegMagic = 0x47505331u;
+
+static bool sendAll(int s, const void* buf, std::size_t len)
+{
+    const char* p = static_cast<const char*>(buf);
+    std::size_t off = 0;
+    while (off < len)
+    {
+        ssize_t n = send(s, p + off, len - off, MSG_NOSIGNAL);
+        if (n <= 0)
+        {
+            return false;
+        }
+        off += static_cast<std::size_t>(n);
+    }
+    return true;
+}
+
+/// Parsed GPS-JPEG wire from ProviderSensor; on legacy raw JPEG, returns inRange=0 and full buffer as JPEG.
+static void parseImageData(const sensorCam::proxy::events::imageDataEvent::SampleType& data, std::vector<std::uint8_t>& jpegOut,
+                          std::uint8_t& inRange, std::int64_t& nodeId, std::int32_t& distM)
+{
+    inRange = 0;
+    nodeId = 0;
+    distM = 0;
+    if (data.size() < 24)
+    {
+        jpegOut.assign(reinterpret_cast<const std::uint8_t*>(data.data()),
+                       reinterpret_cast<const std::uint8_t*>(data.data()) + data.size());
+        return;
+    }
+    std::uint32_t mag = 0;
+    std::memcpy(&mag, data.data(), 4);
+    if (mag != kGpsJpegMagic)
+    {
+        jpegOut.assign(reinterpret_cast<const std::uint8_t*>(data.data()),
+                       reinterpret_cast<const std::uint8_t*>(data.data()) + data.size());
+        return;
+    }
+    std::uint32_t jlen = 0;
+    std::memcpy(&jlen, data.data() + 20, 4);
+    if (jlen == 0U || 24U + jlen != static_cast<std::uint32_t>(data.size()))
+    {
+        jpegOut.assign(reinterpret_cast<const std::uint8_t*>(data.data()),
+                       reinterpret_cast<const std::uint8_t*>(data.data()) + data.size());
+        return;
+    }
+    std::memcpy(&inRange, data.data() + 5, 1);
+    std::memcpy(&nodeId, data.data() + 8, 8);
+    std::memcpy(&distM, data.data() + 16, 4);
+    jpegOut.resize(jlen);
+    std::memcpy(jpegOut.data(), data.data() + 24, jlen);
+}
+} /// namespace
 
 namespace clientsensor
 {
@@ -77,18 +137,17 @@ bool ClientSensor::Initialize()
         }
 
         if (sock >= 0) {
-            // Bước 1: Gửi chiều dài Frame là 4 Bytes số nguyên (uint32_t)
-            uint32_t len = data.size();
-            ssize_t n1 = send(sock, &len, sizeof(uint32_t), MSG_NOSIGNAL);
-            
-            // Bước 2: Gửi ruột tấm hình
-            ssize_t n2 = -1;
-            if (n1 == sizeof(uint32_t)) {
-                n2 = send(sock, data.data(), len, MSG_NOSIGNAL);
-            }
-            
-            // Nếu phát hiện kết nối bị đóng sập bởi Python (Broken Pipe), đánh dấu sock = -1
-            if (n1 < 0 || n2 < 0) {
+            std::vector<std::uint8_t> jpeg;
+            std::uint8_t inRange = 0;
+            std::int64_t nodeId = 0;
+            std::int32_t distM = 0;
+            parseImageData(data, jpeg, inRange, nodeId, distM);
+
+            const std::uint32_t jlen = static_cast<std::uint32_t>(jpeg.size());
+            const bool ok = sendAll(sock, &jlen, sizeof(jlen)) && (jlen == 0U || sendAll(sock, jpeg.data(), jpeg.size()))
+                && sendAll(sock, &inRange, 1) && sendAll(sock, &nodeId, 8) && sendAll(sock, &distM, 4);
+            if (!ok)
+            {
                 close(sock);
                 sock = -1;
             }

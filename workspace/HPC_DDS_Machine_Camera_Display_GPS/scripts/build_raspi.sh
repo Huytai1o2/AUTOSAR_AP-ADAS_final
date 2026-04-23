@@ -77,4 +77,13 @@ cp show_cam.py build/
 # Config roudi: ./build/install/etc/ipc/roudi_config.toml
 # Replace the file in install folder
 
-cp ./roudi_config.toml build/install/etc/ipc/roudi_config.toml
+cp ./scripts/roudi_config.toml build/install/etc/ipc/roudi_config.toml
+
+cp ./scripts/run.sh build/install/
+
+# Change the ip address in the CM_CmInstantiation.json file
+sed -i 's/172.31.36.143/192.168.2.47/g' build/install/etc/com/CM_CmInstantiation.json
+
+# Change the ip address in the CM_CycloneDDS_0.xml file
+sed -i 's/172.31.36.143/192.168.2.47/g' build/install/etc/com/dds/CM_CycloneDDS_0.xml
+

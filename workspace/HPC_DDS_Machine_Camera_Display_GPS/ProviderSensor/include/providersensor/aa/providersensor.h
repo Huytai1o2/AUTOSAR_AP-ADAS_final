@@ -31,6 +31,8 @@
 #include <thread>
 #include <chrono>
 #include <stdexcept>
+#include <atomic>
+#include <cstdint>
 
 // POSIX / UART headers
 #include <fcntl.h>
@@ -147,6 +149,21 @@ private:
     /// @brief UART open
     static int openGPSUART();
     static bool readNextGPSFix(int fd, Coordinates& fix);
+
+    /// Lock-free handoff: GPS thread writes, camera thread reads (seqlock, no mutex).
+    struct GpsSnapshot
+    {
+        std::int64_t nodeId{0};
+        std::int32_t distM{0};
+        std::uint8_t inRange{0};
+    };
+    void publishGpsSnapshot(std::int64_t nodeId, std::int32_t distM, std::uint8_t inRange);
+    bool tryCopyGpsSnapshot(GpsSnapshot& out) const;
+
+    // Sequence counter: 0 for unlocked, 1 for locked
+    mutable std::atomic<std::uint32_t> m_gpsSeq{0};
+    // GPS_Snapshot variable: atomic copy of the GPS snapshot
+    alignas(64) GpsSnapshot m_gpsSnapshot{};
 
 };
  

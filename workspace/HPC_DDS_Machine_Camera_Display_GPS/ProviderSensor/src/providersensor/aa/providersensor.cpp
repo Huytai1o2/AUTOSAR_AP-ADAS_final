@@ -16,13 +16,38 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "providersensor/aa/providersensor.h"
 
+#include <cmath>
+#include <cstring>
+
 #define GPS_UART_DEV        "/dev/ttyAMA0"
-#define GPS_BAUD            B115200
+#define GPS_BAUD            B9600
 #define GPS_BUF_SIZE        1024
 #define GPS_TIMEOUT_S       3
 #define GPS_RETRY_DELAY     2
 #define GEOJSON_FILE_NAME   "hochiminh.geojson"
-#define RANGE_SIZE          100 // 200 meters
+#define RANGE_SIZE          200 // 200 meters, 0 for no range limit
+
+namespace
+{
+#pragma pack(push, 1)
+struct GpsJpegWireHeader
+{
+    std::uint32_t magic;
+    std::uint8_t version;
+    std::uint8_t in_range;
+    std::uint8_t reserved[2];
+    std::int64_t node_id;
+    std::int32_t dist_m;
+    std::uint32_t jpeg_len;
+};
+#pragma pack(pop)
+
+static_assert(sizeof(GpsJpegWireHeader) == 24, "GpsJpegWireHeader wire size");
+
+constexpr std::uint32_t kGpsJpegMagic = 0x47505331u; /// 'G''P''S''1' on little-endian
+
+} /// namespace
+
 namespace providersensor
 {
 namespace aa
@@ -72,6 +97,35 @@ std::vector<Det> ProviderSensor::nms(const std::vector<Det>& dets, float iou_thr
         }
     }
     return keep;
+}
+
+void ProviderSensor::publishGpsSnapshot(std::int64_t nodeId, std::int32_t distM, std::uint8_t inRange)
+{
+    m_gpsSeq.fetch_add(1, std::memory_order_acq_rel);
+    m_gpsSnapshot.nodeId = nodeId;
+    m_gpsSnapshot.distM = distM;
+    m_gpsSnapshot.inRange = inRange;
+    m_gpsSeq.fetch_add(1, std::memory_order_release);
+}
+
+bool ProviderSensor::tryCopyGpsSnapshot(GpsSnapshot& out) const
+{
+    for (int i = 0; i < 8; ++i)
+    {
+        std::uint32_t s1 = m_gpsSeq.load(std::memory_order_acquire);
+        if (s1 & 1u)
+        {
+            continue;
+        }
+        out = m_gpsSnapshot;
+        std::uint32_t s2 = m_gpsSeq.load(std::memory_order_acquire);
+        if (s1 == s2 && (s2 & 1u) == 0)
+        {
+            return true;
+        }
+    }
+    out = m_gpsSnapshot;
+    return true;
 }
  
 ProviderSensor::ProviderSensor()
@@ -419,6 +473,7 @@ void ProviderSensor::Run()
     
     // m_workers.Async([this] { m_PPort0->SendEventimageDataEventCyclic(); });
 
+    
     // GPS + KNN nearest-neighbor thread
     m_workers.Async([this] {
         // Load GeoJSON and build KD-tree once at startup
@@ -472,6 +527,10 @@ void ProviderSensor::Run()
             try {
                 TrafficNode nn = tree.nearest(gpsCoord);
                 double dist    = haversine(gpsCoord, nn.coords);
+                const std::int32_t distM = static_cast<std::int32_t>(std::lround(dist));
+                const std::uint8_t inR =
+                    (dist <= static_cast<double>(RANGE_SIZE)) ? static_cast<std::uint8_t>(1) : static_cast<std::uint8_t>(0);
+                publishGpsSnapshot(static_cast<std::int64_t>(nn.id), distM, inR);
 
                 m_logger.LogInfo() << "[GPS] Fix lat=" << gpsCoord.latitude
                                    << " lon=" << gpsCoord.longitude
@@ -525,7 +584,7 @@ void ProviderSensor::Run()
                 // bool ret = !frame.empty();
 
                 if (!ret) {
-                    //  m_logger.LogError() << "Failed to grab frame from file: image.jpg!";
+                    m_logger.LogError() << "[CAMERA] Failed to grab frame from file: image.jpg!";
                      // m_sensorData.assign(2000, 0);
                      // If we cannot read the file, maybe wait a bit and try again or just sleep
                 }
@@ -536,7 +595,7 @@ void ProviderSensor::Run()
                     auto t_inf_end = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double, std::milli> t_inf_ms = t_inf_end - t_inf_start;
                     
-                    // m_logger.LogInfo() << "Inference time: " << t_inf_ms.count() << " ms, Detections: " << detections.size();
+                    // m_logger.LogInf o() << "[YOLO] Inference time: " << t_inf_ms.count() << " ms, Detections: " << detections.size();
                     
                     // 4. DRAW DETECTIONS ON FRAME
                     for (const auto& d : detections) {
@@ -568,19 +627,40 @@ void ProviderSensor::Run()
                         //                    << "," << d.rect.width << "," << d.rect.height << "]";
                     }
                     
+                    GpsSnapshot snap{};
+                    tryCopyGpsSnapshot(snap);
+
                     // 5. ENCODE ANNOTATED IMAGE
                     std::vector<uchar> buf;
                     std::vector<int> params = {cv::IMWRITE_JPEG_QUALITY, 100};
                     cv::imencode(".jpg", frame, buf, params);
 
-                    sensorCam::skeleton::events::imageDataEvent::SampleType autosar_buf(buf.begin(), buf.end());
+                    GpsJpegWireHeader hdr{};
+                    hdr.magic = kGpsJpegMagic;
+                    hdr.version = 1;
+                    hdr.in_range = snap.inRange;
+                    hdr.reserved[0] = 0;
+                    hdr.reserved[1] = 0;
+                    hdr.node_id = snap.nodeId;
+                    hdr.dist_m = snap.distM;
+                    hdr.jpeg_len = static_cast<std::uint32_t>(buf.size());
+
+                    const std::size_t wireSize = sizeof(GpsJpegWireHeader) + buf.size();
+                    std::vector<int8_t> wire(wireSize);
+                    std::memcpy(wire.data(), &hdr, sizeof(GpsJpegWireHeader));
+                    if (!buf.empty())
+                    {
+                        std::memcpy(wire.data() + sizeof(GpsJpegWireHeader), buf.data(), buf.size());
+                    }
+
+                    sensorCam::skeleton::events::imageDataEvent::SampleType autosar_buf(wire.begin(), wire.end());
                     
                     m_PPort0->WriteDataimageDataEvent(autosar_buf);
                     
                     auto t_total_end = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double, std::milli> t_total_ms = t_total_end - t_total_start;
                     
-                    // m_logger.LogInfo() << "Frame processed. Size: " << buf.size() 
+                    // m_logger.LogInfo() << "[YOLO] Frame processed. Size: " << buf.size() 
                     //                    << " bytes, Total time: " << t_total_ms.count() << " ms";
                 }
 
