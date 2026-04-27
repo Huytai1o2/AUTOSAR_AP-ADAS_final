@@ -35,7 +35,6 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tqdm import tqdm
 
 # =====================================================================
 # GPU GUARD
@@ -63,7 +62,7 @@ MARGIN_Y = 8   # vertical margin in pixels
 
 MNIST_DIR   = "MNIST_ORG"       # directory with IDX binary files
 REAL_DIR    = "input_digits"    # single-digit crops per light colour
-ROI_DIR     = "realDatasetRoi"  # full composite ROI images
+ROI_DIR     = "realDatasetRoiv2"  # full composite ROI images (timer box only)
 LIGHT_TYPES = ["red", "green", "yellow"]
 
 
@@ -152,50 +151,46 @@ def load_real_digits(real_dir):
 # 3. LOAD FULL ROI IMAGES  (realDatasetRoi/)
 # =====================================================================
 def load_roi_dataset(roi_dir):
-    """Load real composite images from realDatasetRoi/.
+    """Return list of (fpath, L, S1, S2, S3) — file paths only, NO image data.
 
-    Filename format: <number>_<id>.{png,jpg}
-      e.g.  37_0004.png  →  number shown = 37
-
-    Each image is resized to IMG_H × IMG_W and returned together with
-    the 4-tuple label derived from its filename.
+    Scans root folder AND 'labelSecondByHuman' subfolder.
+    Images are loaded from disk on-demand during training (streaming pipeline)
+    to avoid materialising the full dataset in RAM.
     """
     if not os.path.exists(roi_dir):
         print(f"  WARNING: {roi_dir} not found — skipping ROI dataset.")
         return []
 
-    samples = []
-    skipped = 0
-    for fname in sorted(os.listdir(roi_dir)):
-        stem, ext = os.path.splitext(fname)
-        if ext.lower() not in ('.png', '.jpg', '.jpeg'):
-            skipped += 1
-            continue
-        parts = stem.split('_')
-        if len(parts) < 2:
-            skipped += 1
-            continue
-        try:
-            number = int(parts[0])
-        except ValueError:
-            skipped += 1
-            continue
-        if not (0 <= number <= 999):
-            skipped += 1
-            continue
+    scan_dirs = [roi_dir, os.path.join(roi_dir, "labelSecondByHuman")]
+    samples   = []
+    skipped   = 0
+    seen      = set()
 
-        img = cv2.imread(os.path.join(roi_dir, fname), cv2.IMREAD_GRAYSCALE)
-        if img is None:
-            skipped += 1
+    for scan_dir in scan_dirs:
+        if not os.path.exists(scan_dir):
             continue
+        for fname in sorted(os.listdir(scan_dir)):
+            stem, ext = os.path.splitext(fname)
+            if ext.lower() not in ('.png', '.jpg', '.jpeg'):
+                continue
+            fpath = os.path.join(scan_dir, fname)
+            if fpath in seen:
+                continue
+            seen.add(fpath)
 
-        img_r = cv2.resize(img, (IMG_W, IMG_H), interpolation=cv2.INTER_AREA)
-        img_f = img_r.astype(np.float32) / 255.0          # [0, 1]
+            try:
+                number = int(stem.split('_')[0])
+            except (ValueError, IndexError):
+                skipped += 1
+                continue
+            if not (0 <= number <= 999):
+                skipped += 1
+                continue
 
-        L, S1, S2, S3 = number_to_labels(number)
-        samples.append((np.expand_dims(img_f, -1), L, S1, S2, S3))
+            L, S1, S2, S3 = number_to_labels(number)
+            samples.append((fpath, L, S1, S2, S3))   # path, not array
 
-    print(f"  realDatasetRoi loaded: {len(samples)} images "
+    print(f"  realDatasetRoiv2 loaded: {len(samples)} paths "
           f"(skipped {skipped})")
     return samples
 
@@ -378,120 +373,102 @@ def make_one_sample(number, mnist_images, digit_idx, real_pool,
 
 
 # =====================================================================
-# 7. FULL DATASET ASSEMBLY
+# 7. STREAMING DATA PIPELINE  (no large arrays in RAM)
 # =====================================================================
-def generate_data(reps_per_number=50,
-                  mnist_images=None, mnist_labels=None,
-                  real_pool=None, roi_samples=None,
-                  do_augment=True):
-    """Build the training set from three sources.
+def make_data_generators(reps_per_number=50,
+                         mnist_images=None, mnist_labels=None,
+                         real_pool=None, roi_paths=None,
+                         do_augment=True, val_fraction=0.15,
+                         reps_roi=150):
+    """Build streaming train/val generator functions — no large arrays in RAM.
 
-    Source 1 — MNIST composites (synthetic):
-      1 000 numbers × reps_per_number × 1 source  (always)
+    ROI images are read from disk one-by-one inside the generator.
+    Peak RAM usage: MNIST (~55 MB) + pre-aug pool (~100 MB) + one batch.
 
-    Source 2 — input_digits composites (synthetic, if available):
-      1 000 numbers × reps_per_number × 1 source
-
-    Source 3 — realDatasetRoi direct images (real):
-      len(roi_samples) × reps_roi augmented copies
-
-    Default reps=50: ~100 K synthetic + ~10× ROI ≈ 5-10 K real.
+    Returns (synth_tr_gen, roi_tr_gen, synth_val_gen, roi_val_gen,
+             n_tr_synth, n_tr_roi, n_val_synth, n_val_roi).
     """
-    digit_idx = {d: np.where(mnist_labels == d)[0] for d in range(10)}
-    has_real  = any(len(v) > 0 for v in real_pool.values())
-    sources   = ['mnist', 'real'] if has_real else ['mnist']
-
-    # Build number list weighted to match real traffic-light distribution.
-    # ROI dataset shows: 0-134, heavily 2-digit (76%), some 1-digit (20%),
-    # rare 3-digit (3.4%).  Naive range(0,1000) gives 83% 3-digit → model
-    # would be biased to always predict 3 digits.
-    #
-    # Strategy: oversample 1-digit and 2-digit by repeating them,
-    # include 3-digit only up to 199 (covers real range with margin).
-    #   0-9   (10 nums)  × 8 repeats → ~30% of list
-    #   10-99 (90 nums)  × 8 repeats → ~62% of list
-    #   100-199 (100 nums) × 1 repeat → ~9% of list
-    # Target distribution (match real ROI: L=1≈21%, L=2≈76%, L=3≈3%)
-    # one_digit ×20: 200 entries  → 200/1020 ≈ 19.6%
-    # two_digit  ×8: 720 entries  → 720/1020 ≈ 70.6%
-    # three_digit×1: 100 entries  → 100/1020 ≈  9.8%
-    one_digit   = list(range(0,   10))   # 10 numbers
-    two_digit   = list(range(10,  100))  # 90 numbers
-    three_digit = list(range(100, 200))  # 100 numbers (cover real max + margin)
-    numbers = one_digit * 20 + two_digit * 8 + three_digit * 1
-    # Shuffle so the order within each source is random
-    np.random.shuffle(numbers)
-
-    # Pre-augment input_digits once → sampling becomes as fast as MNIST
+    digit_idx     = {d: np.where(mnist_labels == d)[0] for d in range(10)}
+    has_real      = any(len(v) > 0 for v in real_pool.values())
+    sources       = ['mnist', 'real'] if has_real else ['mnist']
     aug_real_pool = preaugment_real_pool(real_pool) if has_real else real_pool
 
-    total_synth = len(numbers) * reps_per_number * len(sources)
-    print(f"\nGenerating {total_synth:,} synthetic samples "
-          f"({len(numbers)} numbers × {reps_per_number} reps "
-          f"× {len(sources)} sources)")
+    # Number list matched to realDatasetRoiv2: 1-digit 28.4%, 2-digit 71.6%
+    one_digit = list(range(0,  10))
+    two_digit = list(range(10, 100))
+    numbers   = one_digit * 30 + two_digit * 8   # 1020 total
 
-    X_list, yL, yS1, yS2, yS3 = [], [], [], [], []
+    # Split ROI paths train / val
+    n_roi     = len(roi_paths) if roi_paths else 0
+    perm      = np.random.permutation(n_roi)
+    n_val_roi = int(n_roi * val_fraction)
+    roi_val   = [roi_paths[i] for i in perm[:n_val_roi]]
+    roi_tr    = [roi_paths[i] for i in perm[n_val_roi:]]
 
-    # --- Sources 1 & 2: synthetic composites ---
-    for source in sources:
-        # For 'real' source pass the pre-augmented pool (no per-sample cv2 ops)
-        pool  = aug_real_pool if source == 'real' else real_pool
-        label = 'MNIST' if source == 'mnist' else 'Real '
-        for number in tqdm(numbers, desc=f"  [{label}] 0-999", unit="num"):
-            for _ in range(reps_per_number):
-                x, l, s1, s2, s3 = make_one_sample(
-                    number, mnist_images, digit_idx,
-                    pool, source, do_augment)
-                X_list.append(x)
-                yL.append(l); yS1.append(s1); yS2.append(s2); yS3.append(s3)
+    # Split number list train / val
+    perm2     = np.random.permutation(len(numbers))
+    n_val_num = int(len(numbers) * val_fraction)
+    nums_val  = [numbers[i] for i in perm2[:n_val_num]]
+    nums_tr   = [numbers[i] for i in perm2[n_val_num:]]
 
-    # --- Source 3: realDatasetRoi direct samples ---
-    if roi_samples:
-        # Oversample real images heavily so they represent ~37% of training data.
-        # Previously reps_roi=16 → only 5.5% ROI, causing domain gap.
-        # With reps_roi=100: 526×100=52,600 ROI vs ~90K synthetic → ~37% real.
-        reps_roi = 100
-        n_roi    = len(roi_samples) * reps_roi
-        print(f"\nAdding ROI samples: {len(roi_samples)} images "
-              f"× {reps_roi} augmentations = {n_roi:,} samples")
-        for img_f, l, s1, s2, s3 in tqdm(roi_samples,
-                                          desc="  [ROI ] direct", unit="img"):
-            for _ in range(reps_roi):
-                canvas = img_f[..., 0].copy()
-                if do_augment:
-                    canvas = augment_roi_image(canvas)
-                X_list.append(np.expand_dims(canvas, -1).astype(np.float32))
-                yL.append(l); yS1.append(s1); yS2.append(s2); yS3.append(s3)
+    n_tr  = len(nums_tr)  * reps_per_number * len(sources) + len(roi_tr)  * reps_roi
+    n_val = len(nums_val) * reps_per_number * len(sources) + len(roi_val) * reps_roi
 
-    X_data = np.array(X_list, dtype=np.float32)
-    y_L  = np.array(yL,  dtype=np.int32)
-    y_S1 = np.array(yS1, dtype=np.int32)
-    y_S2 = np.array(yS2, dtype=np.int32)
-    y_S3 = np.array(yS3, dtype=np.int32)
+    print(f"\nStreaming dataset (no pre-allocation):")
+    print(f"  Synthetic : {len(nums_tr)*reps_per_number*len(sources):>8,} train "
+          f"| {len(nums_val)*reps_per_number*len(sources):>7,} val")
+    print(f"  ROI       : {len(roi_tr)*reps_roi:>8,} train "
+          f"| {len(roi_val)*reps_roi:>7,} val")
+    print(f"  Total     : {n_tr:>8,} train | {n_val:>7,} val")
 
-    # Shuffle so MNIST/real/ROI samples are interleaved
-    idx = np.random.permutation(len(X_data))
-    X_data = X_data[idx]
-    y_L, y_S1, y_S2, y_S3 = y_L[idx], y_S1[idx], y_S2[idx], y_S3[idx]
+    def _synth_gen(num_list, shuffle, do_aug):
+        def _gen():
+            while True:          # infinite — stopped by steps_per_epoch
+                nums = list(num_list)
+                if shuffle:
+                    np.random.shuffle(nums)
+                for src in sources:
+                    pool = aug_real_pool if src == 'real' else {}
+                    for number in nums:
+                        for _ in range(reps_per_number):
+                            x, l, s1, s2, s3 = make_one_sample(
+                                number, mnist_images, digit_idx, pool, src, do_aug)
+                            yield (x, {'L':  np.int32(l),  'S1': np.int32(s1),
+                                       'S2': np.int32(s2), 'S3': np.int32(s3)})
+        return _gen
 
-    # Coverage check
-    numbers_seen = set()
-    for l, s1, s2, s3 in zip(y_L, y_S1, y_S2, y_S3):
-        length = l + 1
-        if   length == 1: numbers_seen.add(s3)
-        elif length == 2: numbers_seen.add(s2 * 10 + s3)
-        elif length == 3: numbers_seen.add(s1 * 100 + s2 * 10 + s3)
+    def _roi_gen(roi_list, shuffle, do_aug):
+        def _gen():
+            while True:          # each pass = 1 augmentation per image
+                rois = list(roi_list)
+                if shuffle:
+                    np.random.shuffle(rois)
+                for fpath, l, s1, s2, s3 in rois:
+                    img = cv2.imread(fpath, cv2.IMREAD_GRAYSCALE)
+                    if img is None:
+                        continue
+                    img_r  = cv2.resize(img, (IMG_W, IMG_H),
+                                        interpolation=cv2.INTER_AREA)
+                    canvas = img_r.astype(np.float32) / 255.0
+                    c = augment_roi_image(canvas) if do_aug else canvas
+                    yield (np.expand_dims(c, -1).astype(np.float32),
+                           {'L':  np.int32(l),  'S1': np.int32(s1),
+                            'S2': np.int32(s2), 'S3': np.int32(s3)})
+        return _gen
 
-    missing = set(range(1000)) - numbers_seen
-    print(f"\nDataset summary:")
-    print(f"  Total : {len(X_data):,} samples")
-    print(f"  L=1   : {np.sum(y_L==0):6,}  |  "
-          f"L=2: {np.sum(y_L==1):6,}  |  L=3: {np.sum(y_L==2):6,}")
-    print(f"  Coverage: {len(numbers_seen)}/1000 numbers")
-    if missing:
-        print(f"  Missing (first 10): {sorted(missing)[:10]}")
+    n_tr_synth  = len(nums_tr)  * reps_per_number * len(sources)
+    n_val_synth = len(nums_val) * reps_per_number * len(sources)
+    n_tr_roi    = len(roi_tr)   * reps_roi
+    n_val_roi   = len(roi_val)  * reps_roi
 
-    return X_data, {'L': y_L, 'S1': y_S1, 'S2': y_S2, 'S3': y_S3}
+    return (
+        _synth_gen(nums_tr,  shuffle=True,  do_aug=do_augment),
+        _roi_gen  (roi_tr,   shuffle=True,  do_aug=do_augment),
+        _synth_gen(nums_val, shuffle=False, do_aug=False),
+        _roi_gen  (roi_val,  shuffle=False, do_aug=False),
+        n_tr_synth, n_tr_roi,
+        n_val_synth, n_val_roi,
+    )
 
 
 # =====================================================================
@@ -674,22 +651,30 @@ def decode_prediction(pred):
 # =====================================================================
 # 10. MAIN
 # =====================================================================
+import math
+
 mnist_images, mnist_labels = load_mnist_binary(MNIST_DIR)
 real_pool                  = load_real_digits(REAL_DIR)
-roi_samples                = load_roi_dataset(ROI_DIR)
+roi_paths                  = load_roi_dataset(ROI_DIR)   # paths only, no arrays
 
 if not any(len(v) > 0 for v in real_pool.values()):
     print(f"\nWARNING: No single-digit crops found in {REAL_DIR}/")
     print("  Continuing with MNIST-only synthetic composites.\n")
 
-X_train, y_train = generate_data(
-    reps_per_number=50,          # 1000 × 50 × 2 sources = 100 K synthetic
+(synth_tr_gen, roi_tr_gen,
+ synth_val_gen, roi_val_gen,
+ n_tr_synth, n_tr_roi,
+ n_val_synth, n_val_roi) = make_data_generators(
+    reps_per_number=15,
     mnist_images=mnist_images,
     mnist_labels=mnist_labels,
     real_pool=real_pool,
-    roi_samples=roi_samples,
+    roi_paths=roi_paths,
     do_augment=True,
+    reps_roi=40,
 )
+n_tr  = n_tr_synth  + n_tr_roi
+n_val = n_val_synth + n_val_roi
 
 model = build_model()
 model.summary()
@@ -703,8 +688,7 @@ model.compile(
         'S2': 'sparse_categorical_crossentropy',
         'S3': 'sparse_categorical_crossentropy',
     },
-    # Upweight L: sequence accuracy requires getting the length right
-    loss_weights={'L': 4, 'S1': 1.0, 'S2': 1.0, 'S3': 1.0},
+    loss_weights={'L': 4.0, 'S1': 1.0, 'S2': 1.0, 'S3': 1.0},
     metrics={
         'L':  'accuracy',
         'S1': 'accuracy',
@@ -714,78 +698,54 @@ model.compile(
 )
 
 callbacks = [
-    EarlyStopping(
-        monitor='val_loss',
-        patience=6,
-        restore_best_weights=True,
-        verbose=1,
-    ),
-    ReduceLROnPlateau(
-        monitor='val_loss',
-        factor=0.5,
-        patience=3,
-        min_lr=1e-6,
-        verbose=1,
-    ),
+    EarlyStopping(monitor='val_loss', patience=6,
+                  restore_best_weights=True, verbose=1),
+    ReduceLROnPlateau(monitor='val_loss', factor=0.5,
+                      patience=3, min_lr=1e-6, verbose=1),
 ]
 
-print("\nTraining…")
-# Use from_generator to avoid materialising the full numpy array as a
-# TF EagerTensor (which TF places on GPU → 2.11 GB OOM on 2 GB cards).
-# The generator yields individual samples; only one batch is on GPU at a time.
 BATCH    = 64
 AUTOTUNE = tf.data.AUTOTUNE
-val_frac = 0.15
-n_val    = int(len(X_train) * val_frac)
-n_tr     = len(X_train) - n_val
-
-perm   = np.random.permutation(len(X_train))
-tr_idx = perm[n_val:]
-va_idx = perm[:n_val]
-
-# Pre-slice numpy arrays on CPU — stays in RAM, never bulk-converted to GPU tensor
-X_tr  = X_train[tr_idx];  X_va  = X_train[va_idx]
-yL_tr = y_train['L'][tr_idx];  yL_va = y_train['L'][va_idx]
-yS1_tr= y_train['S1'][tr_idx]; yS1_va= y_train['S1'][va_idx]
-yS2_tr= y_train['S2'][tr_idx]; yS2_va= y_train['S2'][va_idx]
-yS3_tr= y_train['S3'][tr_idx]; yS3_va= y_train['S3'][va_idx]
 
 _out_sig = (
     tf.TensorSpec(shape=(IMG_H, IMG_W, 1), dtype=tf.float32),
-    {
-        'L' : tf.TensorSpec(shape=(), dtype=tf.int32),
-        'S1': tf.TensorSpec(shape=(), dtype=tf.int32),
-        'S2': tf.TensorSpec(shape=(), dtype=tf.int32),
-        'S3': tf.TensorSpec(shape=(), dtype=tf.int32),
-    }
+    {'L':  tf.TensorSpec(shape=(), dtype=tf.int32),
+     'S1': tf.TensorSpec(shape=(), dtype=tf.int32),
+     'S2': tf.TensorSpec(shape=(), dtype=tf.int32),
+     'S3': tf.TensorSpec(shape=(), dtype=tf.int32)},
 )
 
-def make_dataset(X, yL, yS1, yS2, yS3, shuffle=False):
-    n = len(X)
-    def _gen():
-        idx = np.arange(n)
-        if shuffle:
-            np.random.shuffle(idx)
-        for i in idx:
-            yield (X[i],
-                   {'L': yL[i], 'S1': yS1[i], 'S2': yS2[i], 'S3': yS3[i]})
-    ds = tf.data.Dataset.from_generator(_gen, output_signature=_out_sig)
-    return ds.batch(BATCH).prefetch(AUTOTUNE)
+# Interleave synthetic and ROI randomly so both appear in every batch window.
+# sample_from_datasets picks from each sub-dataset proportionally every step.
+synth_tr_ds = tf.data.Dataset.from_generator(synth_tr_gen,  output_signature=_out_sig)
+roi_tr_ds   = tf.data.Dataset.from_generator(roi_tr_gen,    output_signature=_out_sig)
+synth_val_ds= tf.data.Dataset.from_generator(synth_val_gen, output_signature=_out_sig)
+roi_val_ds  = tf.data.Dataset.from_generator(roi_val_gen,   output_signature=_out_sig)
 
-train_ds = make_dataset(X_tr, yL_tr, yS1_tr, yS2_tr, yS3_tr, shuffle=True)
-val_ds   = make_dataset(X_va, yL_va, yS1_va, yS2_va, yS3_va, shuffle=False)
+w_tr  = [n_tr_synth  / n_tr,  n_tr_roi  / n_tr]
+w_val = [n_val_synth / n_val, n_val_roi / n_val]
 
-print(f"  Train: {n_tr:,} samples  |  Val: {n_val:,} samples  |  "
-      f"Batch: {BATCH}  |  Steps/epoch: {n_tr // BATCH}")
+# Generators are infinite (while True inside), steps_per_epoch controls length.
+# shuffle(2000) breaks up consecutive augmentations of the same ROI image.
+train_ds = (tf.data.Dataset.sample_from_datasets(
+                [synth_tr_ds, roi_tr_ds], weights=w_tr)
+            .shuffle(buffer_size=2000)
+            .batch(BATCH).prefetch(AUTOTUNE))
+val_ds   = (tf.data.Dataset.sample_from_datasets(
+                [synth_val_ds, roi_val_ds], weights=w_val)
+            .batch(BATCH).prefetch(AUTOTUNE))
 
-import math
 steps_per_epoch  = math.ceil(n_tr  / BATCH)
 validation_steps = math.ceil(n_val / BATCH)
+
+print(f"\nTraining…")
+print(f"  Train: {n_tr:,}  |  Val: {n_val:,}  |  "
+      f"Batch: {BATCH}  |  Steps/epoch: {steps_per_epoch}")
 
 model.fit(
     train_ds,
     validation_data=val_ds,
-    epochs=20,
+    epochs=5,
     steps_per_epoch=steps_per_epoch,
     validation_steps=validation_steps,
     callbacks=callbacks,
@@ -794,13 +754,20 @@ model.fit(
 model.save("pretrain_4heads_model.h5")
 print("\nSaved: pretrain_4heads_model.h5")
 
-# Export TFLite for Raspberry Pi 5  (float32 — no accuracy loss)
 export_tflite(model, "timer_model.tflite")
 
-# Optional: int8-quantised version (~4× smaller, ~2× faster on RPi5 NEON)
-# Uncomment if you need maximum speed and can tolerate slight accuracy drop:
-export_tflite(model, "timer_model_int8.tflite",
-              int8_quantize=True, rep_data=X_tr[:200])
+# Build small representative dataset for int8 calibration (load from disk)
+_rep_list = []
+for _fpath, *_ in roi_paths[:200]:
+    _img = cv2.imread(_fpath, cv2.IMREAD_GRAYSCALE)
+    if _img is None:
+        continue
+    _img_r = cv2.resize(_img, (IMG_W, IMG_H), interpolation=cv2.INTER_AREA)
+    _rep_list.append(_img_r.astype(np.float32) / 255.0)
+_rep_data = np.array(_rep_list)[..., np.newaxis]   # (N, 64, 96, 1)
+
+export_tflite(model, "timer_model_int8.tflite", int8_quantize=True,
+              rep_data=_rep_data)
 
 
 # =====================================================================
@@ -810,7 +777,7 @@ print("\nSanity check on real ROI images (log-prob decoding, Goodfellow et al. A
 print(f"{'File':<22} | {'GT':>4} | {'L':>2} | {'S1':>4} {'S2':>4} {'S3':>3} | {'Pred':>6} | OK?")
 print("-" * 65)
 
-if roi_samples:
+if roi_paths:
     # Pick up to 3 samples per digit-count (1, 2, 3 digits) from roi_samples.
     # roi_samples is a list of (img_array, L, S1, S2, S3) — no filename stored.
     # Re-scan the directory to get filenames alongside the arrays.
