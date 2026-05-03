@@ -159,6 +159,22 @@ Raw frame (640×480, BGR)
 
 ---
 
+### Comparison of Original Backbone and MobileNetV4 Backbone of yolo26n
+
+| Metric | YOLO26n Original (int8) | YOLO26n-MobileNetV4 (int8) | Change % |
+|---|---:|---:|---:|
+| Samples processed | 1074 | **1366** | +27.19% |
+| Average latency (Pi 5) | 55.0853 ms | **43.2280 ms** | -21.52% |
+| Maximum latency / spike (Pi 5) | 159.7330 ms | **78.6385 ms** | -50.77% |
+| Minimum latency (Pi 5) | 50.1171 ms | **36.5037 ms** | -27.16% |
+| Inference speed (Intel CPU) | 15.21 ms | **12.33 ms** | -18.93% |
+| mAP50 | **89.90%** | 85.75% | -4.15% |
+| mAP50-95 | **56.61%** | 53.31% | -3.30% |
+
+Quick conclusion: YOLO26n-MobileNetV4 int8 keeps the same 416 imgsize, but reduces latency clearly on both the Pi 5 and Intel CPU, while mAP drops slightly compared with YOLO26n Original int8.
+
+---
+
 ### DDS wire format (`ProviderSensor` → `ClientSensor`)
 
 ```
