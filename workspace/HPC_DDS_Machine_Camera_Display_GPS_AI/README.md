@@ -157,8 +157,6 @@ Raw frame (640×480, BGR)
                DDS publish → ClientSensor → TCP → show_cam.py
 ```
 
----
-
 ### Comparison of Original Backbone and MobileNetV4 Backbone of yolo26n
 
 | Metric | YOLO26n Original (int8) | YOLO26n-MobileNetV4 (int8) | Change % |
@@ -194,14 +192,6 @@ Offset  Size  Field
 ```
 [uint32 frame_len][frame_len JPEG bytes][uint8 in_range][int64 node_id][int32 dist_m]
 ```
-
-### CPU affinity
-
-| Component | Cores |
-|-----------|-------|
-| ProviderSensor (YOLO + GPS + OCR) | 0, 1, 2 |
-| show_cam.py (display) | 3 |
-
 ---
 
 ## Build
