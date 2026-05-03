@@ -277,20 +277,7 @@ build/install/
 rsync -avz --progress build/install/ pi@<PI_IP>:~/dds-app/
 ```
 
-### 2 — Copy model and data files to the Pi
-
-Place the following files alongside the binaries (`~/dds-app/`):
-
-| File | Description |
-|------|-------------|
-| `best_yolo26n_e2e_416/best_int8.tflite` | Primary YOLO model (fastest) |
-| `best_yolo26n_e2e_416/best_float16.tflite` | fp16 fallback |
-| `best_yolo26n_e2e_416/best_float32.tflite` | fp32 fallback |
-| `myCNN/timer_model.tflite` | Traffic-light timer OCR model |
-| `hochiminh.geojson` | Traffic-node map (GeoJSON FeatureCollection) |
-| `test.mp4` | Camera fallback video |
-
-### 3 — Start RouDi (IPC middleware daemon)
+### 2 — Start RouDi (IPC middleware daemon)
 
 RouDi must be running before any AUTOSAR component starts.
 
@@ -303,7 +290,7 @@ LD_LIBRARY_PATH="$PWD/lib:$LD_LIBRARY_PATH" ./RouDi \
 The `roudi_config.toml` allocates shared-memory pools large enough for
 JPEG payloads up to 128 MB.
 
-### 4 — Start the display script
+### 3 — Start the display script
 
 Launch `show_cam.py` **before** the C++ components so the TCP server is
 ready when `ClientSensor` tries to connect.
@@ -316,7 +303,7 @@ python3 ~/dds-app/show_cam.py
 python3 ~/dds-app/show_cam.py display:=0
 ```
 
-### 5 — Start the AUTOSAR application
+### 4 — Start the AUTOSAR application
 
 ```bash
 cd ~/dds-app
