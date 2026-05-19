@@ -1,0 +1,25 @@
+description: Ultralytics YOLO26n model trained on /datasets/trafficlightv5v8iyolo26-35ea0d56/data.yaml
+author: Ultralytics
+date: '2026-04-25T02:23:07.539591'
+version: 8.4.41
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 480
+- 480
+names:
+  0: left
+  1: right
+  2: straight
+  3: timer
+args:
+  batch: 1
+  fraction: 1.0
+  half: false
+  int8: true
+  nms: false
+channels: 3
+end2end: true

@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
+  
+<AR-PACKAGES>
+    <AR-PACKAGE UUID="098b5277-bbd0-44ce-ba92-400ba88a74b5">
+      <SHORT-NAME>DataType</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="460bbfe3-8c07-4471-b353-13d10435af5c">
+          <SHORT-NAME>Implementation</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="d382e8cb-a8ec-46c5-ab3f-b7cb602fe124">
+              <SHORT-NAME>CPP</SHORT-NAME>
+              <ELEMENTS>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c1de161e-475b-437e-8c08-50bbcfded182">
+                  <SHORT-NAME>bool</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="7c9345c8-bd60-4d5a-aebb-ed2a1ef46b5a">
+                  <SHORT-NAME>double</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="595d2f54-6899-44af-be40-ed55e086463d">
+                  <SHORT-NAME>ext</SHORT-NAME>
+                  <CATEGORY>STRING</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>imageString</SHORT-NAME>
+                      <SYMBOL>imageString</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9da9e45a-994d-4ee2-bda3-46386ac6f72f">
+                  <SHORT-NAME>float</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="49e6fe94-eb3e-4286-affd-daabaf7d36d3">
+                  <SHORT-NAME>imageData</SHORT-NAME>
+                  <CATEGORY>VECTOR</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <TEMPLATE-ARGUMENTS>
+                    <CPP-TEMPLATE-ARGUMENT>
+                      <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/int8_t</TEMPLATE-TYPE-REF>
+                    </CPP-TEMPLATE-ARGUMENT>
+                  </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="5bffde80-d6f8-4dd9-bdb7-4b5bd53314bc">
+                  <SHORT-NAME>imageImencode</SHORT-NAME>
+                  <CATEGORY>STRUCTURE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL/>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>opencvMAT</SHORT-NAME>
+                      <SYMBOL>opencvMAT</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <SUB-ELEMENTS>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="f86fbab3-b039-4ce3-9789-f35903f41db9">
+                      <SHORT-NAME>bufferImg</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/imageData</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                    <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="8920cc23-60e6-4938-bb8b-22e0cd2bf186">
+                      <SHORT-NAME>ext</SHORT-NAME>
+                      <TYPE-REFERENCE>
+                        <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/ext</TYPE-REFERENCE-REF>
+                      </TYPE-REFERENCE>
+                    </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  </SUB-ELEMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="73399e4a-4843-407e-8b52-519f746c723f">
+                  <SHORT-NAME>int16_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="d6b05dcc-1a4d-444d-879d-76a4574ae84b">
+                  <SHORT-NAME>int32_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="2cb2a60e-5aba-4b0c-9b09-ac5a8e898c11">
+                  <SHORT-NAME>int64_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="e176d8b5-a684-45a1-bb20-5be82f3ed162">
+                  <SHORT-NAME>int8_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="cb28a854-50eb-42d2-9c4d-a2a383cace08">
+                  <SHORT-NAME>uint16_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="61b518cb-b8e9-4092-8098-27c392a1a5e1">
+                  <SHORT-NAME>uint32_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="09437b9a-bafc-400b-88eb-15afcb3828fc">
+                  <SHORT-NAME>uint64_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="391cd154-1adb-4ea3-b934-b902e1b5794c">
+                  <SHORT-NAME>uint8_t</SHORT-NAME>
+                  <CATEGORY>VALUE</CATEGORY>
+                  <HEADER-FILE>cstdint</HEADER-FILE>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="4beef226-f2b2-46f0-a64b-bb038c79824a">
+      <SHORT-NAME>Platform</SHORT-NAME>
+      <ELEMENTS>
+        <MACHINE UUID="9c0e29a4-f06b-4407-b59e-e46fa7a817fc">
+          <SHORT-NAME>HPC_DDS_Machine</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PARA-MACHINE">
+                <SD GID="WAIT-FOR-SHUTDOWN">1.0</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC_DDS</MACHINE-DESIGN-REF>
+          <MODULE-INSTANTIATIONS>
+            <GENERIC-MODULE-INSTANTIATION UUID="fb4f87f5-6209-4004-a68d-f7ce68a28bf9">
+              <SHORT-NAME>CmInstantiation</SHORT-NAME>
+              <CATEGORY>COMMUNICATION_MANAGEMENT</CATEGORY>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-COMMUNICATION-MANAGEMENT">
+                    <SD GID="REQUEST-TIMEOUT">10.0</SD>
+                    <SD GID="ALIVE-CHECK-INTERVAL">0.0</SD>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+            </GENERIC-MODULE-INSTANTIATION>
+            <LOG-AND-TRACE-INSTANTIATION UUID="86b5ecd2-284e-4ad8-9c05-8266d31d1d27">
+              <SHORT-NAME>LOG</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-DLT-CONF">
+                    <SDG GID="GENERAL-CONFIGURATION">
+                      <SD GID="VERBOSE">ON</SD>
+                      <SD GID="DAEMONIZE">ON</SD>
+                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
+                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
+                      <SD GID="SEND-MESSAGE-TIME">0</SD>
+                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
+                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
+                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
+                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
+                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
+                      <SD GID="TIME-OUT-ON-SEND">4</SD>
+                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
+                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
+                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
+                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
+                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
+                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
+                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
+                      <SD GID="INJECTION-MODE">ON</SD>
+                    </SDG>
+                    <SDG GID="GATEWAY-CONFIGURATION">
+                      <SD GID="GATEWAY-MODE">OFF</SD>
+                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
+                    </SDG>
+                    <SDG GID="PERMISSION-CONFIGURATION">
+                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
+                    </SDG>
+                    <SDG GID="CONTROL-APPLICATION">
+                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-TRACE-MEMORY">
+                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
+                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
+                    </SDG>
+                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
+                      <SD GID="PRINT-ASCII">DISABLE</SD>
+                      <SD GID="PRINT-HEX">DISABLE</SD>
+                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
+                      <SD GID="RS232-BAUDRATE">115200</SD>
+                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
+                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
+                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
+                    </SDG>
+                    <SDG GID="TIMEZONE-INFO">
+                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-LOGSTORAGE">
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
+                    </SDG>
+                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
+                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
+                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
+                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
+                    </SDG>
+                    <SDG GID="BINDADDRESS-LIMITATION">
+                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
+                    </SDG>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <DLT-LOG-CHANNELS>
+                <DLT-LOG-CHANNEL UUID="f233894c-41c3-43ab-908e-68c9c05da352">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <APPLICATION-ID>CM</APPLICATION-ID>
+                  <CONTEXT-ID>CM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="4f4353e8-95bc-4fcf-988f-cc7ee6291e5b">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <APPLICATION-ID>cSen</APPLICATION-ID>
+                  <CONTEXT-ID>cSen</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="fc2af8f3-ef58-4458-afd5-884cd1babc76">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <APPLICATION-ID>EM</APPLICATION-ID>
+                  <CONTEXT-ID>EM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="73055738-a4e6-4e93-9138-a59ed0fe7555">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <APPLICATION-ID>pSen</APPLICATION-ID>
+                  <CONTEXT-ID>pSen</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+              </DLT-LOG-CHANNELS>
+            </LOG-AND-TRACE-INSTANTIATION>
+            <OS-MODULE-INSTANTIATION UUID="1234bcf9-475f-4440-80de-6e9e544ad25a">
+              <SHORT-NAME>POSIX</SHORT-NAME>
+              <RESOURCE-GROUPS>
+                <RESOURCE-GROUP UUID="85558b11-80f7-41a5-b500-e00da521e97c">
+                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
+                </RESOURCE-GROUP>
+              </RESOURCE-GROUPS>
+            </OS-MODULE-INSTANTIATION>
+          </MODULE-INSTANTIATIONS>
+          <PROCESSORS>
+            <PROCESSOR UUID="db3c8574-1418-4b3a-8db7-638e01954ada">
+              <SHORT-NAME>CPU</SHORT-NAME>
+              <CORES>
+                <PROCESSOR-CORE UUID="985d6d5c-7bff-420d-82a0-f06688191ea3">
+                  <SHORT-NAME>Core0</SHORT-NAME>
+                  <CORE-ID>0</CORE-ID>
+                </PROCESSOR-CORE>
+              </CORES>
+            </PROCESSOR>
+          </PROCESSORS>
+          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
+        </MACHINE>
+      </ELEMENTS>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="2a6fde6b-8d63-42e3-abf2-aaac5cf9c436">
+          <SHORT-NAME>FunctionGroup</SHORT-NAME>
+          <ELEMENTS>
+            <FUNCTION-GROUP-SET UUID="516c52c3-1413-4d51-beb0-a647b9ba07ad">
+              <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="IO-TARGET-MACHINE">
+                    <SDXF>
+                      <REFERRABLE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</REFERRABLE-REF>
+                    </SDXF>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <FUNCTION-GROUPS>
+                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="98906052-def0-4e27-9241-e15db378ab51">
+                  <SHORT-NAME>MachineFG</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/MachineState</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+              </FUNCTION-GROUPS>
+            </FUNCTION-GROUP-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8bf88ec3-698a-4f37-9360-9010f93440a3">
+          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS-TO-MACHINE-MAPPING-SET UUID="e5511ad0-0ac6-4b20-9b30-652d22a04ba5">
+              <SHORT-NAME>ProcessToHPC_DDS_MachineMapping</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="IO-TARGET-MACHINE">
+                    <SDXF>
+                      <REFERRABLE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</REFERRABLE-REF>
+                    </SDXF>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <PROCESS-TO-MACHINE-MAPPINGS>
+                <PROCESS-TO-MACHINE-MAPPING UUID="6894a22b-59db-4d3e-beef-72bed0258581">
+                  <SHORT-NAME>CM_To_HPC_DDS_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="63aec2f9-85f8-438d-bd81-3a128eb389dd">
+                  <SHORT-NAME>ClientSensor_To_HPC_DDS_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ClientSensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="fc81c7f6-c16c-4cf7-a257-474003ebde2f">
+                  <SHORT-NAME>EM_To_HPC_DDS_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="583cc2b8-7064-42ca-a130-59a3b6d0e497">
+                  <SHORT-NAME>ProviderSensor_To_HPC_DDS_Machine_Mapping</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/HPC_DDS_Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ProviderSensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+              </PROCESS-TO-MACHINE-MAPPINGS>
+            </PROCESS-TO-MACHINE-MAPPING-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="c719e69d-1a2e-4dbe-8e22-702d29ce9882">
+      <SHORT-NAME>System</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM UUID="0e3cb1d7-899c-410a-aacc-65b9ca252d74">
+          <SHORT-NAME>System</SHORT-NAME>
+          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
+          <FIBEX-ELEMENTS>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC_DDS</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/System/VehicleTopology/Cluster/EthernetCluster0</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+          </FIBEX-ELEMENTS>
+          <MAPPINGS>
+            <SYSTEM-MAPPING UUID="3ff8a436-0eee-4dd6-a20d-dc23fa220868">
+              <SHORT-NAME>SystemMapping</SHORT-NAME>
+              <SW-MAPPINGS>
+                <SWC-TO-ECU-MAPPING UUID="d8b2b8ca-0861-4c8d-bde5-1afe3feda550">
+                  <SHORT-NAME>SwMapping0</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IO-SWC-TO-MACHINE-MAPPING">
+                        <SDXF>
+                          <REFERRABLE-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/HPC_DDS</REFERRABLE-REF>
+                        </SDXF>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/System/System/System</CONTEXT-COMPOSITION-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponent/Composition/System/HPC_DDS</CONTEXT-COMPONENT-REF>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/SwComponent/Composition/System/HPC_DDS</TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+          <ROOT-SOFTWARE-COMPOSITIONS>
+            <ROOT-SW-COMPOSITION-PROTOTYPE UUID="1f953409-6000-4aba-87fe-b5657e946e58">
+              <SHORT-NAME>System</SHORT-NAME>
+              <SOFTWARE-COMPOSITION-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponent/Composition/System</SOFTWARE-COMPOSITION-TREF>
+            </ROOT-SW-COMPOSITION-PROTOTYPE>
+          </ROOT-SOFTWARE-COMPOSITIONS>
+          <SYSTEM-VERSION>1.0.0;R2011-PARA</SYSTEM-VERSION>
+        </SYSTEM>
+      </ELEMENTS>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="127cfd4e-aa90-496d-b7a2-53152b830213">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="d80f4be6-e9a1-49bb-997b-045380489932">
+              <SHORT-NAME>Deployment</SHORT-NAME>
+              <ELEMENTS>
+                <DDS-SERVICE-INTERFACE-DEPLOYMENT UUID="28431426-24bb-4ec4-a7e9-98863b9d2040">
+                  <SHORT-NAME>Sensor</SHORT-NAME>
+                  <EVENT-DEPLOYMENTS>
+                    <DDS-EVENT-DEPLOYMENT UUID="0d7731f7-fdc8-4eae-9818-123c1942f7d3">
+                      <SHORT-NAME>imageData</SHORT-NAME>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/Sensor/imageDataEvent</EVENT-REF>
+                      <TOPIC-NAME>imageData</TOPIC-NAME>
+                    </DDS-EVENT-DEPLOYMENT>
+                  </EVENT-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/Sensor</SERVICE-INTERFACE-REF>
+                  <FIELD-REPLY-TOPIC-NAME>ReturnField</FIELD-REPLY-TOPIC-NAME>
+                  <FIELD-REQUEST-TOPIC-NAME>CallField</FIELD-REQUEST-TOPIC-NAME>
+                  <METHOD-REPLY-TOPIC-NAME>ReturnMethod</METHOD-REPLY-TOPIC-NAME>
+                  <METHOD-REQUEST-TOPIC-NAME>CallMethod</METHOD-REQUEST-TOPIC-NAME>
+                  <SERVICE-INTERFACE-ID>Sensor</SERVICE-INTERFACE-ID>
+                  <TRANSPORT-PROTOCOLS>
+                    <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                  </TRANSPORT-PROTOCOLS>
+                </DDS-SERVICE-INTERFACE-DEPLOYMENT>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="803d8c19-9f31-4dd5-baba-7b23919bdbed">
+              <SHORT-NAME>Endpoint</SHORT-NAME>
+              <ELEMENTS>
+                <DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="c329431f-d66b-4eec-9acb-a71e9db4dc6b">
+                  <SHORT-NAME>DdsServiceInstanceToMachineMapping0</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="PARA-DDS">
+                        <SD GID="TCP-PORT"/>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/HPC_DDS/eth0</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/System/Service/Instance/Consumer_Sensor</SERVICE-INSTANCE-REF>
+                    <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/System/Service/Instance/Provider_Sensor</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </DDS-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="16d1929c-3c0d-47a7-aa3c-aef22206458e">
+              <SHORT-NAME>Instance</SHORT-NAME>
+              <ELEMENTS>
+                <DDS-REQUIRED-SERVICE-INSTANCE UUID="510fe8ac-5f75-4cb9-ace0-31afcca11c3a">
+                  <SHORT-NAME>Consumer_Sensor</SHORT-NAME>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/Sensor</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <QOS-PROFILE>DEFAULT</QOS-PROFILE>
+                  <DOMAIN-ID>0</DOMAIN-ID>
+                  <REQUIRED-SERVICE-INSTANCE-ID>ANY</REQUIRED-SERVICE-INSTANCE-ID>
+                </DDS-REQUIRED-SERVICE-INSTANCE>
+                <DDS-PROVIDED-SERVICE-INSTANCE UUID="98962efc-2f9e-461d-91eb-45de8bf7f59d">
+                  <SHORT-NAME>Provider_Sensor</SHORT-NAME>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="DDS-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/Sensor</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <QOS-PROFILE>DEFAULT</QOS-PROFILE>
+                  <DOMAIN-ID>0</DOMAIN-ID>
+                  <SERVICE-INSTANCE-ID>100</SERVICE-INSTANCE-ID>
+                </DDS-PROVIDED-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="78337f9b-428c-49ea-8a99-64591664bca5">
+          <SHORT-NAME>VehicleTopology</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="1ea2db05-0699-4474-a219-a56bcf8c721c">
+              <SHORT-NAME>Cluster</SHORT-NAME>
+              <ELEMENTS>
+                <ETHERNET-CLUSTER UUID="dd58bea6-f091-4b37-891b-a87f08197e44">
+                  <SHORT-NAME>EthernetCluster0</SHORT-NAME>
+                  <ETHERNET-CLUSTER-VARIANTS>
+                    <ETHERNET-CLUSTER-CONDITIONAL>
+                      <PHYSICAL-CHANNELS>
+                        <ETHERNET-PHYSICAL-CHANNEL UUID="5712d79b-45de-424e-80b8-67f4bddc8bed">
+                          <SHORT-NAME>PhysicalChannel</SHORT-NAME>
+                          <CATEGORY>WIRED</CATEGORY>
+                          <COMM-CONNECTORS>
+                            <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                              <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/HPC_DDS/eth0</COMMUNICATION-CONNECTOR-REF>
+                            </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          </COMM-CONNECTORS>
+                          <NETWORK-ENDPOINTS>
+                            <NETWORK-ENDPOINT UUID="5546d784-09f8-4539-8e85-27158e809e94">
+                              <SHORT-NAME>NetworkEndpoint0</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>172.31.36.143</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                            <NETWORK-ENDPOINT UUID="0e5370da-491d-4520-8637-83e6db6e07d3">
+                              <SHORT-NAME>SdMulticast</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                          </NETWORK-ENDPOINTS>
+                        </ETHERNET-PHYSICAL-CHANNEL>
+                      </PHYSICAL-CHANNELS>
+                    </ETHERNET-CLUSTER-CONDITIONAL>
+                  </ETHERNET-CLUSTER-VARIANTS>
+                </ETHERNET-CLUSTER>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="50657429-71fc-4519-82af-ff0574cb79b4">
+              <SHORT-NAME>Ecu</SHORT-NAME>
+              <ELEMENTS>
+                <MACHINE-DESIGN UUID="5b4d4116-a24b-4f2f-9895-6a0459df6592">
+                  <SHORT-NAME>HPC_DDS</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">400.0</SD>
+                        <SD GID="HEIGHT">300.0</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">400.0</SD>
+                        <SD GID="HEIGHT">300.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <COMMUNICATION-CONNECTORS>
+                    <ETHERNET-COMMUNICATION-CONNECTOR UUID="949b827c-7405-424a-9e5d-6588b1f11825">
+                      <SHORT-NAME>eth0</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="AUTOSAR-IO-VFB-SUB">
+                            <SD GID="X">470.0</SD>
+                            <SD GID="Y">50.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                          <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                            <SD GID="X">470.0</SD>
+                            <SD GID="Y">50.0</SD>
+                            <SD GID="WIDTH">15.0</SD>
+                            <SD GID="HEIGHT">15.0</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster0/PhysicalChannel/NetworkEndpoint0</UNICAST-NETWORK-ENDPOINT-REF>
+                    </ETHERNET-COMMUNICATION-CONNECTOR>
+                  </COMMUNICATION-CONNECTORS>
+                  <SERVICE-DISCOVER-CONFIGS>
+                    <SOMEIP-SERVICE-DISCOVERY>
+                      <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster0/PhysicalChannel/SdMulticast</MULTICAST-SD-IP-ADDRESS-REF>
+                      <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
+                    </SOMEIP-SERVICE-DISCOVERY>
+                  </SERVICE-DISCOVER-CONFIGS>
+                </MACHINE-DESIGN>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="27f72db8-9a51-481a-89ca-a33407833e38">
+      <SHORT-NAME>SwComponent</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="57064911-13d7-44a5-9f61-ea00fb327a80">
+          <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+          <ELEMENTS>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="51a8cf46-be79-4ed8-bc69-282c95fea1bf">
+              <SHORT-NAME>CM</SHORT-NAME>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="9c464e15-8dc5-4c40-b871-d5249f8383c1">
+              <SHORT-NAME>ClientSensor</SHORT-NAME>
+              <PORTS>
+                <R-PORT-PROTOTYPE UUID="901a398c-baad-48d4-9ef9-7efa95bcd85f">
+                  <SHORT-NAME>RPort0</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">552.0</SD>
+                        <SD GID="Y">274.0418048</SD>
+                        <SD GID="WIDTH">15.0</SD>
+                        <SD GID="HEIGHT">15.0</SD>
+                        <SD GID="POSITION">0</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">70.0</SD>
+                        <SD GID="Y">50.0</SD>
+                        <SD GID="WIDTH">15.0</SD>
+                        <SD GID="HEIGHT">15.0</SD>
+                        <SD GID="POSITION">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/Sensor</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="f1e762a2-8034-41ab-a9a6-48cbcb7339f1">
+              <SHORT-NAME>EM</SHORT-NAME>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="fe8bbcb3-cc21-4236-8dad-0ffa02f06b3f">
+              <SHORT-NAME>ProviderSensor</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="581c6125-a1ff-488c-b7d6-23608a77b129">
+                  <SHORT-NAME>PPort0</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">401.712</SD>
+                        <SD GID="Y">224.0</SD>
+                        <SD GID="WIDTH">15.0</SD>
+                        <SD GID="HEIGHT">15.0</SD>
+                        <SD GID="POSITION">2</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">420.0</SD>
+                        <SD GID="Y">50.0</SD>
+                        <SD GID="WIDTH">15.0</SD>
+                        <SD GID="HEIGHT">15.0</SD>
+                        <SD GID="POSITION">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/Sensor</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="afb16db6-6ce9-4d36-bd46-5c22ee75bea7">
+          <SHORT-NAME>Composition</SHORT-NAME>
+          <ELEMENTS>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="28884cdc-69ee-496c-b959-7b7be82a0a07">
+              <SHORT-NAME>HPC_DDS</SHORT-NAME>
+              <COMPONENTS>
+                <SW-COMPONENT-PROTOTYPE UUID="25afadaa-9a2b-41a4-b723-ed741c751818">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">354.0</SD>
+                        <SD GID="Y">426.0</SD>
+                        <SD GID="WIDTH">167.51196948242188</SD>
+                        <SD GID="HEIGHT">95.84180480000003</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="380dcf60-01a3-4e09-a54e-dee7c96af4af">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">559.0</SD>
+                        <SD GID="Y">136.0</SD>
+                        <SD GID="WIDTH">272.75392</SD>
+                        <SD GID="HEIGHT">194.04180480000005</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ClientSensor</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="4d26c1c0-c503-40b8-b3c1-201d75b71407">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">135.0</SD>
+                        <SD GID="Y">425.0</SD>
+                        <SD GID="WIDTH">164.39999999999998</SD>
+                        <SD GID="HEIGHT">94.80000000000001</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">229.0</SD>
+                        <SD GID="Y">327.0</SD>
+                        <SD GID="WIDTH">302.4</SD>
+                        <SD GID="HEIGHT">190.8</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/EM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="6efe4400-4ede-4bf3-90a4-e47950c775d8">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="AUTOSAR-IO-VFB-MAIN">
+                        <SD GID="X">120.0</SD>
+                        <SD GID="Y">140.0</SD>
+                        <SD GID="WIDTH">291.712</SD>
+                        <SD GID="HEIGHT">199.04180480000005</SD>
+                      </SDG>
+                      <SDG GID="AUTOSAR-IO-VFB-SUB">
+                        <SD GID="X">80.0</SD>
+                        <SD GID="Y">40.0</SD>
+                        <SD GID="WIDTH">350.0</SD>
+                        <SD GID="HEIGHT">280.0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ProviderSensor</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+              </COMPONENTS>
+            </COMPOSITION-SW-COMPONENT-TYPE>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="a13ff3a9-32cd-40a1-872d-7ad6550675bd">
+              <SHORT-NAME>System</SHORT-NAME>
+              <COMPONENTS>
+                <SW-COMPONENT-PROTOTYPE UUID="1b263146-9892-4135-9fee-fdc585a4ba2b">
+                  <SHORT-NAME>HPC_DDS</SHORT-NAME>
+                  <TYPE-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/SwComponent/Composition/HPC_DDS</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+              </COMPONENTS>
+            </COMPOSITION-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="46dc9832-feea-4e6a-a0fd-4d821e522f79">
+      <SHORT-NAME>PortInterface</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="72db5326-845d-4476-a564-9774687f7b57">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-INTERFACE UUID="444bf021-c88f-42e7-b1b9-19b449fd99d4">
+              <SHORT-NAME>Sensor</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>sensorCam</SHORT-NAME>
+                  <SYMBOL>sensorCam</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <EVENTS>
+                <VARIABLE-DATA-PROTOTYPE UUID="87207b3c-acdc-44a0-82e5-d667491f9199">
+                  <SHORT-NAME>imageDataEvent</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/imageData</TYPE-TREF>
+                </VARIABLE-DATA-PROTOTYPE>
+              </EVENTS>
+              <METHODS>
+                <CLIENT-SERVER-OPERATION UUID="d280585f-041c-4766-bdad-077856d3b5bc">
+                  <SHORT-NAME>requestData</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="7d068749-7633-420b-b945-3f0d684ee993">
+                      <SHORT-NAME>isRequest</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/bool</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE UUID="e2baba6b-e374-429d-801e-5b36937d9de8">
+                      <SHORT-NAME>imageDataOut</SHORT-NAME>
+                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/imageData</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
+                </CLIENT-SERVER-OPERATION>
+              </METHODS>
+            </SERVICE-INTERFACE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="39fbc77a-3ac2-4e9a-be16-1571171d6039">
+      <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="b3fed9e4-9639-4e88-9b16-98f1d7eb00a0">
+          <SHORT-NAME>DltConfig</SHORT-NAME>
+          <ELEMENTS>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="6241ab04-fd36-4302-9217-bfbc78a8ab6b">
+              <SHORT-NAME>DltLogChannelToProcessMapping_CM_TO_CM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_DDS_Machine/LOG/CM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="23b0af12-c51a-47a9-a149-1d64c5a101cc">
+              <SHORT-NAME>DltLogChannelToProcessMapping_ClientSensor_TO_ClientSensor</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_DDS_Machine/LOG/ClientSensor</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ClientSensor</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="58d02b7c-7903-4c3e-9ffe-0d5a684a051f">
+              <SHORT-NAME>DltLogChannelToProcessMapping_EM_TO_EM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_DDS_Machine/LOG/EM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="1cae139c-6ddc-4ae1-aa15-fb8e9e5bbc99">
+              <SHORT-NAME>DltLogChannelToProcessMapping_ProviderSensor_TO_ProviderSensor</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/HPC_DDS_Machine/LOG/ProviderSensor</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/ProviderSensor</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="e9f755ec-0b0c-4a2f-b73b-26f275cb35e0">
+          <SHORT-NAME>Executable</SHORT-NAME>
+          <ELEMENTS>
+            <EXECUTABLE UUID="988bc7c1-d9be-4dab-87ee-9c46305fd3b3">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="909eb3d2-14bf-45a0-9c2e-a6edfd5348a5">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="00212145-85f0-45b2-b9b0-1385083a01c7">
+              <SHORT-NAME>ClientSensor</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="9771c390-b1b7-4d8c-a1b9-1067ad58431f">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ClientSensor</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="affbdeda-76a7-474d-ada1-2e022c7804ef">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="b1466989-7fb3-43df-9867-753e4c7293f2">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/EM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="b887a358-34ac-46a2-8f62-52fcd35619e9">
+              <SHORT-NAME>ProviderSensor</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="b71f7cdf-4447-423b-b596-4287c702c9b0">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/ProviderSensor</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="1d4789ea-ba09-47d0-80aa-9d11673a5c14">
+          <SHORT-NAME>Manifest</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="c8de3a70-0711-43e9-bf4c-2cf960acd8ad">
+              <SHORT-NAME>ClientSensor_AA_RPort0</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="AUTOSAR-IO-VFB-SUB">
+                    <SD GID="X">238.0</SD>
+                    <SD GID="Y">155.0</SD>
+                    <SD GID="WIDTH">110.0</SD>
+                    <SD GID="HEIGHT">30.0</SD>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/ClientSensor/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/ClientSensor/RPort0</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="DDS-REQUIRED-SERVICE-INSTANCE">/System/Service/Instance/Consumer_Sensor</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="e2ce291c-f810-4284-b681-05003df614aa">
+              <SHORT-NAME>ProviderSensor_AA_PPort0</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="AUTOSAR-IO-VFB-SUB">
+                    <SD GID="X">158.0</SD>
+                    <SD GID="Y">175.0</SD>
+                    <SD GID="WIDTH">110.0</SD>
+                    <SD GID="HEIGHT">30.0</SD>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/ProviderSensor/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/ProviderSensor/PPort0</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="DDS-PROVIDED-SERVICE-INSTANCE">/System/Service/Instance/Provider_Sensor</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ee96584c-bd42-4e9b-8129-9efc031c38fc">
+          <SHORT-NAME>Process</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS UUID="b151208f-6f83-4bd8-85a8-b2012a37cbcb">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/CM</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="2ac805aa-ced9-404e-9497-ef3fbdc4c226">
+                <SHORT-NAME>CM</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/HPC_DDS_Machine/POSIX/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfig/CM</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="66f19f60-feca-483f-8539-481e403a8c68">
+              <SHORT-NAME>ClientSensor</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/ClientSensor</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="531f5ee0-76c9-40e7-9024-5625c0ec0f8d">
+                <SHORT-NAME>ClientSensor</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <EXECUTION-DEPENDENCYS>
+                    <EXECUTION-DEPENDENCY>
+                      <PROCESS-STATE-IREF>
+                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/ProviderSensor/ProviderSensor</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
+                      </PROCESS-STATE-IREF>
+                    </EXECUTION-DEPENDENCY>
+                  </EXECUTION-DEPENDENCYS>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/HPC_DDS_Machine/POSIX/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfig/ClientSensor</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="d2e662fa-6399-43ea-996b-991d016701bb">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/EM</EXECUTABLE-REF>
+            </PROCESS>
+            <PROCESS UUID="94d5d3f0-1e6b-49bb-a1f0-5b697d064a36">
+              <SHORT-NAME>ProviderSensor</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/ProviderSensor</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="1f03e8b3-98f7-41ed-af54-385745736f2c">
+                <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <EXECUTION-DEPENDENCYS>
+                    <EXECUTION-DEPENDENCY>
+                      <PROCESS-STATE-IREF>
+                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
+                      </PROCESS-STATE-IREF>
+                    </EXECUTION-DEPENDENCY>
+                  </EXECUTION-DEPENDENCYS>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/HPC_DDS_Machine/POSIX/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfig/ProviderSensor</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="3b2ef44a-453b-421f-8e17-722c0d71cb0d">
+          <SHORT-NAME>StartupConfig</SHORT-NAME>
+          <ELEMENTS>
+            <STARTUP-CONFIG-SET UUID="27d8ff39-3181-452f-9ebe-758b1329e262">
+              <SHORT-NAME>StartupConfig</SHORT-NAME>
+              <STARTUP-CONFIGS>
+                <STARTUP-CONFIG UUID="f84b5e3b-d308-4518-b434-3236219caed1">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="d88c2ac3-7c16-4148-a8be-7caab93df64f">
+                  <SHORT-NAME>ClientSensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="b7708b3b-f267-460b-82df-d683199130a3">
+                  <SHORT-NAME>ProviderSensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>1.0</ENTER-TIMEOUT-VALUE>
+                    <EXIT-TIMEOUT-VALUE>1.0</EXIT-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+              </STARTUP-CONFIGS>
+            </STARTUP-CONFIG-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="922e7da1-922c-46b0-8903-afd21899badd">
+      <SHORT-NAME>StateMachine</SHORT-NAME>
+      <ELEMENTS>
+        <MODE-DECLARATION-GROUP UUID="9165ac82-c509-4c82-96c9-d8c464b914ec">
+          <SHORT-NAME>MachineState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="571ee145-7ba9-4d9e-bfa2-fb48b29a480d">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="a3a74788-ff5b-420e-b484-9e7c98f387a6">
+              <SHORT-NAME>Restart</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="74adc3e2-1be9-41a0-b2ad-ce8ee65b6a7d">
+              <SHORT-NAME>Shutdown</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="cade2d6e-df6f-4129-a829-3724b482bbd0">
+              <SHORT-NAME>Startup</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="3fd15ebb-d17f-4a52-9b55-22fc8b8ba3dd">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="89155d7c-0390-4597-89f7-ddc75e2069a2">
+          <SHORT-NAME>ProcessState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Idle</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="0fc7bff7-c7c6-4305-a597-e6035e83669b">
+              <SHORT-NAME>Idle</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b5e54489-e8ad-4815-8025-e7c78a182a05">
+              <SHORT-NAME>Running</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="fcd48dae-5281-40d5-92c1-f9388f6c3b3d">
+              <SHORT-NAME>Starting</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="092db3eb-2693-418b-ba22-9dc0ea52b1ec">
+              <SHORT-NAME>Terminated</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES></AUTOSAR>

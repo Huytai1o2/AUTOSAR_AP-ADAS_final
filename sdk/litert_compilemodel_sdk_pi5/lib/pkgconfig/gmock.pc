@@ -1,0 +1,10 @@
+libdir=/home/huytai102/litert-2.3.1/litert/litert_compilemodel/lib
+includedir=/home/huytai102/litert-2.3.1/litert/litert_compilemodel/include
+
+Name: gmock
+Description: GoogleMock (without main() function)
+Version: 1.12.1
+URL: https://github.com/google/googletest
+Requires: gtest = 1.12.1
+Libs: -L${libdir} -lgmock 
+Cflags: -I${includedir} -DGTEST_HAS_PTHREAD=1

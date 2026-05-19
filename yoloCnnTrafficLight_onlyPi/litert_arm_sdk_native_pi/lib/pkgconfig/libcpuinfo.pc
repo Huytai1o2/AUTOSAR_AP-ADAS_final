@@ -1,0 +1,12 @@
+prefix=/home/minhphan123/tflite_build/install
+exec_prefix=/home/minhphan123/tflite_build/install
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libcpuinfo
+Description: Library to detect essential performance optimization information about host CPU.
+Version: 
+URL: 
+Libs: -L${libdir} -lcpuinfo
+Cflags: -I${includedir}
+

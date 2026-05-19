@@ -1,0 +1,1 @@
+g++ -std=c++17 -O2 -o location_access location_access.cpp

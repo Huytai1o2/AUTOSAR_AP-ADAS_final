@@ -1,7 +1,9 @@
 # Bỏ qua các file nén nặng
 *.tar.gz
 *.zip
+*.env
 
 # Bỏ qua thư mục build (nơi chứa file rác khi biên dịch)
 build/
 install/
+cnn_digits/imageProcessing_venv/
