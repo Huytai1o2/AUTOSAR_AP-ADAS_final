@@ -1,0 +1,5 @@
+UART1 wire from raspi5: 
+- Green  - GPIO0 - pin 27: UART1_TX
+- Blue   - GPIO1 - Pin 28: UART1_RX
+- Orange - 3V3   - Pin 1
+- Yellow - GND   - Pin 9

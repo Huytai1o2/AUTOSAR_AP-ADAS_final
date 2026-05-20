@@ -17,6 +17,11 @@
 #define I2C_SDA 11
 #define I2C_SCL 12
 
+// Define error number 
+#define ERR_OK 0x00
+#define ERR_OUT_OF_RANGE 0x01
+
+
 // 3. System Constants
 const float MAX_SPEED_ABS = 120.0f;
 const int PWM_MAX = 255;

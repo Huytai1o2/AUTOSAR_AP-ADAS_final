@@ -22,17 +22,20 @@ void vUartTask(void *pvParameters) {
                             sysState.max_limit = value;
                             sysState.limit_active = true;
                             xSemaphoreGive(xStateMutex);
-                            Serial.printf("[SYSTEM] Speed limit successfully set to: %d km/h\n", value);
+                            // Serial.printf("[SYSTEM] Speed limit successfully set to: %d km/h\n", value);
+                            Serial.printf("[LIMIT] %d %d\n", value, ERR_OK); //  Meaning: Announcing activate speed limit successfully.
                         }
                     } else if (value == -1) {
                         if (xSemaphoreTake(xStateMutex, portMAX_DELAY) == pdTRUE) {
                             sysState.limit_active = false;
                             sysState.max_limit = (int)MAX_SPEED_ABS;
                             xSemaphoreGive(xStateMutex);
-                            Serial.println("[SYSTEM] Speed limit deactivated. Default 120 km/h restored.");
+                            // Serial.println("[SYSTEM] Speed limit deactivated. Default 120 km/h restored."); // For debug only
+                            Serial.printf("[LIMIT] %d %d\n", (int)MAX_SPEED_ABS, ERR_OK); //  Meaning: Announcing deactivate speed limit successfully.
                         }
                     } else {
-                        Serial.println("[WARNING] Invalid UART Command. Supported: 1 to 100, or -1 to clear.");
+                        // Serial.println("[WARNING] Invalid UART Command. Supported: 1 to 100, or -1 to clear.");
+                        Serial.printf("[LIMIT-ERR] %d\n", ERR_OUT_OF_RANGE); //  Meaning: Announcing error limit speed. This error code should be defined in globals.h
                     }
                     inputBuffer = ""; // Flush the buffer
                 }

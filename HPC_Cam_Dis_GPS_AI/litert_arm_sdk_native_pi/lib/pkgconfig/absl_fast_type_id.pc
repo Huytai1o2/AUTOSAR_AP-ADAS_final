@@ -1,0 +1,12 @@
+prefix=/home/minhphan123/tflite_build/install
+exec_prefix=${prefix}
+libdir=/home/minhphan123/tflite_build/install/lib
+includedir=/home/minhphan123/tflite_build/install/include
+
+Name: absl_fast_type_id
+Description: Abseil fast_type_id library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_config = 20250127
+Libs: -L${libdir}  
+Cflags: -I${includedir} -DNOMINMAX

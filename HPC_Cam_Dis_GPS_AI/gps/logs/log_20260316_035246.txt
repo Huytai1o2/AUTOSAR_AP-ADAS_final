@@ -1,0 +1,55 @@
+Parsing hochiminh.geojson...
+Loaded 3056 traffic signal nodes.
+
+Number of location: 3056
+Building KD-tree...
+KD-tree built in 0.59 ms.
+
+Nearest traffic light to (10.7955, 106.6782):
+  ID:        2290177711
+  Location:  (10.7946032, 106.6778423)
+  Distance:  101.1 m
+  Query time: 0.0125 ms
+
+Nearest traffic light to (10.7978, 106.6733):
+  ID:        366435377
+  Location:  (10.7979790, 106.6715846)
+  Distance:  185.4 m
+  Query time: 0.0024 ms
+
+Nearest traffic light to (10.7864, 106.6905):
+  ID:        411926160
+  Location:  (10.7859074, 106.6899935)
+  Distance:  79.3 m
+  Query time: 0.0012 ms
+
+Nearest traffic light to (10.8018, 106.6496):
+  ID:        11414718176
+  Location:  (10.8019621, 106.6477102)
+  Distance:  209.7 m
+  Query time: 0.0021 ms
+
+Nearest traffic light to (10.7977, 106.6908):
+  ID:        2408534566
+  Location:  (10.7974141, 106.6906076)
+  Distance:  34.4 m
+  Query time: 0.0013 ms
+
+Nearest traffic light to (10.8010, 106.6820):
+  ID:        366473119
+  Location:  (10.8018110, 106.6829772)
+  Distance:  139.8 m
+  Query time: 0.0019 ms
+
+Nearest traffic light to (10.7996, 106.7065):
+  ID:        13267633009
+  Location:  (10.7974329, 106.7042063)
+  Distance:  346.1 m
+  Query time: 0.0031 ms
+
+Nearest traffic light to (10.7951, 106.6829):
+  ID:        366414466
+  Location:  (10.7929933, 106.6800466)
+  Distance:  387.6 m
+  Query time: 0.0042 ms
+

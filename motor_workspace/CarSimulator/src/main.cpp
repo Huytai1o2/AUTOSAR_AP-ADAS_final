@@ -56,12 +56,12 @@ SemaphoreHandle_t xStateMutex = NULL;
 void setup() {
     // 3. Initialize Serial Communication at 115200 baud
     Serial.begin(115200);
-    // delay(100); // Give the ESP32 hardware UART a moment to initialize
+    delay(1000); // Give the ESP32 hardware UART a moment to initialize
     // Delay for 10 seconds 
-    for (auto i = 0; i < 10; ++i){
-        Serial.println("[STARTUP] Waiting for the UART to connect...");
-        delay(1000); 
-    }
+    // for (auto i = 0; i < 10; ++i){
+    //     Serial.println("[STARTUP] Waiting for the UART to connect...");
+    //     delay(1000); 
+    // }
     Serial.println("[STARTUP] Fan Speed Controller starting up...");
 
     // 4. Initialize the custom ESP32-S3 I2C pins for the LCD (SDA=11, SCL=12)
