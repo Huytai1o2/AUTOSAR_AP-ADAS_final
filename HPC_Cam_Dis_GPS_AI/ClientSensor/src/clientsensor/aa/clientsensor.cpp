@@ -23,10 +23,23 @@
 #include <cstring>
 #include <cstdint>
 #include <vector>
+#include <fcntl.h>
+#include <termios.h>
+#include <sys/select.h>
+#include <cerrno>
+#include <string>
+#include <cstdio>
+#include <thread>
 
 namespace
 {
 constexpr std::uint32_t kGpsJpegMagic = 0x47505331u;
+
+constexpr const char* MOTOR_UART_PORT = "/dev/ttyAMA1";
+constexpr double MOTOR_INIT_DELAY_SEC = 0.5;
+constexpr double COMMAND_COOLDOWN_SEC = 2.0;
+constexpr int MOTOR_ABSOLUTE_MAX = 120;
+constexpr int DEFAULT_RESTRICTED_SPEED = 40;
 
 static bool sendAll(int s, const void* buf, std::size_t len)
 {
@@ -46,11 +59,12 @@ static bool sendAll(int s, const void* buf, std::size_t len)
 
 /// Parsed GPS-JPEG wire from ProviderSensor; on legacy raw JPEG, returns inRange=0 and full buffer as JPEG.
 static void parseImageData(const sensorCam::proxy::events::imageDataEvent::SampleType& data, std::vector<std::uint8_t>& jpegOut,
-                          std::uint8_t& inRange, std::int64_t& nodeId, std::int32_t& distM)
+                          std::uint8_t& inRange, std::int64_t& nodeId, std::int32_t& distM, std::uint8_t& isRedLight)
 {
     inRange = 0;
     nodeId = 0;
     distM = 0;
+    isRedLight = 0;
     if (data.size() < 24)
     {
         jpegOut.assign(reinterpret_cast<const std::uint8_t*>(data.data()),
@@ -74,6 +88,7 @@ static void parseImageData(const sensorCam::proxy::events::imageDataEvent::Sampl
         return;
     }
     std::memcpy(&inRange, data.data() + 5, 1);
+    std::memcpy(&isRedLight, data.data() + 6, 1); // reserved[0] is at offset 6
     std::memcpy(&nodeId, data.data() + 8, 8);
     std::memcpy(&distM, data.data() + 16, 4);
     jpegOut.resize(jlen);
@@ -90,6 +105,12 @@ ClientSensor::ClientSensor()
     : m_logger(ara::log::CreateLogger("cSen", "SWC", ara::log::LogLevel::kVerbose))
     , m_running{false}
     , m_workers(2)
+    , m_motorFd{-1}
+    , m_gpsDistance{9999}
+    , m_inRange{false}
+    , m_isRedLight{false}
+    , m_lastCommandTimestamp{std::chrono::steady_clock::now() - std::chrono::seconds(5)}
+    , m_currentLimitState{-2}
 {
 }
 
@@ -101,6 +122,49 @@ bool ClientSensor::Initialize()
 {
     m_logger.LogVerbose() << "ClientSensor::Initialize";
     
+    // Open UART port for motor control
+    m_motorFd = open(MOTOR_UART_PORT, O_RDWR | O_NOCTTY | O_NDELAY);
+    if (m_motorFd < 0)
+    {
+        m_logger.LogError() << "Failed to open motor port " << MOTOR_UART_PORT << ": " << strerror(errno);
+    }
+    else
+    {
+        fcntl(m_motorFd, F_SETFL, 0); // clear O_NDELAY
+        struct termios tty{};
+        if (tcgetattr(m_motorFd, &tty) != 0)
+        {
+            m_logger.LogError() << "Failed to get serial attributes: " << strerror(errno);
+            close(m_motorFd);
+            m_motorFd = -1;
+        }
+        else
+        {
+            cfmakeraw(&tty);
+            cfsetispeed(&tty, B115200);
+            cfsetospeed(&tty, B115200);
+            tty.c_cflag &= ~PARENB;
+            tty.c_cflag &= ~CSTOPB;
+            tty.c_cflag &= ~CSIZE;
+            tty.c_cflag |= CS8;
+            tty.c_cflag |= CREAD | CLOCAL;
+            tty.c_cc[VMIN] = 0;
+            tty.c_cc[VTIME] = 0;
+            if (tcsetattr(m_motorFd, TCSANOW, &tty) != 0)
+            {
+                m_logger.LogError() << "Failed to set serial attributes: " << strerror(errno);
+                close(m_motorFd);
+                m_motorFd = -1;
+            }
+            else
+            {
+                m_logger.LogInfo() << "Successfully opened motor port " << MOTOR_UART_PORT << " at 115200 baud";
+                // Apply a blocking sleep/delay for MOTOR_INIT_DELAY_SEC (0.5s) immediately after opening the port
+                std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(MOTOR_INIT_DELAY_SEC * 1000)));
+            }
+        }
+    }
+
     // Tạo Cấu trúc tĩnh trong hàm để giữ Connection
     static int sock = -1;
     static struct sockaddr_in server_addr;
@@ -141,7 +205,13 @@ bool ClientSensor::Initialize()
             std::uint8_t inRange = 0;
             std::int64_t nodeId = 0;
             std::int32_t distM = 0;
-            parseImageData(data, jpeg, inRange, nodeId, distM);
+            std::uint8_t isRedLight = 0;
+            parseImageData(data, jpeg, inRange, nodeId, distM, isRedLight);
+
+            // Store in atomic variables for the Run() control loop thread
+            m_gpsDistance.store(distM);
+            m_inRange.store(inRange != 0);
+            m_isRedLight.store(isRedLight != 0);
 
             const std::uint32_t jlen = static_cast<std::uint32_t>(jpeg.size());
             const bool ok = sendAll(sock, &jlen, sizeof(jlen)) && (jlen == 0U || sendAll(sock, jpeg.data(), jpeg.size()))
@@ -170,6 +240,13 @@ void ClientSensor::Terminate()
     
     // stop running
     m_running = false;
+
+    // Clean up motor port
+    if (m_motorFd >= 0)
+    {
+        close(m_motorFd);
+        m_motorFd = -1;
+    }
     
     m_RPort0->Terminate();
 }
@@ -181,13 +258,174 @@ void ClientSensor::Run()
     // start running
     m_running = true;
     
-    // m_workers.Async([this] { m_RPort0->ReceiveEventimageDataEventCyclic(); });
-    
-    // m_workers.Wait();
-
     while (m_running)
     {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // 1. Evaluate environmental sensors (Trigger Logic)
+        bool conditionA = m_inRange.load() || (m_gpsDistance.load() <= 200);
+        bool conditionB = m_isRedLight.load();
+        
+        int targetState = -1;
+        if (conditionA || conditionB)
+        {
+            targetState = DEFAULT_RESTRICTED_SPEED;
+        }
+        else
+        {
+            targetState = -1;
+        }
+
+        // 2. Rate-Limited Execution
+        if (targetState != m_currentLimitState)
+        {
+            auto now = std::chrono::steady_clock::now();
+            double elapsed = std::chrono::duration<double>(now - m_lastCommandTimestamp).count();
+            if (elapsed >= COMMAND_COOLDOWN_SEC)
+            {
+                send_speed_limit(targetState);
+                read_motor_response();
+                m_lastCommandTimestamp = now;
+                m_currentLimitState = targetState;
+            }
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+}
+
+void ClientSensor::send_speed_limit(int limit_value)
+{
+    if ((limit_value < 1 || limit_value > 100) && limit_value != -1)
+    {
+        m_logger.LogError() << "Invalid speed limit value: " << limit_value;
+        return;
+    }
+    if (m_motorFd < 0)
+    {
+        m_logger.LogWarn() << "Motor UART port not open, skipping send_speed_limit(" << limit_value << ")";
+        return;
+    }
+
+    std::string cmd = std::to_string(limit_value) + "\n";
+    ssize_t written = write(m_motorFd, cmd.data(), cmd.size());
+    if (written < 0)
+    {
+        m_logger.LogError() << "Failed to write speed limit " << limit_value << " to UART: " << strerror(errno);
+    }
+    else
+    {
+        m_logger.LogInfo() << "Successfully transmitted speed limit: " << limit_value;
+    }
+}
+
+void ClientSensor::read_motor_response()
+{
+    if (m_motorFd < 0)
+    {
+        return;
+    }
+
+    std::string response;
+    char buf[1024];
+    
+    // Read response line until '\n' using select for safety timeout
+    while (m_running)
+    {
+        fd_set rfds;
+        FD_ZERO(&rfds);
+        FD_SET(m_motorFd, &rfds);
+        struct timeval tv{3, 0}; // 3s timeout like ProviderSensor
+        
+        int s = select(m_motorFd + 1, &rfds, nullptr, nullptr, &tv);
+        if (s > 0)
+        {
+            ssize_t bytes_read = read(m_motorFd, buf, sizeof(buf));
+            if (bytes_read > 0)
+            {
+                bool got_newline = false;
+                for (ssize_t i = 0; i < bytes_read; ++i)
+                {
+                    char c = buf[i];
+                    response += c;
+                    if (c == '\n')
+                    {
+                        got_newline = true;
+                        break;
+                    }
+                }
+                if (got_newline)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+        else if (s == 0)
+        {
+            m_logger.LogWarn() << "Timeout waiting for motor response";
+            return;
+        }
+        else
+        {
+            if (errno == EINTR) continue;
+            m_logger.LogError() << "Select error on motor port: " << strerror(errno);
+            return;
+        }
+    }
+
+    // Strip trailing \r and \n for cleaner logs
+    std::string clean_resp = response;
+    while (!clean_resp.empty() && (clean_resp.back() == '\n' || clean_resp.back() == '\r'))
+    {
+        clean_resp.pop_back();
+    }
+
+    m_logger.LogInfo() << "Motor response: " << clean_resp.c_str();
+
+    if (clean_resp.rfind("[LIMIT]", 0) == 0)
+    {
+        // Success path: "[LIMIT] {Applied_Limit} 0"
+        int applied_limit = 0;
+        int status_val = 0;
+        if (std::sscanf(clean_resp.c_str(), "[LIMIT] %d %d", &applied_limit, &status_val) >= 1)
+        {
+            m_logger.LogInfo() << "Parsed applied limit: " << applied_limit;
+            if (m_currentLimitState == -1)
+            {
+                if (applied_limit != MOTOR_ABSOLUTE_MAX)
+                {
+                    m_logger.LogError() << "Verification failed: target state was unrestricted (-1), but motor applied limit is " 
+                                       << applied_limit << " (expected absolute max " << MOTOR_ABSOLUTE_MAX << ")";
+                }
+                else
+                {
+                    m_logger.LogInfo() << "Verification successful: sent -1, motor applied absolute max " << MOTOR_ABSOLUTE_MAX;
+                }
+            }
+            else
+            {
+                if (applied_limit != m_currentLimitState)
+                {
+                    m_logger.LogWarn() << "Verification warning: motor applied limit " << applied_limit 
+                                       << " differs from target speed limit " << m_currentLimitState;
+                }
+                else
+                {
+                    m_logger.LogInfo() << "Verification successful: motor applied limit matches target " << m_currentLimitState;
+                }
+            }
+        }
+    }
+    else if (clean_resp.rfind("[LIMIT-ERR]", 0) == 0)
+    {
+        // Error path: "[LIMIT-ERR] %d"
+        int err_code = 0;
+        if (std::sscanf(clean_resp.c_str(), "[LIMIT-ERR] %d", &err_code) == 1)
+        {
+            m_logger.LogError() << "Motor error response received. Error Code: " << err_code;
+        }
     }
 }
  

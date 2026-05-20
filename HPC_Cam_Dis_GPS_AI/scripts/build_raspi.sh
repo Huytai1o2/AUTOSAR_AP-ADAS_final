@@ -82,10 +82,10 @@ cp ./scripts/roudi_config.toml build/install/etc/ipc/roudi_config.toml
 cp ./scripts/run.sh build/install/
 
 # Change the ip address in the CM_CmInstantiation.json file
-sed -i 's/172.31.36.143/172.28.182.243/g' build/install/etc/com/CM_CmInstantiation.json
+sed -i 's/172.31.36.143/192.168.2.93/g' build/install/etc/com/CM_CmInstantiation.json
 
 # Change the ip address in the CM_CycloneDDS_0.xml file
-sed -i 's/172.31.36.143/172.28.182.243/g' build/install/etc/com/dds/CM_CycloneDDS_0.xml
+sed -i 's/172.31.36.143/192.168.2.93/g' build/install/etc/com/dds/CM_CycloneDDS_0.xml
 
 # Change network interface from eth0 to wlan0
 sed -i 's/eth0/wlan0/g' build/install/etc/com/dds/CM_CycloneDDS_0.xml

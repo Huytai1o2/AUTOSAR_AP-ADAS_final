@@ -116,7 +116,8 @@ try:
                     thk = max(1, int(round(fs * 2)))
                     margin = 20
 
-                    if dist_m < 100:
+                    # if dist_m < 100:
+                    if in_range:
                         warn = 'Warning! Traffic light close, please slow down!'
                         (_tw, _th), bl = cv2.getTextSize(warn, font, fs, thk)
                         y_warn = h - margin - bl

@@ -156,6 +156,7 @@ private:
 
     mutable std::atomic<std::uint32_t> m_gpsSeq{0};
     alignas(64) GpsSnapshot m_gpsSnapshot{};
+    std::atomic<bool> m_isRedLight{false};
 
     // ── GPS UART helpers ──────────────────────────────────────────────────
     static double                   nmeaToDeg(const std::string& field, char hemi);

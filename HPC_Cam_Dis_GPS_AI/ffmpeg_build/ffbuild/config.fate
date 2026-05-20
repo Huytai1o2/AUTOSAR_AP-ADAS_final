@@ -1,0 +1,1 @@
+config:aarch64::generic:linux:gcc 12.2.0 (GCC):--prefix=/root/workspace/deps/ffmpeg --cross-prefix=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu- --arch=aarch64 --target-os=linux --enable-cross-compile --enable-static --disable-shared --enable-pic --disable-programs --disable-doc --disable-debug --disable-network --disable-x86asm

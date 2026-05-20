@@ -23,6 +23,8 @@
 #include "para/swc/port_pool.h"
 
 #include <opencv2/opencv.hpp>
+#include <atomic>
+#include <chrono>
  
 namespace clientsensor
 {
@@ -62,6 +64,17 @@ private:
     
     /// @brief Instance of Port {ClientSensor.RPort0}
     std::unique_ptr<clientsensor::aa::port::RPort0> m_RPort0;
+    /// @brief Motor file descriptor and states
+    int m_motorFd{-1};
+    std::atomic<std::int32_t> m_gpsDistance{9999};
+    std::atomic<bool> m_inRange{false};
+    std::atomic<bool> m_isRedLight{false};
+    std::chrono::steady_clock::time_point m_lastCommandTimestamp;
+    int m_currentLimitState{-2};
+
+    /// @brief Helper functions for motor communication
+    void send_speed_limit(int limit_value);
+    void read_motor_response();
 };
  
 } /// namespace aa

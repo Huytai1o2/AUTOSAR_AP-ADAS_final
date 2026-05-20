@@ -542,12 +542,12 @@ cv::Mat ProviderSensor::processFrame(const cv::Mat& frame, int outWidth)
     // 2. YOLO detect
     std::vector<Box> boxes_pad=m_yolo->detect(padded);
     auto t2 = clk::now();
-    {
-        const auto& yt = m_yolo->timing();
-        m_logger.LogInfo() << "[YOLO] pre=" << yt.pre
-                           << "ms  infer=" << yt.infer
-                           << "ms  post=" << yt.post << "ms";
-    }
+    // {
+    //     const auto& yt = m_yolo->timing();
+    //     m_logger.LogInfo() << "[YOLO] pre=" << yt.pre
+    //                        << "ms  infer=" << yt.infer
+    //                        << "ms  post=" << yt.post << "ms";
+    // }
 
     // 3. Inverse-map + box selection
     std::vector<Box> boxes_orig;
@@ -612,11 +612,19 @@ cv::Mat ProviderSensor::processFrame(const cv::Mat& frame, int outWidth)
     for (const auto& t : timers) drawBox(result,scaleBox(t),{200,200,0},"");
     auto t5 = clk::now();
 
-    m_logger.LogInfo() << "[TIME] letterbox=" << T(t0,t1)
-                       << "ms  detect=" << T(t1,t2)
-                       << "ms  map+sel=" << T(t2,t3)
-                       << "ms  ocr_threads=" << T(t3,t4)
-                       << "ms  annotate=" << T(t4,t5) << "ms";
+    bool has_red_light = false;
+    for (const auto& r : tasks) {
+        if (r.color == "red") {
+            has_red_light = true;
+        }
+    }
+    m_isRedLight.store(has_red_light);
+
+    // m_logger.LogInfo() << "[TIME] letterbox=" << T(t0,t1)
+    //                    << "ms  detect=" << T(t1,t2)
+    //                    << "ms  map+sel=" << T(t2,t3)
+    //                    << "ms  ocr_threads=" << T(t3,t4)
+    //                    << "ms  annotate=" << T(t4,t5) << "ms";
     return result;
 }
 
@@ -918,7 +926,8 @@ void ProviderSensor::Run()
             hdr.magic    = kGpsJpegMagic;
             hdr.version  = 1;
             hdr.in_range = snap.inRange;
-            hdr.reserved[0]=0; hdr.reserved[1]=0;
+            hdr.reserved[0] = m_isRedLight.load() ? 1u : 0u;
+            hdr.reserved[1] = 0;
             hdr.node_id  = snap.nodeId;
             hdr.dist_m   = snap.distM;
             hdr.jpeg_len = static_cast<std::uint32_t>(jpegBuf.size());
@@ -935,13 +944,13 @@ void ProviderSensor::Run()
             auto te = clk::now();
 
             double total_ms = fms(te - t_start).count();
-            m_logger.LogInfo() << "[CAM] cap=" << fms(ta-t_start).count()
-                               << "ms  pipeline=" << fms(tb-ta).count()
-                               << "ms  imencode=" << fms(tc-tb).count()
-                               << "ms  pack=" << fms(td-tc).count()
-                               << "ms  dds=" << fms(te-td).count()
-                               << "ms  TOTAL=" << total_ms
-                               << "ms  jpeg=" << jpegBuf.size() << "B";
+            // m_logger.LogInfo() << "[CAM] cap=" << fms(ta-t_start).count()
+            //                    << "ms  pipeline=" << fms(tb-ta).count()
+            //                    << "ms  imencode=" << fms(tc-tb).count()
+            //                    << "ms  pack=" << fms(td-tc).count()
+            //                    << "ms  dds=" << fms(te-td).count()
+            //                    << "ms  TOTAL=" << total_ms
+            //                    << "ms  jpeg=" << jpegBuf.size() << "B";
         }
     });
 

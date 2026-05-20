@@ -1,0 +1,22 @@
+3rdparty/quirc/CMakeFiles/quirc.dir/src/version_db.c.o: \
+ /root/workspace/opencv/3rdparty/quirc/src/version_db.c \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/stdc-predef.h \
+ /root/workspace/opencv/3rdparty/quirc/include/quirc_internal.h \
+ /root/workspace/opencv/3rdparty/quirc/include/quirc.h \
+ /opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include/stdint.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/stdint.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/libc-header-start.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/features.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/features-time64.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/wordsize.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/timesize.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/sys/cdefs.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/long-double.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/gnu/stubs.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/gnu/stubs-lp64.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/types.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/typesizes.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/time64.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/wchar.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/stdint-intn.h \
+ /opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include/bits/stdint-uintn.h
