@@ -1,0 +1,1521 @@
+The target system is: Linux -  - aarch64
+The host system is: Linux - 6.19.4-061904-generic - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/root/workspace/build_opencv/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/root/workspace/build_opencv/CMakeFiles/3.22.1/CompilerIdC/a.out"
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_79d4a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_79d4a.dir/build.make CMakeFiles/cmTC_79d4a.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++   -fPIE   -v -o CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++
+Target: aarch64-linux-gnu
+Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c,c++,fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 12.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/cc1plus -quiet -v -iprefix /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/ -isysroot /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc -D_GNU_SOURCE /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_79d4a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+fp+simd -mlittle-endian -mabi=lp64 -version -fPIE -o /tmp/ccsTp3sH.s
+GNU C++17 (GCC) version 12.2.0 (aarch64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include"
+ignoring nonexistent directory "/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/local/include"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include
+ /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include
+End of search list.
+GNU C++17 (GCC) version 12.2.0 (aarch64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 4145a5ca0a5a64cc3b86f0cbba517a2f
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/as -v -EL -march=armv8-a+fp+simd -mabi=lp64 -o CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccsTp3sH.s
+GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils) 2.40
+COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/
+LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_79d4a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79d4a.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++  -v CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_79d4a 
+Using built-in specs.
+COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++
+COLLECT_LTO_WRAPPER=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c,c++,fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 12.2.0 (GCC) 
+COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/
+LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_79d4a' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_79d4a.'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2 -plugin /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccInF8nK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc --eh-frame-hdr -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_79d4a /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_79d4a' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_79d4a.'
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include]
+  end of search list found
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0/backward]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include]
+  implicit include dirs: [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include/c++/12.2.0/backward;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(aarch64-linux-gnu-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_79d4a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_79d4a.dir/build.make CMakeFiles/cmTC_79d4a.dir/build]
+  ignore line: [gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++   -fPIE   -v -o CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c c++ fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/']
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/cc1plus -quiet -v -iprefix /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/ -isysroot /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc -D_GNU_SOURCE /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_79d4a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=armv8-a+fp+simd -mlittle-endian -mabi=lp64 -version -fPIE -o /tmp/ccsTp3sH.s]
+  ignore line: [GNU C++17 (GCC) version 12.2.0 (aarch64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/aarch64-linux-gnu]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include/c++/12.2.0/backward]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (GCC) version 12.2.0 (aarch64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 4145a5ca0a5a64cc3b86f0cbba517a2f]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/']
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/as -v -EL -march=armv8-a+fp+simd -mabi=lp64 -o CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccsTp3sH.s]
+  ignore line: [GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils) 2.40]
+  ignore line: [COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/]
+  ignore line: [LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_79d4a]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79d4a.dir/link.txt --verbose=1]
+  ignore line: [/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++  -v CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_79d4a ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c c++ fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/]
+  ignore line: [LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_79d4a' '-shared-libgcc' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_79d4a.']
+  link line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2 -plugin /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccInF8nK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc --eh-frame-hdr -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_79d4a /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccInF8nK.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_79d4a] ==> ignore
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib]
+    arg [CMakeFiles/cmTC_79d4a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crt1.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crti.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crtn.o]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crt1.o;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crti.o;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crtn.o]
+  implicit dirs: [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0;/opt/cross-pi-gcc-12.2.0-64/lib/gcc;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib]
+  implicit fwks: []
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_17064/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_17064.dir/build.make CMakeFiles/cmTC_17064.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fPIE   -v -o CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc
+Target: aarch64-linux-gnu
+Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c,c++,fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 12.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/cc1 -quiet -v -iprefix /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/ -isysroot /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_17064.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+fp+simd -mlittle-endian -mabi=lp64 -version -fPIE -o /tmp/cc5mrELH.s
+GNU C17 (GCC) version 12.2.0 (aarch64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include"
+ignoring nonexistent directory "/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/local/include"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed"
+ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include
+ /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include
+End of search list.
+GNU C17 (GCC) version 12.2.0 (aarch64-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 40411402cec1e717180603b173cf1ba4
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/as -v -EL -march=armv8-a+fp+simd -mabi=lp64 -o CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o /tmp/cc5mrELH.s
+GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils) 2.40
+COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/
+LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/
+COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_17064
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17064.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc  -v CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -o cmTC_17064 
+Using built-in specs.
+COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc
+COLLECT_LTO_WRAPPER=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c,c++,fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 12.2.0 (GCC) 
+COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/
+LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_17064' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_17064.'
+ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2 -plugin /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAYPnVT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc --eh-frame-hdr -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_17064 /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_17064' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_17064.'
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include]
+    add: [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include]
+  end of search list found
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include]
+  collapse include dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include]
+  implicit include dirs: [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/include;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(aarch64-linux-gnu-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_17064/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_17064.dir/build.make CMakeFiles/cmTC_17064.dir/build]
+  ignore line: [gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fPIE   -v -o CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c c++ fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/']
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/cc1 -quiet -v -iprefix /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/ -isysroot /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_17064.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=armv8-a+fp+simd -mlittle-endian -mabi=lp64 -version -fPIE -o /tmp/cc5mrELH.s]
+  ignore line: [GNU C17 (GCC) version 12.2.0 (aarch64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed"]
+  ignore line: [ignoring duplicate directory "/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/../../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/include-fixed]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/include]
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 12.2.0 (aarch64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 40411402cec1e717180603b173cf1ba4]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/']
+  ignore line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/as -v -EL -march=armv8-a+fp+simd -mabi=lp64 -o CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o /tmp/cc5mrELH.s]
+  ignore line: [GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils) 2.40]
+  ignore line: [COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/]
+  ignore line: [LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-fPIE' '-v' '-o' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o' '-c' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_17064]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17064.dir/link.txt --verbose=1]
+  ignore line: [/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc  -v CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -o cmTC_17064 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix= --target=aarch64-linux-gnu --enable-languages=c c++ fortran --with-sysroot=/aarch64-linux-gnu/libc --with-build-sysroot=/tmp/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc --with-arch=armv8-a+fp+simd --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/bin/]
+  ignore line: [LIBRARY_PATH=/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/:/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/:/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_17064' '-march=armv8-a+fp+simd' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_17064.']
+  link line: [ /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2 -plugin /opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAYPnVT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc --eh-frame-hdr -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_17064 /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64 -L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib -L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o /opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/opt/cross-pi-gcc-12.2.0-64/bin/../libexec/gcc/aarch64-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccAYPnVT.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_17064] ==> ignore
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib]
+    arg [-L/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib] ==> dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib]
+    arg [CMakeFiles/cmTC_17064.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o]
+    arg [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o] ==> obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crt1.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crt1.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crti.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crti.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o]
+  collapse obj [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64/crtn.o] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crtn.o]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc] ==> [/opt/cross-pi-gcc-12.2.0-64/lib/gcc]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib/../lib64] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../lib/gcc/aarch64-linux-gnu/12.2.0/../../../../aarch64-linux-gnu/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib]
+  collapse library dir [/opt/cross-pi-gcc-12.2.0-64/bin/../aarch64-linux-gnu/libc/usr/lib] ==> [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crt1.o;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crti.o;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtbegin.o;/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0/crtend.o;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64/crtn.o]
+  implicit dirs: [/opt/cross-pi-gcc-12.2.0-64/lib/gcc/aarch64-linux-gnu/12.2.0;/opt/cross-pi-gcc-12.2.0-64/lib/gcc;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib64;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/lib;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/lib;/opt/cross-pi-gcc-12.2.0-64/aarch64-linux-gnu/libc/usr/lib]
+  implicit fwks: []
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ddc50/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ddc50.dir/build.make CMakeFiles/cmTC_ddc50.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ddc50.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_ddc50.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ddc50
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ddc50.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_ddc50.dir/CheckIncludeFile.c.o -o cmTC_ddc50 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the posix_memalign exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cd59e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cd59e.dir/build.make CMakeFiles/cmTC_cd59e.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd59e.dir/CheckSymbolExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_cd59e.dir/CheckSymbolExists.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_cd59e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd59e.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_cd59e.dir/CheckSymbolExists.c.o -o cmTC_cd59e 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+File /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef posix_memalign
+  return ((int*)(&posix_memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_87bd7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_87bd7.dir/build.make CMakeFiles/cmTC_87bd7.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87bd7.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_87bd7.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_87bd7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87bd7.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_87bd7.dir/CheckIncludeFile.c.o -o cmTC_87bd7 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the memalign exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0a22a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0a22a.dir/build.make CMakeFiles/cmTC_0a22a.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0a22a.dir/CheckSymbolExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_0a22a.dir/CheckSymbolExists.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_0a22a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a22a.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_0a22a.dir/CheckSymbolExists.c.o -o cmTC_0a22a 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+File /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memalign
+  return ((int*)(&memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function fseeko exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_20e30/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_20e30.dir/build.make CMakeFiles/cmTC_20e30.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_20e30.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=fseeko -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_20e30.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_20e30
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_20e30.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=fseeko -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_20e30.dir/CheckFunctionExists.c.o -o cmTC_20e30 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cab6d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cab6d.dir/build.make CMakeFiles/cmTC_cab6d.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cab6d.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_cab6d.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_cab6d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cab6d.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_cab6d.dir/CheckIncludeFile.c.o -o cmTC_cab6d 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_97a5c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_97a5c.dir/build.make CMakeFiles/cmTC_97a5c.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_97a5c.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_97a5c.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_97a5c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97a5c.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_97a5c.dir/CheckIncludeFile.c.o -o cmTC_97a5c 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4f40c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4f40c.dir/build.make CMakeFiles/cmTC_4f40c.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4f40c.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_4f40c.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4f40c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f40c.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_4f40c.dir/CheckIncludeFile.c.o -o cmTC_4f40c 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3e6ea/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3e6ea.dir/build.make CMakeFiles/cmTC_3e6ea.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3e6ea.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_3e6ea.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_3e6ea
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3e6ea.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_3e6ea.dir/CheckIncludeFile.c.o -o cmTC_3e6ea 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of size_t passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_72ebb/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_72ebb.dir/build.make CMakeFiles/cmTC_72ebb.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_72ebb.dir/SIZEOF_SIZE_T.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_72ebb.dir/SIZEOF_SIZE_T.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_SIZE_T.c
+Linking C executable cmTC_72ebb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72ebb.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_72ebb.dir/SIZEOF_SIZE_T.c.o -o cmTC_72ebb 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of unsigned long passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_973f7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_973f7.dir/build.make CMakeFiles/cmTC_973f7.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_973f7.dir/SIZEOF_UNSIGNED_LONG.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_973f7.dir/SIZEOF_UNSIGNED_LONG.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_UNSIGNED_LONG.c
+Linking C executable cmTC_973f7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_973f7.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_973f7.dir/SIZEOF_UNSIGNED_LONG.c.o -o cmTC_973f7 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test HAVE_BUILTIN_CTZL succeeded with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c1965/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c1965.dir/build.make CMakeFiles/cmTC_c1965.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c1965.dir/src.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc -DHAVE_BUILTIN_CTZL  -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_c1965.dir/src.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c1965
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1965.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_c1965.dir/src.c.o -o cmTC_c1965 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(int argc, char **argv) { unsigned long a = argc;  return __builtin_ctzl(a); }
+Determining if files locale.h exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bb47a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bb47a.dir/build.make CMakeFiles/cmTC_bb47a.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bb47a.dir/HAVE_LOCALE_H.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_bb47a.dir/HAVE_LOCALE_H.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckIncludeFiles/HAVE_LOCALE_H.c
+Linking C executable cmTC_bb47a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb47a.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_bb47a.dir/HAVE_LOCALE_H.c.o -o cmTC_bb47a 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if files stdlib.h exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d21c0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d21c0.dir/build.make CMakeFiles/cmTC_d21c0.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d21c0.dir/HAVE_STDLIB_H.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_d21c0.dir/HAVE_STDLIB_H.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckIncludeFiles/HAVE_STDLIB_H.c
+Linking C executable cmTC_d21c0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d21c0.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_d21c0.dir/HAVE_STDLIB_H.c.o -o cmTC_d21c0 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f0c90/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f0c90.dir/build.make CMakeFiles/cmTC_f0c90.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f0c90.dir/NEED_SYS_TYPES_H.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_f0c90.dir/NEED_SYS_TYPES_H.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckIncludeFiles/NEED_SYS_TYPES_H.c
+Linking C executable cmTC_f0c90
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0c90.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-parameter -Wno-sign-compare -Wno-implicit-fallthrough  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_f0c90.dir/NEED_SYS_TYPES_H.c.o -o cmTC_f0c90 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file assert.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1f86e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1f86e.dir/build.make CMakeFiles/cmTC_1f86e.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1f86e.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_1f86e.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_1f86e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f86e.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_1f86e.dir/CheckIncludeFile.c.o -o cmTC_1f86e 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file dlfcn.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5c134/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5c134.dir/build.make CMakeFiles/cmTC_5c134.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5c134.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_5c134.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5c134
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c134.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_5c134.dir/CheckIncludeFile.c.o -o cmTC_5c134 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file fcntl.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c0cc2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c0cc2.dir/build.make CMakeFiles/cmTC_c0cc2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c0cc2.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_c0cc2.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c0cc2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0cc2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_c0cc2.dir/CheckIncludeFile.c.o -o cmTC_c0cc2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_539d2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_539d2.dir/build.make CMakeFiles/cmTC_539d2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_539d2.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_539d2.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_539d2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_539d2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_539d2.dir/CheckIncludeFile.c.o -o cmTC_539d2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file limits.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_04b24/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_04b24.dir/build.make CMakeFiles/cmTC_04b24.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_04b24.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_04b24.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_04b24
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04b24.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_04b24.dir/CheckIncludeFile.c.o -o cmTC_04b24 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1f264/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1f264.dir/build.make CMakeFiles/cmTC_1f264.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1f264.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_1f264.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_1f264
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f264.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_1f264.dir/CheckIncludeFile.c.o -o cmTC_1f264 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file search.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0ece4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0ece4.dir/build.make CMakeFiles/cmTC_0ece4.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0ece4.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_0ece4.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_0ece4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0ece4.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_0ece4.dir/CheckIncludeFile.c.o -o cmTC_0ece4 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_56fe2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_56fe2.dir/build.make CMakeFiles/cmTC_56fe2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_56fe2.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_56fe2.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_56fe2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56fe2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_56fe2.dir/CheckIncludeFile.c.o -o cmTC_56fe2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f7d39/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f7d39.dir/build.make CMakeFiles/cmTC_f7d39.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f7d39.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_f7d39.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f7d39
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7d39.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_f7d39.dir/CheckIncludeFile.c.o -o cmTC_f7d39 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_937a4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_937a4.dir/build.make CMakeFiles/cmTC_937a4.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_937a4.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_937a4.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_937a4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_937a4.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_937a4.dir/CheckIncludeFile.c.o -o cmTC_937a4 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8198c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8198c.dir/build.make CMakeFiles/cmTC_8198c.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8198c.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_8198c.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_8198c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8198c.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_8198c.dir/CheckIncludeFile.c.o -o cmTC_8198c 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test C_HAS_inline succeeded with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5ad58/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5ad58.dir/build.make CMakeFiles/cmTC_5ad58.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5ad58.dir/src.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc -DC_HAS_inline -Dinline=inline  -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_5ad58.dir/src.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c
+/root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c:3:29: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+    3 |         static inline foo_t static_foo() {return 0;}
+      |                             ^~~~~~~~~~
+/root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c:4:15: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+    4 |         foo_t foo(){return 0;}
+      |               ^~~
+/root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c: In function 'main':
+/root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c:5:22: warning: unused parameter 'argc' [-Wunused-parameter]
+    5 |         int main(int argc, char *argv[]) {return 0;}
+      |                  ~~~~^~~~
+/root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c:5:34: warning: unused parameter 'argv' [-Wunused-parameter]
+    5 |         int main(int argc, char *argv[]) {return 0;}
+      |                            ~~~~~~^~~~~~
+Linking C executable cmTC_5ad58
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5ad58.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_5ad58.dir/src.c.o -o cmTC_5ad58 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+        typedef int foo_t;
+        static inline foo_t static_foo() {return 0;}
+        foo_t foo(){return 0;}
+        int main(int argc, char *argv[]) {return 0;}
+Determining size of signed short passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b42d3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b42d3.dir/build.make CMakeFiles/cmTC_b42d3.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b42d3.dir/SIZEOF_SIGNED_SHORT.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_b42d3.dir/SIZEOF_SIGNED_SHORT.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_SIGNED_SHORT.c
+Linking C executable cmTC_b42d3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b42d3.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_b42d3.dir/SIZEOF_SIGNED_SHORT.c.o -o cmTC_b42d3 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_318cf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_318cf.dir/build.make CMakeFiles/cmTC_318cf.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_318cf.dir/SIZEOF_UNSIGNED_SHORT.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_318cf.dir/SIZEOF_UNSIGNED_SHORT.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_318cf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_318cf.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_318cf.dir/SIZEOF_UNSIGNED_SHORT.c.o -o cmTC_318cf 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of signed int passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9aa3b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9aa3b.dir/build.make CMakeFiles/cmTC_9aa3b.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9aa3b.dir/SIZEOF_SIGNED_INT.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_9aa3b.dir/SIZEOF_SIGNED_INT.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_SIGNED_INT.c
+Linking C executable cmTC_9aa3b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9aa3b.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_9aa3b.dir/SIZEOF_SIGNED_INT.c.o -o cmTC_9aa3b 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of unsigned int passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9bf39/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9bf39.dir/build.make CMakeFiles/cmTC_9bf39.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9bf39.dir/SIZEOF_UNSIGNED_INT.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_9bf39.dir/SIZEOF_UNSIGNED_INT.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_UNSIGNED_INT.c
+Linking C executable cmTC_9bf39
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9bf39.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_9bf39.dir/SIZEOF_UNSIGNED_INT.c.o -o cmTC_9bf39 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of signed long passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0165e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0165e.dir/build.make CMakeFiles/cmTC_0165e.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0165e.dir/SIZEOF_SIGNED_LONG.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_0165e.dir/SIZEOF_SIGNED_LONG.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_SIGNED_LONG.c
+Linking C executable cmTC_0165e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0165e.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_0165e.dir/SIZEOF_SIGNED_LONG.c.o -o cmTC_0165e 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of signed long long passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8d36c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8d36c.dir/build.make CMakeFiles/cmTC_8d36c.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8d36c.dir/SIZEOF_SIGNED_LONG_LONG.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_8d36c.dir/SIZEOF_SIGNED_LONG_LONG.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_SIGNED_LONG_LONG.c
+Linking C executable cmTC_8d36c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d36c.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_8d36c.dir/SIZEOF_SIGNED_LONG_LONG.c.o -o cmTC_8d36c 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of unsigned long long passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b3282/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b3282.dir/build.make CMakeFiles/cmTC_b3282.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3282.dir/SIZEOF_UNSIGNED_LONG_LONG.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_b3282.dir/SIZEOF_UNSIGNED_LONG_LONG.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_UNSIGNED_LONG_LONG.c
+Linking C executable cmTC_b3282
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3282.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_b3282.dir/SIZEOF_UNSIGNED_LONG_LONG.c.o -o cmTC_b3282 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of unsigned char * passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1aab1/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1aab1.dir/build.make CMakeFiles/cmTC_1aab1.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1aab1.dir/SIZEOF_UNSIGNED_CHAR_P.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_1aab1.dir/SIZEOF_UNSIGNED_CHAR_P.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_UNSIGNED_CHAR_P.c
+Linking C executable cmTC_1aab1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1aab1.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_1aab1.dir/SIZEOF_UNSIGNED_CHAR_P.c.o -o cmTC_1aab1 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining size of ptrdiff_t passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d8d3b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d8d3b.dir/build.make CMakeFiles/cmTC_d8d3b.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8d3b.dir/SIZEOF_PTRDIFF_T.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_d8d3b.dir/SIZEOF_PTRDIFF_T.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckTypeSize/SIZEOF_PTRDIFF_T.c
+Linking C executable cmTC_d8d3b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8d3b.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_d8d3b.dir/SIZEOF_PTRDIFF_T.c.o -o cmTC_d8d3b 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function isascii exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3a797/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3a797.dir/build.make CMakeFiles/cmTC_3a797.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3a797.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=isascii -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_3a797.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'isascii'; expected 'int(int)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+Linking C executable cmTC_3a797
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a797.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=isascii -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_3a797.dir/CheckFunctionExists.c.o -o cmTC_3a797 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function memset exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4855a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4855a.dir/build.make CMakeFiles/cmTC_4855a.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4855a.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=memset -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_4855a.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'memset'; expected 'void *(void *, int,  long unsigned int)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:1:1: note: 'memset' is declared in header '<string.h>'
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_4855a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4855a.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=memset -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_4855a.dir/CheckFunctionExists.c.o -o cmTC_4855a 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function mmap exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f8339/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f8339.dir/build.make CMakeFiles/cmTC_f8339.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f8339.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=mmap -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_f8339.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f8339
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f8339.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=mmap -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_f8339.dir/CheckFunctionExists.c.o -o cmTC_f8339 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function getopt exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4056a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4056a.dir/build.make CMakeFiles/cmTC_4056a.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4056a.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=getopt -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_4056a.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4056a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4056a.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=getopt -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_4056a.dir/CheckFunctionExists.c.o -o cmTC_4056a 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function memmove exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2798f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_2798f.dir/build.make CMakeFiles/cmTC_2798f.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2798f.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=memmove -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_2798f.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'memmove'; expected 'void *(void *, const void *, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:1:1: note: 'memmove' is declared in header '<string.h>'
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_2798f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2798f.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=memmove -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_2798f.dir/CheckFunctionExists.c.o -o cmTC_2798f 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strcasecmp exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ee73d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ee73d.dir/build.make CMakeFiles/cmTC_ee73d.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee73d.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strcasecmp -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_ee73d.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'strcasecmp'; expected 'int(const char *, const char *)' [-Wbuiltin-declaration-mismatch]
+<command-line>: note: in definition of macro 'CHECK_FUNCTION_EXISTS'
+Linking C executable cmTC_ee73d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee73d.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strcasecmp -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_ee73d.dir/CheckFunctionExists.c.o -o cmTC_ee73d 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strchr exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_91bda/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_91bda.dir/build.make CMakeFiles/cmTC_91bda.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_91bda.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strchr -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_91bda.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'strchr'; expected 'char *(const char *, int)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:1:1: note: 'strchr' is declared in header '<string.h>'
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_91bda
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_91bda.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strchr -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_91bda.dir/CheckFunctionExists.c.o -o cmTC_91bda 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strrchr exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8f12f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8f12f.dir/build.make CMakeFiles/cmTC_8f12f.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8f12f.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strrchr -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_8f12f.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'strrchr'; expected 'char *(const char *, int)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:1:1: note: 'strrchr' is declared in header '<string.h>'
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_8f12f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8f12f.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strrchr -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_8f12f.dir/CheckFunctionExists.c.o -o cmTC_8f12f 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strstr exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_525cf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_525cf.dir/build.make CMakeFiles/cmTC_525cf.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_525cf.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strstr -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_525cf.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+<command-line>: warning: conflicting types for built-in function 'strstr'; expected 'char *(const char *, const char *)' [-Wbuiltin-declaration-mismatch]
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:7:3: note: in expansion of macro 'CHECK_FUNCTION_EXISTS'
+    7 |   CHECK_FUNCTION_EXISTS(void);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/share/cmake-3.22/Modules/CheckFunctionExists.c:1:1: note: 'strstr' is declared in header '<string.h>'
+  +++ |+#include <string.h>
+    1 | #ifdef CHECK_FUNCTION_EXISTS
+Linking C executable cmTC_525cf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_525cf.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strstr -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_525cf.dir/CheckFunctionExists.c.o -o cmTC_525cf 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strtol exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d55f5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d55f5.dir/build.make CMakeFiles/cmTC_d55f5.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d55f5.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtol -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_d55f5.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d55f5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d55f5.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtol -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_d55f5.dir/CheckFunctionExists.c.o -o cmTC_d55f5 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strtol exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_43346/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_43346.dir/build.make CMakeFiles/cmTC_43346.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_43346.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtol -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_43346.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_43346
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_43346.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtol -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_43346.dir/CheckFunctionExists.c.o -o cmTC_43346 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function strtoull exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bba06/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bba06.dir/build.make CMakeFiles/cmTC_bba06.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bba06.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtoull -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_bba06.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bba06
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bba06.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=strtoull -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_bba06.dir/CheckFunctionExists.c.o -o cmTC_bba06 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function lfind exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_dc9b2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_dc9b2.dir/build.make CMakeFiles/cmTC_dc9b2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dc9b2.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=lfind -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_dc9b2.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_dc9b2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc9b2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=lfind -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_dc9b2.dir/CheckFunctionExists.c.o -o cmTC_dc9b2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test HAVE_SNPRINTF succeeded with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d1d7d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d1d7d.dir/build.make CMakeFiles/cmTC_d1d7d.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d1d7d.dir/src.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc -DHAVE_SNPRINTF  -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_d1d7d.dir/src.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d1d7d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1d7d.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_d1d7d.dir/src.c.o -o cmTC_d1d7d 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <stdio.h>
+int main(void) {
+  char buf[10];
+  snprintf(buf, 10, "Test %d", 1);
+  return 0;
+}
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_75f5f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_75f5f.dir/build.make CMakeFiles/cmTC_75f5f.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_75f5f.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_75f5f.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_75f5f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75f5f.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_75f5f.dir/CheckIncludeFile.c.o -o cmTC_75f5f 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file math.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a5881/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a5881.dir/build.make CMakeFiles/cmTC_a5881.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a5881.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_a5881.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a5881
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a5881.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_a5881.dir/CheckIncludeFile.c.o -o cmTC_a5881 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file float.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_731da/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_731da.dir/build.make CMakeFiles/cmTC_731da.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_731da.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_731da.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_731da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_731da.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_731da.dir/CheckIncludeFile.c.o -o cmTC_731da 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file time.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f42c2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f42c2.dir/build.make CMakeFiles/cmTC_f42c2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f42c2.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_f42c2.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f42c2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f42c2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_f42c2.dir/CheckIncludeFile.c.o -o cmTC_f42c2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_87726/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_87726.dir/build.make CMakeFiles/cmTC_87726.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87726.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_87726.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_87726
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87726.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_87726.dir/CheckIncludeFile.c.o -o cmTC_87726 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file ctype.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_43e60/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_43e60.dir/build.make CMakeFiles/cmTC_43e60.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_43e60.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_43e60.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_43e60
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_43e60.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_43e60.dir/CheckIncludeFile.c.o -o cmTC_43e60 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_129ed/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_129ed.dir/build.make CMakeFiles/cmTC_129ed.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_129ed.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_129ed.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_129ed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_129ed.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_129ed.dir/CheckIncludeFile.c.o -o cmTC_129ed 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d9693/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d9693.dir/build.make CMakeFiles/cmTC_d9693.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d9693.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_d9693.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d9693
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9693.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_d9693.dir/CheckIncludeFile.c.o -o cmTC_d9693 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c769f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c769f.dir/build.make CMakeFiles/cmTC_c769f.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c769f.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_c769f.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c769f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c769f.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_c769f.dir/CheckIncludeFile.c.o -o cmTC_c769f 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if files malloc.h exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b51e6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b51e6.dir/build.make CMakeFiles/cmTC_b51e6.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b51e6.dir/OPJ_HAVE_MALLOC_H.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_b51e6.dir/OPJ_HAVE_MALLOC_H.c.o -c /root/workspace/build_opencv/CMakeFiles/CheckIncludeFiles/OPJ_HAVE_MALLOC_H.c
+Linking C executable cmTC_b51e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b51e6.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_b51e6.dir/OPJ_HAVE_MALLOC_H.c.o -o cmTC_b51e6 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the posix_memalign exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ff7f2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ff7f2.dir/build.make CMakeFiles/cmTC_ff7f2.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ff7f2.dir/CheckSymbolExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc -D_POSIX_C_SOURCE=200112L  -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_ff7f2.dir/CheckSymbolExists.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ff7f2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff7f2.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_ff7f2.dir/CheckSymbolExists.c.o -o cmTC_ff7f2 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+File /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef posix_memalign
+  return ((int*)(&posix_memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the memalign exist passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f2013/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f2013.dir/build.make CMakeFiles/cmTC_f2013.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f2013.dir/CheckSymbolExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_f2013.dir/CheckSymbolExists.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_f2013
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f2013.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_f2013.dir/CheckSymbolExists.c.o -o cmTC_f2013 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+File /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memalign
+  return ((int*)(&memalign))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fa0ac/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fa0ac.dir/build.make CMakeFiles/cmTC_fa0ac.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fa0ac.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations -Wno-undef -Wno-strict-prototypes -Wno-cast-function-type -Wno-shadow -Wno-unused-function  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_fa0ac.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_fa0ac
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fa0ac.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations -Wno-undef -Wno-strict-prototypes -Wno-cast-function-type -Wno-shadow -Wno-unused-function  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_fa0ac.dir/CheckIncludeFile.c.o -o cmTC_fa0ac 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_12bdf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_12bdf.dir/build.make CMakeFiles/cmTC_12bdf.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_12bdf.dir/src.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc -DCMAKE_HAVE_LIBC_PTHREAD  -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations -Wno-undef -Wno-strict-prototypes -Wno-cast-function-type -Wno-shadow -Wno-unused-function  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_12bdf.dir/src.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_12bdf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12bdf.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations -Wno-undef -Wno-strict-prototypes -Wno-cast-function-type -Wno-shadow -Wno-unused-function  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_12bdf.dir/src.c.o -o cmTC_12bdf 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+aarch64-linux-gnu-gcc (GCC) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Determining if the function dlerror exists in the dl passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e840b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e840b.dir/build.make CMakeFiles/cmTC_e840b.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e840b.dir/CheckFunctionExists.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=dlerror -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_e840b.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e840b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e840b.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=dlerror -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_e840b.dir/CheckFunctionExists.c.o -o cmTC_e840b  -ldl 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file linux/videodev2.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e3c4c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e3c4c.dir/build.make CMakeFiles/cmTC_e3c4c.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e3c4c.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_e3c4c.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e3c4c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3c4c.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_e3c4c.dir/CheckIncludeFile.c.o -o cmTC_e3c4c 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the include file linux/videodev2.h exists passed with the following output:
+Change Dir: /root/workspace/build_opencv/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a0441/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a0441.dir/build.make CMakeFiles/cmTC_a0441.dir/build
+gmake[1]: Entering directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a0441.dir/CheckIncludeFile.c.o
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE -o CMakeFiles/cmTC_a0441.dir/CheckIncludeFile.c.o -c /root/workspace/build_opencv/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a0441
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0441.dir/link.txt --verbose=1
+/opt/cross-pi-gcc-12.2.0-64/bin/aarch64-linux-gnu-gcc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections    -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG   -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_a0441.dir/CheckIncludeFile.c.o -o cmTC_a0441 
+gmake[1]: Leaving directory '/root/workspace/build_opencv/CMakeFiles/CMakeTmp'
+
+
+
