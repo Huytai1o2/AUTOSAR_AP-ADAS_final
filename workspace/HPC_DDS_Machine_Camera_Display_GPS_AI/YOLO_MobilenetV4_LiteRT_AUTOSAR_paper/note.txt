@@ -1,0 +1,11 @@
+1. Abstract
+
+2. Introduction 
+
+3. MobilenetV4-yolo LiteRT
+Duy
+4. Comparision with different models 
+Duy
+5. Adaptive AUTOSAR Architecture
+
+6. Integrate LiteRT on AA 

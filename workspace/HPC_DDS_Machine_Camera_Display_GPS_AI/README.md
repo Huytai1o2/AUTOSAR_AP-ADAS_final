@@ -4,7 +4,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  Raspberry Pi 4 (aarch64 / RaspberryOS Bookworm 64-bit)              │
+│  Raspberry Pi 5 (aarch64 / RaspberryOS Bookworm 64-bit)              │
 │                                                                      │
 │  ┌─────────────────────────────────────────────────────────────┐    │
 │  │  ProviderSensor  (cores 0-1-2, AUTOSAR Adaptive C++)         │    │

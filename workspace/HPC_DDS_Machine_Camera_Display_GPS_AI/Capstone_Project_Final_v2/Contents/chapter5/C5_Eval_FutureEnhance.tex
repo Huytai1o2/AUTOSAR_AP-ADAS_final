@@ -1,0 +1,122 @@
+% \chapter{Conclusion and Future Enhancement of Project}
+
+% This chapter presents a comprehensive evaluation of the proposed project and discusses potential directions for future enhancement. The evaluation focuses on both technical and system-level aspects, including lessons learned during development and the challenges encountered throughout the project lifecycle. Based on these insights, several future improvement directions are proposed to enhance system performance, scalability, robustness, and industrial applicability.
+
+% \section{Conclusion}
+
+% The proposed project demonstrates the feasibility of implementing an AI-based red-light warning system within an Adaptive AUTOSAR architecture. By integrating a deep learning–based traffic light detection model with a service-oriented automotive software framework, the project bridges the gap between perception algorithms and automotive-grade system design. The evaluation highlights the strengths of the implemented prototype, as well as the limitations that must be addressed for real-world deployment.
+
+% From a functional perspective, the system successfully detects traffic lights from camera input, classifies signal states, and provides warning information to the client application through Adaptive AUTOSAR communication mechanisms. The modular architecture enables clear separation between perception, communication, and application logic, which improves maintainability and extensibility. Furthermore, the use of Adaptive AUTOSAR allows dynamic application management and service discovery, which are essential features for modern ADAS platforms.
+
+% From a performance perspective, the prototype achieves acceptable inference latency under controlled test conditions on a Raspberry Pi-based environment. While the system is not yet optimized for automotive-grade hardware, the results indicate that lightweight deep learning models, such as YOLO26 with a MobileNet-based backbone, are suitable candidates for embedded ADAS perception tasks when combined with careful system integration.
+
+% \subsection{Lesson Learned}
+
+% Throughout the configuration, integration, and evaluation of the Adaptive AUTOSAR project, several important lessons were learned, spanning industrial collaboration, configuration-centric system development, and environment setup for AI-enabled ADAS applications.
+
+% First, direct exposure to an industrial development environment provided valuable insights beyond purely academic experience. Through collaboration with PopcornSAR, the project team gained practical understanding of professional automotive software development workflows, including the use of proprietary toolchains, standardized configuration processes, and industry-oriented development practices. A key lesson was the importance of proactively initiating communication with the company, clearly presenting the technical objectives and scope of the project, and formally requesting access to licenses and development tools. This process required not only technical competence but also the ability to articulate system architecture, expected outcomes, and research value in a structured and professional manner. Working with an international industrial partner further emphasized the role of effective communication, responsiveness, and accountability in collaborative engineering projects.
+
+% Second, the configuration-centric development paradigm of Adaptive AUTOSAR was identified as a foundational factor in system correctness and maintainability. Unlike traditional implementation-driven development, Adaptive AUTOSAR requires explicit definition and coordination of system artefacts, including machines, software clusters, service interfaces, executables, and deployment descriptions, before runtime behavior can be realized. This project demonstrates that incomplete or inconsistent configurations at the system design or machine design level frequently result in runtime execution issues that cannot be resolved solely through application-level debugging. Consequently, configuration planning, validation, and traceability must be treated as first-class engineering activities, on par with software implementation.
+
+% Third, the strict separation between design, implementation, and deployment phases introduces both clarity and complexity into the development workflow. The Adaptive AUTOSAR methodology enforces incremental refinement of artefacts and explicit mapping between abstract system design and concrete executable deployment. While this separation improves scalability and long-term maintainability, it also requires a disciplined configuration mindset. Changes in service interfaces, execution states, or deployment mappings may propagate across multiple configuration layers. This project highlights the necessity of maintaining consistency across system design artefacts, application configurations, and machine manifests to ensure reliable and predictable system behavior.
+
+% Fourth, integrating AI components into an Adaptive AUTOSAR environment requires careful alignment between machine learning workflows and automotive configuration processes. The configuration and training of the YOLOv26-MobileNetV4 model, followed by its integration through the LiteRT framework, revealed that AI models cannot be treated as standalone binaries. Instead, their runtime dependencies, resource requirements, and compatibility with the target operating system and middleware must be explicitly addressed during system configuration. The cross-compilation and deployment process underscores the importance of early consideration of framework compatibility to avoid integration bottlenecks in later development stages.
+
+% Fifth, the use of a Docker-based development environment significantly improved reproducibility and consistency during configuration and integration. Encapsulating toolchains, dependencies, and runtime environments enabled efficient experimentation and reduced configuration drift across development stages. However, this project also demonstrates that container-based environments abstract away certain hardware-specific characteristics, such as hardware acceleration and memory hierarchy. As a result, configuration decisions validated in Docker may require reassessment when transitioning to automotive-grade hardware platforms. This reinforces the role of Docker as a development and validation tool rather than a final deployment reference.
+
+% Finally, the Adaptive AUTOSAR methodology promotes a system-level perspective that fundamentally reshapes the development of ADAS applications. Rather than focusing solely on algorithm performance or application logic, developers must reason about execution management, service-oriented communication, and deployment constraints as integral design concerns. This project confirms that successful ADAS development within an Adaptive AUTOSAR framework depends on mastering configuration workflows and understanding how software artefacts interact dynamically at runtime.
+
+% Overall, these lessons demonstrate that effective ADAS development is the result of both strong industrial collaboration and rigorous configuration management. Configuration is not merely a preparatory step but a foundational element that enables scalability, maintainability, and reliable integration of advanced AI functionalities. Insufficient understanding of configuration workflows or industrial development practices can undermine system reliability, regardless of algorithmic performance.
+
+
+% \subsection{Challenges}
+
+% Despite the successful implementation of the prototype, several key challenges were encountered that are primarily related to deployment maturity, communication architecture, and practical applicability of the proposed system.
+
+% The first challenge concerns the Linux environment because of non RTOS. nên là mặc dù max spike có giảm đáng kể khi đổi yolov26n gốc sang yolo26n-mobilenetv4 nhưng mà vẫn cao hơn xấp xỉ 44,8\% dựa theo bảng \ref{tab:model_eval} đã so sánh
+
+% The second challenge relates multithread vẫn còn bị tranh chấp ở process trong màn hình và process xử lý ảnh 4 cores ở provider sensor.
+
+% The third challenge concerns vẫn chưa có thuật toán tối ưu môi trường trong điều kiện sáng tối, mưa hay nắng, chỉ đơn giản là train trên tập thư viện của ultralytics mà không qua thuật toán cơ bản xử lý ảnh
+
+% Overall, these challenges indicate that the current system represents an early-stage prototype. Addressing deployment maturity, adopting DDS-based communication, and refining the use case toward more practical driving scenarios are necessary steps for advancing the system toward a realistic and production-ready ADAS implementation.
+
+
+% \section{Future Work}
+
+% Based on the identified challenges and evaluation results, several future research and development directions are proposed. These future works are structured to directly address the limitations discussed in the previous section and to gradually advance the system toward a more realistic and production-ready ADAS implementation.
+
+% \subsection{Phát triển hệ thống này trên QNX}
+
+% Việc phát triển trên hệ thống này sẽ tránh được spike của model trong lúc inference, làm tăng tốc độ của model --> cải thiện fps
+
+% \subsection{Xử lý sâu điều kiện sáng tối bằng những thuật toán cơ bản khác}
+
+% % TODO
+
+% Overall, this infrastructure-assisted and event-driven design eliminates the need for impractical long-distance visual detection, reduces computational and sensor costs, and improves feasibility for real-world ADAS deployment. By leveraging Adaptive AUTOSAR services for data integration, execution control, and application triggering, the refined use case remains tightly coupled to the proposed prototype while addressing its key practical limitations.
+
+
+\chapter{Conclusion and Future Enhancement of Project}
+
+Finally, this report will present a comprehensive evaluation of the proposed project and discusses potential directions for future enhancement. The evaluation focuses on both technical and system-level aspects, including lessons learned during development and the challenges encountered throughout the project lifecycle. Based on these insights, several future improvement directions are proposed to enhance system performance, scalability, robustness, and industrial applicability.
+
+\section{Conclusion}
+
+The proposed project demonstrates the feasibility of implementing an AI-based red-light warning system within an Adaptive AUTOSAR architecture. By integrating a deep learning–based traffic light detection model with a service-oriented automotive software framework, the project bridges the gap between perception algorithms and automotive-grade system design. The evaluation highlights the strengths of the implemented prototype, as well as the limitations that must be addressed for real-world deployment.
+
+From a functional perspective, the system successfully detects traffic lights from camera input, classifies signal states, and provides warning information to the client application through Adaptive AUTOSAR communication mechanisms. The modular architecture enables clear separation between perception, communication, and application logic, which improves maintainability and extensibility. Furthermore, the use of Adaptive AUTOSAR allows dynamic application management and service discovery, which are essential features for modern ADAS platforms.
+
+From a performance perspective, the prototype achieves acceptable inference latency under controlled test conditions on a Raspberry Pi-based environment. While the system is not yet optimized for automotive-grade hardware, the results indicate that lightweight deep learning models, such as YOLO26 with a MobileNet-based backbone, are suitable candidates for embedded ADAS perception tasks when combined with careful system integration.
+
+\subsection{Lesson Learned}
+
+Throughout the configuration, integration, and evaluation of the Adaptive AUTOSAR project, several important lessons were learned, spanning industrial collaboration, configuration-centric system development, and environment setup for AI-enabled ADAS applications.
+
+First, direct exposure to an industrial development environment provided valuable insights beyond purely academic experience. Through collaboration with PopcornSAR, the project team gained practical understanding of professional automotive software development workflows, including the use of proprietary toolchains, standardized configuration processes, and industry-oriented development practices. A key lesson was the importance of proactively initiating communication with the company, clearly presenting the technical objectives and scope of the project, and formally requesting access to licenses and development tools. This process required not only technical competence but also the ability to articulate system architecture, expected outcomes, and research value in a structured and professional manner. Working with an international industrial partner further emphasized the role of effective communication, responsiveness, and accountability in collaborative engineering projects.
+
+Second, the configuration-centric development paradigm of Adaptive AUTOSAR was identified as a foundational factor in system correctness and maintainability. Unlike traditional implementation-driven development, Adaptive AUTOSAR requires explicit definition and coordination of system artefacts, including machines, software clusters, service interfaces, executables, and deployment descriptions, before runtime behavior can be realized. This project demonstrates that incomplete or inconsistent configurations at the system design or machine design level frequently result in runtime execution issues that cannot be resolved solely through application-level debugging. Consequently, configuration planning, validation, and traceability must be treated as first-class engineering activities, on par with software implementation.
+
+Third, the strict separation between design, implementation, and deployment phases introduces both clarity and complexity into the development workflow. The Adaptive AUTOSAR methodology enforces incremental refinement of artefacts and explicit mapping between abstract system design and concrete executable deployment. While this separation improves scalability and long-term maintainability, it also requires a disciplined configuration mindset. Changes in service interfaces, execution states, or deployment mappings may propagate across multiple configuration layers. This project highlights the necessity of maintaining consistency across system design artefacts, application configurations, and machine manifests to ensure reliable and predictable system behavior.
+
+Fourth, integrating AI components into an Adaptive AUTOSAR environment requires careful alignment between machine learning workflows and automotive configuration processes. The configuration and training of the YOLOv26-MobileNetV4 model, followed by its integration through the LiteRT framework, revealed that AI models cannot be treated as standalone binaries. Instead, their runtime dependencies, resource requirements, and compatibility with the target operating system and middleware must be explicitly addressed during system configuration. The cross-compilation and deployment process underscores the importance of early consideration of framework compatibility to avoid integration bottlenecks in later development stages.
+
+Fifth, the use of a Docker-based development environment significantly improved reproducibility and consistency during configuration and integration. Encapsulating toolchains, dependencies, and runtime environments enabled efficient experimentation and reduced configuration drift across development stages. However, this project also demonstrates that container-based environments abstract away certain hardware-specific characteristics, such as hardware acceleration and memory hierarchy. As a result, configuration decisions validated in Docker may require reassessment when transitioning to automotive-grade hardware platforms. This reinforces the role of Docker as a development and validation tool rather than a final deployment reference.
+
+Finally, the Adaptive AUTOSAR methodology promotes a system-level perspective that fundamentally reshapes the development of ADAS applications. Rather than focusing solely on algorithm performance or application logic, developers must reason about execution management, service-oriented communication, and deployment constraints as integral design concerns. This project confirms that successful ADAS development within an Adaptive AUTOSAR framework depends on mastering configuration workflows and understanding how software artefacts interact dynamically at runtime.
+
+Overall, these lessons demonstrate that effective ADAS development is the result of both strong industrial collaboration and rigorous configuration management. Configuration is not merely a preparatory step but a foundational element that enables scalability, maintainability, and reliable integration of advanced AI functionalities. Insufficient understanding of configuration workflows or industrial development practices can undermine system reliability, regardless of algorithmic performance.
+
+
+\subsection{Challenges}
+
+Despite the successful implementation of the prototype, several key challenges were encountered that are primarily related to runtime determinism, resource contention, and perception robustness under practical driving conditions.
+
+The first challenge concerns the use of a standard Linux environment instead of a real-time operating system. Since Linux is not configured as an RTOS in this prototype, inference and communication tasks are still affected by scheduler jitter, background services, and non-deterministic process execution. Although the maximum latency spike was significantly reduced after replacing the original YOLOv26n model with the YOLOv26n-MobileNetV4 variant, the maximum spike remains approximately 44.8\% higher than the average latency according to the comparison shown in Table~\ref{tab:model_eval}. This indicates that model optimization alone is not sufficient to guarantee deterministic execution for safety-oriented ADAS applications.
+
+The second challenge is related to multithreaded execution and CPU resource contention. The Provider Sensor performs camera capture, AI inference, GPS processing, image encoding, and DDS publishing, while the display process also requires CPU time for TCP reception, JPEG decoding, rendering, and overlay generation. Even though CPU affinity is applied to separate the Provider processing cores from the display core, contention can still occur between image-processing workloads, memory access, operating-system scheduling, and inter-process communication. This issue can reduce frame-rate stability and introduce occasional delays in the end-to-end pipeline.
+
+The third challenge concerns perception robustness under diverse environmental conditions. The current model is mainly trained using datasets prepared through the Ultralytics training workflow, while the image-processing pipeline does not yet include dedicated enhancement algorithms for difficult lighting and weather conditions. As a result, variations such as low light, strong sunlight, shadows, rain, glare, or motion blur may reduce detection accuracy, color classification reliability, and OCR performance. In particular, HSV-based color classification and timer recognition can become unstable if the input image quality changes significantly from the training and testing conditions.
+
+Overall, these challenges indicate that the current system represents an early-stage prototype. Improving runtime determinism, reducing resource contention, and strengthening perception robustness under real-world environmental conditions are necessary steps for advancing the system toward a realistic and production-ready ADAS implementation.
+
+The conclusions above summarize both the achievements and the remaining limitations of the proposed prototype. These limitations are not isolated issues, but rather indicate the next technical steps required to improve the system beyond a proof-of-concept implementation. Therefore, the following subsection outlines future work directions that directly extend the findings from the evaluation and challenges.
+
+
+\section{Future Work}
+
+Based on the identified challenges and evaluation results, several future research and development directions are proposed. These future works are structured to directly address the limitations discussed in the previous section and to gradually advance the system toward a more realistic and production-ready ADAS implementation.
+
+\subsection{Deploying the System on QNX}
+
+A key future direction is to migrate the prototype from the current Linux-based environment to QNX or another automotive-grade real-time operating system. QNX provides deterministic scheduling, stronger process isolation, and real-time execution guarantees, which are important for reducing inference latency spikes and improving the stability of the perception pipeline. By controlling task priorities, CPU scheduling, and inter-process communication more strictly, the system can reduce the impact of background processes and operating-system jitter on AI inference.
+
+Deploying the system on QNX is expected to improve frame-rate stability and reduce the difference between average latency and worst-case latency. This is especially important for ADAS applications, where occasional latency spikes may be more critical than average inference time. In addition, QNX is widely used in automotive platforms, making this migration a necessary step toward evaluating the prototype under conditions closer to industrial deployment.
+
+\subsection{Improving Robustness under Lighting and Weather Conditions}
+
+Another important future enhancement is to strengthen the perception pipeline under challenging environmental conditions. The current implementation mainly relies on the trained YOLOv26n-MobileNetV4 model and a basic HSV-based color classification pipeline. Future work should introduce additional classical image-processing and enhancement techniques to improve input quality before detection, color classification, and OCR are performed.
+
+Potential improvements include brightness and contrast normalization, gamma correction, histogram equalization, glare reduction, shadow handling, denoising, and adaptive thresholding for low-light or high-exposure scenes. For rainy or noisy environments, preprocessing techniques such as image deblurring, temporal smoothing, and region-based filtering may improve both traffic light detection and timer OCR reliability. These methods can be combined with data augmentation during model training so that the AI model and the image-processing pipeline are both more robust to variations in illumination, weather, and camera quality.
+
+Overall, these future enhancements directly address the main limitations observed in the prototype. Migrating to QNX would improve runtime determinism and reduce latency spikes, while deeper environmental image processing would improve perception reliability in realistic driving scenarios. Together, these improvements would move the system closer to an automotive-grade ADAS implementation.

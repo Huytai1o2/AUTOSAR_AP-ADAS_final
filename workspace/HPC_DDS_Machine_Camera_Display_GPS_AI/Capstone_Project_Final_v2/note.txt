@@ -1,0 +1,16 @@
+- Main adding into the thesis: 
+  + DDS: After SOME/IP --- Done, only need some references 
+  + HeadCNN for detecting numbers: Tai done
+  + GPS, KNN: Duy: Done 
+  + YOLO26 done
+  // + Hardware: GPS + Raspberry Pi 5 
+
+- Some part can be polish: 
+  + Refining 1.3: Scope and Objectives
+  // + Refining 1.4: Related Work
+
+  cut off theory methodology (61-70 pages)
+  cut off adaptive autosar theory
+  
+  change architecture, benchmark
+  cut off conclusion

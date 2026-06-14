@@ -1,0 +1,357 @@
+% \newpage
+
+% \section{YOLO (You Only Live Once) Model and MobileNetV4}
+
+
+
+% \subsection{Overview of YOLO}
+
+% The landscape of computer vision, particularly within the high-stakes domain of autonomous driving and Advanced Driver Assistance Systems (ADAS), has been irrevocably altered by the advent and evolution of the \textbf{``You Only Look Once"} (\textbf{YOLO}) architecture. As vehicles move towards higher levels of autonomy, the requirement for perception systems shifts from merely accurate classification to a rigorous demand for low-latency, high-frequency spatial understanding. Traffic light detection represents a particularly unforgiving subset of this domain: the targets are small, state-variant, and environmentally volatile, yet the system’s failure tolerance is effectively zero. This section explores the theoretical underpinnings of YOLO, tracing its dominance over two-stage detectors, and analyzes its suitability for the specific constraints of real-time traffic signal recognition.
+
+% \subsubsection{The Single-Stage Revolution}
+
+% Prior to the introduction of YOLO in 2015, the state-of-the-art in object detection was dominated by Region-based Convolutional Neural Networks (R-CNN) and its successors. These architectures operated on a "propose-and-verify" paradigm where a dedicated mechanism would hypothesize thousands of potential object locations before a classifier verified them. While this method achieved high average precision, it suffered from a fundamental decoupling of localization and classification, creating a computational bottleneck that rendered real-time performance on embedded hardware nearly impossible. YOLO proposed a radical unification by reframing object detection not as a classification task applied to generated regions, but as a single regression problem. In this paradigm, a single neural network processes the full image in one forward pass, predicting bounding box coordinates and class probabilities directly from the feature maps.
+
+% This "single-shot" approach yields decisive advantages for traffic light detection. First, it enables global contextual reasoning. Unlike sliding window or region proposal approaches that see only a subset of the image pixels at any given time, the YOLO architecture views the entire image during both training and inference. This allows the network to implicitly encode contextual information about object classes, such as inferring the likelihood of a traffic light based on the presence of a pole or the geometry of an intersection, thereby significantly reducing background false positives. Second, YOLO offers inference latency stability. The processing time of a YOLO network is effectively constant for a given input resolution, regardless of the number of objects in the scene. For safety-critical control loops in autonomous vehicles, this deterministic latency is non-negotiable, ensuring the perception system delivers state estimates at a fixed cadence to the planning module.
+
+% \subsubsection{Choosing YOLO26 for Real-Time Detection}
+% The decision to utilize YOLO11 (released late 2024) for traffic light detection is driven by its specific architectural refinements designed for efficiency and small-object detection. YOLO11 represents a significant evolution over predecessors like v5 and v8, introducing enhanced feature aggregation through C3k2 blocks and C2PSA attention modules. These components significantly improve the extraction of fine-grained features necessary for resolving distant traffic lights. Furthermore, the YOLOv11n (Nano) variant achieves higher Mean Average Precision (mAP) than previous nano models with approximately 22\% fewer parameters. This parameter efficiency is critical for the constrained compute environments of embedded vehicular Electronic Control Units (ECUs), allowing for sophisticated detection logic without exceeding thermal or power budgets.
+
+
+% \subsection{The YOLO Algorithmic Architecture}
+% In this proposed system, while the MobileNetV4 backbone handles the heavy lifting of feature extraction, the detection logic relies on the advanced YOLOv11 Neck and Head. This architecture departs from previous iterations by introducing specific modules that optimize the feature fusion process and employs an anchor-free, decoupled head paradigm.
+
+% \subsubsection{The Grid System and Feature Fusion (C3k2)}
+
+% The core of YOLOv11's spatial reasoning remains its hierarchical grid system, derived from a Path Aggregation Network (PANet). The input image is not processed as a monolith but is partitioned into grids of varying granularity. The input image $I$ is processed into feature maps at three distinct scales: P3 (stride 8), P4 (stride 16), and P5 (stride 32). The Neck is responsible for fusing these maps to combine the semantic richness of deep layers with the spatial precision of shallow layers.
+
+% A primary innovation in the YOLOv11 Neck is the use of the C3k2 (Cross Stage Partial with Kernel Size 2) block, which replaces the C2f block found in YOLOv8. The C3k2 block utilizes optimized kernel sizes and a streamlined gradient path, allowing for customizable kernel configurations. This design enables the model to extract features with faster processing speeds on hardware accelerators. For traffic light detection, this efficient fusion is critical when processing high-resolution images, such as $1280 \times 1280$ pixels, which are often required to resolve small signal lights. The C3k2 block prevents the feature fusion stage from becoming a latency bottleneck, ensuring the semantic context of the intersection is merged with the fine spatial detail of the signal head without incurring excessive computational cost.
+
+% \subsubsection{C2PSA: Spatial Attention for Small Objects}
+
+% A defining feature of YOLOv11 logic is the inclusion of the C2PSA (Cross Stage Partial with Spatial Attention) module, typically positioned at the end of the feature extraction phase. The C2PSA module introduces a parallel branch that computes a spatial attention map, forcing the network to weight specific pixels more heavily before passing features to the detection head. In the context of traffic lights, which often occupy less than 1\% of the total image area, background noise from the sky, buildings, or trees can dominate the feature map. The C2PSA mechanism effectively suppresses this background noise and amplifies the activation of the relevant signal pixels. This targeted attention significantly improves the recall for distant lights, ensuring that the network focuses its capacity on the objects of interest rather than the surrounding clutter.
+
+% \subsubsection{Anchor-Free Bounding Box Regression}
+
+% YOLOv11 employs a fully anchor-free detection head, a departure from older versions that relied on pre-defined anchor boxes. Instead of predicting offsets from prototypical shapes, YOLOv11 predicts the bounding box geometry directly from the center of the grid cell. For a grid cell at location $(c_x, c_y)$ that is deemed responsible for an object, the network regresses four values representing the distances to the box edges: Left ($l$), Top ($t$), Right ($r$), and Bottom ($b$). The predicted bounding box $\hat{B}$ is formulated as:
+
+% \begin{equation}
+%     \hat{B} = [c_x - l, c_y - t, c_x + r, c_y + b]
+% \end{equation}
+
+% This approach eliminates the need to tune anchor hyperparameters for specific datasets, making the model naturally adaptive to the varying aspect ratios of traffic signals, whether they are vertical stacks, horizontal arrays, or single-aspect beacons.
+
+% \subsubsection{The Loss Function: Task Alignment and CIoU}
+
+% The training of the YOLOv11 head is guided by a composite loss function that enforces strict alignment between the classification and localization tasks. Traditional detectors often predict a high class score even if the bounding box is inaccurate. To counter this, YOLOv11 utilizes Task Aligned Loss (TAL). TAL dynamically assigns labels based on the quality of the prediction, calculating an alignment metric $t$ as $t = s^\alpha \times u^\beta$, where $s$ is the predicted classification score and $u$ is the Intersection over Union (IoU) between the predicted box and the ground truth. This ensures that high confidence scores are only assigned to predictions that are both semantically correct and spatially precise.
+
+% For localization, the system employs Complete IoU (CIoU) loss combined with Distribution Focal Loss (DFL). The CIoU loss minimizes geometric errors by considering overlap area, center point distance, and aspect ratio consistency. The formula is given by:
+
+% \begin{equation}
+%     \mathcal{L}_{CIoU} = 1 - IoU + \frac{\rho^2(b, b^{gt})}{c^2} + \alpha v
+% \end{equation}
+
+
+% Here, $\rho$ is the Euclidean distance between box centers, $c$ is the diagonal length of the smallest enclosing box, and $\alpha v$ measures the consistency of the aspect ratio. This forces the model to rapidly converge to the vertical rectangular shape typical of traffic lights. Furthermore, DFL handles the ambiguity of small, blurred traffic lights by modeling the box edges not as single deterministic numbers but as probability distributions. By optimizing the network to focus the probability density around the true edge location, DFL provides refined, sub-pixel accuracy that is vital for distant signals.
+
+% \subsubsection{Post-Processing: Class-Agnostic NMS}
+
+% Because the anchor-free head is dense, a single traffic light will often trigger detections in multiple adjacent grid cells. Non-Maximum Suppression (NMS) is the algorithm used to filter these duplicate candidates. For traffic light detection, Class-Agnostic NMS is strongly recommended. This logic prevents the physically impossible scenario of detecting both a "Green Light" and a "Red Light" in the exact same spatial location. By suppressing overlapping boxes regardless of their class label, the model is forced to commit to the single highest-confidence state, thereby reducing conflicting outputs for the downstream planning system.
+
+% \subsection{MobileNetV4 Backbone Architecture}
+% To maximize efficiency on edge hardware such as the Raspberry Pi or NVIDIA Jetson, this report proposes replacing the standard YOLO backbone with MobileNetV4 (MNv4). MNv4, introduced in 2024, represents the culmination of research into efficient neural network design, prioritizing "Universal Efficiency" to ensure operations run fast across CPUs, GPUs, and DSPs without the fragmentation seen in previous versions.
+% \subsubsection{Evolution of MobileNets: From V1 to V4}
+
+% The MobileNet lineage began with \textbf{MobileNetV1}, which introduced Depthwise Separable Convolutions to factorize standard convolution into spatial and channel steps, reducing computation by approximately nine times. \textbf{MobileNetV2} subsequently introduced the Inverted Residual Block and Linear Bottlenecks to preserve information flow in low-dimensional spaces. \textbf{MobileNetV3} later incorporated Neural Architecture Search (NAS) and Squeeze-and-Excitation (SE) blocks. However, V3's heterogeneous blocks and complex activation functions often resulted in poor performance on DSPs due to synchronization overhead. \textbf{MobileNetV4} addresses these issues by using unified blocks optimized for the hardware "Roofline Model", ensuring that the architecture stays at the optimal ridge point of operational intensity where every cycle of memory transfer is matched by maximum computation.
+
+% \subsubsection{Universal Inverted Bottleneck (UIB)}
+
+% The core innovation of MobileNetV4 is the Universal Inverted Bottleneck (UIB). This is a flexible search block that unifies previous architectures by introducing two optional depthwise convolutions that can be enabled or disabled via NAS. The UIB can instantiate as a standard Inverted Bottleneck for capacity, a ConvNext block for cheaper spatial mixing, or a novel ExtraDW block. The ExtraDW variant is particularly beneficial for traffic light detection. By adding extra depthwise layers at a low computational cost, it significantly increases the network's receptive field. This allows the backbone to "see" the entire intersection context—such as the traffic pole arm or the road geometry—without the heavy computational penalty of large kernels, which is crucial for identifying signal heads amidst urban clutter.
+
+% \subsubsection{Mobile Multi-Query Attention (MQA)}
+
+% Standard Multi-Head Self-Attention (MHSA) is typically memory-bound on mobile chips, making it slow to execute. To overcome this, MNv4 introduces Mobile MQA (Multi-Query Attention). In this mechanism, all query heads share a single Key and Value head, and a spatial reduction is applied via a stride-2 depthwise convolution. The attention computation can be approximated as:
+
+% \begin{equation}
+%     \text{Attention}(Q, K, V) = \text{Softmax}\left(\frac{Q \cdot (SR(K))^T}{\sqrt{d_k}}\right) \cdot SR(V)
+% \end{equation}
+
+% This design provides a substantial speedup—approximately 39\% on EdgeTPUs—while retaining the global context capabilities of transformers. This global attention helps the model distinguish true traffic lights from reflections or neon signs by analyzing the broader scene context, a capability that pure CNNs often lack.
+
+% \subsubsection{Integrating MobileNetv4 into YOLO}
+
+% Integrating MobileNetV4 as the feature extractor for YOLOv11 creates a hybrid "YOLO-MNv4" architecture that is theoretically optimal for autonomous driving. On mobile accelerators like the Pixel EdgeTPU, MNv4 is approximately twice as fast as MobileNetV3 for equivalent accuracy due to its high operational intensity. Replacing the standard YOLOv11 backbone with MNv4 significantly reduces the floating-point operations (FLOPs) required per inference. This architecture specifically excels in occlusion handling, where the advanced receptive fields of the UIB blocks allow the model to infer the presence of a traffic light even when it is partially obscured by large vehicles, ensuring a robust and reliable perception system.
+\section{YOLO (You Only Look Once) Model and MobileNetV4 Backbone}
+
+
+
+\subsection{Overview of YOLO}
+
+The landscape of computer vision, particularly within the high-stakes domain of autonomous driving and Advanced Driver Assistance Systems (ADAS), has been irrevocably altered by the advent and evolution of the {``You Only Look Once"} ({YOLO}) architecture. As vehicles move towards higher levels of autonomy, the requirement for perception systems shifts from merely accurate classification to a rigorous demand for low-latency, high-frequency spatial understanding. Traffic light detection represents a particularly unforgiving subset of this domain: the targets are small, state-variant, and environmentally volatile, yet the system’s failure tolerance is effectively zero. This section explores the theoretical underpinnings of YOLO, tracing its dominance over two-stage detectors, and analyzes its suitability for the specific constraints of real-time traffic signal recognition.
+
+\subsubsection{The Single-Stage Revolution}
+
+Prior to the introduction of YOLO in 2015, the state-of-the-art in object detection was dominated by Region-based Convolutional Neural Networks (R-CNN) and its successors. These architectures operated on a "propose-and-verify" paradigm where a dedicated mechanism would hypothesize thousands of potential object locations before a classifier verified them. While this method achieved high average precision, it suffered from a fundamental decoupling of localization and classification, creating a computational bottleneck that rendered real-time performance on embedded hardware nearly impossible. YOLO proposed a radical unification by reframing object detection not as a classification task applied to generated regions, but as a single regression problem. In this paradigm, a single neural network processes the full image in one forward pass, predicting bounding box coordinates and class probabilities directly from the feature maps.
+
+This "single-shot" approach yields decisive advantages for traffic light detection. First, it enables global contextual reasoning. Unlike sliding window or region proposal approaches that see only a subset of the image pixels at any given time, the YOLO architecture views the entire image during both training and inference. This allows the network to implicitly encode contextual information about object classes, such as inferring the likelihood of a traffic light based on the presence of a pole or the geometry of an intersection, thereby significantly reducing background false positives. Second, YOLO offers inference latency stability. The processing time of a YOLO network is effectively constant for a given input resolution, regardless of the number of objects in the scene. For safety-critical control loops in autonomous vehicles, this deterministic latency is non-negotiable, ensuring the perception system delivers state estimates at a fixed cadence to the planning module.
+
+\subsubsection{YOLO26 for Real-Time Detection}
+The decision to utilize YOLO26 (released January 2026) for traffic light detection is driven by its specific architectural refinements designed for efficiency and small-object detection. YOLO26 represents a significant evolution over predecessors like YOLO11 and YOLOv8 \cite{yolo26}, introducing enhanced feature aggregation through C3k2 blocks, C2PSA attention modules, and a novel MuSGD optimizer. These components significantly improve the extraction of fine-grained features necessary for resolving distant traffic lights. Furthermore, YOLO26 removes the Distribution Focal Loss (DFL) module entirely, simplifying export and hardware compatibility, and delivers up to 43\% faster CPU inference compared to its predecessors. This computational efficiency is critical for the constrained compute environments of embedded vehicular Electronic Control Units (ECUs), allowing for sophisticated detection logic without exceeding thermal or power budgets.
+
+
+\subsection{The YOLO Algorithmic Architecture}
+In this proposed system, while the MobileNetV4 backbone handles the heavy lifting of feature extraction, the detection logic relies on the advanced YOLO26 Neck and Head. This architecture departs from previous iterations by introducing specific modules that optimize the feature fusion process and employs an anchor-free, decoupled head paradigm.
+
+\subsubsection{The Grid System and Feature Fusion (C3k2)}
+
+The core of YOLO26's spatial reasoning remains its hierarchical grid system, derived from a Path Aggregation Network (PANet). The input image is not processed as a monolith but is partitioned into grids of varying granularity. In the standard YOLO26-p2 configuration, the backbone produces feature maps at four scales: P2 (stride 4), P3 (stride 8), P4 (stride 16), and P5 (stride 32). In the proposed system, the Neck fuses these maps to combine the semantic richness of deep layers with the spatial precision of shallow layers.
+
+A primary innovation in the YOLO26 Neck is the use of the C3k2 (Cross Stage Partial with Kernel Size 2) block, inherited from YOLO11 and refined in YOLO26. The C3k2 block utilizes a cross-stage partial design with customizable kernel configurations and a streamlined gradient path. This design enables the model to extract features with faster processing speeds on hardware accelerators. For traffic light detection in this system, images are processed at $416 \times 416$ pixels—a resolution chosen to balance inference speed with the spatial detail required to resolve signal heads on edge hardware. The C3k2 block prevents the feature fusion stage from becoming a latency bottleneck, ensuring the semantic context of the intersection is merged with the fine spatial detail of the signal head without incurring excessive computational cost.
+
+\subsubsection{C2PSA: Spatial Attention for Small Objects}
+
+A defining feature of YOLO26 logic is the inclusion of the C2PSA (Cross Stage Partial with Spatial Attention) module, typically positioned at the end of the feature extraction phase. The C2PSA module introduces a parallel branch that computes a spatial attention map, forcing the network to weight specific pixels more heavily before passing features to the detection head. In the context of traffic lights, which often occupy less than 1\% of the total image area, background noise from the sky, buildings, or trees can dominate the feature map. The C2PSA mechanism effectively suppresses this background noise and amplifies the activation of the relevant signal pixels. This targeted attention significantly improves the recall for distant lights, ensuring that the network focuses its capacity on the objects of interest rather than the surrounding clutter.
+
+% \subsubsection{Anchor-Free Bounding Box Regression}
+
+% YOLO26 employs a fully anchor-free detection head, a departure from older versions that relied on pre-defined anchor boxes. Instead of predicting offsets from prototypical shapes, YOLO26 predicts the bounding box geometry directly from the center of the grid cell. For a grid cell at location $(c_x, c_y)$ that is deemed responsible for an object, the network regresses four values representing the distances to the box edges: Left ($l$), Top ($t$), Right ($r$), and Bottom ($b$). The predicted bounding box $\hat{B}$ is formulated as:
+
+% \begin{equation}
+%     \hat{B} = [c_x - l, c_y - t, c_x + r, c_y + b]
+% \end{equation}
+
+% This approach eliminates the need to tune anchor hyperparameters for specific datasets, making the model naturally adaptive to the varying aspect ratios of traffic signals, whether they are vertical stacks, horizontal arrays, or single-aspect beacons.
+
+% \subsubsection{The Loss Function: Task Alignment and CIoU}
+
+% The training of the YOLO26 head is guided by a composite loss function that enforces strict alignment between the classification and localization tasks. Traditional detectors often predict a high class score even if the bounding box is inaccurate. To counter this, YOLO26 utilizes a Spatial and Task-Aligned Label assignment (STAL), a component of ProgLoss. STAL dynamically assigns labels based on the quality of the prediction, calculating an alignment metric $t$ as $t = s^\alpha \times u^\beta$, where $s$ is the predicted classification score, $u$ is the Intersection over Union (IoU) between the predicted box and the ground truth, and $\alpha$, $\beta$ are balancing hyperparameters. This ensures that high confidence scores are only assigned to predictions that are both semantically correct and spatially precise.
+
+% For localization, YOLO26 employs Complete IoU (CIoU) loss. A key distinction from its predecessors is that {YOLO26 removes Distribution Focal Loss (DFL) entirely}-this simplifies the model graph, broadens hardware compatibility, and reduces export complexity. The CIoU loss minimizes geometric errors by jointly considering overlap area, center-point distance, and aspect ratio consistency. The formula is given by:
+
+% \begin{equation}
+%     \mathcal{L}_{CIoU} = 1 - \text{IoU} + \frac{\rho^2(b, b^{gt})}{c^2} + \alpha v
+% \end{equation}
+
+% where $v = \frac{4}{\pi^2}\left(\arctan\frac{w^{gt}}{h^{gt}} - \arctan\frac{w}{h}\right)^2$ measures aspect ratio consistency, $\alpha = \frac{v}{(1-\text{IoU})+v}$ is a trade-off parameter, $\rho$ is the Euclidean distance between predicted box center $b$ and ground-truth center $b^{gt}$, and $c$ is the diagonal length of the smallest enclosing box. This formulation forces the model to converge to the vertical rectangular shape typical of traffic light signal heads.
+
+\subsubsection{Dual-Head Architecture and NMS-Free Inference}
+
+YOLO26 features a dual-head architecture that provides flexibility for different deployment scenarios \cite{yolo26}:
+\begin{itemize}
+    \item \textbf{One-to-One Head (Default)}: Produces end-to-end predictions without Non-Maximum Suppression (NMS), outputting $(N, 300, 6)$ with a maximum of 300 detections per image. This head is optimized for fast inference and simplified deployment.
+    \item \textbf{One-to-Many Head}: Generates traditional YOLO outputs requiring NMS post-processing, outputting $(N, nc + 4, 8400)$ where $nc$ is the number of classes. This head typically achieves slightly higher accuracy at the cost of additional processing.
+\end{itemize}
+
+For the specific constraints of autonomous driving where deterministic latency is paramount, this proposed architecture chooses the free-NMS One-to-One Head (Default). By eliminating the NMS post-processing step entirely, the system avoids the variable computational overhead associated with filtering overlapping bounding boxes, thereby optimizing the end-to-end inference time on edge devices without compromising the determinism of the perception loop.
+
+\subsection{MobileNetV4 Backbone Architecture}
+To maximize efficiency on edge hardware such as the Raspberry Pi or NVIDIA Jetson, this report proposes replacing the standard YOLO backbone with MobileNetV4 (MNv4). MNv4, introduced in 2024, represents the culmination of research into efficient neural network design, prioritizing "Universal Efficiency" to ensure operations run fast across CPUs, GPUs, and DSPs without the fragmentation seen in previous versions.
+\subsubsection{Evolution of MobileNets: From V1 to V4}
+
+The MobileNet lineage began with {MobileNetV1}, which introduced Depthwise Separable Convolutions to factorize standard convolution into spatial and channel steps, reducing computation by approximately nine times. {MobileNetV2} subsequently introduced the Inverted Residual Block and Linear Bottlenecks to preserve information flow in low-dimensional spaces. {MobileNetV3} later incorporated Neural Architecture Search (NAS) and Squeeze-and-Excitation (SE) blocks. However, V3's heterogeneous blocks and complex activation functions often resulted in poor performance on DSPs due to synchronization overhead. {MobileNetV4} addresses these issues by using unified blocks optimized for the hardware "Roofline Model", ensuring that the architecture stays at the optimal ridge point of operational intensity where every cycle of memory transfer is matched by maximum computation.
+
+\subsubsection{Universal Inverted Bottleneck (UIB)}
+
+The core innovation of MobileNetV4 is the Universal Inverted Bottleneck (UIB). This is a flexible search block that unifies previous architectures by introducing two optional depthwise convolutions that can be enabled or disabled via NAS. The UIB can instantiate as a standard Inverted Bottleneck for capacity, a ConvNext block for cheaper spatial mixing, or a novel ExtraDW block. The ExtraDW variant is particularly beneficial for traffic light detection. By adding extra depthwise layers at a low computational cost, it significantly increases the network's receptive field. This allows the backbone to "see" the entire intersection context-such as the traffic pole arm or the road geometry-without the heavy computational penalty of large kernels, which is crucial for identifying signal heads amidst urban clutter.
+
+\subsubsection{Mobile Multi-Query Attention (MQA)}
+
+Standard Multi-Head Self-Attention (MHSA) is typically memory-bound on mobile chips, making it slow to execute. To overcome this, MNv4 introduces Mobile MQA (Multi-Query Attention). In this mechanism, all query heads share a single Key and Value projection, dramatically reducing memory bandwidth requirements. To further improve operational intensity, Spatial Reduction Attention (SRA) is incorporated: the key and value inputs are spatially downsampled using a stride-2 $3\times3$ depthwise convolution before projection, while the queries retain full resolution. The Mobile MQA block is formulated as (Eq. 2 in \cite{qin2024mobilenetv4universalmodels}):
+
+\begin{equation}
+    \text{attention}_j = \text{Softmax}\left(\frac{(X W^{Q_j}) \cdot (SR(X) W^K)^T}{\sqrt{d_k}}\right) \cdot SR(X) W^V
+\end{equation}
+
+where $SR$ denotes the stride-2 depthwise convolution for spatial reduction (or the identity function when spatial reduction is not applied), $W^{Q_j}$ is the query projection for head $j$, and $W^K$, $W^V$ are the shared key and value projections across all heads. This design provides a substantial speedup-over 39\% on EdgeTPUs-while retaining the global context capabilities of transformers. This global attention helps the model distinguish true traffic lights from reflections or neon signs by analyzing the broader scene context, a capability that pure CNNs often lack.
+
+After establishing the model architecture, the next theoretical component is the inference runtime required to execute this model efficiently on the target edge device.
+
+% \subsubsection{Integrating MobileNetv4 into YOLO}
+
+% Integrating MobileNetV4 as the feature extractor for YOLO26 creates a hybrid "YOLO-MNv4" architecture that is theoretically optimal for autonomous driving. On mobile accelerators like the Pixel EdgeTPU, MNv4 is approximately twice as fast as MobileNetV3 for equivalent accuracy due to its high operational intensity. Replacing the standard YOLO26 backbone with MNv4 significantly reduces the floating-point operations (FLOPs) required per inference. This architecture specifically excels in occlusion handling, where the advanced receptive fields of the UIB blocks allow the model to infer the presence of a traffic light even when it is partially obscured by large vehicles, ensuring a robust and reliable perception system.
+
+
+% To adapt the original YOLO26 architecture for edge deployment, several crucial modifications were made (comparing Figure \ref{fig:yolo26_original_arch} to Figure \ref{fig:yolo26_mnv4_arch}). First, the standard heavy CNN backbone was replaced entirely with {MobileNetV4ConvSmall050}. Second, the original 4-head Feature Pyramid Network (P2, P3, P4, P5) was scaled down to a {3-head architecture} (P3, P4, P5) by removing the high-resolution P2 feature extraction path and its corresponding detection head. This reduction dramatically lowers the computational complexity (GFLOPs) and parameter count. Meanwhile, the advanced components of the YOLO26 neck—including the {C3k2} fusion blocks, {SPPF}, {C2PSA} spatial attention, and the {One-to-One Head}-were preserved to maintain state-of-the-art detection logic.
+
+% \begin{figure}[htbp]
+%     \centering
+%     \resizebox{\textwidth}{!}{
+%     \begin{tikzpicture}[
+%         box/.style={rectangle, draw, minimum width=2.4cm, minimum height=0.8cm, text centered, font=\sffamily, rounded corners=2pt},
+%         arrow/.style={->, >=stealth, thick},
+%         label/.style={font=\sffamily\scriptsize}
+%     ]
+
+%     % Backbone
+%     \node[box, fill=blue!10] (input) at (0, 9) {Input (640)};
+%     \node[box, fill=green!10] (conv1) at (0, 7.5) {Conv P1};
+%     \node[box, fill=green!10] (p2) at (0, 6) {P2 (C3k2)};
+%     \node[box, fill=green!10] (p3) at (0, 4) {P3 (C3k2)};
+%     \node[box, fill=green!10] (p4) at (0, 2) {P4 (C3k2)};
+%     \node[box, fill=green!10] (p5) at (0, 0) {P5 (C2PSA)};
+
+%     \draw[arrow] (input) -- (conv1);
+%     \draw[arrow] (conv1) -- (p2);
+%     \draw[arrow] (p2) -- (p3);
+%     \draw[arrow] (p3) -- (p4);
+%     \draw[arrow] (p4) -- (p5);
+
+%     % SPPF & C2PSA
+%     \node[box, fill=yellow!10] (sppf) at (3.5, 0) {SPPF};
+%     \node[box, fill=yellow!10] (c2psa) at (7.0, 0) {C2PSA};
+%     \draw[arrow] (p5) -- (sppf);
+%     \draw[arrow] (sppf) -- (c2psa);
+
+%     % Neck - Top-down
+%     \node[box, fill=orange!10] (cat_p4) at (7.0, 2) {Concat};
+%     \node[box, fill=orange!10] (c3k2_td_p4) at (10.5, 2) {C3k2};
+%     \draw[arrow] (c2psa) -- node[right, label] {Up} (cat_p4);
+%     \draw[arrow] (p4) -- (cat_p4);
+%     \draw[arrow] (cat_p4) -- (c3k2_td_p4);
+
+%     \node[box, fill=orange!10] (cat_p3) at (10.5, 4) {Concat};
+%     \node[box, fill=orange!10] (c3k2_td_p3) at (14.0, 4) {C3k2};
+%     \draw[arrow] (c3k2_td_p4) -- node[right, label] {Up} (cat_p3);
+%     \draw[arrow] (p3) -- (cat_p3);
+%     \draw[arrow] (cat_p3) -- (c3k2_td_p3);
+
+%     \node[box, fill=orange!10] (cat_p2) at (14.0, 6) {Concat};
+%     \node[box, fill=orange!10] (c3k2_td_p2) at (17.5, 6) {C3k2};
+%     \draw[arrow] (c3k2_td_p3) -- node[right, label] {Up} (cat_p2);
+%     \draw[arrow] (p2) -- (cat_p2);
+%     \draw[arrow] (cat_p2) -- (c3k2_td_p2);
+
+%     % Neck - Bottom-up
+%     \node[box, fill=orange!10] (cat_p3_bu) at (17.5, 4) {Concat};
+%     \node[box, fill=orange!10] (c3k2_bu_p3) at (21.0, 4) {C3k2};
+%     \draw[arrow] (c3k2_td_p2) -- node[right, label] {Conv s2} (cat_p3_bu);
+%     \draw[arrow] (c3k2_td_p3) -- (cat_p3_bu);
+%     \draw[arrow] (cat_p3_bu) -- (c3k2_bu_p3);
+
+%     \node[box, fill=orange!10] (cat_p4_bu) at (21.0, 2) {Concat};
+%     \node[box, fill=orange!10] (c3k2_bu_p4) at (24.5, 2) {C3k2};
+%     \draw[arrow] (c3k2_bu_p3) -- node[right, label] {Conv s2} (cat_p4_bu);
+%     \draw[arrow] (c3k2_td_p4) -- (cat_p4_bu);
+%     \draw[arrow] (cat_p4_bu) -- (c3k2_bu_p4);
+
+%     \node[box, fill=orange!10] (cat_p5_bu) at (24.5, 0) {Concat};
+%     \node[box, fill=orange!10] (c3k2_bu_p5) at (28.0, 0) {C3k2};
+%     \draw[arrow] (c3k2_bu_p4) -- node[right, label] {Conv s2} (cat_p5_bu);
+%     \draw[arrow] (c2psa) -- (cat_p5_bu);
+%     \draw[arrow] (cat_p5_bu) -- (c3k2_bu_p5);
+
+%     % Detectors
+%     \node[box, fill=red!10] (head2) at (31.5, 6) {Detect P2};
+%     \node[box, fill=red!10] (head3) at (31.5, 4) {Detect P3};
+%     \node[box, fill=red!10] (head4) at (31.5, 2) {Detect P4};
+%     \node[box, fill=red!10] (head5) at (31.5, 0) {Detect P5};
+    
+%     \node[box, fill=purple!10, align=center, minimum height=1.6cm] (detect) at (35.0, 3) {One-to-One\\Head};
+
+%     \draw[arrow] (c3k2_td_p2) -- (head2);
+%     \draw[arrow] (c3k2_bu_p3) -- (head3);
+%     \draw[arrow] (c3k2_bu_p4) -- (head4);
+%     \draw[arrow] (c3k2_bu_p5) -- (head5);
+    
+%     \draw[arrow] (head2) -| (detect);
+%     \draw[arrow] (head3) -| (detect);
+%     \draw[arrow] (head4) -| (detect);
+%     \draw[arrow] (head5) -| (detect);
+
+%     \end{tikzpicture}
+%     }
+%     \vspace{0.5cm}
+%     \caption{Architecture of the original YOLO26-p2 model with 4-head detection mechanism (P2/P3/P4/P5 outputs) for standard object detection tasks. Channel widths scale with the chosen model variant (n/s/m/l/x).}
+%     \label{fig:yolo26_original_arch}
+% \end{figure}
+
+
+
+
+
+% \begin{figure}[htbp]
+%     \centering
+%     \resizebox{\textwidth}{!}{
+%     \begin{tikzpicture}[
+%         box/.style={rectangle, draw, minimum width=2.4cm, minimum height=0.8cm, text centered, font=\sffamily, rounded corners=2pt},
+%         arrow/.style={->, >=stealth, thick},
+%         label/.style={font=\sffamily\scriptsize}
+%     ]
+
+%     % X coordinates:
+%     % 0.0: Backbone
+%     % 3.5: SPPF
+%     % 7.0: C2PSA, cat1
+%     % 10.5: c3k2_1, cat2
+%     % 14.0: c3k2_2, cat3
+%     % 17.5: c3k2_3, cat4
+%     % 21.0: c3k2_4
+%     % 24.5: Detectors
+%     % 28.0: Head
+
+%     % Backbone
+%     \node[box, fill=blue!10] (input) at (0, 8) {Input (416)};
+%     \node[box, fill=green!10] (mnv4) at (0, 6) {MobileNetV4};
+%     \node[box, fill=green!10] (p3) at (0, 4) {P3 (32c)};
+%     \node[box, fill=green!10] (p4) at (0, 2) {P4 (48c)};
+%     \node[box, fill=green!10] (p5) at (0, 0) {P5 (640c)};
+
+%     \draw[arrow] (input) -- (mnv4);
+%     \draw[arrow] (mnv4) -- (p3);
+%     \draw[arrow] (p3) -- (p4);
+%     \draw[arrow] (p4) -- (p5);
+
+%     % SPPF & C2PSA
+%     \node[box, fill=yellow!10] (sppf) at (3.5, 0) {SPPF (256c)};
+%     \node[box, fill=yellow!10] (c2psa) at (7.0, 0) {C2PSA (256c)};
+%     \draw[arrow] (p5) -- (sppf);
+%     \draw[arrow] (sppf) -- (c2psa);
+
+%     % Neck - Top-down
+%     \node[box, fill=orange!10] (cat1) at (7.0, 2) {Concat};
+%     \node[box, fill=orange!10] (c3k2_1) at (10.5, 2) {C3k2 (128c)};
+%     \draw[arrow] (c2psa) -- node[right, label] {Up} (cat1);
+%     \draw[arrow] (p4) -- (cat1);
+%     \draw[arrow] (cat1) -- (c3k2_1);
+
+%     \node[box, fill=orange!10] (cat2) at (10.5, 4) {Concat};
+%     \node[box, fill=orange!10] (c3k2_2) at (14.0, 4) {C3k2 (64c)};
+%     \draw[arrow] (c3k2_1) -- node[right, label] {Up} (cat2);
+%     \draw[arrow] (p3) -- (cat2);
+%     \draw[arrow] (cat2) -- (c3k2_2);
+
+%     % Neck - Bottom-up
+%     \node[box, fill=orange!10] (cat3) at (14.0, 2) {Concat};
+%     \node[box, fill=orange!10] (c3k2_3) at (17.5, 2) {C3k2 (128c)};
+%     \draw[arrow] (c3k2_2) -- node[right, label] {Conv s2} (cat3);
+%     \draw[arrow] (c3k2_1) -- (cat3);
+%     \draw[arrow] (cat3) -- (c3k2_3);
+
+%     \node[box, fill=orange!10] (cat4) at (17.5, 0) {Concat};
+%     \node[box, fill=orange!10] (c3k2_4) at (21.0, 0) {C3k2 (256c)};
+%     \draw[arrow] (c3k2_3) -- node[right, label] {Conv s2} (cat4);
+%     \draw[arrow] (c2psa) -- (cat4);
+%     \draw[arrow] (cat4) -- (c3k2_4);
+
+%     % Detectors
+%     \node[box, fill=red!10] (head1) at (24.5, 4) {Detect P3};
+%     \node[box, fill=red!10] (head2) at (24.5, 2) {Detect P4};
+%     \node[box, fill=red!10] (head3) at (24.5, 0) {Detect P5};
+    
+%     \node[box, fill=purple!10, align=center] (detect) at (28.0, 2) {One-to-One\\Head};
+
+%     \draw[arrow] (c3k2_2) -- (head1);
+%     \draw[arrow] (c3k2_3) -- (head2);
+%     \draw[arrow] (c3k2_4) -- (head3);
+    
+%     \draw[arrow] (head1) -| (detect);
+%     \draw[arrow] (head2) -- (detect);
+%     \draw[arrow] (head3) -| (detect);
+
+%     \end{tikzpicture}
+%     }
+%     \vspace{0.5cm} % Add some space before caption to prevent overlap
+%     \caption{Architecture of the YOLO26 model with MobileNetV4ConvSmall050 backbone, dual-head mechanism, and NMS-free end-to-end detection, tailored for $416\times416$ resolution.}
+%     \label{fig:yolo26_mnv4_arch}
+% \end{figure}
+

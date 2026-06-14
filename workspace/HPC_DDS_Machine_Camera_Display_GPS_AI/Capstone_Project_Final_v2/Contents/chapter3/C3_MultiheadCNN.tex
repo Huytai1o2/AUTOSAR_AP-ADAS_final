@@ -1,0 +1,373 @@
+\section{Multihead CNN model -- Lightweight OCR digits}
+
+In this project, our system need to detect the timer display on Vietnamese traffic lights shows a one- to three-digit countdown
+(0--999) and it must be recognised in real time on low-cost hardware such as the
+Raspberry~Pi~5.  This section presents a compact, four-head convolutional neural network
+(CNN) that is derived from the multi-digit recognition framework of
+Goodfellow~et~al.~\cite{goodfellow2014multidigitnumberrecognitionstreet} and specifically re-engineered
+for sub-millisecond CPU inference.
+
+%-----------------------------------------------------------------------
+\subsection{Probabilistic Formulation}
+\label{sec:cnn_prob}
+
+Following Goodfellow~et~al.~\cite{goodfellow2014multidigitnumberrecognitionstreet}, the recognition
+task is cast as a structured probabilistic model.  Let~$\mathbf{X}$ denote the
+input image and let the output be a digit sequence
+$\mathbf{S} = (s_1, s_2, \dots, s_n)$ of length~$n$.
+The sequence is modelled by a length variable~$L$ and a fixed number~$N$
+of digit variables~$S_1, \dots, S_N$.  All digit positions are assumed
+conditionally independent given the image, yielding:
+
+\begin{equation}
+\label{eq:prob_model}
+  P(\mathbf{S} = \mathbf{s} \mid \mathbf{X})
+  \;=\; P(L = n \mid \mathbf{X})\;\prod_{i=1}^{n} P(S_i = s_i \mid \mathbf{X}).
+\end{equation}
+
+In the original work~\cite{goodfellow2014multidigitnumberrecognitionstreet}, $N{=}5$ digit heads are
+used for street numbers of up to five digits.  Because Vietnamese traffic-light
+timers never exceed three digits, the proposed lightweight variant uses
+$N{=}3$ with the following head configuration:
+
+\begin{itemize}
+  \item $L \in \{0,1,2\}$:  digit count minus one
+        ($0 \to$ 1-digit, $1 \to$ 2-digit, $2 \to$ 3-digit),
+        predicted by a 3-class softmax.
+  \item $S_1 \in \{0,\dots,9,\text{BLANK}\}$:  hundreds digit (11 classes).
+  \item $S_2 \in \{0,\dots,9,\text{BLANK}\}$:  tens digit    (11 classes).
+  \item $S_3 \in \{0,\dots,9\}$:                 units digit  (10 classes,
+        always present).
+\end{itemize}
+
+The special \texttt{BLANK} class ($= 10$) indicates an unused slot:
+for a one-digit number only~$S_3$ is active; for a two-digit number
+$S_2$ and~$S_3$ are active.
+
+%-----------------------------------------------------------------------
+\subsection{Network Architecture -- Edge-Optimised Design}
+\label{sec:cnn_arch}
+
+The original Goodfellow~et~al.\ architecture employs eight convolutional layers,
+one locally connected layer, and two dense layers with 3\,072 units each,
+totalling tens of millions of parameters and requiring DistBelief for training.
+Such a model is impractical for real-time inference on a Raspberry~Pi~5 CPU.
+
+The proposed \emph{lightweight} variant retains the multi-head output structure
+but applies three key design transformations, each yielding a dramatic reduction in
+multiply-accumulate operations (MACs) and parameter count while preserving accuracy
+for the constrained 0--999 digit domain.
+
+%--- Separable Convolutions -------------------------------------------------
+\subsubsection{Depthwise Separable Convolutions}
+\label{sec:separable}
+
+Standard convolution applies a $k{\times}k$ kernel across all input channels
+simultaneously.  For an input tensor of spatial size $H{\times}W$ with
+$C_{\mathrm{in}}$ channels producing $C_{\mathrm{out}}$ output channels,
+the number of MACs is:
+
+\begin{equation}
+\label{eq:conv_macs}
+  \text{MACs}_{\text{Conv2D}}
+  = H \cdot W \cdot k^2 \cdot C_{\mathrm{in}} \cdot C_{\mathrm{out}}.
+\end{equation}
+
+A \textbf{Depthwise Separable Convolution} (SeparableConv2D) factorises this operation
+into two consecutive steps:
+
+\begin{enumerate}
+  \item \textbf{Depthwise convolution} -- applies a separate $k{\times}k$ filter
+        to each input channel independently:
+        \begin{equation}
+        \label{eq:dw_macs}
+          \text{MACs}_{\text{DW}} = H \cdot W \cdot k^2 \cdot C_{\mathrm{in}}.
+        \end{equation}
+  \item \textbf{Pointwise convolution} -- a $1{\times}1$ convolution that mixes
+        the channel responses:
+        \begin{equation}
+        \label{eq:pw_macs}
+          \text{MACs}_{\text{PW}} = H \cdot W \cdot C_{\mathrm{in}} \cdot C_{\mathrm{out}}.
+        \end{equation}
+\end{enumerate}
+
+The total cost becomes:
+
+\begin{equation}
+\label{eq:sep_total}
+  \text{MACs}_{\text{Sep}}
+  = H W C_{\mathrm{in}} \bigl(k^2 + C_{\mathrm{out}}\bigr),
+\end{equation}
+
+and the computational saving ratio relative to a standard convolution is:
+
+\begin{equation}
+\label{eq:sep_ratio}
+  \frac{\text{MACs}_{\text{Sep}}}{\text{MACs}_{\text{Conv2D}}}
+  = \frac{1}{C_{\mathrm{out}}} + \frac{1}{k^2}.
+\end{equation}
+
+For the $3{\times}3$ kernels and 64--192 output channels used in this model,
+Equation~\eqref{eq:sep_ratio} gives a reduction factor between
+$\mathbf{7.8\times}$ and $\mathbf{8.5\times}$, enabling real-time execution
+on an ARM Cortex-A76 CPU without a GPU.
+
+In the proposed architecture, only the first block uses a standard
+\texttt{Conv2D} (because the input has a single channel, where depthwise
+separation offers no benefit); blocks~2--5 all use \texttt{SeparableConv2D}.
+
+%--- GAP instead of Flatten ------------------------------------------------
+\subsubsection{Global Average Pooling (GAP)}
+\label{sec:gap}
+
+After the final convolutional block the feature map has shape
+$4{\times}6{\times}192$ (height $\times$ width $\times$ channels).
+A na\"ive \texttt{Flatten} would produce a $4608$-dimensional vector; a
+subsequent dense layer of width~1024 alone would add
+$4608 \times 1024 \approx 4.7$~million parameters -- exceeding the entire
+rest of the network.
+
+Instead, {Global Average Pooling} (GAP) collapses each channel to its
+spatial mean:
+
+\begin{equation}
+\label{eq:gap}
+  h_c = \frac{1}{H' W'} \sum_{i=1}^{H'} \sum_{j=1}^{W'} F_{i,j,c},
+  \qquad c = 1,\dots,C,
+\end{equation}
+
+where $F \in \mathbb{R}^{H' \times W' \times C}$ is the last feature map.
+This yields a compact 192-dimensional descriptor with \emph{zero} learnable
+parameters, and also acts as a structural regulariser that discourages
+overfitting.
+
+%--- Architecture Table ---------------------------------------------------
+\subsubsection{Layer-by-Layer Specification}
+\label{sec:arch_table}
+
+Table~\ref{tab:arch} summarises the full architecture.  Input images are
+grayscale, $64{\times}96$ pixels ($H{\times}W{\times}1$).
+
+\begin{table}[htbp]
+\centering
+\caption{Layer-by-layer architecture of the lightweight multi-head CNN
+         ($\approx 109$\,K parameters).  ``Sep'' denotes SeparableConv2D;
+         ``BN'' is Batch Normalisation.}
+\label{tab:arch}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{c l l r r}
+\hline
+\textbf{Block} & \textbf{Layer}            & \textbf{Output shape}   & \textbf{Params} & \textbf{MACs}  \\
+\hline
+0   & Input                                & $64\times96\times1$     & --      & --       \\
+--  & Mean subtraction ($\lambda$)         & $64\times96\times1$     & 0       & $6\,144$ \\
+1   & Conv2D(32, $3\!\times\!3$) + BN + ReLU + Pool(2)   & $32\times48\times32$     & $\sim\!320$    & $\sim\!56$\,K   \\
+2   & Sep(64, $3\!\times\!3$) + BN + ReLU + Pool(2)      & $16\times24\times64$     & $\sim\!2\,400$  & $\sim\!116$\,K  \\
+3   & Sep(96, $3\!\times\!3$) + BN + ReLU + Pool(2)      & $8\times12\times96$      & $\sim\!6\,720$  & $\sim\!73$\,K   \\
+4   & Sep(128, $3\!\times\!3$) + BN + ReLU + Pool(2)     & $4\times6\times128$      & $\sim\!13\,152$ & $\sim\!39$\,K   \\
+5   & Sep(192, $3\!\times\!3$) + BN + ReLU               & $4\times6\times192$      & $\sim\!25\,728$ & $\sim\!53$\,K   \\
+--  & GlobalAveragePooling2D                & $192$                  & 0       & $4\,608$ \\
+FC  & Dense(256) + ReLU + Dropout(0.35)     & $256$                  & $\sim\!49\,408$ & $49\,408$ \\
+\hline
+$L$ & Dense(3,  softmax)                    & $3$                    & 771     & 771     \\
+$S_1$ & Dense(11, softmax)                  & $11$                   & 2\,827  & 2\,827  \\
+$S_2$ & Dense(11, softmax)                  & $11$                   & 2\,827  & 2\,827  \\
+$S_3$ & Dense(10, softmax)                  & $10$                   & 2\,570  & 2\,570  \\
+\hline
+\multicolumn{3}{r}{\textbf{Total}} & $\mathbf{\approx 109}$\textbf{\,K} & $\mathbf{\approx 408}$\textbf{\,K} \\
+\hline
+\end{tabular}
+\end{table}
+
+%--- Preprocessing --------------------------------------------------------
+\subsubsection{Per-Image Mean Subtraction}
+\label{sec:mean_sub}
+
+Following Goodfellow~et~al.~\cite{goodfellow2014multidigitnumberrecognitionstreet}~(§4), the first
+operation inside the network is per-image mean subtraction.  Let
+$\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ be the input; the
+normalised input is:
+
+\begin{equation}
+\label{eq:mean_sub}
+  \tilde{\mathbf{X}} = \mathbf{X}
+    - \frac{1}{HW}\sum_{i=1}^{H}\sum_{j=1}^{W} X_{ij}.
+\end{equation}
+
+Embedding this subtraction as a non-trainable $\lambda$-layer makes the model
+\emph{self-contained}: no external preprocessing is required at inference time,
+simplifying the TFLite deployment pipeline on the Raspberry~Pi~5.
+
+%-----------------------------------------------------------------------
+\subsection{Training Objective}
+\label{sec:training}
+
+Training maximises the log-probability of the correct sequence
+(Eq.~\eqref{eq:prob_model}) via the cross-entropy decomposition.  Because
+$L$, $S_1$, $S_2$, $S_3$ are conditionally independent given the shared
+features~$\mathbf{H}$, the total loss factorises as:
+
+\begin{equation}
+\label{eq:loss}
+  \mathcal{L}
+  = -\log P(L \mid \mathbf{H})
+    - \sum_{i=1}^{3}\log P(S_i \mid \mathbf{H})
+  = \underbrace{w_L \,\mathcal{L}_L}_{\text{length head}}
+    + \underbrace{w_1 \,\mathcal{L}_{S_1}
+    +  w_2 \,\mathcal{L}_{S_2}
+    +  w_3 \,\mathcal{L}_{S_3}}_{\text{digit heads}},
+\end{equation}
+
+where each $\mathcal{L}_{\cdot}$ is a {sparse categorical cross-entropy}
+and the weights are set to $w_L{=}4$, $w_1{=}w_2{=}w_3{=}1$ to
+up-weight the length prediction, since an incorrect length invariably causes a
+wrong overall transcription.
+
+Each softmax head receives the same 256-dimensional feature vector from the
+shared fully connected layer but maintains its own projection weights:
+
+\begin{equation}
+\label{eq:head}
+  P(S_i = c \mid \mathbf{H})
+  = \frac{\exp\!\bigl(\mathbf{w}_{i,c}^{\top}\!\mathbf{H} + b_{i,c}\bigr)}
+         {\displaystyle\sum_{c'} \exp\!\bigl(\mathbf{w}_{i,c'}^{\top}\!\mathbf{H}
+         + b_{i,c'}\bigr)},
+  \qquad c \in \mathcal{C}_i,
+\end{equation}
+
+where $\mathcal{C}_L = \{0,1,2\}$,
+$\mathcal{C}_{S_1} = \mathcal{C}_{S_2} = \{0,\dots,10\}$, and
+$\mathcal{C}_{S_3} = \{0,\dots,9\}$.
+
+%-----------------------------------------------------------------------
+\subsection{Log-Probability Decoding}
+\label{sec:decoding}
+
+At inference time, the predicted number is obtained by maximising the
+joint log-probability over all possible lengths
+(Appendix~A of~\cite{goodfellow2014multidigitnumberrecognitionstreet}):
+
+\begin{equation}
+\label{eq:decode}
+  \hat{\mathbf{s}}
+  = \operatorname*{argmax}_{l,\; s_1 \dots s_l}\;
+    \biggl[\log P(L{=}l \mid \mathbf{X})
+    + \sum_{i=1}^{l} \max_{s_i \in \{0..9\}}
+      \log P(S_i{=}s_i \mid \mathbf{X})\biggr].
+\end{equation}
+
+Because of the conditional-independence assumption, the argmax over each
+digit position can be computed independently, then the cumulative
+log-probabilities are summed for each candidate length~$l \in \{1,2,3\}$.
+The total decoding runtime is therefore $O(N)$ -- i.e.\ three additions
+and one comparison -- adding negligible latency.
+
+Concretely, for each candidate length $l$, the algorithm computes:
+
+\begin{equation}
+\label{eq:score}
+  \text{score}(l) = \log P(L{=}l{-}1)
+    + \sum_{i=\max(1,\,4-l)}^{3}
+      \max_{s_i \in \{0..9\}} \log P(S_i{=}s_i),
+\end{equation}
+
+and selects $\hat{l} = \operatorname{argmax}_{l \in \{1,2,3\}} \text{score}(l)$.
+
+%-----------------------------------------------------------------------
+\subsection{Computational Efficiency for Edge AI}
+\label{sec:efficiency}
+
+For an ADAS system operating on edge devices like the Raspberry Pi 5, computational efficiency is just as critical as detection accuracy. To ensure real-time performance without overwhelming the hardware, the proposed multi-head CNN must be highly optimized. This section evaluates the model's efficiency by comparing its parameter count against a standard baseline, analyzing its computational cost in terms of MAC operations, and outlining the final export process to TensorFlow Lite for seamless edge deployment.
+
+\subsubsection{Parameter Count Comparison}
+
+The proposed model achieves the same multi-head output structure as
+Goodfellow~et~al.~\cite{goodfellow2014multidigitnumberrecognitionstreet} with
+$\sim\!600\times$ fewer parameters:
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison between the original Goodfellow~et~al.\ architecture
+         and the proposed lightweight variant.}
+\label{tab:compare}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{l r r}
+\hline
+                               & \textbf{Goodfellow et al.}  & \textbf{Proposed}   \\
+\hline
+Conv layers                    & 8 + 1 locally connected     & 1 Conv + 4 SepConv  \\
+FC layers                      & 2 $\times$ 3\,072           & 1 $\times$ 256      \\
+Output heads                   & 6  (L + S$_1$--S$_5$)       & 4  (L + S$_1$--S$_3$) \\
+Total parameters               & $\sim$64\,M                 & $\sim$109\,K        \\
+Max sequence length $N$        & 5                           & 3                   \\
+Input size                     & $54\times 54 \times 3$      & $64\times 96 \times 1$ \\
+Training infrastructure        & DistBelief (10 replicas)    & Single GPU / CPU    \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{MAC Budget and Latency Estimate}
+
+The total network requires approximately $408$\,K~MACs per inference.
+On the Raspberry~Pi~5's Cortex-A76 cores (capable of
+$\sim$4~GFLOPS at float32 via NEON), this translates to:
+
+\begin{equation}
+\label{eq:latency}
+  t_{\text{inf}}
+  \approx \frac{408 \times 10^{3}}{4 \times 10^{9}}
+  \approx 102 \;\mu\text{s},
+\end{equation}
+
+well under the $67$\,ms budget needed for $15$\,fps real-time recognition.
+Even with TFLite interpreter overhead, measured end-to-end latency stays below
+$2$\,ms per frame for the float32 model.
+
+\subsubsection{TFLite Export for the Multi-head CNN}
+
+The trained Keras model is converted to TensorFlow~Lite using
+\texttt{tf.lite.TFLiteConverter.from\_keras\_model()}.  The exported
+float32 \texttt{.tflite} flatbuffer is $\sim$440\,KB, compact enough to
+fit within the L2 cache of a Cortex-A76 core on the Raspberry~Pi~5.
+The model is deployed via the LiteRT interpreter with \texttt{batch=1},
+requiring no external preprocessing thanks to the embedded
+mean-subtraction $\lambda$-layer (Eq.~\eqref{eq:mean_sub}).
+
+%-----------------------------------------------------------------------
+\subsection{Data Pipeline and Augmentation}
+\label{sec:dataCNN}
+
+The training pipeline mixes three data sources to maximise diversity while
+keeping RAM usage low ($<200$\,MB peak):
+
+\begin{enumerate}
+  \item \textbf{MNIST (70\,K images):}  Individual $28{\times}28$ digits
+        composited onto $64{\times}96$ canvases at randomised positions,
+        simulating multi-digit layouts.
+  \item \textbf{Real LED crops (23 images):}  Single-digit photographs of
+        actual traffic-light seven-segment displays (red, green, yellow).
+        Pre-augmented to 500 variants per digit using brightness jitter,
+        gamma correction, Gaussian blur, salt-and-pepper noise, spatial
+        shifts ($\pm 4$\,px), and small rotations ($\pm 10°$).
+  \item \textbf{Real ROI images:}  Full composite timer-box crops from
+        Vietnamese traffic cameras, labelled by filename
+        (e.g.\ \texttt{37\_0004.png} $\to$ number~$37$).  Loaded from disk
+        on-demand (streaming) to avoid large memory allocation.
+\end{enumerate}
+
+Synthetic composites and real ROI samples are interleaved via
+\texttt{tf.data.Dataset.sample\_from\_datasets} with proportional
+weighting, ensuring both domains appear in every training batch.
+
+%-----------------------------------------------------------------------
+% \subsection{Summary}
+
+% The proposed multi-head CNN inherits the elegant probabilistic framework
+% of Goodfellow~et~al.~\cite{goodfellow2014multidigitnumberrecognitionstreet} -- conditional independence
+% of digit positions, log-probability decoding, per-image mean subtraction -- but
+% replaces the heavyweight convolutional backbone with an ultra-light depthwise
+% separable architecture totalling only $\sim$109\,K parameters and $\sim$408\,K
+% MACs.  Combined with Global Average Pooling and INT8 post-training quantisation,
+% the model achieves sub-millisecond inference on the Raspberry~Pi~5 CPU, making it
+% suitable for real-time traffic-light timer recognition in ADAS applications
+% on constrained edge devices.

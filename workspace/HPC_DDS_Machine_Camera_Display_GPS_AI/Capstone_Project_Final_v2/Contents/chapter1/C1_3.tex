@@ -1,0 +1,89 @@
+
+% \section{Scope and Objectives of the Project}
+
+% \subsection{Project Scope}
+
+% The scope of this project is defined to address the problem of red-light violation prevention through an AI-based driver assistance function, while maintaining a practical and realistic implementation target. The project focuses on the development of a perception-driven warning system rather than a fully autonomous control solution. This design choice reflects the current deployment maturity of ADAS technologies and aligns with safety regulations that emphasize driver responsibility.
+
+% At the functional level, the project concentrates on traffic light perception using camera-based input. The system is designed to detect traffic lights in the vehicle’s forward field of view, classify their signal states, and identify red-light conditions relevant to the vehicle’s driving path. Based on this information, the system generates a warning to alert the driver of a potential violation or hazardous situation at an intersection.
+
+% From a system architecture perspective, the project emphasizes software integration within an Adaptive AUTOSAR framework. Core software components include an AI-based perception module, a decision-making module responsible for evaluating red-light risk, and an interface module for driver notification. Communication between these components follows a service-oriented approach, consistent with Adaptive AUTOSAR design principles.
+
+% The scope of this work also includes the deployment and evaluation of the system on an embedded computing platform representative of in-vehicle environments. While the current implementation primarily targets a Raspberry Pi platform and containerized execution environments such as Docker, the design decisions are made with scalability and portability in mind. This allows future migration to automotive-grade hardware with minimal architectural changes.
+
+% However, several functionalities are intentionally excluded from the scope of this project. The system does not perform vehicle control actions such as braking or throttle intervention. Instead, it operates as a warning-only ADAS function, leaving final control decisions to the human driver. Additionally, the project does not address multi-sensor fusion involving radar or lidar, nor does it cover vehicle-to-infrastructure (V2I) communication. These exclusions help to narrow the focus of the research and ensure feasibility within the given development constraints.
+
+% \subsection{Project Objectives}
+
+% The objectives of this project are derived from the identified problem and the defined scope, with an emphasis on both technical feasibility and practical relevance.
+
+% The first objective is to design and implement an AI-based traffic light detection module capable of operating in real time under diverse environmental conditions. This module must accurately identify traffic lights and classify their signal states, with particular attention to red-light detection. The selected AI model should balance detection accuracy with computational efficiency to meet embedded system constraints.
+
+% The second objective is to develop a red-light warning mechanism that effectively supports the driver. This includes defining appropriate criteria for warning generation, such as distance to the intersection, vehicle speed, and confidence in detection results. The warning output should be timely, clear, and minimally intrusive, thereby enhancing driver awareness without causing unnecessary distraction.
+
+% The third objective is to integrate the perception and warning components into an Adaptive AUTOSAR-based software architecture. This involves implementing service interfaces, managing application lifecycles, and ensuring reliable communication between software modules. By leveraging Adaptive AUTOSAR, the project aims to demonstrate how modern automotive software platforms can support AI-driven ADAS functions.
+
+% The fourth objective is to evaluate the system’s real-time performance and operational reliability. Key evaluation criteria include inference latency, end-to-end processing delay, and system stability under continuous operation. Although the current implementation is limited to a prototype environment, performance analysis provides valuable insights into the feasibility of deploying such systems in real vehicles.
+
+% Overall, these objectives collectively aim to demonstrate a complete and coherent ADAS prototype that addresses a real-world traffic safety problem. By focusing on perception accuracy, real-time performance, and architectural integration, the project seeks to contribute practical knowledge toward the development of AI-enabled driver assistance systems within an Adaptive AUTOSAR framework.
+
+
+
+
+\section{Scope and Objectives of the Project}
+
+\subsection{Project Scope}
+
+% Project Scope contains: 
+% - The system can detect the traffic light signal, and then classify the color of the traffic light signal
+% - The system can detect normal state of the traffic light counters (runs normally on 2-digit number)
+% - While the system is running, it can detect the nearby traffic light system in Ho Chi Minh city within the radius of 100 meters, which will annouce when the vehicle is approaching a nearby traffic light signal 
+
+
+
+The scope of this project is defined to address the problem of red-light violation prevention through an AI-based driver assistance function, while maintaining a practical and realistic implementation target. The project focuses on the development of a perception-driven warning system rather than a fully autonomous control solution. This design choice reflects the current deployment maturity of ADAS technologies and aligns with safety regulations that emphasize driver responsibility.
+
+At the functional level, the project concentrates on traffic light perception using camera-based input. The system is designed to detect traffic lights in the vehicle’s forward field of view, classify their signal states, and identify red-light conditions relevant to the vehicle’s driving path. Because of disadvantages of mono camera, the system should include the GPS to collect the information of intersection based on ITS \cite{Lee2022TrafficLightRecognition}. As a result, the system generates a warning to alert the driver of a potential violation or hazardous situation at an intersection.
+
+From a system architecture perspective, the project emphasizes software integration within an Adaptive AUTOSAR framework. Core software components include an AI-based perception module, a decision-making module responsible for evaluating red-light risk, and an interface module for driver notification. Communication between these components follows a service-oriented approach, consistent with Adaptive AUTOSAR design principles.
+
+The scope of this work also includes the deployment and evaluation of the system on an embedded computing platform representative of in-vehicle environments. While the current implementation primarily targets a edge device and containerized execution environments such as Docker, the design decisions are made with scalability and portability in mind. This allows future migration to automotive-grade hardware with minimal architectural changes.
+
+\subsection{Out-of-Scope Functionality}
+
+To maintain a focused and feasible research scope, several functionalities are explicitly excluded from this project:
+
+\begin{itemize}
+    \item \textbf{Collision avoidance and autonomous intervention:}  
+    The system does not perform collision avoidance functions, such as automatic emergency braking, throttle control, or steering intervention. It operates strictly as a warning-only ADAS function, leaving all vehicle control actions to the human driver.
+
+    \item \textbf{Automatic speed or braking control:}  
+    Although the system may recommend speed reduction in response to detected red-light conditions, it does not directly control braking or vehicle speed. Any form of enforced deceleration or actuation-level control is outside the scope of this work.
+
+    \item \textbf{Night-time illumination enhancement and low-light compensation:}  
+    The project does not address advanced image enhancement techniques for night-time driving, such as adaptive exposure control, HDR processing, or infrared-based perception. Detection performance under extreme low-light conditions is therefore not explicitly optimized.
+
+    \item \textbf{Head-Up Display (HUD) or advanced human–machine interfaces:}  
+    Driver feedback is limited to basic warning outputs for prototype evaluation purposes. The design and implementation of advanced visualization interfaces, such as HUD integration or augmented reality displays, are not considered.
+
+    \item \textbf{Multi-sensor fusion and V2X communication:}  
+    The system relies solely on camera-based perception and does not incorporate radar, lidar, or vehicle-to-infrastructure (V2I) communication. These extensions are considered potential future enhancements rather than part of the current scope.
+\end{itemize}
+
+By explicitly defining these exclusions, the project maintains a clear focus on perception-driven red-light warning and Adaptive AUTOSAR-based system integration, ensuring that the proposed implementation remains feasible within the given development constraints.
+
+\subsection{Project Objectives}
+
+The objectives of this project are derived from the identified problem and the defined scope, with an emphasis on both technical feasibility and practical relevance.
+
+The first objective is to design and implement an AI-based traffic light detection module capable of operating in real time. This module must accurately identify traffic lights and classify their signal states, with particular attention to red-light detection. The selected AI model should balance detection accuracy with computational efficiency to meet embedded system constraints.
+
+The second objective is to develop a red-light warning mechanism that effectively supports the driver. This includes defining appropriate criteria for warning generation, such as distance to the intersection, vehicle speed, and confidence in detection results. The warning output should be timely, clear, and minimally intrusive, thereby enhancing driver awareness without causing unnecessary distraction.
+
+The third objective is to integrate the perception and warning components into an Adaptive AUTOSAR-based software architecture. This involves implementing service interfaces, managing application lifecycles, and ensuring reliable communication between software modules. By leveraging Adaptive AUTOSAR, the project aims to demonstrate how modern automotive software platforms can support AI-driven ADAS functions.
+
+The fourth objective is to evaluate the system’s real-time performance and operational reliability. Key evaluation criteria include inference latency, end-to-end processing delay, and system stability under continuous operation. Although the current implementation is limited to a prototype environment, performance analysis provides valuable insights into the feasibility of deploying such systems in real vehicles.
+
+Overall, these objectives aim to demonstrate a complete and coherent ADAS prototype that addresses a real-world traffic safety problem while remaining aligned with practical deployment constraints and current automotive software standards. 
+
+To clarify how these objectives relate to existing research and industrial practice, the following section reviews related works in traffic light detection, embedded AI deployment, Adaptive AUTOSAR, and spatial positioning.

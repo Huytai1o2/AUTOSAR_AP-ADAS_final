@@ -1,0 +1,225 @@
+\section{Global Navigation Satellite System (GNSS) Integration}
+
+Precise spatial localization is essential for Advanced Driver Assistance Systems (ADAS). To anchor the vehicle's relative optical perception within a global coordinate frame, the Adaptive AUTOSAR architecture integrates a multi-mode GNSS receiver. By simultaneously tracking multiple satellite constellations (GPS, BeiDou, and GLONASS), the system minimizes the Geometric Dilution of Precision (GDOP) and ensures robust localization even in dense urban environments.
+
+\subsection{Hardware}
+
+The system utilizes the Ai-Thinker GP-02 BDS/GNSS multi-mode breakout board. The integrated System-on-Chip (SoC) handles RF signal amplification and digital baseband processing to extract navigation data.
+
+% // Insert the image here
+
+\textbf{Time to First Fix (TTFF):} A critical metric for automotive safety. While a cold start takes up to 32 seconds, the module features a CR2032 backup battery to preserve ephemeris data in memory. This ensures a hot start or signal recapture time of $\leq 1$ second upon vehicle ignition.
+
+\subsection{Output Breakdown and Parsing}
+\subsubsection{Output Breakdown}
+The GP-02 outputs standard NMEA 0183 sentences. The module sequentially transmits a block of distinct message packets, specifically: \texttt{\$GNGGA}, \texttt{\$GNGLL}, \texttt{\$GNGSA} (two instances), \texttt{\$GPGSV, \$BDGSV, \$GNRMC, \$GNVTG, \$GNZDA,} and \texttt{\$GPTXT}.
+
+This is an example of a GPS output (at the cold start): 
+
+\begin{lstlisting}
+$GNGGA,021809.000,,,,,0,00,25.5,,,,,,*78
+$GNGLL,,,,,021809.000,V,M*65
+$GNGSA,A,1,,,,,,,,,,,,,25.5,25.5,25.5,1*01
+$GNGSA,A,1,,,,,,,,,,,,,25.5,25.5,25.5,4*04
+$GPGSV,3,1,10,03,26,057,,06,57,273,,07,18,169,,09,09,142,,0*66
+$GPGSV,3,2,10,11,24,238,,14,71,032,,17,35,001,,19,28,324,,0*6E
+$GPGSV,3,3,10,22,58,000,,30,41,203,,0*6E
+$BDGSV,1,1,00,0*74
+$GNRMC,021809.000,V,,,,,,,070526,,,M,V*2E
+$GNVTG,,,,,,,,,M*2D
+$GNZDA,021809.000,07,05,2026,00,00*4E
+$GPTXT,01,01,01,ANTENNA OK*35
+\end{lstlisting}
+
+This is an example of the GPS output after the cold start: 
+
+\begin{lstlisting}
+$GNGGA,023535.000,1047.73309,N,10640.69530,E,1,07,5.7,9.3,M,-4.0,M,,*50
+$GNGLL,1047.73309,N,10640.69530,E,023535.000,A,A*43
+$GNGSA,A,3,09,14,199,,,,,,,,,,7.6,5.7,4.9,1*02
+$GNGSA,A,3,01,04,06,41,,,,,,,,,7.6,5.7,4.9,4*3C
+$GPGSV,3,1,12,03,22,050,,06,57,290,,07,12,165,,09,10,135,31,0*66
+$GPGSV,3,2,12,11,29,245,,14,76,060,24,17,35,010,,19,30,332,,0*63
+$GPGSV,3,3,12,21,06,204,,22,65,007,21,30,35,196,,199,63,117,28,0*50
+$BDGSV,1,1,04,01,50,105,30,04,28,100,37,06,53,146,30,41,26,107,20,0*7D
+$GNRMC,023535.000,A,1047.73309,N,10640.69530,E,0.00,0.00,070526,,,A,V*08
+$GNVTG,0.00,T,,M,0.00,N,0.00,K,A*23
+$GNZDA,023535.000,07,05,2026,00,00*4E
+$GPTXT,01,01,01,ANTENNA OK*35
+\end{lstlisting}
+
+This table show the structure of 1 NMEA sentences and field definitions: 
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\$ & Talker & Sentence Type & , & Comma-separated data fields & * & CS & \texttt{\textbackslash r\textbackslash n}\\ \hline
+\end{tabular}
+\caption{NMEA Sentence Structure}
+\end{table}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|l|l|p{6cm}|}
+\hline
+\textbf{Field} & \textbf{Characters} & \textbf{Example} & \textbf{Description} \\ \hline
+Start delimiter & \$ & \$ & Marks the beginning of a sentence. Every sentence starts with exactly one \$. \\ \hline
+Talker ID & 2 (or 1) & GN & Identifies which navigation system or device produced the sentence. \\ \hline
+Sentence type & 3 & GGA & Identifies the sentence format and what data it contains. \\ \hline
+Data fields & Variable & 092725.00,... & Comma-separated values. Empty commas (,,) represent optional or unavailable fields. \\ \hline
+Checksum delimiter & * & * & Separates the data from the checksum. \\ \hline
+Checksum & 2 hex digits & 47 & XOR of all characters between \$ and *. Used to catch transmission errors. \\ \hline
+Line terminator & \textbackslash r\textbackslash n & \textbackslash r\textbackslash n & Carriage return + Line feed. Always present at the end of a sentence. \\ \hline
+\end{tabular}
+\caption{NMEA Field Definitions}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\label{tab:talker_ids}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Talker ID} & \textbf{System} & \textbf{Example sentences} \\ \hline
+\texttt{GP} & GPS (US satellite navigation system) & \texttt{\$GPGSV}, \texttt{\$GPTXT} \\ \hline
+\texttt{GB / BD} & BeiDou (Chinese satellite navigation system) & \texttt{\$BDGSV} \\ \hline
+\texttt{GN} & Combined GNSS (data blended from multiple constellations) & \texttt{\$GNGGA}, \texttt{\$GNRMC} \\ \hline
+\end{tabularx}
+\caption{Active Talker IDs}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\label{tab:sentence_types}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Type} & \textbf{Full name} & \textbf{What it contains} \\ \hline
+\texttt{GGA} & Global Positioning System Fix Data & Position, altitude, fix quality, satellite count, HDOP \\ \hline
+\texttt{RMC} & Recommended Minimum Specific GNSS Data & Position, speed, course, date/time, status \\ \hline
+\texttt{GSA} & GNSS DOP and Active Satellites & Fix mode, DOP values (PDOP/HDOP/VDOP), active satellite IDs \\ \hline
+\texttt{GSV} & GNSS Satellites in View & Per-satellite: PRN, elevation, azimuth, SNR \\ \hline
+\texttt{GLL} & Geographic Position Latitude/Longitude & Position only, with status \\ \hline
+\texttt{VTG} & Course Over Ground and Ground Speed & Speed (knots + km/h) and course (true + magnetic) \\ \hline
+\texttt{ZDA} & Time and Date & Full UTC date and time with timezone offset \\ \hline
+\texttt{TXT} & Text Transmission & Human-readable device text messages \\ \hline
+\end{tabularx}
+\caption{Active Sentence Types}
+\end{table}
+
+\newpage
+\subsubsection{Reading a sentence}
+We will use a custom parsing function to extract and convert the coordinates from the continuous NMEA stream. Because GPS modules transmit multiple sentences per second, the parser first filters the stream to isolate sentences containing valid positional data—specifically \texttt{GLL}, \texttt{RMC}, and \texttt{GGA}. 
+
+Once an appropriate sentence is identified, it is split into an array using commas as delimiters. The parser then checks the status flag of the sentence (for example, ensuring the status field in an \texttt{RMC} sentence reads \texttt{A} for ``Active'' rather than \texttt{V} for ``Void''). If the data is valid, the latitude and longitude fields are extracted. 
+
+However, NMEA coordinates are formatted in Degrees-Minutes (DDMM.MMMM). To plot or calculate distances, these values must be converted to standard Decimal Degrees using the following formula:
+
+\begin{equation}
+\text{Decimal Degrees} = \text{Degrees} + \frac{\text{Minutes}}{60}
+\end{equation}
+
+Finally, if the hemisphere indicator is South (S) or West (W), the resulting decimal value is made negative.
+
+% \newpage
+\subsection{Haversine Algorithm}
+
+The Haversine algorithm is an algorithm to calculate the distance between two coordinates on a sphere. It is used for calculating the shortest distance over the curved surface of the Earth between the user's current GPS location and the geographical coordinates of nearby traffic nodes. Because the Earth is spherical, standard flat-plane Euclidean geometry (like the Pythagorean theorem) results in significant errors when calculating geographical distances.
+
+The distance $d$ is calculated using the following equations:
+
+\begin{equation}
+a = \sin^2\left(\frac{\Delta \varphi}{2}\right) + \cos(\varphi_1) \cdot \cos(\varphi_2) \cdot \sin^2\left(\frac{\Delta \lambda}{2}\right)
+\end{equation}
+
+\begin{equation}
+c = 2 \cdot \text{atan2}\left(\sqrt{a}, \sqrt{1-a}\right)
+\end{equation}
+
+\begin{equation}
+d = R \cdot c
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $\varphi_1, \varphi_2$ are the latitudes of point 1 and point 2 (converted to radians).
+    \item $\lambda_1, \lambda_2$ are the longitudes of point 1 and point 2 (converted to radians).
+    \item $\Delta \varphi = \varphi_2 - \varphi_1$
+    \item $\Delta \lambda = \lambda_2 - \lambda_1$
+    \item $R$ is the Earth's mean radius (approximately $6,371,000$ meters).
+    \item $a$ is the square of half the chord length between the points.
+    \item $c$ is the angular distance in radians.
+    \item $d$ is the final physical distance in meters.
+\end{itemize}
+
+\subsection{Spatial Querying using a K-Dimensional Tree (KD-Tree)}
+
+As the vehicle moves, the system must continuously determine the nearest traffic light node. A brute-force approach—calculating the Haversine distance to every node in the database for every GPS update—results in a time complexity of $\mathcal{O}(N)$, which is computationally inefficient for real-time applications with large maps. To optimize this, the system implements a K-Dimensional Tree (KD-Tree), a space-partitioning data structure that reduces the average search time complexity to $\mathcal{O}(\log N)$.
+
+\subsubsection{Tree Construction}
+For this application, the KD-Tree operates in a 2-dimensional space ($k=2$), corresponding to latitude and longitude. The tree is constructed by recursively bisecting the dataset of traffic nodes. At each level of the tree, the algorithm alternates the splitting axis. The median node along the chosen axis becomes the root of that subtree, and the remaining nodes are divided into left and right child branches.
+
+\begin{algorithm}[H]
+\caption{Build KD-Tree}
+\label{alg:build_kdtree}
+\SetKwFunction{FBuild}{BuildKDTree}
+\SetKwProg{Fn}{Procedure}{:}{}
+\Fn{\FBuild{$points, lo, hi, depth$}}{
+    \If{$lo > hi$}{
+        \Return \text{null}\;
+    }
+    $axis \gets depth \bmod 2$ \tcp*{0: lat, 1: long}
+    $mid \gets lo + \lfloor (hi - lo) / 2 \rfloor$\;
+    \texttt{QuickSelect}($points, lo, mid, hi, axis$)\;
+    $node \gets \text{new Node}(points[mid])$\;
+    $node.left \gets$ \FBuild{$points, lo, mid - 1, depth + 1$}\;
+    $node.right \gets$ \FBuild{$points, mid + 1, hi, depth + 1$}\;
+    \Return $node$\;
+}
+\end{algorithm}
+
+\subsubsection{Nearest Neighbor Search with Radius Pruning}
+Once the KD-Tree is constructed, the system performs a bounded nearest-neighbor query. As the algorithm traverses the tree, it calculates the exact distance using the Haversine formula. To maintain high performance, the algorithm utilizes the bounding radius (or the current best distance) to prune irrelevant branches. It calculates the perpendicular distance from the vehicle's coordinates to the geometric splitting plane. If this axis-aligned distance is strictly greater than the best known distance (or an absolute threshold radius of $n$ meters), it is mathematically impossible for a closer node to exist on the other side, and the subtree is skipped.
+
+\begin{algorithm}[H]
+\caption{Find Nearest Node with Haversine and Pruning}
+\label{alg:find_nearest}
+\SetKwFunction{FNearest}{FindNearest}
+\SetKwProg{Fn}{Procedure}{:}{}
+\Fn{\FNearest{$node, target, depth, bestNode, bestDist$}}{
+    \If{$node = \text{null}$}{
+        \Return\;
+    }
+    $dist \gets \text{Haversine}(target, node.point)$\;
+    \If{$dist < bestDist$}{
+        $bestDist \gets dist$\;
+        $bestNode \gets node.point$\;
+    }
+    $axis \gets depth \bmod 2$\;
+    \If{$axis = 0$}{
+        $diff \gets target.latitude - node.point.latitude$\;
+    }{
+        $diff \gets target.longitude - node.point.longitude$\;
+    }
+    \eIf{$diff < 0$}{
+        $first \gets node.left$\;
+        $second \gets node.right$\;
+    }{
+        $first \gets node.right$\;
+        $second \gets node.left$\;
+    }
+    \FNearest{$first, target, depth + 1, bestNode, bestDist$}\;
+    \tcp{Pruning logic}
+    \If{$axis = 0$}{
+        $axisDist \gets |diff| \times 111320.0$\;
+    }{
+        $axisDist \gets |diff| \times 111320.0 \times \cos(target.latitude)$\;
+    }
+    \If{$axisDist < bestDist$}{
+        \FNearest{$second, target, depth + 1, bestNode, bestDist$}\;
+    }
+}
+\end{algorithm}
+
+By combining the KD-Tree's rapid spatial pruning with the high accuracy of the Haversine distance calculation, the system can instantly isolate the relevant traffic light node, provided the vehicle has entered the active interaction zone.

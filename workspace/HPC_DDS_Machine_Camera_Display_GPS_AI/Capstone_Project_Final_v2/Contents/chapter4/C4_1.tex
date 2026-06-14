@@ -1,0 +1,363 @@
+
+
+% \chapter{Flow Chart}
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[
+%     node distance=1.5cm,
+%     every node/.style={font=\small},
+%     startstop/.style={
+%         rectangle, rounded corners,
+%         minimum width=3.6cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     process/.style={
+%         rectangle,
+%         minimum width=4.4cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     decision/.style={
+%         diamond,
+%         aspect=2.8,
+%         minimum width=2.6cm,
+%         minimum height=0.85cm,
+%         inner sep=1.5pt,
+%         draw, align=center
+%     },
+%     arrow/.style={->, thick},
+% ]
+
+% % ===== Nodes =====
+% \node (start) [startstop] {Application Start};
+
+% \node (init) [process, below of=start] {Initialize ProviderSensor};
+
+% \node (tflite) [process, below of=init] {Initialize TFLite Model};
+
+% \node (checkinit) [decision, below of=tflite, yshift=-0.5cm]
+% {Initialization Successful};
+
+% \node (terminate) [startstop, right=3.8cm of checkinit]
+% {Terminate Application};
+
+% \node (startport) [process, below of=checkinit, yshift=-0.4cm]
+% {Start Sensorv2 Port};
+
+% \node (run) [process, below of=startport]
+% {Run Application Thread};
+
+% \node (caminit) [process, below of=run]
+% {Open Camera Device};
+
+% \node (camcheck) [decision, below of=caminit, yshift=-0.5cm]
+% {Camera Opened};
+
+% \node (cont) [startstop, below of=camcheck, yshift=-0.4cm]
+% {Enter Main Processing Loop};
+
+% % ===== Arrows =====
+% \draw [arrow] (start) -- (init);
+% \draw [arrow] (init) -- (tflite);
+% \draw [arrow] (tflite) -- (checkinit);
+
+% \draw [arrow] (checkinit) -- node[right]{Yes} (startport);
+% \draw [arrow] (checkinit.east) -- node[above]{No} (terminate.west);
+
+% \draw [arrow] (startport) -- (run);
+% \draw [arrow] (run) -- (caminit);
+% \draw [arrow] (caminit) -- (camcheck);
+
+% \draw [arrow] (camcheck) -- node[right]{Yes} (cont);
+% \draw [arrow]
+%     (camcheck.east)
+%     -| node[near start, above]{No}
+%     (terminate.south);
+
+% \end{tikzpicture}
+% \vspace{0.5cm}
+% \caption{Initialization Flow of the ProviderSensor Adaptive Application}
+% \label{fig:providersensor_init}
+% \end{figure}
+
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[
+%     node distance=1.4cm,
+%     every node/.style={font=\small},
+%     startstop/.style={
+%         rectangle, rounded corners,
+%         minimum width=3.6cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     process/.style={
+%         rectangle,
+%         minimum width=4.6cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     decision/.style={
+%         diamond,
+%         aspect=2.6,
+%         minimum width=3.2cm,
+%         minimum height=1.0cm,
+%         inner sep=1.5pt,
+%         draw, align=center
+%     },
+%     arrow/.style={->, thick}
+% ]
+
+% % ===== Nodes =====
+% \node (loop) [startstop] {Main Processing Loop};
+
+% \node (capture) [process, below of=loop]
+% {Capture Camera Frame};
+
+% \node (frameok) [decision, below of=capture]
+% {Frame Valid};
+
+% \node (infer) [process, below of=frameok, yshift=-0.4cm]
+% {YOLO TFLite Inference};
+
+% \node (post) [process, below of=infer]
+% {Post Processing\\ Confidence Filter and NMS};
+
+% \node (drawbox) [process, below of=post]
+% {Draw Bounding Boxes};
+
+% \node (encode) [process, below of=drawbox]
+% {Encode Frame to JPEG};
+
+% \node (send) [process, below of=encode]
+% {Send Data via Sensorv2 Port};
+
+% \node (sleep) [process, below of=send]
+% {Sleep to Control Frame Rate};
+
+% % ===== Arrows =====
+% \draw [arrow] (loop) -- (capture);
+% \draw [arrow] (capture) -- (frameok);
+
+% % Decision: Frame Valid
+% \draw [arrow] (frameok) -- node[right]{Yes} (infer);
+% \draw [arrow]
+%     (frameok.east) -- ++(2.2cm,0)
+%     |- node[near start, above]{No} (capture.east);
+
+% % Main pipeline
+% \draw [arrow] (infer) -- (post);
+% \draw [arrow] (post) -- (drawbox);
+% \draw [arrow] (drawbox) -- (encode);
+% \draw [arrow] (encode) -- (send);
+% \draw [arrow] (send) -- (sleep);
+
+% % Loop back
+% \draw [arrow]
+%     (sleep.west) -- ++(-2.6cm,0)
+%     |- (loop.west);
+
+% \end{tikzpicture}
+% \vspace{0.5cm}
+% \caption{Runtime Processing Loop of the ProviderSensor Application}
+% \label{fig:providersensor_runtime}
+% \end{figure}
+
+% The process begins with the application startup, followed immediately by the initialization of the \texttt{ProviderSensor} component and the TensorFlow Lite (TFLite) model. The system then verifies if the initialization was successful. If the initialization fails, the application terminates immediately. Upon success, the system starts the \texttt{Sensorv2} communication port and launches the application thread. The flow proceeds to open the camera device. A check is performed to confirm if the camera opened successfully; if not, the application terminates. If the camera is successfully accessed, the system transitions into the main processing loop.
+
+% Once inside the main processing loop, the system continuously captures camera frames. For each iteration, it verifies if the captured frame is valid. If the frame is invalid, the loop restarts. If valid, the system performs inference using the YOLO TFLite model, followed by post-processing steps which include applying a confidence filter and Non-Maximum Suppression (NMS) to refine detections. The system then draws bounding boxes around detected objects and encodes the frame into JPEG format. This processed data is sent via the \texttt{Sensorv2} port. Finally, the loop includes a sleep interval to control the frame rate before repeating the process.
+
+
+
+
+% \chapter{Flow Chart}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.9, transform shape,
+    node distance=1.5cm,
+    every node/.style={font=\small},
+    startstop/.style={
+        rectangle, rounded corners,
+        minimum width=3.6cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    process/.style={
+        rectangle,
+        minimum width=4.4cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    io/.style={
+        trapezium, trapezium left angle=70, trapezium right angle=110,
+        minimum width=4.0cm, minimum height=0.9cm,
+        inner xsep=0.5cm,
+        draw, align=center
+    },
+    decision/.style={
+        diamond,
+        aspect=2.8,
+        minimum width=2.6cm,
+        minimum height=0.85cm,
+        inner sep=1.5pt,
+        draw, align=center
+    },
+    arrow/.style={->, thick},
+]
+
+% ===== Nodes =====
+\node (start) [startstop] {Application Start};
+
+\node (init) [process, below of=start] {Initialize Provider Application};
+
+\node (caminit) [process, below of=init] {Open UART (GPS) \& USB (Webcam)};
+
+\node (checkinit) [decision, below of=caminit, yshift=-0.5cm]
+{Devices Opened?};
+
+\node (terminate) [startstop, right=3.8cm of checkinit]
+{Terminate Application};
+
+\node (startdds) [process, below of=checkinit, yshift=-0.4cm]
+{Initialize DDS Publisher\\Service: \texttt{Sensor}, ID: \texttt{100}};
+
+\node (loop) [startstop, below of=startdds]
+{Main Processing Loop};
+
+\node (capture) [io, below of=loop]
+{1. Data Acquisition (GPS \& Frame)};
+
+\node (yolo) [process, below of=capture]
+{2a. YOLO Traffic Light Detection};
+
+% Multi-thread fork (One thread per Direction)
+\node (fork) [rectangle, fill=black, inner sep=0pt, minimum width=8.5cm, minimum height=0.15cm, below of=yolo, yshift=-0.2cm] {};
+
+\node (t1) [process, minimum width=3.6cm, align=center, below of=fork, xshift=-2.8cm, yshift=-0.4cm]
+{\textbf{Thread 1 (e.g., Left)}\\Extract ROI\\HSV Color Pipeline\\Timer Detection};
+
+\node (tn) [process, minimum width=3.6cm, align=center, below of=fork, xshift=2.8cm, yshift=-0.4cm]
+{\textbf{Thread 3 (e.g., Straight)}\\Extract ROI\\HSV Color Pipeline\\Timer Detection};
+
+\node (dots) [below of=fork, yshift=-1.9cm] {\Large $\dots$};
+
+% Multi-thread join
+\node (join) [rectangle, fill=black, inner sep=0pt, minimum width=8.5cm, minimum height=0.15cm, below of=t1, xshift=2.8cm, yshift=-0.8cm] {};
+
+\node (pack) [process, below of=join, yshift=0.3cm]
+{3. Pack \texttt{GpsJpegWireHeader} + JPEG};
+
+\node (publish) [io, below of=pack]
+{4. Publish \texttt{imageDataEvent}\\Topic: \texttt{imageData}};
+
+% ===== Arrows =====
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (caminit);
+\draw [arrow] (caminit) -- (checkinit);
+
+\draw [arrow] (checkinit) -- node[right]{Yes} (startdds);
+\draw [arrow] (checkinit.east) -- node[above]{No} (terminate.west);
+
+\draw [arrow] (startdds) -- (loop);
+\draw [arrow] (loop) -- (capture);
+\draw [arrow] (capture) -- (yolo);
+
+\draw [arrow] (yolo) -- (fork);
+\draw [arrow] (t1.north |- fork.south) -- (t1.north);
+\draw [arrow] (tn.north |- fork.south) -- (tn.north);
+
+\draw [arrow] (t1.south) -- (t1.south |- join.north);
+\draw [arrow] (tn.south) -- (tn.south |- join.north);
+\draw [arrow] (join.south) -- (pack.north);
+
+\draw [arrow] (pack) -- (publish);
+
+% Loop back
+\draw [arrow]
+    (publish.west) -- ++(-3.8cm,0)
+    |- (loop.west);
+
+\end{tikzpicture}
+\vspace{0.5cm}
+\caption{Processing Flow of the Provider Application}
+\label{fig:provider_flow}
+\end{figure}
+
+The application initiates the Provider component by acquiring access to the necessary external peripherals: the GPS module via UART (\texttt{/dev/ttyAMA0}) and the external webcam via USB 2.0 (UVC). Upon successful hardware initialization, the application establishes the DDS Publisher node configured for the \texttt{Sensor} service (instance-id~\texttt{100}, Domain Id~\texttt{0}) using the \texttt{CycloneDDS-CXX} stack over UDP. Failure at either the hardware or network initialization stage results in an immediate application termination to ensure system safety.
+
+Once the setup is complete, the execution enters the main processing loop where data acquisition and perception tasks operate continuously. The pipeline captures a raw video frame from the webcam simultaneously with the reading of GPS position data. The raw frame is passed to the YOLO-based Traffic Light Detection module to infer initial bounding boxes. To meet real-time constraints, the subsequent processing stages are parallelized. The algorithm selects the highest-confidence bounding box for each distinct traffic light direction (Left, Right, Straight) and dispatches a dedicated worker thread for each direction. The concurrent operations within these threads are detailed in Figure~\ref{fig:thread_flow}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.9, transform shape,
+    node distance=1.4cm,
+    every node/.style={font=\small},
+    startstop/.style={
+        rectangle, rounded corners,
+        minimum width=3.6cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    process/.style={
+        rectangle,
+        minimum width=4.8cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    decision/.style={
+        diamond,
+        aspect=2.8,
+        minimum width=3.0cm,
+        minimum height=1.0cm,
+        inner sep=1.5pt,
+        draw, align=center
+    },
+    arrow/.style={->, thick},
+]
+
+% Nodes
+\node (start) [startstop] {Thread Start (dirWorker)};
+
+\node (extract_tl) [process, below of=start] {Extract Traffic Light ROI\\on Original High-Res Image};
+
+\node (hsv) [process, below of=extract_tl] {HSV Color Classification};
+
+\node (check_timer) [decision, below of=hsv, yshift=-0.5cm] {Timer Boxes\\Detected?};
+
+\node (find_nearest) [process, below of=check_timer, yshift=-0.5cm] {Find Nearest Timer Box\\(Distance Calculation)};
+
+\node (check_nearest) [decision, below of=find_nearest, yshift=-0.5cm] {Valid Timer\\Box Found?};
+
+\node (extract_timer) [process, below of=check_nearest, yshift=-0.5cm] {Extract Timer ROI\\on Original High-Res Image};
+
+\node (ocr) [process, below of=extract_timer] {Lightweight OCR Model\\(Digit Recognition)};
+
+\node (end) [startstop, right=3.5cm of check_nearest] {Return Direction\\Result};
+
+% Arrows
+\draw [arrow] (start) -- (extract_tl);
+\draw [arrow] (extract_tl) -- (hsv);
+\draw [arrow] (hsv) -- (check_timer);
+
+\draw [arrow] (check_timer) -- node[right]{Yes} (find_nearest);
+\draw [arrow] (check_timer.east) -| node[near start, above]{No} (end.north);
+
+\draw [arrow] (find_nearest) -- (check_nearest);
+\draw [arrow] (check_nearest) -- node[above]{No} (end.west);
+\draw [arrow] (check_nearest) -- node[right]{Yes} (extract_timer);
+
+\draw [arrow] (extract_timer) -- (ocr);
+\draw [arrow] (ocr.east) -| (end.south);
+
+\end{tikzpicture}
+\vspace{0.5cm}
+\caption{Parallel Thread Pipeline for each Direction (dirWorker)}
+\label{fig:thread_flow}
+\end{figure}
+
+Within each direction's worker thread (\texttt{dirWorker}), the pipeline maps the low-resolution YOLO bounding box back to the original high-resolution frame to extract a precise Region of Interest (ROI). This ROI undergoes an HSV color space transformation to robustly classify the current signal state. Concurrently, the thread identifies any timer boxes detected in the main frame. By calculating geometric distances, the algorithm pairs the nearest valid timer box with the corresponding traffic light direction. If a match is found, the timer's ROI is extracted from the high-resolution frame and passed through a lightweight OCR model to recognize the remaining countdown digits.
+
+Upon the completion of all parallel threads, the main thread synchronizes the multi-directional results. The annotated frame is then JPEG-encoded and serialized alongside a 24-byte \texttt{GpsJpegWireHeader}. This custom header encapsulates the metadata, including the magic value, protocol version, \texttt{in\_range} flag, \texttt{node\_id}, \texttt{dist\_m}, and the payload length (\texttt{jpeg\_len}). Finally, the combined byte sequence is written into the \texttt{imageData} payload of the \texttt{dds::sensorCam::imageDataEventType} structure and published over the DDS network to any subscribed clients.
