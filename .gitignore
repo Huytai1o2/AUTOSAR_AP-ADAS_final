@@ -7,3 +7,4 @@
 build/
 install/
 cnn_digits/imageProcessing_venv/
+.carlaVenv/
