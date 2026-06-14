@@ -899,12 +899,10 @@ void ProviderSensor::Run()
             using clk = std::chrono::high_resolution_clock;
             using fms = std::chrono::duration<double, std::milli>;
 
-            // Run pipeline — returns 320-wide annotated image directly
             auto ta = clk::now();
             cv::Mat result = processFrame(frame, 0);
             auto tb = clk::now();
 
-            // Encode — result is already 320px wide, no extra resize needed
             std::vector<uchar> jpegBuf;
             cv::imencode(".jpg", result, jpegBuf, {cv::IMWRITE_JPEG_QUALITY, 95});
             auto tc = clk::now();

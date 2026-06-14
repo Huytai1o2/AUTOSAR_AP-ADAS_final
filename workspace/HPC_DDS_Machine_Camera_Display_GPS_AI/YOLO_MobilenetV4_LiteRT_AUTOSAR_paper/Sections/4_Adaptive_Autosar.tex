@@ -1,0 +1,74 @@
+% \section{AUTOSAR Framework}
+% \label{sec:autosar}
+
+% This section introduces the AUTOSAR software architecture and its relevance to AI-enabled automotive systems. We briefly review the limitations of the Classic Platform and highlight the key features of the AUTOSAR Adaptive Platform Platform that support high-performance, deep learning–based perception on HPC nodes.
+
+% \subsection{Overview of AUTOSAR}
+% The AUTomotive Open System ARchitecture (AUTOSAR) is a worldwide development partnership of vehicle manufacturers, suppliers, and other electronics, semiconductor, and software companies. The primary objective of AUTOSAR is to establish an open and standardized software architecture for automotive Electronic Control Units (ECUs) \cite{_layered}. By decoupling the application software from the underlying hardware, AUTOSAR enhances scalability and transferability of software modules across different vehicle platforms.
+
+% Traditionally, the AUTOSAR Classic Platform (CP) has been the industry standard, designed for deeply embedded systems with strict real-time constraints, such as engine control or braking systems. It relies on a static configuration and usually operates on low-power microcontrollers using OSEK-based operating systems. However, with the advent of autonomous driving and V2X communication, the limitations of the Classic Platform in handling high-bandwidth data and dynamic updates became apparent, necessitating a more flexible architecture.
+
+% \subsection{AUTOSAR Adaptive Platform for High-Performance Computing}
+% To address the computational demands of modern automotive applications, such as Advanced Driver Assistance Systems (ADAS) and automated driving, the AUTOSAR consortium introduced the \textit{Adaptive Platform (AP)}. Unlike the Classic Platform, AUTOSAR Adaptive Platform is designed for High-Performance Computing (HPC) nodes and supports dynamic communication as well as flexible over-the-air (OTA) software updates.
+
+% AUTOSAR Adaptive Platform is built on top of the POSIX (Portable Operating System Interface) standard, allowing it to run on complex operating systems such as Linux or QNX. This feature is particularly crucial for this study, as it enables the integration of advanced deep learning frameworks, such as Google LiteRT, as discussed in Section~\ref{sec:yolo_mobilenet}, directly into the automotive software stack.
+
+% Key characteristics of the Adaptive Platform relevant to this research include~\cite{autosar_ap_platform_design_r21_11}:
+% \begin{itemize}
+%     \item \textit{Service-Oriented Architecture (SOA):} Unlike the signal-based communication model of the Classic Platform, AP adopts a service-oriented approach (e.g., via SOME/IP protocols~\cite{autosar_someip_r21_11}). This enables the traffic light detection module to publish inference results as a service that other vehicle components can dynamically subscribe to.
+%     \item \textit{High-Performance Hardware Support:} The Adaptive Platform is optimized for multi-core processors and hardware accelerators (GPUs/NPUs), which are essential for executing the MobileNetV4-backbone YOLO model in real time.
+%     \item \textit{C++ Standardization:} While Classic AUTOSAR primarily relies on C, AUTOSAR Adaptive Platform leverages modern C++ standards (C++11/14 and beyond), facilitating the development of complex computer vision algorithms and the integration of AI inference engines.
+% \end{itemize}
+
+% In the context of this paper, the AUTOSAR Adaptive Platform platform serves as middleware that bridges the gap between the AI-based object detection model and the vehicle’s electronic network, ensuring that inference tasks are executed within a standardized and safety-compliant automotive environment.
+
+
+% % ---------------------------New Section---------------------
+% \section{AUTOSAR Framework}
+% \label{sec:autosar}
+
+% This section outlines the AUTOSAR software architecture and motivates the use of the Adaptive Platform for deploying AI-based perception on automotive high-performance computing nodes.
+
+% \subsection{AUTOSAR Overview}
+% AUTOSAR is a standardized software framework designed to improve scalability and portability of automotive Electronic Control Unit (ECU) software by decoupling applications from hardware. 
+
+% The AUTOSAR Classic Platform has traditionally been used for deeply embedded, safety-critical systems with strict real-time constraints. However, its static configuration model and limited support for high-bandwidth data processing restrict its applicability to modern perception-driven applications, motivating the adoption of more flexible architectures.
+
+% \subsection{AUTOSAR Adaptive Platform for High-Performance Computing}
+% To support computationally intensive applications such as ADAS and automated driving, AUTOSAR introduced the \textit{Adaptive Platform (AP)}. In contrast to the Classic Platform, AUTOSAR Adaptive Platform targets High-Performance Computing (HPC) nodes and enables dynamic communication, process management, and over-the-air (OTA) software updates.
+
+% AUTOSAR Adaptive Platform is based on POSIX-compliant operating systems (e.g., Linux or QNX), which allows direct integration of modern C++ software stacks and deep learning inference runtimes, such as Google LiteRT, into the automotive environment.
+
+% Key features relevant to this work include~\cite{autosar_ap_platform_design_r21_11}:
+% \begin{itemize}
+%     \item \textit{Service-Oriented Architecture (SOA):} Communication is based on services (e.g., SOME/IP~\cite{autosar_someip_r21_11}), enabling perception results to be exposed as reusable and dynamically discoverable services.
+%     \item \textit{HPC Support:} The platform is optimized for multi-core processors and heterogeneous computing resources, supporting real-time AI workloads.
+%     \item \textit{Modern C++ Environment:} The use of standardized C++ facilitates the implementation and integration of advanced computer vision and AI inference components.
+% \end{itemize}
+
+% In this work, AUTOSAR Adaptive Platform acts as standardized middleware that enables the deployment of deep learning-based traffic light detection within a safety-compliant automotive software architecture.
+
+
+%-------------------------------New new section------------------------
+\section{AUTOSAR Adaptive Platform}
+\label{sec:autosar}
+
+The AUTOSAR Adaptive Platform serves as standardized middleware for sensor-level edge AI perception on automotive edge devices, supporting efficient execution and safety-aware integration.
+
+\subsection{AUTOSAR Overview}
+AUTOSAR is a standardized automotive software framework that improves scalability and portability of Electronic Control Unit (ECU) software by decoupling application logic from hardware-specific implementations. While the AUTOSAR Classic Platform is well suited for deeply embedded, safety-critical control systems, its static configuration model and limited support for dynamic workloads and high-bandwidth data processing restrict its applicability to modern perception-driven applications.
+
+\subsection{AUTOSAR Adaptive Platform for Edge Computing Devices}
+To support computationally intensive applications such as ADAS and on-device perception, AUTOSAR introduced the \textit{Adaptive Platform (AP)}, which targets automotive edge computing devices operating close to sensors. AUTOSAR Adaptive Platform runs on POSIX-compliant operating systems (e.g., Linux or QNX), enabling direct integration of modern C++ software stacks and deep learning inference runtimes such as Google LiteRT.
+
+From a performance standpoint, AUTOSAR Adaptive Platform supports multi-core execution and resource-managed runtime environments, allowing AI perception tasks to run as independent Adaptive Applications with predictable latency. By executing perception locally at the sensor edge, the platform reduces communication overhead and improves real-time responsiveness. In terms of safety, process isolation, lifecycle management, and health monitoring enable fault containment and improve system robustness, which are essential for deploying AI-based perception in automotive environments.
+
+Key features relevant to this work include~\cite{autosar_ap_platform_design_r21_11}:
+\begin{itemize}
+    \item \textit{Service-Oriented Architecture (SOA):} Perception results are exposed as reusable services using standardized protocols such as SOME/IP~\cite{autosar_someip_r21_11}.
+    \item \textit{Edge Computing Support:} Resource-managed execution on multi-core edge ECUs enables low-latency AI inference.
+    \item \textit{Modern C++ Environment:} Standardized C++ APIs support the implementation and deployment of computer vision and deep learning pipelines.
+\end{itemize}
+
+In this work, AUTOSAR Adaptive Platform serves as standardized middleware that enables real-time, efficient, and safety-aware deployment of deep learning--based traffic light detection directly on automotive edge devices. Building upon the AUTOSAR Adaptive Platform concepts discussed above, the following section presents the concrete system implementation, detailing how the proposed edge AI perception pipeline is realized as Adaptive Applications, integrated via SOME/IP communication, and executed in real time on an automotive edge platform.
+

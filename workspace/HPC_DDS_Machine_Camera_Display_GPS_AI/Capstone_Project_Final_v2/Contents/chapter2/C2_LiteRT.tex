@@ -1,0 +1,50 @@
+\section{Google LiteRT Framework}
+\label{sec:litert}
+
+LiteRT is Google's runtime for on-device AI inference, officially introduced in 2024 as the successor and rebrand of TensorFlow Lite (TFLite).  While TFLite had been the de-facto standard for deploying machine-learning models on mobile and embedded platforms since 2017, its tight coupling to the TensorFlow ecosystem and limited support for emerging model formats motivated Google to unify on-device inference under the LiteRT name.
+
+\subsection{Relationship to TensorFlow Lite}
+
+LiteRT retains full backward compatibility with the existing TFLite flatbuffer format (\texttt{.tflite}): any model previously exported for TFLite runs unmodified under LiteRT.  The core interpreter, delegate system, and quantisation toolchain remain unchanged, so the migration path from TFLite to LiteRT is a package rename with no model re-export required.  In Python, the import path changes from \texttt{tensorflow.lite} to the standalone \texttt{litert} package, decoupling the runtime from the full TensorFlow installation and reducing the deployment footprint on storage-constrained devices.  This compatibility provides the basis for examining why LiteRT is suitable for edge deployment in the ADAS context.
+
+\subsection{Key Advantages for Edge Deployment}
+
+% LiteRT provides several improvements that are particularly relevant for ADAS inference on single-board computers such as the Raspberry~Pi~5:
+
+% \begin{itemize}
+%   \item \textbf{Framework-agnostic model support.}  Beyond TensorFlow, LiteRT natively accepts models converted from PyTorch (via ONNX~$\to$~TFLite) and JAX, eliminating the need for framework-specific export pipelines.
+
+%   \item \textbf{Hardware delegate ecosystem and Adaptive AUTOSAR integration.}  LiteRT exposes a unified C/C++ delegate API that allows vendor-specific accelerators (GPU, NPU, DSP, EdgeTPU) to execute compatible subgraphs transparently.  On ARM-based edge devices, the XNNPACK delegate accelerates float32, float16, and INT8 convolutions on Cortex-A76 NEON units, while on future hardware with dedicated ML accelerators the same \texttt{.tflite} model can be offloaded without retraining.  Crucially, LiteRT's pure C/C++ interpreter can be compiled as a shared library and embedded directly into an Adaptive AUTOSAR application process.  This allows the inference engine to be wrapped as an \texttt{ara::com} service, exposing detection results via the AUTOSAR service-oriented communication middleware and integrating seamlessly into the deterministic execution model of the Adaptive Platform.
+
+%   \item \textbf{Lightweight standalone runtime.}  The LiteRT interpreter binary is less than 2\,MB and has no dependency on the full TensorFlow library ($>$500\,MB).  This is critical for embedded Linux images on the Raspberry~Pi~5 where storage and RAM are limited: the entire inference stack (interpreter + two models) fits in under 3\,MB of disk and under 10\,MB of resident memory.
+
+%   \item \textbf{Consistent quantisation support.}  LiteRT inherits TFLite's mature post-training quantisation toolchain, supporting dynamic-range, float16, and full-integer (INT8) quantisation modes.  The model detector in this project uses INT8 quantisation (Eq.~\eqref{eq:quant}) for maximum throughput.
+
+%   \item \textbf{Native optimisation for MobileNet backbones.}  LiteRT's operator library and XNNPACK delegate are co-designed with MobileNet architectures: depthwise separable convolutions, pointwise $1{\times}1$ convolutions, and batch normalisation fusions are mapped to hand-tuned NEON micro-kernels that maximise arithmetic intensity on ARM cores.  MobileNetV4 in particular benefits from this tight integration, as its Universal Inverted Bottleneck (UIB) blocks consist entirely of operations that LiteRT fuses and accelerates natively, avoiding the operator-fallback penalties that affect more exotic layer types.  This makes the YOLO26-MobileNetV4 detector especially well-suited for LiteRT deployment on the edge devices.
+% \end{itemize}
+
+% These deployment-oriented advantages are realised through LiteRT's runtime interface, whose execution flow is described in the following inference API. 
+
+LiteRT provides several crucial improvements tailored specifically for Advanced Driver Assistance Systems (ADAS) inference on single-board computers like the Raspberry Pi 5. One of its primary advantages is its framework-agnostic model support. Moving beyond a strict reliance on TensorFlow, LiteRT natively accepts models converted from other popular frameworks such as PyTorch (typically routed via an ONNX $\to$ TFLite pipeline) and JAX. This flexibility significantly streamlines the development process by eliminating the need to maintain complex, framework-specific export pipelines, allowing engineers to train models in their preferred environment before effortlessly transitioning to edge deployment.
+
+At the hardware execution level, LiteRT features a versatile delegate ecosystem paired with robust Adaptive AUTOSAR integration. It exposes a unified C/C++ delegate API designed to let vendor-specific accelerators—including GPUs, NPUs, DSPs, and EdgeTPUs—execute compatible subgraphs transparently. For ARM-based edge devices, the XNNPACK delegate heavily accelerates float32, float16, and INT8 convolutions on Cortex-A76 NEON units. As hardware evolves to include dedicated machine learning accelerators, the exact same .tflite model can be offloaded without requiring any retraining. Crucially for automotive applications, LiteRT's pure C/C++ interpreter can be compiled as a shared library and embedded directly into an Adaptive AUTOSAR application process. This allows the inference engine to be seamlessly wrapped as an ara::com service, exposing detection results via the AUTOSAR service-oriented communication middleware and integrating perfectly into the deterministic execution model of the Adaptive Platform.
+
+Resource constraints are a defining challenge for embedded Linux images on devices like the Raspberry Pi 5, making LiteRT’s lightweight standalone runtime a critical asset. The core interpreter binary is exceptionally lean at under 2 MB and entirely removes the dependency on the full TensorFlow library, which typically exceeds 500 MB. As a result, the complete inference stack—including the interpreter and two distinct models—fits comfortably in under 3 MB of disk space and requires less than 10 MB of resident memory. This minimal footprint is complemented by consistent, mature quantisation support inherited from TFLite's post-training toolchain. By supporting dynamic-range, float16, and full-integer (INT8) modes, developers can strictly control resource usage. The model detector in this specific architecture leverages INT8 quantisation (Eq. \eqref{eq:quant}) to guarantee maximum inference throughput on the constrained edge hardware.
+
+Finally, the framework delivers native, low-level optimisation specifically engineered for MobileNet backbones. LiteRT's operator library and the XNNPACK delegate were heavily co-designed with MobileNet architectures in mind. Consequently, operations like depthwise separable convolutions, pointwise $1 \times 1$ convolutions, and batch normalisation fusions are mapped directly to hand-tuned NEON micro-kernels that maximise arithmetic intensity across ARM cores. MobileNetV4 benefits immensely from this tight integration; its Universal Inverted Bottleneck (UIB) blocks consist entirely of operations that LiteRT can fuse and natively accelerate. This effectively avoids the severe operator-fallback penalties that frequently bottleneck more exotic layer types during edge execution. Ultimately, this synergy makes the YOLO26-MobileNetV4 detector an exceptionally well-suited architecture for LiteRT, with these deployment-oriented advantages fully realised through the runtime interface described in the upcoming inference API.
+
+\subsection{Inference API}
+
+At runtime, the LiteRT interpreter follows a simple allocate--set--invoke--get cycle:
+
+\begin{enumerate}
+  \item \textbf{Load} the \texttt{.tflite} flatbuffer from disk or memory.
+  \item \textbf{Allocate tensors} -- the interpreter pre-allocates all intermediate buffers based on the model graph.
+  \item \textbf{Set input} -- copy the preprocessed image into the input tensor.
+  \item \textbf{Invoke} -- execute the model graph (single-threaded or multi-threaded).
+  \item \textbf{Read outputs} -- retrieve the output tensors.
+\end{enumerate}
+
+This stateless, zero-copy design ensures deterministic latency with no garbage-collection pauses, which is essential for the fixed-cadence perception loop required by ADAS control systems.
+
+With the inference runtime established, the following section introduces the GNSS-based positioning component used to determine when the traffic light warning pipeline should be activated.

@@ -1,0 +1,37 @@
+% \section{Introduction}
+% \label{sec:introduction}
+
+% \IEEEPARstart{T}{raffic} Light Detection (TLD) is pivotal for ADAS and autonomous driving safety. With the shift towards centralized High-Performance Computing (HPC), the \textit{AUTOSAR Adaptive Platform (AP)} has emerged as the standard Service-Oriented Architecture (SOA) for managing complex perception tasks \cite{autosar_r21_11}.
+
+% However, deploying computationally intensive models like YOLO within the strict C++ environment of Adaptive AUTOSAR on resource-constrained edge devices remains challenging. Standard implementations often rely on costly hardware accelerators (GPUs/NPUs), conflicting with the need for cost-effective, scalable solutions on general-purpose CPUs.
+
+% To address this, we propose a framework for \textit{Real-Time Traffic Light Detection on Adaptive AUTOSAR Edge Devices}. We introduce a lightweight architecture integrating a \textit{MobileNetV4} backbone \cite{lei2025emnv4, csdn_mobilenetv4} with the \textit{Google LiteRT} engine. Leveraging the PopcornSAR toolchain \cite{popcornsar}, we implement a compliant SOA capable of efficient inference on generic hardware without dedicated accelerators.
+
+% The key contributions of this paper are:
+% \begin{itemize}
+%     \item \textit{Optimized Model Architecture:} We utilize a quantized YOLO-MobileNetv4 model engineered to balance accuracy with the low computational demands of edge inference.
+%     \item \textit{AUTOSAR-LiteRT Integration:} We detail the embedding of the Google LiteRT C++ runtime within the Adaptive AUTOSAR framework, establishing a standardized SOA via SOME/IP.
+%     \item \textit{Cost-Effective Feasibility:} We demonstrate real-time performance on generic CPU-based hardware, proving the viability of scalable ADAS solutions without specialized accelerators.
+% \end{itemize}
+
+% The paper is organized as follows: Section \ref{sec:related_work} reviews related work; Section \ref{sec:yolo_mobilenet} details the model architecture; Section \ref{sec:comparison} covers the experimental setup; Section \ref{sec:autosar} overviews the Adaptive Platform; and Section \ref{sec:integrating} presents the system integration and results.
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+Traffic Light Detection (TLD) is a key perception task in Advanced Driver Assistance Systems (ADAS), where reliable real-time interpretation of traffic signals is essential for safe vehicle operation \cite{9220083}. To meet stringent latency and bandwidth requirements, modern automotive systems increasingly push perception intelligence closer to sensors, adopting edge computing paradigms. In this context, the AUTomotive Open System ARchitecture (AUTOSAR) Adaptive Platform has emerged as a standardized framework for deploying service-oriented perception applications on automotive edge devices \cite{autosar_r21_11}.
+
+Deploying deep learning--based perception on such resource-constrained edge nodes remains challenging. State-of-the-art object detectors from the YOLO family \cite{redmon_2016_you}\cite{ali_2024_the} are typically optimized for GPUs or NPUs, which conflicts with the cost, power, and thermal constraints of sensor-level devices. Recent works address this issue using lightweight backbones and optimized runtimes. In particular, YOLO models with MobileNetV4 backbones achieve favorable accuracy--efficiency trade-offs for CPU-based inference~\cite{lei2025emnv4}\cite{qin_2024_mobilenetv4}, while lightweight runtimes such as Google LiteRT enable efficient on-device execution through model conversion and quantization~\cite{11172322}. However, most existing studies focus on standalone inference and overlook integration within standardized automotive middleware.
+
+This paper proposes a lightweight and standardized traffic light detection framework for automotive edge devices based on the AUTOSAR Adaptive Platform. A quantized YOLO--MobileNetV4 model is deployed using the Google LiteRT C++ runtime and exposed as a service-oriented perception component via SOME/IP communication \cite{autosar_someip_r21_11}. The implementation leverages the PopcornSAR toolchain to ensure AUTOSAR compliance without relying on specialized hardware accelerators.
+
+The main contributions of this work are:
+\begin{itemize}
+    \item A YOLO--MobileNetV4 detector optimized for CPU-only inference on sensor-class edge devices.
+    \item A service-oriented integration of LiteRT-based deep learning inference within the AUTOSAR Adaptive Platform.
+    \item An experimental validation demonstrating cost-effective, accelerator-free edge perception for ADAS.
+\end{itemize}
+
+To position the proposed work within existing research, the following section reviews related studies in three complementary areas: the evolution of the AUTOSAR Adaptive Platform, lightweight YOLO-based object detection for edge devices, and traffic light detection with an emphasis on sustainable edge inference. This review highlights the limitations of current approaches and motivates the need for a unified, standardized edge AI solution.
+

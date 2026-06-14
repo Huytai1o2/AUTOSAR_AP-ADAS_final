@@ -1,0 +1,225 @@
+
+% % \section{Problem Statement}
+
+% % \subsection{Problem Definition}
+
+% % The rapid increase in traffic density and the complexity of urban road environments have made real-time traffic perception a critical requirement for modern vehicles. One of the most challenging and safety-critical perception tasks is the detection of traffic lights, particularly red signals at intersections. Failure to correctly perceive and react to red traffic lights can lead to severe collisions, especially side-impact crashes, which often result in serious injuries or fatalities.
+
+% % The core problem addressed in this research is the design and implementation of a real-time red-light detection and driver warning system for Advanced Driver Assistance Systems (ADAS). The system must accurately recognize traffic lights from camera input, determine the current signal state, and issue timely warnings to the driver when a red-light violation is likely to occur. This process must be completed within strict time constraints to ensure that the warning is meaningful and actionable.
+
+% % Unlike offline image recognition tasks, traffic light detection in real driving scenarios is subject to continuous changes in vehicle speed, viewing angle, illumination conditions, and surrounding traffic. The system must operate reliably under daytime and nighttime conditions, during adverse weather, and in visually cluttered urban environments. Furthermore, false positives and false negatives can both have serious consequences, either by distracting the driver unnecessarily or by failing to warn in genuinely dangerous situations.
+
+% % In addition to perception accuracy, the system must comply with the constraints of in-vehicle embedded platforms. Automotive systems typically have limited computational resources compared to desktop or cloud environments. Therefore, the problem extends beyond algorithm design to include efficient system integration, resource management, and real-time execution within a constrained hardware and software environment.
+
+% % \subsection{Real-Time Requirements in Driving Scenarios}
+
+% % Real-time performance is a fundamental requirement for any safety-related ADAS function. In the context of red-light warning, the system must detect the traffic signal and generate an alert before the vehicle reaches the stop line. Even a small delay in processing can significantly reduce the effectiveness of the warning, particularly at higher vehicle speeds.
+
+% % For example, at a speed of 50 km/h, a vehicle travels approximately 14 meters per second. A processing delay of only 300 milliseconds may result in a positional error of more than four meters, which could be the difference between safe stopping and entering an intersection during a red phase. As a result, the end-to-end latency—from image capture to driver notification—must be strictly bounded.
+
+% % This requirement imposes constraints on all system components, including image acquisition, AI inference, decision logic, and communication between software modules. The system must maintain consistent performance across varying workloads and avoid unpredictable delays caused by resource contention or inefficient scheduling. These real-time constraints present a significant challenge, particularly when deploying computationally intensive AI models on embedded hardware.
+
+% % \subsection{Constraints of In-Vehicle Systems}
+
+% % Automotive embedded systems operate under a set of constraints that differ substantially from general-purpose computing environments. These constraints include limited processing power, restricted memory capacity, and strict energy consumption requirements. Additionally, automotive software must comply with safety, reliability, and maintainability standards throughout the vehicle lifecycle.
+
+% % In many research prototypes, traffic light detection algorithms are developed and evaluated on high-performance workstations or cloud servers. However, such platforms are not representative of real in-vehicle systems. Deploying AI-based perception algorithms in production vehicles requires careful consideration of hardware limitations and system integration challenges.
+
+% % Moreover, automotive software architectures impose additional constraints on how applications are developed and deployed. Adaptive AUTOSAR, for example, introduces standardized mechanisms for application lifecycle management, communication, and service discovery. While these features provide flexibility and scalability, they also require developers to adhere to specific design patterns and interfaces. Consequently, the problem addressed in this work includes not only the development of an effective detection algorithm but also its seamless integration into an Adaptive AUTOSAR-based environment.
+
+% % \subsection{Technical Challenges}
+
+% % The implementation of an AI-based red-light warning system faces several technical challenges across multiple layers of the system.
+
+% % \paragraph*{Visual Challenges}
+
+% % Traffic light detection is inherently a visual perception problem, and its performance is strongly influenced by environmental conditions. Variations in lighting, such as strong sunlight, shadows, nighttime illumination, or glare from wet roads, can significantly affect image quality. Weather conditions including rain, fog, and haze further degrade visibility and contrast.
+
+% % In addition, traffic lights may be partially occluded by other vehicles, trees, or infrastructure elements. In dense urban environments, multiple traffic lights may appear in the camera field of view simultaneously, increasing the risk of misclassification. These visual challenges require detection algorithms that are robust and adaptable to a wide range of real-world scenarios.
+
+% % \paragraph*{Camera Placement and Perspective Distortion}
+
+% % The placement of the camera within the vehicle introduces geometric constraints that affect perception accuracy. Traffic lights are often positioned at varying heights and distances relative to the vehicle, leading to changes in apparent size and shape. Perspective distortion becomes more pronounced as the vehicle approaches the intersection, requiring the detection system to handle scale variation effectively.
+
+% % Furthermore, camera calibration errors and vibration caused by road conditions can introduce additional uncertainty. These factors complicate the task of consistently detecting and tracking traffic lights over time.
+
+% % \paragraph*{AI Inference Latency}
+
+% % Deep learning models, while powerful, are computationally intensive. Running such models in real time on embedded platforms presents a significant challenge. High model complexity may result in unacceptable inference latency, violating real-time constraints. Conversely, overly simplified models may sacrifice detection accuracy.
+
+% % Balancing accuracy and speed is therefore a key challenge. Model optimization techniques such as quantization, pruning, and architecture simplification are often required to achieve acceptable performance. However, these techniques may introduce trade-offs that must be carefully evaluated.
+
+% % \paragraph*{Embedded Hardware Limitations}
+
+% % In many prototype systems, AI inference is initially tested in containerized environments such as Docker, running on general-purpose processors. While this approach simplifies development and testing, it does not fully represent deployment on automotive-grade embedded hardware. Embedded platforms may lack hardware acceleration or have limited support for certain AI frameworks.
+
+% % In the context of this project, the system has primarily been deployed and evaluated on a Raspberry Pi platform, which imposes additional limitations on scalability and performance. These constraints highlight the need for efficient system design and careful resource management.
+
+% % \paragraph*{Safety and Reliability Requirements}
+
+% % ADAS functions are inherently safety-critical, as incorrect behavior may directly endanger human life. The red-light warning system must therefore be reliable, predictable, and resilient to faults. The system should avoid sudden failures and degrade gracefully in the presence of errors or unexpected conditions.
+
+% % Ensuring safety also involves minimizing false alarms, which can lead to driver annoyance and reduced trust in the system. At the same time, missed detections must be minimized to avoid unmitigated hazardous situations. Achieving an appropriate balance between sensitivity and reliability is a central challenge in system design.
+
+% % \subsection{System-Level Requirements}
+
+% % To address the identified challenges, the proposed system must satisfy a set of system-level requirements.
+
+% % \paragraph*{Functional Requirements}
+
+% % The system must be capable of detecting traffic lights from camera input, accurately classifying their signal states, and identifying red-light conditions relevant to the vehicle’s current trajectory. Upon detecting a potential red-light violation, the system must generate a clear and timely warning to the driver.
+
+% % \paragraph*{Non-Functional Requirements}
+
+% % Beyond functional correctness, the system must meet non-functional requirements related to performance, robustness, and maintainability. Real-time operation is essential, with bounded latency from perception to warning output. The system must remain robust under varying environmental and traffic conditions and maintain stable performance over extended periods of operation.
+
+% % \paragraph*{Real-Time and Latency Constraints}
+
+% % The end-to-end processing pipeline must be designed to meet strict latency constraints. This includes efficient scheduling of AI inference tasks, optimized data communication between software components, and minimal overhead introduced by the underlying middleware. The system must ensure that worst-case execution times remain within acceptable bounds.
+
+% % \paragraph*{Safety and Robustness Considerations}
+
+% % Safety considerations require the system to handle edge cases and unexpected inputs gracefully. Robustness mechanisms, such as confidence thresholds and fallback strategies, may be employed to reduce the risk of incorrect warnings. Integration with Adaptive AUTOSAR further supports safety by providing standardized lifecycle management and communication mechanisms suitable for automotive applications.
+
+% % Overall, the problem addressed in this work is a multi-dimensional challenge that spans perception accuracy, real-time performance, embedded system constraints, and automotive software architecture integration. Addressing these aspects in a unified framework is essential for developing a practical and reliable red-light warning system for real-world ADAS deployment.
+
+
+% \section{System Requirements}
+
+% Based on the identified problem context and technical challenges, the proposed red-light warning system must satisfy a comprehensive set of system requirements. These requirements are structured to cover functional behavior, real-time constraints, perception performance, embedded deployment limitations, safety considerations, and software architecture compliance.
+
+% \subsection{Functional Requirements}
+
+% The system shall provide core ADAS functionality related to red-light awareness and driver warning. Specifically, the system must satisfy the following functional requirements:
+
+% \begin{enumerate}
+%     \item The system shall acquire visual input from an camera and process image data in real time.
+%     \item The system shall detect traffic lights appearing in the camera field of view.
+%     \item The system shall classify detected traffic lights into signal states, including red, yellow, and green.
+%     % \item The system shall identify red-light conditions that are relevant to the vehicle’s current driving trajectory.
+%     \item The system shall generate a clear and timely warning to the driver when a potential red-light violation is detected in the vehicle range.
+%     \item The system shall detect the counter signals from the traffic lights.
+    
+% \end{enumerate}
+
+% \subsection{Real-Time and Latency Requirements}
+
+% Given the safety-critical nature of red-light warning, strict real-time performance must be guaranteed. The following latency-related requirements are defined:
+
+% \begin{enumerate}
+%     \item The end-to-end processing latency, from image acquisition to warning output, shall be bounded and predictable.
+%     \item The system shall generate warnings sufficiently early to allow meaningful driver reaction before reaching the stop line.
+%     \item The system shall maintain consistent performance across varying vehicle speeds and traffic conditions.
+%     \item Processing delays introduced by AI inference, decision logic, and inter-process communication shall not violate real-time constraints.
+% \end{enumerate}
+
+% % \subsection{Perception Accuracy and Robustness Requirements}
+
+% % Reliable perception is essential to avoid both missed detections and false alarms. The perception subsystem must satisfy the following requirements:
+
+% % \begin{enumerate}
+% %     \item The system shall reliably detect traffic lights under varying illumination conditions, including daytime and nighttime scenarios.
+% %     \item The system shall remain robust against visual disturbances such as shadows, glare, and partial occlusion.
+% %     \item The system shall handle multiple traffic lights appearing simultaneously in complex urban environments.
+% %     \item The system shall minimize false positive detections that could cause unnecessary driver distraction.
+% %     \item The system shall minimize false negative detections that could lead to unmitigated hazardous situations.
+% % \end{enumerate}
+
+% \subsection{Embedded Platform and Resource Constraints}
+
+% The proposed system is intended for in-vehicle deployment and must operate within the limitations of embedded hardware platforms. The following constraints are therefore imposed:
+
+% \begin{enumerate}
+%     \item The system shall operate within limited CPU and memory resources typical of automotive embedded platforms.
+%     \item The AI inference pipeline shall be optimized to balance detection accuracy and computational efficiency.
+%     \item The system shall avoid excessive energy consumption that could impact overall vehicle operation.
+%     \item The system shall support deployment on resource-constrained platforms such as single-board computers used in prototyping.
+% \end{enumerate}
+
+% \subsection{Software Architecture and Integration Requirements}
+
+% To ensure maintainability and scalability, the system must comply with automotive software architecture standards. The following integration requirements are defined:
+
+% \begin{enumerate}
+%     \item The system shall be implemented within an Adaptive AUTOSAR–based architecture.
+%     \item Application components shall communicate through standardized, service-oriented interfaces.
+%     \item Application lifecycle management, including startup, execution, and termination, shall follow Adaptive AUTOSAR mechanisms.
+%     \item Inter-process communication shall be realized using automotive-grade middleware suitable for real-time operation.
+% \end{enumerate}
+
+% \subsection{Safety and Reliability Requirements}
+
+% As an ADAS function, the system must adhere to safety-oriented design principles. The following safety and reliability requirements are imposed:
+
+% \begin{enumerate}
+%     \item The system shall exhibit predictable and deterministic behavior during runtime execution.
+%     \item The system shall degrade gracefully in the presence of sensor errors, communication failures, or unexpected inputs.
+%     \item The system shall avoid abrupt or unsafe system responses that could confuse or endanger the driver.
+%     \item The system shall support diagnostic and logging mechanisms to facilitate monitoring, debugging, and validation.
+% \end{enumerate}
+
+% Overall, these requirements define the technical and architectural foundation of the proposed red-light warning system. They serve as guiding constraints for system design, implementation, and evaluation, ensuring that the prototype addresses not only perception accuracy but also real-time performance, embedded deployment feasibility, and automotive software integration.
+
+
+\section{System Requirements}
+
+Based on the identified problem context and technical challenges, the proposed red-light warning system must satisfy a comprehensive set of system requirements. These requirements are structured to cover functional behavior, real-time constraints, perception performance, embedded deployment limitations, safety considerations, and software architecture compliance. Table~\ref{tab:rq_purpose_requirements} summarizes the relationship between the main research questions and the purpose of each requirement group.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{|p{0.43\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Research Question} & \textbf{Purpose and Derived Requirement} \\
+\hline
+\textbf{RQ1:} How can a red-light warning system detect traffic lights and countdown timers from camera input? & Define the core perception requirement: the system must detect traffic lights, classify signal colors, recognize countdown timers, and associate the result with the vehicle driving direction. \\
+\hline
+\textbf{RQ2:} Is there any supporting system that can assist camera-based detection when the vehicle is moving too fast for vision-only perception to be reliable? & Define the GPS-assisted triggering requirement: the system must use GPS and traffic-light node information to estimate the distance to the nearest intersection, determine when the vehicle enters a predefined warning range, and activate camera-based AI perception only when the traffic light becomes relevant to the driving situation. \\
+\hline
+\textbf{RQ3:} What frame rate is acceptable for an embedded ADAS prototype? & Define the real-time performance requirement: the system should achieve at least {15 FPS} to provide sufficiently smooth and timely warning behavior for an embedded ADAS prototype. \\
+\hline
+\textbf{RQ4:} How can the system provide timely and useful warning information to the driver? & Define the safety and HMI requirement: the system must display clear warning information, including traffic-light state, countdown timer, node ID, distance, and in-range status, early enough for driver reaction. \\
+\hline
+\textbf{RQ5:} How can the prototype be integrated into an automotive software architecture? & Define the integration requirement: the system must separate Provider and Client responsibilities, use service-oriented communication middleware, support service discovery, and follow Adaptive AUTOSAR lifecycle concepts. \\
+\hline
+\textbf{RQ6:} How can the system remain reliable under embedded platform constraints? & Define the resource and reliability requirement: the system must balance AI accuracy and inference latency, avoid excessive CPU and memory usage, provide diagnostic logging, and degrade safely under sensor or communication failures. \\
+\hline
+\end{tabular}
+\caption{Research questions and derived system requirement purposes}
+\label{tab:rq_purpose_requirements}
+\end{table}
+
+Based on these research questions, the following subsections translate the project goals into concrete functional, timing, resource, integration, and safety requirements.
+
+\subsection{Functional Requirements}
+
+To address \textbf{RQ1}, \textbf{RQ2}, and \textbf{RQ4}, the system is designed to provide comprehensive ADAS functionality tailored to red-light awareness. Primarily, it acquires visual data from an onboard camera and processes it in real time. However, to optimise this process, it actively relies on GPS and node information to calculate the distance to the nearest intersection. Consequently, the camera-based perception pipeline is only activated when the vehicle enters a predefined warning range, directly answering the need for a supporting system (\textbf{RQ2}). Once active, the system detects traffic lights, associates them with specific driving directions (such as turning or going straight), classifies their current signal states, and reads any accompanying countdown timers (\textbf{RQ1}). Finally, to fulfil the human-machine interface demands (\textbf{RQ4}), the system displays this critical information---including node IDs, distances, and timer values---and issues clear, timely driver alerts when a red-light violation is imminent.
+
+\subsection{Real-Time and Latency Requirements}
+
+Responding directly to \textbf{RQ3} and further supporting \textbf{RQ4}, strict real-time performance is a non-negotiable aspect of this safety-critical application. The entire processing pipeline, from image capture to the final warning output, is heavily bounded to ensure predictable latency. To provide a smooth and effective warning experience for the driver, the system is mandated to achieve a minimum processing rate of 15 frames per second (\textbf{RQ3}). This throughput ensures that alerts are generated early enough to allow for meaningful driver reactions before the vehicle crosses the stop line. Furthermore, the architecture guarantees consistent performance regardless of fluctuating vehicle speeds or varying traffic densities, ensuring that delays from AI inference or inter-process communication do not compromise the system's real-time integrity.
+
+% \subsection{Perception Accuracy and Robustness Requirements}
+
+% Reliable perception is essential to avoid both missed detections and false alarms. The perception subsystem must satisfy the following requirements:
+
+% \begin{enumerate}
+%     \item The system shall reliably detect traffic lights under varying illumination conditions, including daytime and nighttime scenarios.
+%     \item The system shall remain robust against visual disturbances such as shadows, glare, and partial occlusion.
+%     \item The system shall handle multiple traffic lights appearing simultaneously in complex urban environments.
+%     \item The system shall minimize false positive detections that could cause unnecessary driver distraction.
+%     \item The system shall minimize false negative detections that could lead to unmitigated hazardous situations.
+% \end{enumerate}
+
+\subsection{Embedded Platform and Resource Constraints}
+
+To tackle the challenges raised by \textbf{RQ6}, the proposed system is strictly tailored for in-vehicle deployment on resource-constrained embedded hardware. Unlike high-end servers, automotive platforms possess limited computational power and memory capacity, necessitating highly optimised AI inference pipelines that strike a careful balance between detection accuracy and processing efficiency. Additionally, the system must avoid excessive power consumption that could negatively impact the overall energy management of the vehicle. By adhering to these constraints, the design ensures seamless deployment on typical prototyping single-board computers while maintaining operational stability.
+
+\subsection{Software Architecture and Integration Requirements}
+
+Addressing \textbf{RQ5}, the system must be constructed in full compliance with modern automotive software standards to guarantee long-term maintainability and scalability. Consequently, the entire prototype is integrated into an Adaptive AUTOSAR framework. This implies that all application components interact exclusively via standardized, service-oriented interfaces and utilize automotive-grade middleware to facilitate reliable inter-process communication. Furthermore, the management of the application's lifecycle---including its startup, execution phases, and termination---strictly follows Adaptive AUTOSAR specifications, ensuring that the software behaves predictably within a complex vehicular network.
+
+\subsection{Safety and Reliability Requirements}
+Crucially, safety and reliability represent the most important aspects of this entire project. Addressing both \textbf{RQ5} and \textbf{RQ6}, the system must adhere to stringent safety-oriented design principles inherent to any ADAS function, specifically guided by the ISO 26262 functional safety standard. To achieve this high level of reliability, the system leverages the Adaptive AUTOSAR framework (\textbf{RQ5}), which provides the essential architectural mechanisms to ensure highly deterministic behaviour during runtime. This standard-compliant integration allows the system to degrade gracefully if it encounters sensor malfunctions, communication dropouts, or anomalous inputs. By explicitly avoiding sudden or unsafe responses, the system prevents driver confusion and mitigates potential hazards. Furthermore, comprehensive diagnostic and logging mechanisms are incorporated to enable continuous monitoring and rigorous validation, guaranteeing a fail-safe deployment lifecycle.
+
+Overall, these requirements define the technical and architectural foundation of the proposed red-light warning system. They serve as guiding constraints for system design, implementation, and evaluation, ensuring that the prototype addresses not only perception accuracy but also real-time performance, embedded deployment feasibility, and automotive software integration.

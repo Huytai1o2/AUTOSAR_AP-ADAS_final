@@ -1,0 +1,52 @@
+@misc{googleaiedge_2024_github,
+  author = {google-ai-edge},
+  month = {09},
+  title = {GitHub - google-ai-edge/LiteRT},
+  url = {https://github.com/google-ai-edge/LiteRT},
+  year = {2024},
+  organization = {GitHub}
+}
+
+@misc{popcornsar,
+  title = {PopcornSAR: Global AUTOSAR Solutions Provider},
+  author = {{PopcornSAR}},
+  year = {2025},
+  url = {https://autosar.io/main/home},
+  note = {Accessed: 2026-01-22}
+}
+
+
+@misc{ultralytics_2024_yolo11,
+  author = {Ultralytics},
+  title = {YOLO11},
+  url = {https://docs.ultralytics.com/vi/models/yolo11/},
+  year = {2024},
+  organization = {Ultralytics.com}
+}
+
+@misc{csdn_mobilenetv4,
+  title = {Implementation of MobileNetv4 Backbone in Ultralytics YOLOv11},
+  author = {{CSDN Contributor}},
+  year = {2025},
+  url = {https://blog.csdn.net/qq_44231797/article/details/147483132},
+  note = {Accessed: 2026-01-22}
+}
+
+@misc{ultralytics_rpi5,
+  author = {Ultralytics},
+  title = {Quick Start Guide: Raspberry Pi with Ultralytics YOLO11},
+  url = {https://docs.ultralytics.com/vi/guides/raspberry-pi/},
+  urldate = {2025-12-13},
+  year = {2023},
+  organization = {Ultralytics.com}
+}
+
+@misc{edge_sustainability_2025,
+      title={On the Sustainability of AI Inferences in the Edge}, 
+      author={Ghazal Sobhani and Md. Monzurul Amin Ifath and Tushar Sharma and Israat Haque},
+      year={2025},
+      eprint={2507.23093},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2507.23093}, 
+}

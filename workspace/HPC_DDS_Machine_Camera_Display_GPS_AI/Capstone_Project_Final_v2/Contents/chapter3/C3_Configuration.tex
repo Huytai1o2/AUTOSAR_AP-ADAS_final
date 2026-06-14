@@ -1,0 +1,63 @@
+% \chapter{Configuration Adaptive AUTOSAR Project and Environment}
+
+% Modern Advanced Driver Assistance Systems (ADAS) increasingly rely on high-performance computing, service-oriented communication, and AI-based perception algorithms to support complex driving scenarios. Functions such as traffic light recognition, object detection, and driver warning systems require not only high computational performance but also flexible software architectures that can evolve over time.
+
+% Traditional automotive software platforms, which are primarily designed for static and tightly coupled embedded systems, are no longer sufficient to meet these requirements. These platforms typically rely on fixed signal-based communication and tightly integrated software stacks, which limit scalability and adaptability. As vehicle systems become more software-intensive and computation-heavy, especially with the integration of artificial intelligence, a more flexible execution and deployment model is required.
+
+% To address these challenges, AUTOSAR introduced the \textit{Adaptive Platform}. Unlike the Classic Platform, the Adaptive Platform supports dynamic deployment, service-oriented architectures, and execution on high performance computing units using POSIX compliant operating systems. This allows automotive applications to adopt modern software engineering practices while still complying with automotive safety and reliability requirements.
+
+% This chapter presents the configuration process of an Adaptive AUTOSAR project and its execution environment. The focus is on how system artefacts, software components, and deployment descriptions are organized and integrated following the Adaptive AUTOSAR Methodology. Compared to classical development flows, the Adaptive approach emphasizes incremental refinement, explicit artefact dependencies, and a clear separation between design, implementation, and deployment phases. This structured methodology is particularly suitable for complex ADAS systems, where multiple software components must interact dynamically at runtime.
+
+% In addition, this chapter describes the configuration and training of the YOLO-MobileNetv4 model used for perception tasks, as well as the cross-compilation of the LiteRT framework for integration into the Adaptive AUTOSAR environment. Finally, a Docker, which based development environment is introduced to ensure reproducibility, portability, and consistency across different development stages.
+
+% The remainder of this chapter is organized as follows. Section~\ref{sec:adaptive_methodology} introduces the Adaptive AUTOSAR methodology and its knowledge base. The configuration and training process of YOLO-MobileNetv4 is discussed afterward. The cross-compilation workflow for the LiteRT framework is then presented, followed by the setup of the Adaptive AUTOSAR Docker environment.
+
+% % TODO: Insert a high-level workflow figure showing Methodology -> AI Model -> Cross Compilation -> Docker Environment
+
+% \section{Adaptive AUTOSAR Methodology}
+% \label{sec:adaptive_methodology}
+% \input{Contents/chapter3/C3_1}
+% After establishing the Adaptive AUTOSAR configuration workflow, the system still requires a perception model capable of detecting traffic lights in real time. Therefore, the next subsection shifts from platform configuration to the design and training of the YOLO-MobileNetV4 model. This connection shows how the configured software architecture is supported by an edge-oriented AI component.
+
+% \input{Contents/chapter3/C3_2}
+% While YOLO-MobileNetV4 handles traffic-light detection and localization, the countdown timer requires a separate recognition stage. This motivates the use of a lightweight Multihead CNN that can read one- to three-digit timer values with low computational cost. The following subsection therefore complements the detector with the OCR model used for countdown recognition.
+
+% \input{Contents/chapter3/C3_MultiheadCNN}
+
+% % \section{Compiling LiteRT Framework}
+% % \input{Contents/chapter3/C3_3}
+% After the perception models have been defined, the remaining requirement is to prepare an execution environment where the generated Adaptive AUTOSAR applications can be built and tested consistently. This environment must include the necessary runtime libraries, tooling, and device access for the prototype. For that reason, the next subsection describes the Docker-based setup used to support deployment and experimentation.
+
+% \section{Setup Adaptive AUTOSAR Environment Docker}
+% \input{Contents/chapter3/C3_5}
+
+% After configurating the Adaptive AUTOSAR, the perception model preparation, the timer-recognition design, and the Docker-based execution environment, this chapter transforms the theoretical components introduced earlier into a practical development setup. The configured artefacts define how applications are structured, how services are described, how models are prepared for edge inference, and how the runtime environment supports deployment and testing. With these configuration elements in place, the next chapter proceeds to the prototype implementation, where the Provider, Client, DDS communication path, and HMI output are integrated and evaluated as a complete working system.
+
+\chapter{System Configuration and Methodology}
+
+A modern ADAS demand high-performance computing, service-oriented communication, and robust AI perception. To meet these requirements, the system adopts the AUTOSAR Adaptive Platform, which enables dynamic deployment and POSIX-compliant execution for complex automotive applications. This chapter begins by detailing the software architecture methodology, utilizing the AutoSAR.io toolchain to design service-oriented interfaces, configure middleware communication, and generate the necessary system artifacts. By following this standardized workflow, the project ensures reliable inter-process communication between the perception modules and the human-machine interface.
+
+Once the structural foundation is established, the focus shifts to the visual perception pipeline, starting with traffic light detection. Because real-time inference on edge devices is heavily constrained by computational resources, the standard object detector must be optimized. This chapter outlines the methodology of replacing the default YOLO26 backbone with a lightweight MobileNetV4 architecture. This architectural modification significantly reduces the parameter count and computational overhead while maintaining high detection accuracy, making it highly suitable for deployment on an embedded target.
+
+In parallel with spatial localization and color classification, the system must accurately interpret the numerical countdown timers displayed on the traffic lights. Since generic text recognition models are often too slow or overly complex for embedded platforms, a custom Optical Character Recognition (OCR) solution is required. The chapter proceeds to describe the design and training methodology of a lightweight Multihead Convolutional Neural Network (CNN). This specialized model is explicitly built to extract and classify one- to three-digit timer values efficiently, supplementing the primary YOLO detector with critical timing context.
+
+Finally, developing and integrating these diverse components---ranging from automotive middleware to edge AI models---requires a stable and reproducible workspace. To address potential environment-related inconsistencies, the final section of this chapter details the setup of a containerized Docker execution environment. This configuration encapsulates the required development libraries, cross-compilation toolchains, and hardware access rules, providing a consistent deployment platform. Together, these four methodological phases transition the project from theoretical concepts into a practical, deployable software ecosystem.
+
+\section{Adaptive AUTOSAR Methodology}
+\label{sec:adaptive_methodology}
+\input{Contents/chapter3/C3_1}
+
+Once the AUTOSAR platform configuration is established, a perception mechanism is required to detect traffic lights in real time. Consequently, the focus shifts to designing and training the YOLO-MobileNetV4 architecture, demonstrating how the core software platform integrates with edge-oriented AI components.
+
+\input{Contents/chapter3/C3_2}
+
+While the YOLO-based detector handles spatial localization and color classification, reading the countdown timer necessitates a specialized approach. To address that need, a lightweight Multihead CNN is introduced to perform optical character recognition (OCR) on one- to three-digit timer values efficiently.
+
+\input{Contents/chapter3/C3_MultiheadCNN}
+
+Having defined both the software architecture and the perception models, a stable execution environment is essential to build and test the generated applications. The subsequent section outlines a Docker-based workspace designed to provide the necessary runtime libraries, tooling, and hardware access.
+
+\section{Docker Environment Setup}
+\input{Contents/chapter3/C3_5}
+
+To sum up, the configurations presented above transform theoretical concepts into a practical, deployable ecosystem. By explicitly defining the application structures, preparing the models for edge inference, and ensuring a reproducible runtime environment, the technical foundation is finalized. The subsequent chapter builds upon these elements to demonstrate the full prototype implementation, covering the data flow from sensor acquisition to the final human-machine interface.

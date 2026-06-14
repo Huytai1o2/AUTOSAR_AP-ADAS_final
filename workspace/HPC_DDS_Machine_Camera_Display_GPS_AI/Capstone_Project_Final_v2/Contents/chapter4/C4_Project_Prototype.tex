@@ -1,0 +1,59 @@
+% \chapter{Project Prototype}
+
+% This section presents the prototype implementation of the proposed system, focusing on how the Adaptive AUTOSAR architecture is instantiated and evaluated in practice. The prototype is designed to demonstrate the feasibility of integrating perception, communication, and warning functionalities within a service-oriented automotive software framework.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.75\textwidth]{Images/chapter4/archDesign.png}
+%     \vspace{0.5cm}
+%     \caption{The architecture design of prototype project}
+%     \label{fig:archDesign_project}
+% \end{figure}
+
+% Figure~\ref{fig:archDesign_project} illustrates the overall architecture of the prototype system deployed on a High-Performance Computing (HPC) machine. The design follows the Adaptive AUTOSAR methodology, in which software functionalities are decomposed into independent applications that communicate through well-defined service interfaces. In the proposed prototype, the system is organized around two main applications, namely the Provider Sensor and the Client Sensor, which interact through SOME/IP with transport protocol (SOME/IP-TP).
+
+% The Provider Sensor is responsible for collecting, decoding, and processing sensor-related input data, as well as providing processed information to other applications in the system. It acts as a data provider within the service-oriented architecture, exposing its services to subscribed clients. The Client Sensor consumes the provided data, performs perception and decision-related tasks, and generates user-facing outputs such as warnings or visualization results. This clear separation of responsibilities improves modularity and reflects typical ADAS software design principles.
+
+% The prototype focuses on validating both functional correctness and system integration aspects rather than achieving production-level optimization. All applications are executed within a controlled Adaptive AUTOSAR runtime environment, enabling evaluation of inter-application communication, execution flow, and end-to-end behavior. The following subsections describe the implementation details of each component and present the experimental results obtained from the prototype evaluation.
+
+% \chapter{Provider Sensor}
+% \input{Contents/chapter4/C4_1}
+
+
+% \chapter{Client Sensor}
+% \input{Contents/chapter4/C4_2}
+
+% \chapter{Result}
+% \input{Contents/chapter4/C4_3}
+
+
+\chapter{Project Prototype}
+
+This chapter presents the implementation of the proposed red-light warning prototype. Inspired by the traffic light recognition approach combining a monocular camera with intelligent transport system data~\cite{Lee2022TrafficLightRecognition}, this prototype utilizes GPS coordinates to calculate the vehicle's distance to the nearest traffic-light node. Upon entering a predefined warning zone, the camera-based perception pipeline is triggered to identify the traffic light direction, classify the signal state, and extract the countdown timer. The processed data is then transmitted to the user display interface.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/chapter4/architecture.png}
+    \vspace{0.5cm}
+    \caption{The architecture design of prototype project}
+    \label{fig:archDesign_project}
+\end{figure}
+
+Figure~\ref{fig:archDesign_project} illustrates the architecture of the prototype deployed on a Raspberry Pi 5. The design adopts a service-oriented approach, where functionalities are decoupled into distinct applications communicating via the DDS (Data Distribution Service) middleware (\texttt{CycloneDDS-CXX}).
+
+The architecture comprises two main components:
+\begin{itemize}
+    \item \textbf{Provider (Main Application):} Handles data acquisition from the GPS module and USB webcam. It executes the deep learning pipeline (YOLO detection, color classification, and OCR), encodes the output into a \texttt{GpsJpegWireHeader} along with JPEG bytes, and publishes the payload as a DDS event.
+    \item \textbf{Client (Client Sensor):} Subscribes to the DDS event, parses the payload, and forwards the reconstructed JPEG and metadata over a TCP connection to an external HMI/Monitor for visualization.
+\end{itemize}
+
+This separation of concerns allows for independent deployment and testing of perception and visualization tasks. The specific implementation workflows for the Provider and Client are detailed in the following subsections.
+
+\section{Provider Sensor (Publisher)}
+\input{Contents/chapter4/C4_1}
+
+\section{Client Sensor (Subscriber)}
+\input{Contents/chapter4/C4_2}
+
+\section{Experimental Setup and Results}
+\input{Contents/chapter4/C4_3}

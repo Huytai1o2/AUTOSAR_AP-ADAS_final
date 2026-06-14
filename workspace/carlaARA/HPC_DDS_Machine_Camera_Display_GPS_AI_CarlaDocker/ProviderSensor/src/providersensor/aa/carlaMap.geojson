@@ -1,0 +1,308 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-05-25T05:35:21Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/23",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 15,
+        "carla:x": -31.636356353759766,
+        "carla:y": 33.58928680419922,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0002843079476461776,
+          0.00030185844056137293
+        ]
+      },
+      "id": "node/23"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/22",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 21,
+        "carla:x": -62.09930419921875,
+        "carla:y": 123.75550842285156,
+        "carla:z": 0.28308558464050293
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0005580707693574733,
+          0.001112159510853904
+        ]
+      },
+      "id": "node/22"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/21",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 21,
+        "carla:x": -58.71535873413086,
+        "carla:y": 145.82456970214844,
+        "carla:z": 0.2541879117488861
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0005276601058071369,
+          0.0013104885930175802
+        ]
+      },
+      "id": "node/21"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/20",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 9,
+        "carla:x": -119.2381820678711,
+        "carla:y": 19.00446891784668,
+        "carla:z": 0.2542526125907898
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0010715634393400001,
+          0.00017078836427061186
+        ]
+      },
+      "id": "node/20"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/19",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 11,
+        "carla:x": -59.24224853515625,
+        "carla:y": -51.49837112426758,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0005323951313096084,
+          -0.00046280286000592054
+        ]
+      },
+      "id": "node/19"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/18",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 9,
+        "carla:x": -94.92822265625,
+        "carla:y": 20.334821701049805,
+        "carla:z": 0.2542559802532196
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0008530959714255034,
+          0.00018274390888228817
+        ]
+      },
+      "id": "node/18"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/17",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 15,
+        "carla:x": -62.35206985473633,
+        "carla:y": 20.196908950805664,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.000560342310388014,
+          0.00018150452182484435
+        ]
+      },
+      "id": "node/17"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/16",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 15,
+        "carla:x": -64.26419067382812,
+        "carla:y": 7.063309192657471,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0005775260574522697,
+          6.347617650964176e-05
+        ]
+      },
+      "id": "node/16"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/15",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 15,
+        "carla:x": -31.93084144592285,
+        "carla:y": 20.30195426940918,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.00028695441082127936,
+          0.00018244853758980705
+        ]
+      },
+      "id": "node/15"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/14",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 10,
+        "carla:x": 89.79188537597656,
+        "carla:y": 20.92214584350586,
+        "carla:z": 0.25420013070106506
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.0008069370050111608,
+          0.0001880220426764212
+        ]
+      },
+      "id": "node/14"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 10,
+        "carla:x": 114.45188903808594,
+        "carla:y": 21.196002960205078,
+        "carla:z": 0.25420013070106506
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.0010285502322359959,
+          0.00019048312743424187
+        ]
+      },
+      "id": "node/13"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 11,
+        "carla:x": -34.449153900146484,
+        "carla:y": -51.02048873901367,
+        "carla:z": 0.2542550563812256
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.00030958584908290834,
+          -0.00045850825166901613
+        ]
+      },
+      "id": "node/12"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 11,
+        "carla:x": -46.17157745361328,
+        "carla:y": -73.5566177368164,
+        "carla:z": 0.2542538344860077
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.000414932310132923,
+          -0.0006610347534952634
+        ]
+      },
+      "id": "node/11"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 10,
+        "carla:x": 115.4498291015625,
+        "carla:y": 35.044944763183594,
+        "carla:z": 0.222725972533226
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.0010375184676552544,
+          0.0003149400710957459
+        ]
+      },
+      "id": "node/10"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9",
+        "crossing": "traffic_signals",
+        "highway": "traffic_signals",
+        "carla:group_id": 9,
+        "carla:x": -119.23003387451172,
+        "carla:y": 5.093152046203613,
+        "carla:z": 0.26276955008506775
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0010714902135789647,
+          4.577087161513877e-05
+        ]
+      },
+      "id": "node/9"
+    }
+  ]
+}

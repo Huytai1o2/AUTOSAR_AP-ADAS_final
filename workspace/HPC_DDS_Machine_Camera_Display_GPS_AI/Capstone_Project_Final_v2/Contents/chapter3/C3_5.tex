@@ -1,0 +1,124 @@
+\subsection{PACON IDE}
+
+PACON IDE is a development and runtime environment provided by PopcornSAR to support the execution, testing, and debugging of Adaptive AUTOSAR applications. Unlike system modeling or configuration tools, PACON IDE does not directly perform system or service configuration. Instead, it serves as an integrated workspace where previously generated Adaptive AUTOSAR artefacts, such as application binaries, ARXML files, and manifest descriptions, can be deployed and executed.
+
+From a technical perspective, PACON IDE is delivered as a containerized environment that encapsulates the PARA SDK together with the required Adaptive AUTOSAR runtime libraries and tooling. This environment provides a controlled and reproducible setup for running Adaptive AUTOSAR applications, managing execution states, and observing runtime behavior. By packaging the complete runtime stack inside Docker containers, PACON IDE minimizes environment-related inconsistencies and simplifies deployment across different development machines.
+
+PACON IDE supports essential development activities such as process execution, service communication testing, and runtime debugging. Developers can monitor application lifecycles, inspect Diagnostic Log and Trace (DLT) outputs, and validate inter-process communication mechanisms such as SOME/IP or DDS during system execution. As a result, PACON IDE plays a crucial role in verifying the correctness and stability of Adaptive AUTOSAR applications after the configuration and code generation stages have been completed.
+
+In the context of this project, PACON IDE is used as the primary environment for deploying and evaluating the proposed Adaptive AUTOSAR prototype. It enables systematic testing of application interactions, runtime behavior, and communication flows, thereby bridging the gap between offline configuration artefacts and actual system execution. Further details about PACON IDE and its runtime capabilities can be found on the official product page.\footnote{PopcornSAR, \textit{PACON IDE Product Overview}. Available online: \url{https://autosar.io/products/pacon}. Accessed: September 2025.}
+
+% \subsection{Setup}
+
+% To ensure a stable and reproducible development environment for Adaptive AUTOSAR using PACON IDE, a Docker based setup is employed. The following \texttt{docker-compose.yml} file defines a containerized environment that encapsulates all necessary dependencies, runtime configurations, and hardware access requirements. By using Docker Compose, the entire environment can be deployed consistently across different host systems, which is essential for both development and experimentation.
+
+% \begin{lstlisting}[language=bash, caption={Docker Compose configuration for PACON IDE environment}]
+% services:
+%   app:
+%     image: "${IMAGE_REPO}:${IMAGE_TAG}"
+%     container_name: "${CONTAINER_NAME:-AP_AUTOSAR}"
+%     shm_size: "1g"
+%     stdin_open: true
+%     tty: true
+%     environment:
+%       - TZ=Asia/Ho_Chi_Minh
+
+%     networks:
+%       para_net:
+%         ipv4_address: 172.31.36.143
+%     ports:
+%       - "8022:22"
+
+%     devices:
+%       - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
+%       - /dev/bus/usb:/dev/bus/usb
+
+%     group_add:
+%       - "${VIDEO_GID:-44}"
+%       - "${DIALOUT_GID:-20}"
+%       - "${PLUGDEV_GID:-46}"
+
+%     volumes:
+%       - ../workspace:/root/workspace
+
+% networks:
+%   para_net:
+%     driver: bridge
+%     ipam:
+%       driver: default
+%       config:
+%         - subnet: "172.31.0.0/16"
+%           gateway: "172.31.0.1"
+% \end{lstlisting}
+
+% The \texttt{services} section defines a single service named \texttt{app}, which represents the main Adaptive AUTOSAR development container. This container is built from a preconfigured image specified by the \texttt{IMAGE\_REPO} and \texttt{IMAGE\_TAG} variables. By parameterizing the image information, the same compose file can be reused across different versions of the environment without modifying the configuration itself. The container name is also configurable, which improves readability and management when multiple containers are running on the same host.
+
+% Shared memory size is explicitly set to one gigabyte in order to support applications that require higher inter process communication throughput. This is particularly relevant for Adaptive AUTOSAR systems, where multiple processes may exchange data through shared memory mechanisms. Furthermore, standard input and pseudo terminal support are enabled so that developers can interact with the container directly using a shell interface. This design choice simplifies debugging and manual testing during development.
+
+% The environment configuration includes the system time zone, which is set to Asia Ho Chi Minh. This ensures that timestamps in logs and generated files remain consistent with the local development context. Such consistency is important when analyzing execution behavior or correlating logs across different components of the system.
+
+% Networking is configured using a custom bridge network named \texttt{para\_net}. A static IPv4 address is assigned to the container in order to provide predictable network behavior. This is especially useful when the container needs to communicate with other services or tools that expect a fixed address. In addition, port forwarding is configured to expose the container’s SSH service on port 8022 of the host machine. As a result, developers can access the container remotely using standard SSH clients without requiring direct Docker interaction.
+
+% Hardware access is another important aspect of this setup. The configuration allows optional access to a camera device by mapping a video device from the host into the container. This feature is useful for applications that involve vision based components or sensor integration. Moreover, the entire USB bus is mounted into the container, enabling communication with external development boards such as Arduino, ESP32, or STM32 devices. This capability is essential for scenarios that require flashing firmware, debugging, or serial communication directly from within the containerized environment.
+
+% To ensure proper permission handling, the container is added to several host groups. These groups grant access to video devices, serial ports, and raw USB interfaces. By aligning group identifiers between the host and the container, the setup avoids permission related issues while maintaining a reasonable level of isolation.
+
+% Finally, a volume mount is used to map a workspace directory from the host into the container. This allows source code, configuration files, and generated artifacts to persist across container restarts. At the same time, it enables developers to use their preferred editors on the host system while relying on the container for execution and tooling. The network configuration at the bottom of the file defines the address space and gateway for the custom bridge network, completing a fully controlled and reproducible environment.
+
+% Overall, this Docker Compose configuration plays a crucial role in providing a consistent, portable, and hardware aware development platform for PACON IDE and Adaptive AUTOSAR applications. By encapsulating system dependencies and runtime settings, it reduces setup effort and minimizes environment related inconsistencies, thereby supporting efficient development and experimentation.
+
+
+\subsection{Setup}
+
+To ensure a stable and reproducible development environment for Adaptive AUTOSAR using the PACON IDE, a Docker-based setup is employed. The following \texttt{docker-compose.yml} file defines a containerized workspace that includes all necessary dependencies, network configurations, and hardware permissions.
+
+\begin{lstlisting}[language=bash, caption={Docker Compose configuration for PACON IDE environment}]
+services:
+  app:
+    image: "${IMAGE_REPO}:${IMAGE_TAG}"
+    container_name: "${CONTAINER_NAME:-AP_AUTOSAR}"
+    shm_size: "1g"
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+    networks:
+      para_net:
+        ipv4_address: 172.31.36.143
+    ports:
+      - "8022:22"
+
+    devices:
+      - "${CAMERA_DEV:-/dev/video0}:${CAMERA_DEV:-/dev/video0}"
+      - /dev/bus/usb:/dev/bus/usb
+
+    group_add:
+      - "${VIDEO_GID:-44}"
+      - "${DIALOUT_GID:-20}"
+      - "${PLUGDEV_GID:-46}"
+
+    volumes:
+      - ../workspace:/root/workspace
+
+networks:
+  para_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.31.0.0/16"
+          gateway: "172.31.0.1"
+\end{lstlisting}
+
+The configuration defines a single main service, \texttt{app}, built from a customizable Docker image. By parameterizing the image variables, the environment can be easily reused across different host systems. Key features of this setup include:
+
+\begin{itemize}
+    \item \textbf{System Configuration:} Shared memory is set to 1GB to support the high-throughput Inter-Process Communication (IPC) required by Adaptive AUTOSAR. The time zone is also set to \texttt{Asia/Ho\_Chi\_Minh} to ensure accurate and consistent log timestamps.
+    \item \textbf{Networking:} A custom bridge network (\texttt{para\_net}) assigns a static IPv4 address for predictable communication. Furthermore, SSH access is exposed via host port 8022, allowing developers to connect to the container remotely.
+    \item \textbf{Hardware Access Permissions:} The setup maps host devices, such as cameras (\texttt{/dev/video0}) and the USB bus, directly into the container. Along with the required user groups (video, dialout, and plugdev), this ensures the container can seamlessly interact with external hardware like GPS modules or webcams without permission errors.
+    \item \textbf{Persistent Storage:} A volume mount links the host's \texttt{workspace} folder to the container. This allows developers to write code using their local editors while running tasks inside the container, ensuring that all files and generated artifacts are saved safely.
+\end{itemize}
+
+Overall, this Docker configuration reduces setup complexity and minimizes environment-related bugs, providing a consistent and hardware-aware platform for ADAS development.
+

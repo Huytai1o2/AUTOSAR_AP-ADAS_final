@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    /* Compatible with Pi 5 */
+    compatible = "brcm,bcm2712";
+
+    fragment@0 {
+        /* Attach to UART0. Change if you wired the GP-02 to a different UART */
+        target = <&uart0>; 
+        __overlay__ {
+            status = "okay";
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            gp02_gps: gp02_gps@0 {
+                /* EXACT match to the string in drv_gp02_gps.c */
+                compatible = "makerlab,gp02-gps";
+                reg = <0>;
+                status = "okay";
+            };
+        };
+    };
+};

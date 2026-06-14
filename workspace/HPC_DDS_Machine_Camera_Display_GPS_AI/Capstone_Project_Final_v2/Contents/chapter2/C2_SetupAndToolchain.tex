@@ -1,0 +1,27 @@
+\chapter{Background}
+
+Developing a robust ADAS requires a strong theoretical foundation that bridges automotive middleware, artificial intelligence, and edge computing. The present chapter outlines the core technologies and frameworks employed to construct the proposed prototype, ensuring that all subsequent implementations are grounded in established industry standards. 
+
+To provide a comprehensive overview of the system's underlying technologies, the remainder of the chapter is structured as follows:
+
+\begin{itemize}
+    \item \textbf{Adaptive AUTOSAR Architecture:} Explores the primary software backbone (Release R21-11) used for building dynamic, service-oriented automotive applications.
+    \item \textbf{Development Toolchains:} Introduces the PopcornSAR toolchain and the PARA SDK Docker environment, detailing how initial code skeletons are generated and executed reliably.
+    \item \textbf{YOLO Model and MobileNetV4 Backbone:} Examines the real-time object detection architecture utilized for traffic light localization, emphasizing its lightweight edge-computing design.
+    \item \textbf{Google LiteRT Framework:} Details the inference engine (formerly TensorFlow Lite) employed to execute deep learning models efficiently with low latency and a minimal memory footprint.
+    \item \textbf{GNSS Integration:} Incorporates Global Navigation Satellite System concepts to enable spatial reasoning and distance estimation, compensating for the limitations of camera-only perception.
+    \item \textbf{Hardware:} Presents the physical edge platform, illustrating how the software middleware, AI models, and localization modules operate together cohesively.
+\end{itemize}
+
+\input{Contents/chapter2/C2_1}
+\input{Contents/chapter2/C2_2}
+\input{Contents/chapter2/C2_3}
+\input{Contents/chapter2/C2_LiteRT}
+\input{Contents/chapter2/C2_4}
+\input{Contents/chapter2/C2_Hardware}
+
+In summary, the integration of Adaptive AUTOSAR, computer vision, AI inference via LiteRT, and GNSS-based spatial reasoning establishes the essential technical baseline for the proposed ADAS prototype. Rather than functioning as isolated technologies, the respective components form a coordinated ecosystem where software architecture, perception, localization, and physical hardware must seamlessly interact. Building upon that comprehensive background, the subsequent chapter transitions from theory to practical application. It details the exact configuration methodology, explaining how the selected frameworks are transformed into deployable AUTOSAR artifacts, trained AI models, and a reproducible execution environment.
+
+
+% \input{}
+

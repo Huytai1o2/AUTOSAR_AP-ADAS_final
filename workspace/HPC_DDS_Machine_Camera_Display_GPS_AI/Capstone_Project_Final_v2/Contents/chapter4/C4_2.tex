@@ -1,0 +1,204 @@
+% \chapter{Flow Chart}
+
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[
+%     node distance=1.4cm,
+%     every node/.style={font=\small},
+%     startstop/.style={
+%         rectangle, rounded corners,
+%         minimum width=3.8cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     process/.style={
+%         rectangle,
+%         minimum width=4.8cm,
+%         minimum height=0.9cm,
+%         draw, align=center
+%     },
+%     decision/.style={
+%         diamond,
+%         aspect=2.6,
+%         minimum width=3.6cm,
+%         minimum height=1.1cm,
+%         inner sep=1.5pt,
+%         draw, align=center
+%     },
+%     arrow/.style={->, thick}
+% ]
+
+% % ===== Nodes =====
+% \node (start) [startstop] {Application Start};
+
+% \node (init) [process, below of=start]
+% {Initialize ClientSensor};
+
+% \node (register) [process, below of=init]
+% {Register Sensorv2\\ Event Handler};
+
+% \node (startport) [process, below of=register]
+% {Start Sensorv2 Port};
+
+% \node (wait) [process, below of=startport]
+% {Wait for Incoming Data Event};
+
+% \node (dataok) [decision, below of=wait]
+% {Data Received};
+
+% \node (decode) [process, below of=dataok, yshift=-0.4cm]
+% {Decode JPEG Data};
+
+% \node (decodeok) [decision, below of=decode]
+% {Decode Successful};
+
+% \node (save) [process, below of=decodeok, yshift=-0.4cm]
+% {Save Image to File};
+
+% \node (saveok) [decision, below of=save]
+% {Save Successful};
+
+% \node (logerr) [process, right=4.6cm of decodeok]
+% {Log Error};
+
+% % ===== Main Flow =====
+% \draw [arrow] (start) -- (init);
+% \draw [arrow] (init) -- (register);
+% \draw [arrow] (register) -- (startport);
+% \draw [arrow] (startport) -- (wait);
+% \draw [arrow] (wait) -- (dataok);
+
+% % Data received decision
+% \draw [arrow] (dataok) -- node[right]{Yes} (decode);
+% \draw [arrow] (dataok.west) -- ++(-1cm,0) |- node[near start, above]{No} (wait.west);
+
+% % Decode path
+% \draw [arrow] (decode) -- (decodeok);
+
+% \draw [arrow] (decodeok) -- node[right]{Yes} (save);
+% \draw [arrow] (decodeok.east) -- node[near start, above]{No} (logerr.west);
+
+% % Save decision
+% \draw [arrow] (save) -- (saveok);
+
+% \draw [arrow]
+%     (saveok.west)
+%     -- ++(-1.6cm,0)
+%     |- node[near start, above]{Yes}
+%     (wait.west);
+    
+% \draw [arrow] (saveok.east) -| node[near start, above]{No} (logerr.south);
+
+% % Error loop back
+% \draw [arrow] (logerr.north) |- (wait.east);
+
+
+% \end{tikzpicture}
+
+% \vspace{0.5cm}
+% \caption{ClientSensor Data Reception and Processing Flow}
+% \label{fig:clientsensor_flow}
+% \end{figure}
+
+% Data Reception and Processing Flow The Client Sensor workflow starts with the application launch and the initialization of the \texttt{ClientSensor} unit. The system registers the \texttt{Sensorv2} event handler and starts the \texttt{Sensorv2} port to enable communication. It then enters a standby state to wait for incoming data events. When data is received, the system attempts to decode the incoming JPEG data. A decision block checks if the decoding was successful; if not, an error is logged. If decoding succeeds, the system proceeds to save the image to a file. A final check confirms if the file save was successful. If the save operation fails, an error is logged; otherwise, the data handling for that event is considered complete.
+
+
+% \subsection{Flow Chart}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.4cm,
+    every node/.style={font=\small},
+    startstop/.style={
+        rectangle, rounded corners,
+        minimum width=3.8cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    process/.style={
+        rectangle,
+        minimum width=4.8cm,
+        minimum height=0.9cm,
+        draw, align=center
+    },
+    decision/.style={
+        diamond,
+        aspect=2.6,
+        minimum width=3.6cm,
+        minimum height=1.1cm,
+        inner sep=1.5pt,
+        draw, align=center
+    },
+    arrow/.style={->, thick}
+]
+
+% ===== Nodes =====
+\node (start) [startstop] {Application Start};
+
+\node (init) [process, below of=start]
+{Initialize Client Application};
+
+\node (sub) [process, below of=init]
+{1. Subscribe \texttt{imageDataEvent}\\Topic: \texttt{imageData}};
+
+\node (wait) [process, below of=sub]
+{Wait for \texttt{imageDataEvent}};
+
+\node (dataok) [decision, below of=wait]
+{Event Received};
+
+\node (parse) [process, below of=dataok, yshift=-0.4cm]
+{2. Parse \texttt{GpsJpegWireHeader} + JPEG};
+
+\node (tcp) [process, below of=parse]
+{3. TCP Client\\\texttt{127.0.0.1:8888}};
+
+\node (sendok) [decision, below of=tcp, yshift=-0.4cm]
+{Transmission Successful};
+
+\node (out) [process, below of=sendok, yshift=-0.4cm]
+{4. Output to External Display};
+
+\node (logerr) [process, right=4.6cm of dataok]
+{Log Error};
+
+% ===== Main Flow =====
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (sub);
+\draw [arrow] (sub) -- (wait);
+\draw [arrow] (wait) -- (dataok);
+
+% Data received decision
+\draw [arrow] (dataok) -- node[right]{Yes} (parse);
+\draw [arrow] (dataok.west) -- ++(-1cm,0) |- node[near start, above]{No} (wait.west);
+
+% Decode path
+\draw [arrow] (parse) -- (tcp);
+\draw [arrow] (tcp) -- (sendok);
+
+\draw [arrow] (sendok) -- node[right]{Yes} (out);
+\draw [arrow] (sendok.east) -| node[near start, above]{No} (logerr.south);
+
+% Loop back
+\draw [arrow]
+    (out.west)
+    -- ++(-1.6cm,0)
+    |-
+    (wait.west);
+    
+% Error loop back
+\draw [arrow] (logerr.north) |- (wait.east);
+
+\end{tikzpicture}
+
+\vspace{0.5cm}
+\caption{Client Data Reception and Processing Flow}
+\label{fig:client_flow}
+\end{figure}
+
+Upon startup, the Client application initializes its DDS Subscriber node. It registers a listener for the \texttt{imageDataEvent} on the \texttt{imageData} topic, targeting the \texttt{Sensor} service. The application is configured to discover any available provider (instance-id~\texttt{ANY}) operating on Domain Id~\texttt{0}. Once the DDS entities are established via the \texttt{CycloneDDS-CXX} middleware, the subscriber thread blocks and waits for incoming \texttt{dds::sensorCam::imageDataEventType} messages.
+
+Upon receiving an event, the application extracts the \texttt{imageData} payload and decodes its byte structure. The parser reads the initial 24 bytes to reconstruct the \texttt{GpsJpegWireHeader}, extracting vital metadata such as the \texttt{in\_range} flag, \texttt{node\_id}, \texttt{dist\_m}, and \texttt{jpeg\_len}. Subsequently, it extracts the JPEG image bytes corresponding to the \texttt{jpeg\_len} field. 
+
+To bridge the DDS middleware with the user-facing interface, the Client acts as a TCP proxy. It marshals the decoded data into a custom TCP packet structured as \texttt{[uint32 frame\_len][JPEG][uint8 in\_range][int64 node\_id][int32 dist\_m]} and transmits it to the external display monitor listening at \texttt{127.0.0.1:8888}. In case of a socket error, the application logs the failure and attempts reconnection. Otherwise, the HMI updates the visualization with the latest camera frame and GPS metadata, and the subscriber returns to its listening state for the next DDS event.

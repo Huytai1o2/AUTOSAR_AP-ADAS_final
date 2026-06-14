@@ -1,0 +1,29 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "rport",
+    "instance-specifier" : "ClientSensor/AA/RPort0",
+    "service-protocol" : "dds",
+    "service-name" : "Sensor",
+    "service-id" : "Sensor",
+    "instance-id" : "ANY",
+    "major-version" : "undefined",
+    "minor-version" : "undefined",
+    "domain-id" : "0",
+    "qos-profile" : "default",
+    "method-request-topic-name" : "CallMethod",
+    "method-reply-topic-name" : "ReturnMethod",
+    "field-request-topic-name" : "CallField",
+    "field-reply-topic-name" : "ReturnField",
+    "events" : [
+        {
+            "name" : "imageDataEvent",
+            "topic-name" : "imageData",
+            "transport" : "undefined",
+            "qos-profile" : "undefined"
+        }
+    ],
+    "fields" : [
+    ]
+}

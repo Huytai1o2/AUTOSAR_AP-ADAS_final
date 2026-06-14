@@ -1,0 +1,30 @@
+=== location_access started ===
+Log file : logs/log_20260331_171818.txt
+GeoJSON  : hochiminh.geojson
+GPS mode : live UART
+
+[1] Parsing GeoJSON...
+    Loaded 3056 traffic signal nodes in 40.77 ms.
+
+[2] Building KD-tree...
+    KD-tree built in 0.83 ms.
+
+[3] Acquiring GPS coordinates...
+[GPS] Opening UART /dev/ttyAMA0 at 115200 baud...
+[GPS] Reading NMEA (timeout 1.5 s)...
+[GPS] Fix acquired in 482.76 ms -> lat=10.7954073, lon=106.6782520
+
+[4] Nearest-neighbor query on live GPS fix:
+    GPS position: lat=10.7954073, lon=106.6782520
+    Nearest traffic light:
+      ID       : 2290177711
+      Location : (10.7946032, 106.6778423)
+      Distance : 99.99 m
+      Query ms : 0.0242 ms
+
+=== Timing summary ===
+  GeoJSON parse : 40.77 ms
+  KD-tree build : 0.83 ms
+  GPS fix time  : 482.76 ms
+  KD query time : 0.02 ms
+  TOTAL elapsed : 524.70 ms

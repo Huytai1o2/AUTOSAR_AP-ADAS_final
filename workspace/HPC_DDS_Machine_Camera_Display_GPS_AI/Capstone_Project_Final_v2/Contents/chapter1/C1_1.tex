@@ -1,0 +1,43 @@
+\section{Background and Motivation}
+
+\subsection{Traffic Safety and Accident Statistics}
+
+Road traffic accidents remain a major public safety concern worldwide and continue to impose serious social and economic burdens. According to the World Health Organization, road traffic injuries are among the leading causes of death globally, particularly in low- and middle-income countries. Despite advances in transportation infrastructure and traffic regulation, human-related factors remain the dominant cause of accidents.
+
+In Vietnam, road traffic safety continues to present significant challenges. According to official statistics released by Vietnamese authorities, during the period from late 2024 to mid-2025, the country recorded thousands of traffic accidents, resulting in several thousand fatalities and injuries nationwide. Urban areas such as Ho Chi Minh City and Hanoi contribute a large proportion of these incidents due to dense traffic flow, complex intersections, and high volumes of mixed vehicles including motorcycles, cars, and trucks. Although recent years have seen a gradual reduction in accident rates due to stricter enforcement and public awareness campaigns, the absolute number of traffic-related casualties remains high.
+
+A considerable number of severe accidents occur at signalized intersections, where traffic lights play a critical role in regulating vehicle movement. Violations such as running red lights, misjudging signal timing, or delayed braking significantly increase the likelihood of high-impact collisions. In Vietnam, red-light violations are frequently observed, particularly during peak traffic hours, and often result from driver impatience, distraction, or misinterpretation of traffic signals. Recent traffic incidents reported by local media illustrate the severity of such violations, including multi-vehicle collisions involving motorcycles that occurred while vehicles were waiting at a red signal phase at major urban intersections. These real-world cases highlight the direct safety risks associated with red-light violations in densely populated traffic environments.
+
+\begin{figure}[H]
+    \centering
+    % TODO: Replace with the selected image from the ZingNews article
+    \includegraphics[width=1\textwidth]{Images/znews.png}
+    \vspace{0.5cm}
+    \caption{A traffic accident caused by red-light violation at an urban intersection in Vietnam on December, 15\textsuperscript{th}, 2025}
+    \label{fig:red_light_accident}
+\end{figure}
+
+Driver distraction has become an increasingly serious issue in modern traffic environments. The widespread use of mobile devices, in-vehicle infotainment systems, and navigation displays contributes to reduced driver attention. Even brief lapses in concentration can delay reaction time by several hundred milliseconds, which is often sufficient to cause an accident at intersections. Previous studies have shown that delayed reaction, rather than excessive speed alone, is a major contributing factor in red-light-related collisions.
+
+These realities indicate that traditional traffic enforcement and passive safety measures are insufficient to fully address the complexity of modern traffic risks. As a result, there is a growing demand for intelligent driver assistance systems that can actively monitor intersection conditions and provide timely warnings to drivers before dangerous situations escalate.
+
+
+\subsection{Evolution of Driver Assistance Systems}
+
+Automotive safety systems have evolved significantly over the past decades. Early vehicle safety technologies primarily focused on passive protection mechanisms such as seat belts, airbags, and reinforced vehicle structures. While these systems are effective in reducing injury severity during accidents, they do not actively prevent accidents from occurring.
+
+The emergence of Advanced Driver Assistance Systems (ADAS) marked a shift toward proactive safety solutions. ADAS technologies aim to detect potential hazards, assist drivers in maintaining control, and reduce the likelihood of collisions. Examples include adaptive cruise control, lane departure warning, forward collision warning, and automatic emergency braking. These systems rely heavily on sensor data, including cameras, radar, and lidar, to perceive the driving environment.
+
+Among ADAS components, perception systems play a central role. They are responsible for interpreting raw sensor data and extracting meaningful information such as object positions, traffic signs, lane markings, and traffic signals. With the rapid advancement of artificial intelligence, particularly deep learning and computer vision, perception systems have achieved remarkable improvements in accuracy and robustness.
+
+The automotive industry is currently transitioning toward intelligent and partially autonomous vehicles. This transition requires software architectures capable of supporting complex algorithms, high computational workloads, and dynamic software updates. Consequently, modern vehicle platforms increasingly adopt service-oriented and adaptive software frameworks, such as Adaptive AUTOSAR, to manage the growing complexity of in-vehicle applications.
+
+\subsection{Motivation for Red-Light Warning Systems}
+
+As mentioned previously, intersections represent one of the most hazardous locations in road networks due to the convergence of multiple traffic streams. Accidents occurring at intersections often result in severe injuries, particularly because of lateral impacts and high relative speeds. Consequently, improving safety at intersections has become a priority for traffic authorities and vehicle manufacturers alike.
+
+To address this safety concern, red-light warning systems have been introduced as an effective driver assistance function. These systems are designed to alert drivers when a vehicle approaches an intersection during a red signal phase. By providing early warnings, red-light warning systems can reduce abrupt braking, prevent unintentional signal violations, and lower the risk of high-impact collisions. This capability is especially valuable in situations where driver attention is compromised or visibility is limited.
+
+However, the effectiveness of conventional red-light warning systems is often constrained by the limitations of traditional rule-based traffic light detection methods. Approaches based on fixed color thresholds or geometric assumptions tend to be sensitive to illumination changes, weather conditions, and visual occlusions. In response to these challenges, the application of artificial intelligence to traffic light recognition has gained increasing attention. AI methods are capable of learning complex visual patterns and adapting to diverse real-world conditions, which is essential in highly dynamic traffic environments such as those found in Vietnam.
+
+Beyond perception accuracy, the deployment of red-light warning systems in real vehicles also requires a scalable and maintainable software architecture. Integrating AI perception modules within an Adaptive AUTOSAR framework provides such capabilities by supporting service-oriented communication, dynamic deployment, and high-performance computing. From a system-level perspective, these architectural features strongly motivate the exploration of AI-driven red-light warning systems implemented on Adaptive AUTOSAR platforms to enhance road safety and reduce traffic accidents.
